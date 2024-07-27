@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Add your custom styles here */
+        body {
+            background-color: #ff172e;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card-header {
+            background-color: #4eddd0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card mx-auto" style="max-width: 400px;">
+            <div class="card-header text-center">
+                <h5 class="modal-title">লগইন করুন</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">নাম</label>
+                        <input type="text" class="form-control" id="name" placeholder="নাম লিখুন">
+                    </div>
+                    <div class="form-group">
+                        <label for="msisdn">ফোন নাম্বার</label>
+                        <input type="text" class="form-control" id="msisdn" placeholder="ফোন নাম্বার লিখুন">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <button type="button" class="btn btn-primary" onclick="ReloadPage()">লগইন</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function ReloadPage() {
+            var number = document.getElementById("msisdn").value;
+            var username = document.getElementById("name").value;
+            if (!number.startsWith('880') && number.length == 11) {
+                if (number.startsWith('0')) {
+                    number = '88' + number;
+                    sessionStorage.setItem("fbid", number);
+                    sessionStorage.setItem("name", username);
+                    sessionStorage.setItem("isLogin", "Yes");
+                    localStorage.setItem("fbid", number);
+                    localStorage.setItem("username", username);
+                    $('#reg').modal('hide');
+                    if (number.length == 13) {
+                        console.log(number);
+                        $.get('../kidsprofilesetup/GetProfileExistence?MSISDN=' + sessionStorage.getItem('fbid'), function (rdata) {
+
+
+                            if (rdata.result === false) {
+
+                                //document.querySelector("#loadingModal").classList.remove("open");
+                                //paymentwithbkashMultiTournament();
+                                window.location.href = "../KidsProfileSetup/Index";
+                            } else {
+                                window.location.href = "../KidsProfileSetup/Profile";
+                            }
+                        })
+                    }
+                }
+                else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'দুঃখিত',
+                        text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#e3126e',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            var ckey = sessionStorage.getItem("ckey");
+
+                            sessionStorage.clear();
+                            localStorage.clear();
+                            $('#reg').modal('show');
+                            //window.location.href = "../LandingPage/Index"
+                        }
+                    });
+                }
+            }
+            else if (number.startsWith('880') && number.length == 13) {
+                if (number.startsWith('880')) {
+                    //number = '88' + number;
+                    sessionStorage.setItem("fbid", number);
+                    sessionStorage.setItem("name", username);
+                    sessionStorage.setItem("isLogin", "Yes");
+                    localStorage.setItem("fbid", number);
+                    localStorage.setItem("username", username);
+                    $('#reg').modal('hide');
+                    if (number.length == 13) {
+                        console.log(number);
+                        $.get('../kidsprofilesetup/GetProfileExistence?MSISDN=' + sessionStorage.getItem('fbid'), function (rdata) {
+
+
+                            if (rdata.result === false) {
+
+                                //document.querySelector("#loadingModal").classList.remove("open");
+                                //paymentwithbkashMultiTournament();
+                                window.location.href = "../KidsProfileSetup/Index";
+                            } else {
+                                window.location.href = "../KidsProfileSetup/Profile";
+                            }
+                        })
+                    }
+                }
+                else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'দুঃখিত',
+                        text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#e3126e',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            var ckey = sessionStorage.getItem("ckey");
+
+                            sessionStorage.clear();
+                            localStorage.clear();
+                            $('#reg').modal('show');
+                            //window.location.href = "../LandingPage/Index"
+                        }
+                    });
+                }
+            }
+            {
+
+            }
+        }
+    </script>
+</body>
+</html>

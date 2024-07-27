@@ -1,0 +1,531 @@
+﻿<style>
+
+    .carousel-indicators {
+        top: 80%;
+    }
+
+    .modal {
+        visibility: hidden;
+        /*transition: all 0.4s;*/
+        opacity: 0;
+    }
+
+        .modal.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    .modal,
+    .modal-overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 100;
+    }
+
+    .modal,
+    .modal-card,
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .modal-content {
+        overflow: auto;
+        flex-grow: 1;
+    }
+
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-body {
+        z-index: 101;
+        margin: auto;
+        max-height: calc(100vh - 1rem);
+        max-width: calc(100vw - 1rem);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 500px;
+        height: 300px;
+        background: white;
+    }
+
+    .modal-header,
+    .modal-content,
+    .modal-footer {
+        padding: 1rem;
+    }
+
+    .modal-header {
+        background: rebeccapurple;
+        text-transform: capitalize;
+        font-size: 1.25rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+
+
+
+
+@* adding for login *@
+
+
+@*<div id="login" class="modal close" style="z-index:105;">
+        <div class="modal-overlay" onclick="HelloCloseModal()"></div>
+
+
+        <div class="modal-card" style=" height: 75%; ">
+
+            <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+
+
+                <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+
+
+                    <span><i class="fas fa-times" onclick="HelloCloseModal()"></i></span>
+
+                </div>
+                <img src="~/Assets/LoginModalPopUp3.png" style="transform: scale(.7);margin-bottom: -14%;" />
+                <div style="margin-bottom: 20px;">  <span style="width: 100%; text-align: center; color: #ff1493;">আপনার অ্যাকাউন্টে লগ ইন করুন</span></div>
+
+                <div class="form-group">
+                    <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobile" size="11" required>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="center" style="text-align: center; margin-bottom: -2%;">
+                        <button type="submit" class="btn btn-default" style=" color: white; background: #ff1493; " onclick="save()">লগ-ইন</button>
+                    </div>
+                    <div style="text-align:center" class="center">
+                        <a onclick="regmodal()" style="padding-bottom:12px; font-size:12px; color:deeppink; text-decoration: underline;">
+                            নতুন ব্যবহারকারী? নতুন অ্যাকাউন্ট তৈরি করুন
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+<div id="reg" class="modal close" style="z-index: 105; ">
+    <div class="modal-overlay" onclick="HelloCloseModal()"></div>
+    <div class="modal-card" style="height: 70vh; z-index: 1050;">
+
+        <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+
+            <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+
+
+                <span><i class="fas fa-times" onclick="HelloCloseModal()"></i></span>
+
+            </div>
+
+            <img src="~/Assets/LoginModalPopUp3.png" style="margin-bottom: -14%; height:230px; width:230px; margin:0 auto" />
+            <div style="margin-bottom: 20px;">
+                <span style="width: 100%; text-align: center; color: #357d93; ">আপনার নাম এবং ফোন নাম্বারটি</span><br>
+                <span style="width: 100%; text-align: center; color: #357d93;">দিয়ে লগইন করুন </span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+            </div>
+
+            <div class="modal-footer">
+                <div class="center" style="text-align: center; margin-bottom: -3%;">
+                    <button type="submit" class="btn btn-default" style="color: white; background: #357d93; padding: 11px; border-radius: 16px;" onclick="SignUp()">লগইন</button>
+                    @*<a onclick="loginModal()" style="padding-left:10px; font-size:12px; color:deeppink; text-decoration: underline;">
+                            আপনার অ্যাকাউন্টে লগ ইন করুন
+                        </a>*@
+
+                </div>
+                @*<div style="text-align:center" class="center">
+                        <a onclick="loginModal()" style="padding-left:10px; font-size:12px; color:deeppink; text-decoration: underline;">
+                            আপনার অ্যাকাউন্টে লগ ইন করুন
+                        </a>
+                    </div>*@
+                @*<div style="text-align: center; font-size:12px;" class="center">আমরা অথেনটিকেশনের জন্য কুইজমাস্টারের সাথে তথ্য শেয়ার করব।</div>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div style=" overflow-y: scroll; height: 81vh; ">
+
+    <div class="container paymentStatus" style=" overflow-y: scroll; ">
+
+        <!-- Columns are always 50% wide, on mobile and desktop -->
+        @*<div  style="border: 1px solid #F4EEED; padding: 10px; color:white;">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-2"><b>1.</b></div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                        <b>Payment Id</b>
+                        <p>892357897238hnjdsk</p>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                        <b>Amount</b>
+                        <p>892357897238hnjdsk</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                        <b>TrxId</b>
+                        <p>892357897238hnjdsk</p>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                        <b>Payment Date</b>
+                        <p>892357897238hnjdsk</p>
+                    </div>
+                </div>
+            </div>
+            <br>*@
+
+    </div>
+
+</div>
+
+
+@section leaderboard{
+    <div class="fixed-bottom" style="bottom: 0vw;">
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+        <img style="width: 100%; height:auto" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>
+
+}
+
+
+@section Scripts{
+
+    <script>
+        // A $( document ).ready() block.
+        $(document).ready(function () {
+            if (localStorage.getItem("fbid") === undefined || localStorage.getItem("fbid") == null) {
+            } else {
+                var number = "88" + localStorage.getItem("fbid").substr(2, 11);
+            }
+            var username = localStorage.getItem("username");
+            var serviceName = sessionStorage.getItem("serviceName");
+
+            //$.ajax({
+            //    type: "GET",
+            //    url: '../Landingpage/IsSubscribed?fbid=' + number,
+            //    contentType: "application/json; charset=utf-8",
+            //    dataType: "json",
+            //    success: function (rdata) {
+            //        if (rdata.result === false) {
+            //            /* console.log(rdata.result);*/
+            //            /*  $('#myModal').modal('hide');*/
+            //            window.location.href = "../Home/BkashPayment";
+            //        }
+
+            //    }
+            //});
+
+
+
+            ////var number = sessionStorage.getItem("fbid").substr(2,11);
+            ////var number = "01760863687";
+            ////var username = sessionStorage.getItem("username");
+
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                //window.location.href = "../";
+                //$('#topNavIcon').val()
+
+                if ($('#topNavIcon').prop('checked')) {
+                    $('#topNavIcon').prop('checked', false);
+                }
+
+
+                //document.querySelector("#login").classList.remove("close");
+                //document.querySelector("#login").classList.add("open");
+
+                document.querySelector("#reg").classList.remove("close");
+                document.querySelector("#reg").classList.add("open");
+
+
+                $("#logoutMenu").hide();
+
+
+            }
+
+
+            console.log(number);
+            if (number != null) {
+                $.ajax({
+                    type: "GET",
+                    url: '../Home/UpdateCheckoutDataTable?msisdn=' + number + "&userName=" + username,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (rdata) {
+
+                        rdata.result.forEach((v, index, arr) => {
+
+                            $(".paymentStatus").append(`<div  style="border: 1px solid #F4EEED; padding: 10px; color:black;">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-2"><b>${index + 1}.</b></div>
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                                        <b>Account No</b>
+                                                        <p>${v.msisdn}</p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                                        <b>Amount</b>
+                                                        <p>${v.amount}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                                        <b>TrxId</b>
+                                                        <p>${v.trxId}</p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                                        <b>Payment Date</b>
+                                                        <p>${v.createTime.substr(0, 10)}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>`);
+
+                        }
+                        );
+
+                        //console.log(rdata.result);
+
+                        //rdata.result.forEach((v, index, arr) => {
+                        //    console.log(v.userName);
+                        //}
+                        //);
+
+                        //window.location.href = "../Home/PaymentStatusModal?userName=" + rdata.result.userName + "&msisdn=" + rdata.result.msisdn + "&serviceName=" + rdata.result.serviceName + "&paymentId=" + rdata.result.paymentId + "&createTime=" + rdata.result.createTime.substr(0,10) + "&transactionStatus=" + rdata.result.transactionStatus + "&amount=" + rdata.result.amount + "&merchantInvoiceNumber=" + rdata.result.merchantInvoiceNumber + "&trxId=" + rdata.result.trxId;
+                        //window.location.href = "../Home/PaymentStatusModal";
+                        //if (rdata !) {
+                        //    window.location.href = "../Home/ErrorPage";
+                        //}
+                        //else {
+                        //    window.location.href = "../LandingPage/Index";
+                        //}
+
+                    }
+                });
+            }
+            else {
+                //localStorage.clear();
+                //window.location.href = "../LandingPage/Index";
+            }
+        });
+
+        let printSomething = () => {
+
+            console.log("Printing.........");
+        }
+
+
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<script type="text/javascript">
+
+        // A $( document ).ready() block.
+        $(document).ready(function () {
+            var number = localStorage.getItem("msisdn");
+            var usernames = localStorage.getItem("username");
+            if (number != null) {
+                $.ajax({
+                    type: "GET",
+                    url: Home + 'PaymentStatus?msisdn=' + number,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (rdata) {
+                        console.log(rdata.result);
+
+                       @ViewBag.UserName = rdata.result;
+                        rdata.result.forEach((v, index, arr) => {
+                            console.log(v.userName);
+                        }
+                        );
+
+                        window.location.href = "../Home/PaymentStatusModal?userName=" + rdata.result.userName + "&msisdn=" + rdata.result.msisdn + "&serviceName=" + rdata.result.serviceName + "&paymentId=" + rdata.result.paymentId + "&createTime=" + rdata.result.createTime.substr(0, 10) + "&transactionStatus=" + rdata.result.transactionStatus + "&amount=" + rdata.result.amount + "&merchantInvoiceNumber=" + rdata.result.merchantInvoiceNumber + "&trxId=" + rdata.result.trxId;
+
+
+
+                        // window.location.href = "../Home/PaymentStatusModal?paymentStatus=" + rdata.result;
+                        //if (rdata !) {
+                        //    window.location.href = "../Home/ErrorPage";
+                        //}
+                        //else {
+                        //    window.location.href = "../LandingPage/Index";
+                        //}
+
+                    }
+                });
+            }
+            else {
+                localStorage.clear();
+                window.location.href = "../LandingPage/Index";
+            }
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // query string: ?foo=lorem&bar=&baz
+        var userName = getParameterByName('userName'); // "lorem"
+        var msisdn = getParameterByName('msisdn'); // "lorem"
+        var serviceName = getParameterByName('serviceName'); // "lorem"
+        var paymentId = getParameterByName('paymentId'); // "lorem"
+        var createTime = getParameterByName('createTime'); // "lorem"
+        var transactionStatus = getParameterByName('transactionStatus'); // "lorem"
+        var amount = getParameterByName('amount'); // "lorem"
+        var merchantInvoiceNumber = getParameterByName('merchantInvoiceNumber'); // "lorem"
+        var trxId = getParameterByName('trxId'); // "lorem"
+
+    //    Swal.fire({
+    //
+    : `<div class="table-responsive"><table class="table table-bordered">
+    //  <thead>
+    //    <tr>
+    //      <th scope="col">Parameter</th>
+    //      <th scope="col">Value</th>
+
+    //    </tr>
+    //  </thead>
+    //  <tbody>
+    //    <tr>
+    //      <th scope="row">Name</th>
+    //      <td>${userName}</td>
+    //    </tr>
+    //    <tr>
+    //      <th scope="row">Mobile</th>
+    //      <td>${msisdn}</td>
+
+    //    </tr>
+    //    <tr>
+    //      <th scope="row">Service</th>
+    //      <td>${serviceName}</td>
+    //    </tr>
+    //    <tr>
+    //      <th scope="row">Amount</th>
+    //      <td>${amount}</td>
+    //    </tr>
+    //    <tr>
+    //      <th scope="row">Payment Id</th>
+    //      <td>${paymentId}</td>
+    //    </tr>
+    //    <tr>
+    //      <th scope="row">TrxID</th>
+    //      <td>${trxId}</td>
+    //    </tr>
+    //    <tr>
+    //      <th scope="row">Payment Date</th>
+    //      <td>${createTime}</td>
+    //    </tr>
+    //    <tr>
+    //      <th scope="row">Transaction Status</th>
+    //      <td>${transactionStatus}</td>
+    //    </tr>
+    //  </tbody>
+    //</table></div>`,
+
+    //        title: 'Your Payment Status',
+    //        text: `${userName}`,
+
+    //        confirmButtonText: 'Try Again',
+    //        confirmButtonColor: '#FF4081',
+    //        allowOutsideClick: false
+    //    }).then((result) => {
+    //        /* Read more about isConfirmed, isDenied below */
+    //        if (result.isConfirmed) {
+    //            window.location.href = "../LandingPage/Index"
+    //        }
+    //    })
+
+
+    </script>*@

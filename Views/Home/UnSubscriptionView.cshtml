@@ -1,0 +1,28 @@
+﻿
+@section Scripts{
+
+    <script type="text/javascript">
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'আপনি সার্ভিসটি থেকে আনসাবস্ক্রাইব করেছেন.',
+            confirmButtonText: 'Home',
+            confirmButtonColor: '#e3126e',
+            allowOutsideClick: false
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                var ckey = sessionStorage.getItem("ckey");
+                var FTU = sessionStorage.getItem("FTU");
+                ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                sessionStorage.clear();
+                localStorage.clear();
+                sessionStorage.setItem("ckey", ckey);
+                sessionStorage.setItem("FTU", FTU);
+                window.location.href = "../LandingPage/Index"
+            }
+        })
+    </script>
+
+}

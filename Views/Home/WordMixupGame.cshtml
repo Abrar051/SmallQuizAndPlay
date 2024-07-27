@@ -1,0 +1,996 @@
+﻿
+<style>
+    html, body, #container {
+        width: 100%;
+        height: 50vh;
+        /* background: #444; */
+        /* color: #fff; */
+        font-family: 'Signika Negative', sans-serif;
+        /* overflow: hidden; */
+    }
+
+
+    
+
+    .modal {
+        visibility: hidden;
+        /*transition: all 0.4s;*/
+        opacity: 0;
+    }
+
+        .modal.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    .modal,
+    .modal-overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 100;
+    }
+
+    .modal,
+    .modal-card,
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .modal-content {
+        overflow: auto;
+        flex-grow: 1;
+    }
+
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-body {
+        z-index: 101;
+        margin: auto;
+        max-height: calc(100vh - 1rem);
+        max-width: calc(100vw - 1rem);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 500px;
+        height: 300px;
+        background: white;
+    }
+
+    .modal-header,
+    .modal-content,
+    .modal-footer {
+        padding: 1rem;
+    }
+
+    .modal-header {
+        background: rebeccapurple;
+        text-transform: capitalize;
+        font-size: 1.25rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+
+    /*Loading modal style*/
+          .row {
+          max-width: 950px;
+          margin: 0 auto;
+        }
+        .btn {
+          white-space: normal;
+        }
+
+        /** SPINNER CREATION **/
+        .loader {
+          position: relative;
+          text-align: center;
+          margin: 15px auto 35px auto;
+          z-index: 9999;
+          display: block;
+          width: 80px;
+          height: 80px;
+          border: 10px solid rgba(0, 0, 0, 0.3);
+          border-radius: 50%;
+          border-top-color: #000;
+          animation: spin 1s ease-in-out infinite;
+          -webkit-animation: spin 1s ease-in-out infinite;
+        }
+        /** MODAL STYLING **/
+        .modal-content {
+          border-radius: 0px;
+          box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
+        }
+        .modal-backdrop.show {
+          opacity: 0.75;
+        }
+        .loader-txt p {
+          font-size: 13px;
+          color: #666;
+        }
+        .loader-txt p small {
+          font-size: 11.5px;
+          color: #999;
+        }
+        .bottom-navbar{
+        position: fixed;
+        bottom: 0;
+        background: white;
+        height: 11vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .bottom-navbar img{
+        width: 4rem;
+    }
+
+</style>
+
+
+<body style="background-image: url(../Assets/LiveQuizRelated/HBG.png);background-size: 100vw 100vh;">
+
+    <div id="reg" class="modal close" style="z-index: 1031;">
+
+        <div class="modal-overlay" onclick="HelloCloseModal()"></div>
+        <div class="modal-card" style="height:70%">
+
+            <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+                <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+
+
+                    <span><i class="fas fa-times" onclick="HelloCloseModal()"></i></span>
+
+                </div>
+                <img src="~/Assets/LoginModalPopUp3.png" style="transform: scale(.7);margin-bottom: -14%;" asp-append-version="true" />
+                <div style="margin-bottom: 20px;">
+                    <span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার খেলতে প্রোফাইল সেটআপ করুন</span><br>
+                    @*<span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>*@
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control modal-bg-dark" placeholder="আপনার নাম লিখুন" id="nameWordMixup" required onblur="validateName()">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control modal-bg-dark" placeholder="মোবাইল নাম্বার লিখুন 01xxxxxxxxx" id="fbidWordMixup" required>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="center" style="text-align: center; margin-bottom: -3%;">
+                        <button type="submit" class="btn btn-default" style="color: white; background: #357d93; padding: 11px; border-radius: 16px;" onclick="SignUpWordMixup('WordMixupGame')">লগইন</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="loadingModal" class="modal" style="z-index: 1031;">
+
+        <div class="modal-card" style="height:70%">
+
+            <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+                <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                </div>
+                <img src="~/Assets/reload.gif" style="transform: scale(.7);margin-bottom: -14%;" asp-append-version="true" />
+            </div>
+        </div>
+       
+    </div>
+
+
+   @* <div>
+        <img src="~/Assets/LiveQuizRelated/ShobdoMelao.png" style="display: block;margin-left: auto;margin-right: auto;width: 71%;" />
+    </div>*@
+
+    <div class="row" id="gameUpperPortion"  style="margin-left: 1%; margin-top:11vh;">
+
+        <div class="col-5" style="top:1.5vh; left:-3vh;">
+            <div class="row">
+                    <div class="correctHead" style="/*background-image: url(../Assets/LiveQuizRelated/corrector1.png);background-size: 100%;background-position: center; background-repeat: no-repeat;border-radius: 15px;text-align: center;margin-left: 10%;height: 8vh;filter: drop-shadow(2px 5px 4px black); top: 3vh;*/">
+                        <div class="row" style="margin: 0 auto; color:black;">
+                            <div class="col-3">
+                                <img src="~/Assets/LiveQuizRelated/corrector1.png" />
+                            </div>
+                            <div class="col-3" style="top:1vh;font-weight: bold;">Correct:</div>
+                            <div class="col-3"></div>
+                            <div class="col-3" style="top:1vh;font-weight: bold;"><span class="correctN" style="margin:4vh;">0</span></div>
+
+                        </div>
+                    </div>
+            </div>
+            
+        </div>
+        <div class="col-1"></div>
+        
+        <div class="col-5" style=" font-weight: bold; top:1.5vh; right:-2vh">
+            <div id="timetxt" style="/*background-image: url(../Assets/LiveQuizRelated/timer1.png);background-size: 100%;background-position: center; background-repeat: no-repeat;border-radius: 15px;text-align: center;margin-left: 10%;height: 8vh;filter: drop-shadow(2px 5px 4px black); top: 3vh; opacity:0;*/">
+                
+                <div class="row" style="margin: 0 auto;">
+                    <div class="col-2"></div>
+                    <div class="col-3">
+                        <img src="~/Assets/LiveQuizRelated/timer1.png" id="timetxtImg" />
+                    </div>
+                    <div class="col-3" style="top: 1.2vh;font-weight: bold;left: 5%;color: black;"><span class="timeTxt">02:59</span></div>
+                    @*<div class="col-2"></div>
+                    <div class="col-3" style="top:1.2vh;color: white;"><span class="timePlus">+3s</span></div>*@
+
+                </div>
+                
+                @*<div class="timeTxt" style="padding-top: 2.6vh">30:00</div>
+                <div class="timePlus" style="display:none">+3 sec</div>*@
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="container" onclick="playReplayClick()" style="background-image: url(../Assets/LiveQuizRelated/GameBG1.png); background-size: 100%, 100%; opacity: 1; margin-top: -23vh; top: 55vh; position: absolute; height: 50%; background-color: #ffffff; filter: drop-shadow(0px 4px 5px black); border-radius: 20px; width: 96%;    margin-left: 2%;">
+
+        
+        <h2 style="text-align:center; color:black; margin-top:16vh;" id="jumbleWordQuestion"></h2>
+
+        <div class="appp" id="PuzzleAppp" style="user-select: none;transform: scale(0.4);background: none;height: 50vh;width: 0; position:absolute; ">
+
+            
+            <div class="playBtn" onclick="playReplayClick()" style="background-image: url(../Assets/LiveQuizRelated/playButtonBG.png);background-size: 83%;background-position: center; background-repeat: no-repeat; position: absolute;/* overflow: hidden; */cursor: pointer;text-align: center;height: 100px;width: 350px;border-radius: 27px;color: rgb(112 99 169);line-height: 100px;font-size: 40px;">
+            </div>
+            <div style="position:absolute;display:none;" class="correctList"></div>
+
+            <div class="AllTiles" onclick="playReplayClick()" style="position:absolute;">
+                <div style="position:absolute;" class="slot" id="s1" ></div>
+                <div style="position:absolute;" class="slot" id="s2" ></div>
+                <div style="position:absolute;" class="slot" id="s3"></div>
+                <div style="position:absolute;" class="slot" id="s4" ></div>
+                <div style="position:absolute;" class="slot" id="s5"></div>
+                <div style="position:absolute;" class="slot" id="s6" ></div>
+
+                <div style="position:absolute;" class="tile" id="t1" >
+                    <div style="position:absolute;" class="tileShade"></div>
+                    <div style="position:absolute;" class="tileFront" >M</div>
+                </div>
+                <div style="position:absolute;" class="tile" id="t2" >
+                    <div style="position:absolute;" class="tileShade"></div>
+                    <div style="position:absolute;" class="tileFront">I</div>
+                </div>
+                <div style="position:absolute;" class="tile" id="t3" >
+                    <div style="position:absolute;" class="tileShade"></div>
+                    <div style="position:absolute;" class="tileFront">X</div>
+                </div>
+                <div style="position:absolute;" class="tile" id="t4" >
+                    <div style="position:absolute;" class="tileShade"></div>
+                    <div style="position:absolute;" class="tileFront" ><img width="100" height="100" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIBAMAAABfdrOtAAAAJFBMVEUAAABHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmfSdFAAAADHRSTlPMAMCvnBx0M2BLC4rujjL5AAAErklEQVR4Ae3ahY/jRhQG8Cfb8l0U0VPioMDFJcFiSVCmVOQtVxSXW1Fd5ub4xHtMIpeZuX9c0er6azzezOzMlOYJD3/rz/DGnkdsoRziEIc45B+KOMQhDnGIQxziEIc45L3cAtJesYH4iQWEFmwglNpAAhsIbdhA6JgNJLSB0MgG4icWEFqwgVBqAwlmQQZ33/3O3e888GEuRXz4zttU1MYMSPviotbWfshmesafvnFt9eKLYyrKO7Yz0qLt8n/Y2bgQE2GFcgjR5Uk9MXiQpusLSYSCWiX6kirKT+SQeiX6nCprThahMBci+0lQ+2QRccd7mkTVlEbox2rjIxLXSBrxsiqjG9cg/j5JRNAmxlRT84kEIr7y3xYLeOz1SO2VHy3XIRusgNCc6MoSX1wSiOD4+1RXqSQiOJRJnbHAiggeSq/O8BNVBA9lqw65nndEeo/+UT99vYyHkgjvQ/+Obx999ADeVGIEq4u94hr+szax5/ye5JCKOiaF8KD0lIUVwnVUqqtwIXElyyGMfe+LytM+z4AEuSzCUfln3stFPQU9DZGUpRH8obPi+JahPQGywAoI30nbtchcOsXFGQDEz1QQOMnNqZskyBEZsRoy/Gs2UVy+FgAJWQnB5nTZdvjFfQeId0wZ6UBe8GxMEdlgZYS3F1d+Do+UkAEJeBdIG46kJWjKbUp3g/By+ZyMS8cFSINVEWy1+6AlXoan7pgqgr3WZ+a3RGvRASsjcBXvgasg0PVRDbtlimlpQrAT+tiujmlGeDKdVpN1I+0irR52Y71IFE+llelCIK85eO6HrAuBvPZBWisGkCgOsLlnBhCeLDLzMqalHRkeg85yvRGEIS0vMYYswxLMCAJpmUIgLVPIANIyhAyhuRtCtvB9TT+CaTXYEAJpGUIgrdwUEsWQlhmkDWl19xlBJpBWa49uBNIq1hO+dgTSKlZfX+hGIK1iPdHQj3QJ08JnpCakBWn18I7UhYwxLXwSa0L6kNYfqy8v14zgS0kPu6MuBF9KNrFz6UHgpaS0Vs20IpuYVvW6vp+znrdfgrVqoHOyoFOdFtEXGicLJpBWJPwisaCK4Glv4qVGqbbJgi34qgaXQYhIkCsi8IHwGP7G1PeuK1WRMaaF3/L8BBDvmBryNuErHOZFe3VMFsAH86xiW2NDw2TBuGpnC7YwfwTEz+SRZwjSqtqY8J4sI9SQRu6q3naIYvj9b3Y1WfAKlash3D65LZGdLIju/qNeeOkrgton3gi65IkX7n4bP1HVI62LPS+OPeGGpmBLS3WyACudeU8rVEaaErtzP6oiqcQ+o5+oIaHUjumcGjJ1MgfX1Sn7VJA5YVPWMFmAG1cSgY3kkVS85NMzWSBueN1lMbI3kUSaws4ca5ssCDIW1bsiZcRyiLhvixXZyQJvH9fV+8ui20QC8esN5u6X1XeVBLKU8U41uBDvarJg/Yd8plG1h1cB+WKWyYKjv9a5c+deeA6IuopeOnv0hPxkgXwN4Wo0PKK4weaRILeApGweabB5xE8sINezeSRk84h3zAKyweaRJltAUgtIg80jncwC0s3NI1gOcYhDHOIQhzjEIQ5xiEMc4hDj9Qv4E/e/tIWihwAAAABJRU5ErkJggg=="></div>
+                </div>
+                <div style="position:absolute;" class="tile" id="t5" >
+                    <div style="position:absolute;" class="tileShade"></div>
+                    <div style="position:absolute;" class="tileFront">U</div>
+                </div>
+                <div style="position:absolute;" class="tile" id="t6" >
+                    <div style="position:absolute;" class="tileShade"></div>
+                    <div style="position:absolute;" class="tileFront" >P</div>
+                </div>
+            </div>
+            
+
+        </div>
+
+    </div>
+
+
+   @* <div id="container" onclick="playReplayClick()" style="background-image: url(../Assets/LiveQuizRelated/GameBG1.png); background-size: 100%, 100%; opacity: 1; margin-top: 0vh; top: 55vh; height: 23%; background-color: #ffffff; filter: drop-shadow(0px 4px 5px black); border-radius: 20px; width: 96%;    margin-left: 2%;">
+
+        <div class="appp" id="PuzzleAppp" style="user-select: none;transform: scale(0.4);background: none;height: 0;width: 0; ">
+
+
+            <div class="playBtn" onclick="playReplayClick()" style="background-image: url(../Assets/LiveQuizRelated/playButtonBG.png);background-size: 83%;background-position: center; background-repeat: no-repeat; /* overflow: hidden; */cursor: pointer;text-align: center;height: 100px;width: 350px;border-radius: 27px;color: rgb(112 99 169);line-height: 100px;font-size: 40px;">
+            </div>
+            <div style="display:none;" class="correctList"></div>
+
+            <div class="AllTiles" onclick="playReplayClick()" style="">
+                <div style="" class="slot" id="s1"></div>
+                <div style="" class="slot" id="s2"></div>
+                <div style="" class="slot" id="s3"></div>
+                <div style="" class="slot" id="s4"></div>
+                <div style="" class="slot" id="s5"></div>
+                <div style="" class="slot" id="s6"></div>
+
+                <div style="" class="tile" id="t1">
+                    <div style="" class="tileShade"></div>
+                    <div style="" class="tileFront">M</div>
+                </div>
+                <div style="" class="tile" id="t2">
+                    <div style="" class="tileShade"></div>
+                    <div style="" class="tileFront">I</div>
+                </div>
+                <div style="" class="tile" id="t3">
+                    <div style="" class="tileShade"></div>
+                    <div style="" class="tileFront">X</div>
+                </div>
+                <div style="" class="tile" id="t4">
+                    <div style="" class="tileShade"></div>
+                    <div style="" class="tileFront"><img width="100" height="100" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIBAMAAABfdrOtAAAAJFBMVEUAAABHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmfSdFAAAADHRSTlPMAMCvnBx0M2BLC4rujjL5AAAErklEQVR4Ae3ahY/jRhQG8Cfb8l0U0VPioMDFJcFiSVCmVOQtVxSXW1Fd5ub4xHtMIpeZuX9c0er6azzezOzMlOYJD3/rz/DGnkdsoRziEIc45B+KOMQhDnGIQxziEIc45L3cAtJesYH4iQWEFmwglNpAAhsIbdhA6JgNJLSB0MgG4icWEFqwgVBqAwlmQQZ33/3O3e888GEuRXz4zttU1MYMSPviotbWfshmesafvnFt9eKLYyrKO7Yz0qLt8n/Y2bgQE2GFcgjR5Uk9MXiQpusLSYSCWiX6kirKT+SQeiX6nCprThahMBci+0lQ+2QRccd7mkTVlEbox2rjIxLXSBrxsiqjG9cg/j5JRNAmxlRT84kEIr7y3xYLeOz1SO2VHy3XIRusgNCc6MoSX1wSiOD4+1RXqSQiOJRJnbHAiggeSq/O8BNVBA9lqw65nndEeo/+UT99vYyHkgjvQ/+Obx999ADeVGIEq4u94hr+szax5/ye5JCKOiaF8KD0lIUVwnVUqqtwIXElyyGMfe+LytM+z4AEuSzCUfln3stFPQU9DZGUpRH8obPi+JahPQGywAoI30nbtchcOsXFGQDEz1QQOMnNqZskyBEZsRoy/Gs2UVy+FgAJWQnB5nTZdvjFfQeId0wZ6UBe8GxMEdlgZYS3F1d+Do+UkAEJeBdIG46kJWjKbUp3g/By+ZyMS8cFSINVEWy1+6AlXoan7pgqgr3WZ+a3RGvRASsjcBXvgasg0PVRDbtlimlpQrAT+tiujmlGeDKdVpN1I+0irR52Y71IFE+llelCIK85eO6HrAuBvPZBWisGkCgOsLlnBhCeLDLzMqalHRkeg85yvRGEIS0vMYYswxLMCAJpmUIgLVPIANIyhAyhuRtCtvB9TT+CaTXYEAJpGUIgrdwUEsWQlhmkDWl19xlBJpBWa49uBNIq1hO+dgTSKlZfX+hGIK1iPdHQj3QJ08JnpCakBWn18I7UhYwxLXwSa0L6kNYfqy8v14zgS0kPu6MuBF9KNrFz6UHgpaS0Vs20IpuYVvW6vp+znrdfgrVqoHOyoFOdFtEXGicLJpBWJPwisaCK4Glv4qVGqbbJgi34qgaXQYhIkCsi8IHwGP7G1PeuK1WRMaaF3/L8BBDvmBryNuErHOZFe3VMFsAH86xiW2NDw2TBuGpnC7YwfwTEz+SRZwjSqtqY8J4sI9SQRu6q3naIYvj9b3Y1WfAKlash3D65LZGdLIju/qNeeOkrgton3gi65IkX7n4bP1HVI62LPS+OPeGGpmBLS3WyACudeU8rVEaaErtzP6oiqcQ+o5+oIaHUjumcGjJ1MgfX1Sn7VJA5YVPWMFmAG1cSgY3kkVS85NMzWSBueN1lMbI3kUSaws4ca5ssCDIW1bsiZcRyiLhvixXZyQJvH9fV+8ui20QC8esN5u6X1XeVBLKU8U41uBDvarJg/Yd8plG1h1cB+WKWyYKjv9a5c+deeA6IuopeOnv0hPxkgXwN4Wo0PKK4weaRILeApGweabB5xE8sINezeSRk84h3zAKyweaRJltAUgtIg80jncwC0s3NI1gOcYhDHOIQhzjEIQ5xiEMc4hDj9Qv4E/e/tIWihwAAAABJRU5ErkJggg=="></div>
+                </div>
+                <div style="" class="tile" id="t5">
+                    <div style="" class="tileShade"></div>
+                    <div style="" class="tileFront">U</div>
+                </div>
+                <div style="" class="tile" id="t6">
+                    <div style="" class="tileShade"></div>
+                    <div style="" class="tileFront">P</div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>*@
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="loader"></div>
+                    <div clas="loader-txt">
+                        <p>Loading ....</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Modal model 2-->
+    <!-- Progress Modal -->
+    <div id="progressModal" class="modal" style="display: none;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+                    </div>
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+ 
+
+
+</body>
+
+<div class="bottom-navbar">
+    <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" style="margin-top: -8%;" />
+    <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" />
+    <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+    <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+</div>
+
+
+
+@section scripts{
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/Draggable.min.js'></script>
+    @*<script src='https://assets.codepen.io/721952/words.js'></script>*@
+
+    <script>
+
+        var words = ["zygote", "zombie", "zipper", "zigzag", "yogurt", "yellow", "wrench", "wonder", "wizard", "winter", "winner", "window", "willow", "wigwam", "wiggle", "widget", "wicked", "weirdo", "wedgie", "webcam", "waving", "wasted", "wanted", "walrus", "wallet", "wakeup", "waiter", "waffle", "vortex", "voodoo", "volume", "violin", "viking", "victim", "velcro", "vanish", "valley", "vacuum", "urinal", "urchin", "uranus", "uppers", "united", "umpire", "tuxedo", "turtle", "turkey", "tunnel", "tshirt", "trophy", "tripod", "triple", "travel", "tosser", "torres", "tongue", "tomato", "toilet", "tissue", "tinted", "tinkle", "tigger", "tickle", "ticket", "throne", "throat", "tetris", "tennis", "teepee", "techno", "teapot", "teacup", "teabag", "taylor", "tattoo", "target", "taiwan", "swoosh", "switch", "swings", "sweets", "sweden", "sweaty", "surfer", "suntan", "sunset", "sundae", "summer", "sudoku", "subway", "stripe", "string", "strike", "street", "stream", "stones", "stoner", "stocks", "stitch", "stilts", "stereo", "statue", "stairs", "stable", "squirt", "squash", "square", "sprite", "spring", "sponge", "splash", "spiral", "spider", "sphinx", "socket", "soccer", "snoopy", "sniper", "sneeze", "smores", "smokes", "sleigh", "slayer", "skinny", "skiing", "skates", "skater", "sister", "single", "singer", "sickle", "shrimp", "shower", "shovel", "shorts", "shield", "sheets", "shades", "segway", "seesaw", "seadog", "scythe", "scurvy", "scrubs", "screen", "scream", "scotty", "scotch", "school", "saturn", "sandal", "salmon", "salami", "sailor", "safari", "saddle", "russia", "runway", "rubber", "rocket", "robber", "ribbon", "redrum", "redhot", "record", "relate", "rattle", "rapper", "raisin", "rabbit", "puzzle", "pushup", "puppet", "psycho", "prison", "prince", "powder", "potter", "potion", "potato", "poster", "portal", "poodle", "polish", "police", "poland", "poison", "pocket", "pledge", "planet", "pistol", "pirate", "pimple", "pillow", "piglet", "pigeon", "picnic", "pickup", "pickle", "picard", "person", "pepper", "pencil", "peewee", "peanut", "parrot", "parade", "palace", "paella", "paddle", "outlet", "orange", "onesie", "omelet", "number", "notbad", "norway", "noodle", "nickel", "newton", "needle", "nascar", "napkin", "nachos", "mutiny", "muscle", "mullet", "mulder", "muggle", "muffin", "mozart", "mother", "monkey", "mohawk", "mirror", "middle", "mickey", "mexico", "meteor", "melons", "medusa", "matrix", "mashup", "mashed", "mascot", "marlin", "marine", "mariah", "makeup", "magnum", "magnet", "madrid", "madmen", "lotion", "london", "locket", "lizard", "liquid", "letter", "lemons", "leaves", "lawyer", "laptop", "lapdog", "lakers", "ladder", "kungfu", "kraken", "knives", "kitten", "kisses", "kimono", "killer", "kidney", "kermit", "katana", "karate", "kansas", "justin", "jungle", "juggle", "jordan", "jockey", "jigsaw", "jiggle", "jewels", "jetski", "jersey", "jaguar", "jagger", "jacket", "island", "iphone", "insect", "icicle", "iceman", "icebox", "hybrid", "hungry", "hummer", "hottub", "hottie", "hotdog", "horton", "hookup", "hockey", "hobbit", "hiphop", "hiking", "helmet", "heaven", "hawaii", "harold", "harley", "hanger", "handle", "hammer", "guitar", "grouch", "greedy", "greece", "grapes", "grammy", "gossip", "google", "golden", "gobble", "goatee", "goalie", "gerbil", "garter", "garlic", "garden", "garage", "gambit", "galaxy", "funnel", "friend", "fridge", "friday", "france", "forest", "fondue", "folder", "flower", "flight", "finger", "finals", "female", "faucet", "father", "farmer", "family", "eyelid", "europe", "eraser", "engine", "eiffel", "easter", "earwax", "eaglet", "duster", "dumped", "dugout", "driver", "drawer", "drapes", "dragon", "dougie", "double", "dookie", "doofus", "donkey", "donald", "domino", "dollar", "doctor", "dishes", "dinner", "diaper", "diablo", "dexter", "devils", "desert", "degree", "darwin", "danish", "danger", "dallas", "dagger", "cuddle", "cruise", "crisps", "crayon", "cowboy", "cougar", "corpse", "corner", "coolly", "cooler", "cooled", "cookie", "cooker", "cooked", "comics", "column", "colors", "collie", "collar", "coffin", "coffee", "cocoon", "clutch", "clover", "closet", "clerks", "clanks", "clangs", "clamps", "clamor", "clammy", "claims", "circus", "circle", "church", "chokes", "choker", "choked", "choirs", "choice", "cherry", "cheese", "cheers", "cereal", "center", "celery", "caviar", "castle", "casino", "carrot", "carpet", "career", "carded", "canons", "canola", "canoes", "canoed", "cannot", "cannon", "candle", "cancel", "cancer", "canary", "camera", "cactus", "button", "butter", "burger", "bungee", "bumper", "bummer", "bullet", "buffet", "buffer", "buffed", "budget", "buckle", "bucket", "bubble", "brunch", "bruise", "briefs", "bridge", "breath", "brakes", "brains", "braces", "boxing", "boxcar", "bowtie", "bowser", "bounty", "bounds", "bouncy", "bounce", "bottom", "bottle", "border", "booger", "booboo", "bloody", "blonde", "bleach", "blades", "bikini", "bigwig", "biggie", "bestie", "beetle", "beaver", "beagle", "batted", "batman", "basset", "basket", "barrel", "barney", "barbie", "barber", "banker", "banana", "bamboo", "ballot", "ballet", "baking", "bacons", "backup", "backer", "backed", "babies", "babied", "axises", "awhile", "avatar", "autumn", "assign", "assess", "aspire", "artist", "arnold", "armpit", "archer", "apples", "angler", "angels", "anchor", "amazon", "aliens", "airbag", "abrupt", "aboard", "ablaze", "abject", "abides", "abduct", "abates", "abacus"]
+
+        var wordArr, mixedArr, // arrays that hold the original and jumbled letters
+            timeLimit = 180 * 1000, // in millisec
+            //timeLimit = 20 * 1000, // in millisec
+            timeLeft,
+            timeInt,
+            initialTime = 0,
+            wordLength,
+            perWordDuration = 30 * 1000,
+            currentTile, // updated when you pickup a tile
+            emptySlot; // holds the X position of the empty slot
+
+        //Implementing a logic so that it shows how much time a user have stayed 
+
+        var startTime;
+        var elapsedTime = 0
+
+        window.onload = function () {   //Loading timer on load
+            startTime = Date.now();
+        };
+
+
+        //Added event listener to check if the page is changed or unloaded also it will capture data if user leaves
+
+        document.addEventListener("visibilitychange", () => {
+            var number = sessionStorage.getItem("fbid");
+            var ckey = gettingCkeyFromSession();
+            if (document.visibilityState === "hidden") {
+                var score = $('.correctN').text();
+                if (elapsedTime!=0)
+                {
+                    $.get("../home/UpdateWordPuzzleGameNotPlayedFulltime?msisdn=" + number + "&score=" + parseInt(score) + "&gameName=" + "MixNMatch" + "&timeCount=" + (initialTime / 1000), function (rData) {
+                    //debugger;
+                    });
+                }
+          } 
+        }); 
+        
+        function loading_modal_Pop (){
+            //document.querySelector("#loadingModal").classList.remove("close");//Opening modal in the reload scene
+            document.querySelector("#loadingModal").classList.add("open");
+        }
+
+
+        function delay(ms) {
+          return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+
+        async function performActions() {
+          // Perform the initial action
+          console.log("Performing open modal action...");
+
+          // Show the loading modal asynchronously
+          document.querySelector("#loadingModal").classList.add("open");
+        }
+
+        // Call the function with the desired number
+        performActions();
+
+        //////////////
+
+        async function performActionsDown() {
+          // Perform the initial action
+          console.log("Performing unloading action...");
+
+          // Show the loading modal asynchronously
+          document.querySelector("#loadingModal").classList.remove("open");
+        
+        }
+
+        // Call the function with the desired number
+        performActionsDown();
+
+
+
+
+
+        function loading_modal_Down (){
+            document.querySelector("#loadingModal").classList.remove("open");
+        }
+
+        $(document).ready(function () {
+
+            var number = sessionStorage.getItem("fbid");
+            var ckey = gettingCkeyFromSession();
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + number + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=QuizMaster_WordPuzzleGame&srcurl=" + window.location.href, function (rData) { });
+
+            if (number != null) {
+                $.get("../kidsprofilesetup/GetProfileExistence?MSISDN=" + number, function (rdata) {
+
+                    if (rdata.result === false) {
+                        window.location.href = "../KidsProfileSetup/Index";
+                    } else {
+                        
+                        if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                            document.querySelector("#reg").classList.remove("close");
+                            document.querySelector("#reg").classList.add("open");
+                            return false;
+                        }
+                        
+                        var startTime = new Date().getTime();
+                        //var CRPSResponse = 0;
+                        //var CRPSResponse = CheckRecurringPaymentStatusFunc(number, CRPSResponse);
+                        var endTime = new Date().getTime(); // Capture the end time
+                        var timeTaken = endTime - startTime; // Calculate the time difference in milliseconds
+                        console.log("Time taken: " + timeTaken + "ms");
+                        var CRPSResponse = null;
+                        if (CRPSResponse == "1") {
+                            //window.location.reload();
+                        }
+                    }
+                })
+            } else {
+                if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                    document.querySelector("#reg").classList.remove("close");
+                    document.querySelector("#reg").classList.add("open");
+                    return false;
+                }
+            }
+        });
+
+        gsap.timeline() // set initial states
+            .set('.app', { width: 900, height: '100%', background: '#333', left: '50%', x: '-50%', userSelect: 'none' })
+            .set('.slot', { width: 112, height: 112, borderRadius: 20, background: 'rgba(60,250,60,0.8)', top: 50, left: 100, x: (i) => i * 118 })
+            .set('.tile', { width: 100, height: 100, top: 56, left: 106, x: (i) => i * 118, color: 'rgba(20,10,10,0.8)', fontSize: 87, lineHeight: '104px', textAlign: 'center' })
+            .set('.tileFront', { pointerEvents: 'none', width: 100, height: 100, borderRadius: 17, overflow: 'hidden', backgroundSize: 'cover', backgroundImage: 'url(https://assets.codepen.io/721952/tileBg.png)' })
+            .set('.tileShade', { pointerEvents: 'none', width: 100, height: 100, backgroundSize: 'cover', backgroundImage: 'url(https://assets.codepen.io/721952/tileShade.png)', y: 2, scale: 1.1, opacity: 0.8 })
+            .set('.timeTxt', { left: 715, top: 200, fontSize: 20, opacity: 0 })
+            .set('#timetxtImg', { opacity: 0 })
+            
+            .set('.timePlus', { left: 715, top: 240, fontSize: 24, opacity: 0 })
+            //.set('.playBtn', { left: 650, top: 200, fontSize: 32, lineHeight: '50px', backgroundColor: '#212529', color: '#fcfcfc', borderRadius: 9, width: 150, height: 50, textAlign: 'center', cursor: 'pointer', overflow: 'hidden' })
+            .set('.playTxt', { width: '100%', userSelect: 'none' })
+            .set('.correctHead', { left: 100, top: 200, fontSize: 20, opacity: 0 })
+            .set('.correctList', { left: 100, top: 240, fontSize: 24, opacity: 0.6 })
+            .set('#container', { opacity: 1 })
+
+
+        Draggable.create('.tile', { onPress: (t) => { pickup(t) }, onDrag: drag, onRelease: drop }); // make tiles draggable
+
+
+        
+
+
+        function deal() {
+            $.get("../landingpage/GetRandomPuzzleQuestionWordCombo", function (rData) {
+            //$.get("../landingpage/GetRandomPuzzleWordsAccordingToScore?score=" + parseInt($('.correctN').text()) , function (rData) {
+                //console.log(rData);
+                //wordArr = rData;
+                wordArr = rData.words ; //['W', 'O', 'R', 'D'];
+                document.getElementById('jumbleWordQuestion').textContent = 'Hint : ' + rData.question;
+                wordLength = wordArr.length;
+                console.log(rData.length);
+                
+                //for(var kt = 1; kt <= 6; kt++){
+                //    $('#s' + kt).hide();
+                //    $('#t' + kt).hide();
+                //}
+                //for (var kt = 1; kt <= wordArr.length; kt++) {
+                //    $('#s' + kt).show();
+                //    $('#t' + kt).show();
+                //}
+                //debugger
+                $('#PuzzleAppp').empty();
+                let puzzleDiv = document.getElementById("PuzzleAppp");
+                puzzleDiv.innerHTML = '<div class="playBtn" onclick="playReplayClick()" style="background-image: url(../Assets/LiveQuizRelated/playButtonBG.png);background-size: 83%;background-position: center; background-repeat: no-repeat; position: absolute;display:none;cursor: pointer;text-align: center;height: 100px;width: 350px;border-radius: 27px;color: rgb(112 99 169);line-height: 100px;font-size: 40px;"> </div> <div style="position:absolute;display:none;" class="correctList"></div> <div class="AllTiles" style="position:absolute;"></div>';
+                for (var i = 1; i <= wordArr.length; i++) {
+                    //$("#PuzzleAppp").append('<div style="position:absolute;" class="slot" id="s'+i+'"></div>');
+                    $(".AllTiles").append('<div style="position:absolute;" class="slot" id="s' + i + '"></div>');
+                }
+                for (var i = 1; i <= wordArr.length; i++) {
+                    //$("#PuzzleAppp").append('<div style="position:absolute;" class="tile" id="t'+i+'"> <div style="position:absolute;" class="tileShade"></div> <div style="position:absolute;" class="tileFront"></div> </div>');
+                    $(".AllTiles").append('<div style="position:absolute;" class="tile" id="t' + i + '"> <div style="position:absolute;" class="tileShade"></div> <div style="position:absolute;" class="tileFront"></div> </div>');
+                }
+
+                //
+                gsap.timeline() // setting design again
+                    .set('.app', { width: 900, height: '100%', background: '#333', left: '50%', x: '-50%', userSelect: 'none' })
+                    .set('.slot', { width: 112, height: 112, borderRadius: 20, background: 'rgba(60,250,60,0.8)', top: 50, left: 100, x: (i) => i * 118 })
+                    .set('.tile', { width: 100, height: 100, top: 56, left: 106, x: (i) => i * 118, color: 'rgba(20,10,10,0.8)', fontSize: 87, lineHeight: '104px', textAlign: 'center' })
+                    .set('.tileFront', { pointerEvents: 'none', width: 100, height: 100, borderRadius: 17, overflow: 'hidden', backgroundSize: 'cover', backgroundImage: 'url(https://assets.codepen.io/721952/tileBg.png)' })
+                    .set('.tileShade', { pointerEvents: 'none', width: 100, height: 100, backgroundSize: 'cover', backgroundImage: 'url(https://assets.codepen.io/721952/tileShade.png)', y: 2, scale: 1.1, opacity: 0.8 })
+
+                Draggable.create('.tile', { onPress: (t) => { pickup(t) }, onDrag: drag, onRelease: drop });
+
+                //
+                //wordArr = words.splice(gsap.utils.random(0, words.length - 1, 1), 1).toString().toUpperCase().split('') // pull a random word, convert to upper case, then separate chars into an array
+
+                if (wordArr.length == 3) {
+                    if(window.innerWidth < 400) {
+                        $(".AllTiles").css("left", "52vw");
+                    } else {
+                        $(".AllTiles").css("left", "53vw");
+                    }
+                } else if (wordArr.length == 4) {
+                    if(window.innerWidth < 400) {
+                        $(".AllTiles").css("left", "26vw");
+                    } else {
+                        $(".AllTiles").css("left", "37vw");
+                    }
+                } else if (wordArr.length == 5) {
+                    if(window.innerWidth < 400) {
+                        $(".AllTiles").css("left", "15vw");
+                    } else {
+                        $(".AllTiles").css("left", "22vw");
+                    }
+                }
+
+                mixedArr = gsap.utils.shuffle(gsap.utils.shuffle(gsap.utils.shuffle([...wordArr]))) // create a second array and triple shuffle its contents
+
+                if (wordArr.join('') == mixedArr.join('')) {
+                    mixedArr = gsap.utils.shuffle(gsap.utils.shuffle(gsap.utils.shuffle([...wordArr])));
+                }
+
+
+                gsap.timeline()
+                    .set('.tileFront', { innerHTML: (i) => mixedArr[i], userSelect: 'none' })
+                    .fromTo('.tile', { x: (i) => i * 118, opacity: 0 }, { duration: 0.1, opacity: 1, stagger: 0.06, ease: 'power1.inOut' }, 0)
+                    .fromTo('.tile', { y: 50, rotation: 0.05 }, { duration: 0.3, y: 0, rotation: 0, stagger: 0.06, ease: 'power4.out' }, 0)
+                    .to('.slot', { duration: 0.1, background: 'rgba(0,0,0,0.5)' }, 0)
+                    .call(function () {
+                        for (var i = 1; i <= wordLength; i++) Draggable.get('#t' + i).enable(); //enable tile dragging (disabled on correct answer + time-out)
+                        checkAnswer(); //check to see if any tiles are already in the correct slot
+                    }, null, 0.4);
+
+
+
+                if (timeInt == undefined) { //start timer
+                    timeLeft = timeLimit;
+                    initialTime = 0;
+                    timeInt = setInterval(updateTime, 10);
+                    
+                    // clear correct answers (needed for replay)
+                    $('.correctN').html(0);
+                    $('.correctList').html('');
+                }
+            });
+
+        }
+
+
+        function pickup(t) { // on press, set vars and animate tile lifting up
+            currentTile = t.target;
+            emptySlot = gsap.getProperty(currentTile, 'x');
+            gsap.timeline({ defaults: { duration: 0.2, overwrite: true, ease: 'power3.out' } })
+                .to($(currentTile).children('.tileFront')[0], { scale: 1.1 }, 0)
+                .to($(currentTile).children('.tileShade')[0], { y: 30, opacity: 0.4, scale: 1 }, 0)
+        }
+
+
+        function drag() {
+            for (var i = 1; i <= wordLength; i++) { // loop through all 6 tiles...
+                if (currentTile.id.substr(-1) != String(i)) { // and only hit-test against the other tiles
+                    var t = '#t' + i;
+                    if (!gsap.isTweening(t)) { // also, only hit-test when tile is stationary
+                        if (Draggable.hitTest(currentTile, t, 30)) { // if at least 30px are overlapping...
+                            gsap.timeline()
+                                .to(t, { duration: 0.1, y: () => gsap.getProperty(currentTile, 'y') < 0 ? 66 : -66, ease: 'slow(0.7,0.7)', repeat: 1, yoyo: true, zIndex: 100 }, 0)
+                                .to(t, { duration: 0.2, x: emptySlot, ease: 'power2.inOut' }, 0); // move tile to empty slot,
+
+                            emptySlot = gsap.getProperty(t, 'x'); // then update emptySlot
+                        }
+                    }
+                }
+            }
+        }
+
+
+        function drop() { // on release, put current tile in the empty slot
+            gsap.timeline({ defaults: { duration: 0.1, overwrite: true, ease: 'power1.in' }, onComplete: () => { if (timeInt != undefined) checkAnswer() } })
+                .to(currentTile, { x: emptySlot, y: 0 }, 0)
+                .to($(currentTile).children('.tileFront')[0], { scale: 1 }, 0)
+                .to($(currentTile).children('.tileShade')[0], { y: 2, opacity: 0.8, scale: 1.1 }, 0)
+        }
+
+
+        function checkAnswer() {
+            var arr = new Array(600); // make an array with enough space to place each char at an index based on each tile's X position
+            for (var i = 1; i <= wordLength; i++) arr.splice(gsap.getProperty('#t' + i, 'x'), 1, $('#t' + i).children('.tileFront').html()); // then populate that array
+
+            for (var j = 0; j < wordLength; j++) { // turn correct slots green
+                if (wordArr.join('').charAt(j) == arr.join('').charAt(j)) gsap.to('#s' + (j + 1), { duration: 0.33, ease: 'bounce.out', background: 'rgba(60,250,60,0.8)' });
+                else gsap.to('#s' + (j + 1), { duration: 0.3, background: 'rgba(0,0,0,0.5)' });
+            }
+
+            if (wordArr.join('') == arr.join('')) { // compare original word and current answer by converting arrays to strings
+                currentTile = emptySlot = undefined
+                for (var i = 1; i <= wordLength; i++) Draggable.get('#t' + i).disable(); // disable all tiles
+
+                var n = Number($('.correctN').html());
+                $('.correctN').html(n += 1); // add to correct number tally
+                $('.correctList').append(arr.join('') + '<br>'); // add to list of correct words
+
+                //timeLeft += 3000; // 3-sec bonus
+
+                perWordDuration = 30 * 1000;
+
+                gsap.timeline({ onComplete: deal }) // success animation, then deal() new letter tiles
+                    .to('.timePlus', { duration: 0.1, opacity: 1, yoyo: true, repeat: 1, repeatDelay: 0.4 }, 0)
+                    .fromTo('.timePlus', { scale: 0, rotation: 0.1 }, { duration: 0.3, scale: 1, rotation: 0, ease: 'back.out(3)' }, 0)
+                    .to('.slot', { duration: 0.2, background: 'rgba(0,0,0,0.5)', overwrite: true }, 0)
+                    .to('.tile', { duration: 0.35, scale: 1.16, ease: 'back.inOut(7)' }, 0.1)
+                    .to('.tile', { duration: 0.2, opacity: 0, scale: 1, ease: 'power1.inOut' }, 0.8)
+
+                //console.log($('.correctN').text());
+            }
+        }
+
+
+        function updateTime() {
+            if (timeLeft > 0) {
+                timeLeft -= 10;
+                perWordDuration -= 10;
+                initialTime += 10;
+                //var mil = Math.floor(timeLeft % 1000 / 10);
+                //var sec = Math.floor(timeLeft / 1000);
+                //if (mil < 10) mil = "0" + mil;
+                //if (sec < 10) sec = "0" + sec;
+                //var t = sec + ":" + mil;
+                //gsap.set('.timeTxt', { innerHTML: t });
+
+                //var mil = Math.floor(initialTime % 1000 / 10);
+                //var sec = Math.floor(initialTime / 1000);
+                //if (mil < 10) mil = "0" + mil;
+                //if (sec < 10) sec = "0" + sec;
+                //var t = sec + ":" + mil;
+                //gsap.set('.timeTxt', { innerHTML: t });
+                //console.log(perWordDuration);
+
+                var minutes = Math.floor(timeLeft / 60000);
+                var seconds = ((timeLeft % 60000) / 1000).toFixed(0);
+                if (minutes < 10) minutes = "0" + minutes;
+                if (seconds < 10) seconds = "0" + seconds;
+                var t = minutes + ":" + seconds +"";
+                elapsedTime = (Date.now() - startTime) / 1000;
+                gsap.set('.timeTxt', { innerHTML: t });
+
+                
+
+                if(perWordDuration == 0)
+                {
+                    perWordDuration = 30 * 1000;
+                    gsap.timeline({ onComplete: deal }) // success animation, then deal() new letter tiles
+                    .to('.slot', { duration: 0.1, background: 'rgba(0,0,0,0.5)', overwrite: true }, 0)
+                    .to('.tile', { duration: 0.25, scale: 1.16, ease: 'back.inOut(7)' }, 0.1)
+                    .to('.tile', { duration: 0.1, opacity: 0, scale: 1, ease: 'power1.inOut' }, 0.8)
+
+                }
+
+            }
+
+            else { // Game over
+                clearInterval(timeInt);
+                perWordDuration = 30 * 1000;
+                timeInt = currentTile = emptySlot = undefined;
+                for (var i = 1; i <= wordLength; i++) Draggable.get('#t' + i).disable(); // disable all tiles
+
+                //Our Data graping API need to be implemented here 
+                var score = $('.correctN').text();
+                SaveUpdateGameData(score);
+
+                //
+
+                //////
+                var d = "<span> আপনার স্কোর : " + score + "</span>";
+                var dd = "<style> #swal2-title { color: #0E937A; } </style>" + d;
+                
+                Swal.fire({
+                    title: 'খেলা সমাপ্তি',
+                    html: dd,
+                    //text: 'আপনার স্কোর : ' + score,
+                    confirmButtonText: 'আবার খেলুন',
+                    confirmButtonColor: '#0E937A',
+                    showCancelButton: true,
+                    cancelButtonColor: '#0E937A',
+                    cancelButtonText: 'হোম',
+                    allowOutsideClick: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('jumbleWordQuestion').textContent = '';
+                        window.location.reload();
+                    } else {
+                        window.location.href = "../LandingPage/Index";
+                    }
+                });
+
+                //////////
+                gsap.timeline({ defaults: { duration: 0.001, overwrite: true } })
+                    // auto-solve the last word
+                    .to('.slot', { duration: 0.2, ease: 'power1.inOut', background: 'rgba(60,250,60,0.8)' }, 0)
+                    .to('.tile', { scale: 1, y: 0, x: (i) => i * 118 }, 0.1)
+                    .to('.tileFront', { scale: 1, innerHTML: (i) => wordArr[i], userSelect: 'none' }, 0.1)
+                    .to('.tileShade', { y: 2, opacity: 0.8, scale: 1.1 }, 0.1)
+                    // hide timer + display replay button
+                    .to('.timeTxt', { duration: 0.3, opacity: 0 }, 0)
+                    .to('#timetx', { duration: 0.3, opacity: 0 }, 0)
+                    .to('#timetxtImg', { duration: 0.3, opacity: 0 }, 0)
+                    .to('.playTxt', { duration: 0.3, innerHTML: 'Replay', userSelect: 'none' }, 0)
+                    .to('.playBtn', { duration: 0.3, autoAlpha: 1, ease: 'power1.inOut' }, 0.3)
+
+                var playbtn = document.getElementsByClassName('playBtn')[0];
+                //playbtn.style.display = 'block';
+                //playbtn.style.backgroundImage = "url(../Assets/LiveQuizRelated/replayButtonBG.png)";
+            }
+        }
+
+        function playReplayClick(){
+            var number = sessionStorage.getItem("fbid");
+
+            if (number != null) {
+
+                gsap.timeline({ defaults: { duration: 0.2 }, onComplete: deal })
+                    .to('.playBtn', { autoAlpha: 0 }, 0)
+                    .to('.correctHead, .timeTxt, #timetxt, #timetxtImg', { opacity: 1 })
+
+            } else {
+                if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                    document.querySelector("#reg").classList.remove("close");
+                    document.querySelector("#reg").classList.add("open");
+                    return false;
+                }
+            }
+        }
+
+        //$('.playBtn').on('click', () => { // event handlers for 'play' button (which becomes 'replay')
+
+        //    var number = sessionStorage.getItem("fbid");
+
+        //    if (number != null) {
+
+        //        gsap.timeline({ defaults: { duration: 0.2 }, onComplete: deal })
+        //            .to('.playBtn', { autoAlpha: 0 }, 0)
+        //            .to('.correctHead, .timeTxt, #timetxt, #timetxtImg', { opacity: 1 })
+
+        //    } else {
+        //        if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+        //            document.querySelector("#reg").classList.remove("close");
+        //            document.querySelector("#reg").classList.add("open");
+        //            return false;
+        //        }
+        //    }
+
+        //})
+
+        $('.playBtn').on('mouseenter', () => {
+            if (gsap.isTweening('.playTxt')) return;
+            gsap.timeline({ defaults: { duration: 0.25 } })
+                .to('.playTxt', { opacity: 0, y: -30, ease: 'back.in(4)' })
+                .to('.playTxt', { duration: 0.001, y: 35 })
+                .to('.playTxt', { opacity: 1, y: 0, ease: 'back.out' })
+        })
+
+        function CheckRecurringPaymentStatusFunc(number, CRPSResponse) {
+            
+            if (number != null && number != "") {
+                $.ajax({
+                    url: '../LandingPage/CheckRecurringPaymentStatus?fbid=' + number,
+                    method: 'get',
+                    async: false,
+                    success: function (rdata, textStatus, jqXHR) {
+                        if (rdata.result == "false") {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'দুঃখিত',
+                                text: 'আপনার শেষ পেমেন্ট ব্যর্থ হয়েছে, অনুগ্রহ করে বিকাশ ওয়ালেট আবার রিচার্জ করুন',
+                                confirmButtonText: 'ওকে',
+                                confirmButtonColor: '#e3126e',
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+
+                                    window.location.href = "../LandingPage/Index"
+                                }
+                            });
+                            CRPSResponse = 0;
+                        }
+                        else {
+                            CRPSResponse = 1;
+                        }
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        toastr.error('', 'confirmation message');
+                        //console.log(jqXHR);
+                        //console.log(textStatus);
+                        //console.log(errorThrown);
+                    }
+                });
+
+
+                if (CRPSResponse == 1) {
+                    return 1;
+                }
+
+            }
+        }
+
+        function gettingCkeyFromSession() {
+            function getParameterByName(name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+            var ckey = getParameterByName('ckey');
+            if (ckey != null && typeof ckey != "undefined" && ckey != "null") {
+            } else {
+                ckey = getParameterByName('cKey');
+            }
+            if (ckey == null || typeof ckey == "undefined" || ckey == "null" || ckey == "") {
+                ckey = sessionStorage.getItem("ckey");
+            }
+            if (ckey == null || typeof ckey == "undefined" || ckey == "null" || ckey == "") ckey = "000000";
+            return ckey;
+        }
+
+        function SaveUpdateGameData(score){
+            var number = sessionStorage.getItem("fbid");
+            var ckey = gettingCkeyFromSession();
+
+            $.get("../home/UpdateWordPuzzleGameLeaderboard?msisdn=" + number + "&score=" + parseInt(score) + "&gameName=" + "MixNMatch" + "&timeCount=" + elapsedTime, function (rData) {
+                //debugger;
+                console.log(rData);
+            });
+        }
+
+
+
+        function validateName() {
+            var nameInput = document.getElementById("name");
+            var name = nameInput.value;
+            var regex = /^[\u0980-\u09FFa-zA-Z\s.]+$/;
+ // Regular expression to allow only alphabets and spaces
+
+            if (!regex.test(name) && name.length > 0) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'দুঃখিত',
+                    text: 'দুঃখিত বিশেষ অক্ষর গ্রহণযোগ্য নয়',
+                    confirmButtonText: 'ওকে',
+                    confirmButtonColor: '#e3126e',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var ckey = sessionStorage.getItem("ckey");
+                        var FTU = sessionStorage.getItem("FTU");
+                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                        var su = sessionStorage.getItem("su");
+                        su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                        var FCT = sessionStorage.getItem("FCT");
+                        FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                        var sent = sessionStorage.getItem("sentToServer");
+
+                        sessionStorage.clear();
+                        localStorage.clear();
+                        //window.location.href = "../LandingPage/Index"
+
+                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                        sessionStorage.setItem("ckey", ckey);
+                        sessionStorage.setItem("FTU", FTU);
+                        sessionStorage.setItem("su", su);
+                        if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                        document.querySelector("#login").classList.remove("open");
+                        document.querySelector("#login").classList.add("close");
+
+                        document.querySelector("#reg").classList.remove("close");
+                        document.querySelector("#reg").classList.add("open");
+
+                        $("#logoutMenu").hide();
+                    }
+                });
+                nameInput.value = ""; // Clear the input field
+                return false;
+            }
+            return true;
+        }
+
+
+
+    </script>
+}
+
+
+
+
+
+

@@ -1,0 +1,1661 @@
+﻿<style>
+
+
+    /* CSS */
+    .button-17 {
+        border: 2px solid white;
+        align-items: center;
+        appearance: none;
+        background-color: transparent;
+        border-radius: 24px;
+        /*border-style: none;*/
+        box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+        box-sizing: border-box;
+        color: white;
+        cursor: pointer;
+        display: inline-flex;
+        fill: currentcolor;
+        font-family: "Google Sans",Roboto,Arial,sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        height: 45px;
+        justify-content: center;
+        letter-spacing: .25px;
+        line-height: normal;
+        max-width: 100%;
+        overflow: visible;
+        padding: 2px 24px;
+        position: relative;
+        text-align: center;
+        text-transform: none;
+        transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: 90vw;
+        will-change: transform,opacity;
+        z-index: 0;
+    }
+
+        .button-17:hover {
+            background: white;
+            color: black;
+        }
+
+        .button-17:active {
+            background: white;
+            color: black;
+        }
+
+        .button-17:focus {
+            background: white;
+            color: black;
+        }
+
+    /*.button-17:not(:disabled) {
+            box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+        }
+
+            .button-17:not(:disabled):hover {
+                box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+            }
+
+            .button-17:not(:disabled):focus {
+                box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+            }
+
+            .button-17:not(:disabled):active {
+                box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+            }
+
+        .button-17:disabled {
+            box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+        }*/
+
+
+
+
+
+
+
+
+    .card {
+        box-shadow: 0 4px 16px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 90%;
+    }
+
+    .swal2-radio {
+        display: grid !important;
+    }
+
+
+    .modal {
+        visibility: hidden;
+        /*transition: all 0.4s;*/
+        opacity: 0;
+    }
+
+        .modal.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    .modal,
+    .modal-overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 100;
+    }
+
+    .modal,
+    .modal-card,
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .modal-content {
+        overflow: auto;
+        flex-grow: 1;
+    }
+
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-body {
+        z-index: 101;
+        margin: auto;
+        max-height: calc(100vh - 5rem);
+        max-width: calc(100vw - 7rem);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 500px;
+        height: 300px;
+        background: white;
+    }
+
+    .modal-header,
+    .modal-content,
+    .modal-footer {
+        padding: 1rem;
+    }
+
+    .modal-header {
+        background: rebeccapurple;
+        text-transform: capitalize;
+        font-size: 1.25rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .livevid {
+        position: relative;
+    }
+
+        .livevid .liveques {
+            position: absolute;
+            top: -14%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: auto;
+        }
+</style>
+
+<link href="~/css/Custom Css/LiveQuizVideoSizes.css" rel="stylesheet" />
+
+<body style="overflow-y: none !important;">
+
+
+    
+
+    
+
+
+
+    @*Video Section Start*@
+
+    <div>
+
+        <div id="reg" class="modal close" style="z-index:105;">
+            <div class="modal-overlay" onclick="LiveQuizLoginCloseModal()"></div>
+            <div class="modal-card" style="height:65%;margin-top: -15%;">
+                <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+                    <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                        <span><i class="fas fa-times" onclick="LiveQuizLoginCloseModal()"></i></span>
+                    </div>
+                    <img src="~/Assets/LiveQuizRelated/LiveQuizLoginPopUp.png" style="transform: scale(.7);margin-bottom: -14%;" />
+                    <div style="margin-bottom: 20px;">
+                        <span style="width: 100%; text-align: center; color: #357d93;">আপনার নাম এবং ফোন নাম্বারটি</span><br>
+                        <span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="center" style="text-align: center; margin-bottom: -3%;">
+                            <button type="submit" class="btn btn-default" style="color: white; background: #357d93; padding: 11px; border-radius: 16px;" onclick="SignUp('livequiz')">লগইন</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="LiveQuizTime" class="modal close" style="z-index:105;">
+            @*<div class="modal-overlay" onclick="CloseLiveQuizCountDownTimerModal()"></div>*@
+            <div class="modal-card" style="height:65%;margin-top: -15%;">
+                <div class="modal-body" style="text-align: center;background-repeat: no-repeat;background-size: cover;overflow-y: scroll;background-image: url('../Assets/LiveQuizRelated/livequizBackground.png')">
+                    @*<div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                        <span><i class="fas fa-times" onclick="CloseLiveQuizCountDownTimerModal()"></i></span>
+                    </div>*@
+                    <img src="~/Assets/LiveQuizRelated/LiveQuizLogo.png" style="/* transform: scale(.7); */margin-left: -22%;width: 92vw;height: auto;" />
+                    <img src="~/Assets/LiveQuizRelated/shuruhoteshomoybaki.png" style="width: 100%;height: auto;margin-top: -8%;" />
+                    <br />
+                    <img src="~/Assets/LiveQuizRelated/timer.png" style="width: 18vw;height: auto;margin-left: 38%;" />
+
+                    <br />
+                    <p id="CountDownTimer" style=" font-size: xx-large; font-weight: bolder; color: #05156c; "></p>
+
+                    @*<div style="margin-bottom: 20px;">
+                        <span style="width: 100%; text-align: center; color: #e3126e;">আপনার নাম এবং ফোন নাম্বারটি</span><br>
+                        <span style="width: 100%; text-align: center; color: #e3126e;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>
+                    </div>*@
+                    @*<div class="form-group">
+                        <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+                    </div>*@
+                    <div class="modal-footer">
+                        <div class="center" style="text-align: center; margin-bottom: 0%;" onclick="BackToHome('Okay')">
+                            <img src="~/Assets/LiveQuizRelated/okaybutton.png" style="width: 34vw;height: auto;" />
+
+                            @*<button type="submit" class="btn btn-default" style="color: white; background: #e3126e; padding: 11px; border-radius: 16px;" onclick="SignUp()">লগইন</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="LiveQuizVideoIntervalTime" class="modal close" style="z-index:105;">
+            @*<div class="modal-overlay" onclick="CloseLiveQuizCountDownTimerModal()"></div>*@
+            <div class="modal-card" style="height:65%;margin-top: -15%;">
+                <div class="modal-body" style="text-align: center;background-repeat: no-repeat;background-size: cover;overflow-y: scroll;background-image: url('../Assets/LiveQuizRelated/livequizBackground.png')">
+                    @*<div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                        <span><i class="fas fa-times" onclick="CloseLiveQuizCountDownTimerModal()"></i></span>
+                    </div>*@
+                    @*<img src="~/Assets/LiveQuizRelated/LiveQuizLogo.png" style="/* transform: scale(.7); */margin-left: -22%;width: 92vw;height: auto;" />*@
+
+                    <p id="CountDownTimerLiveQuizVideoIntervalTime" style=" font-size: 15rem; font-weight: bolder; color: #05156c; "></p>
+                    <br />
+                    @*<img src="~/Assets/LiveQuizRelated/timer.png" style="width: 18vw;height: auto;margin-left: 38%;" />
+
+                    <br />*@
+                    <img src="~/Assets/LiveQuizRelated/porobortiProshnoShuru.png" style="width: 100%;height: auto;margin-top: -8%;" />
+
+
+                    @*<div style="margin-bottom: 20px;">
+                        <span style="width: 100%; text-align: center; color: #e3126e;">আপনার নাম এবং ফোন নাম্বারটি</span><br>
+                        <span style="width: 100%; text-align: center; color: #e3126e;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>
+                    </div>*@
+                    @*<div class="form-group">
+                        <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+                    </div>*@
+                    <!--<div class="modal-footer">
+                <div class="center" style="text-align: center; margin-bottom: 0%;" onclick="BackToHome('Okay')">
+                    <img src="~/Assets/LiveQuizRelated/okaybutton.png" style="width: 34vw;height: auto;" />-->
+                    @*<button type="submit" class="btn btn-default" style="color: white; background: #e3126e; padding: 11px; border-radius: 16px;" onclick="SignUp()">লগইন</button>*@
+                    <!--</div>
+                </div>-->
+                </div>
+            </div>
+        </div>
+
+
+        <div id="LiveQuizEndTime" class="modal close" style="z-index:105;">
+            @*<div class="modal-overlay" onclick="CloseLiveQuizCountDownTimerModal()"></div>*@
+            <div class="modal-card" style="height:65%;margin-top: -15%;">
+                <div class="modal-body" style="text-align: center;background-repeat: no-repeat;background-size: cover;overflow-y: scroll;background-image: url('../Assets/LiveQuizRelated/livequizBackground.png')">
+                    @*<div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                        <span><i class="fas fa-times" onclick="CloseLiveQuizCountDownTimerModal()"></i></span>
+                    </div>*@
+                    <img src="~/Assets/LiveQuizRelated/LiveQuizEnd.png" style="transform: scale(.7);margin-left: 18%;width: 42vw;height: auto;" />
+                    @*<img src="~/Assets/LiveQuizRelated/shuruhoteshomoybaki.png" style="width: 100%;height: auto;margin-top: -8%;" />*@
+                    <br />
+
+                    <p style=" font-size: xx-large; font-weight: bolder; color: #05156c; ">খেলার জন্য ধন্যবাদ</p>
+
+                    <br />
+
+                    <p id="result" style="font-size: x-large;color: black;"></p>
+
+                    @*<div style="margin-bottom: 20px;">
+                        <span style="width: 100%; text-align: center; color: #e3126e;">আপনার নাম এবং ফোন নাম্বারটি</span><br>
+                        <span style="width: 100%; text-align: center; color: #e3126e;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>
+                    </div>*@
+                    @*<div class="form-group">
+                        <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+                    </div>*@
+                    <div class="modal-footer">
+                        <div class="center" style="text-align: center; margin-bottom: 0%;" onclick="BackToHome('LiveQuizVideoBackToHomeButton')">
+                            <img src="~/Assets/LiveQuizRelated/QuizHomeButton.png" style="width: 43vw;height: auto;" />
+
+                            @*<button type="submit" class="btn btn-default" style="color: white; background: #e3126e; padding: 11px; border-radius: 16px;" onclick="SignUp()">লগইন</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="LiveQuizAlreadyStartedModal" class="modal close" style="z-index:105;">
+            @*<div class="modal-overlay" onclick="CloseLiveQuizCountDownTimerModal()"></div>*@
+            <div class="modal-card" style="height:65%;margin-top: -15%;">
+                <div class="modal-body" style="text-align: center;background-repeat: no-repeat;background-size: cover;overflow-y: scroll;background-image: url('../Assets/LiveQuizRelated/livequizBackground.png')">
+                    @*<div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                        <span><i class="fas fa-times" onclick="CloseLiveQuizCountDownTimerModal()"></i></span>
+                    </div>*@
+                    <img src="~/Assets/LiveQuizRelated/cryingEmojii.png" style="transform: scale(.7);margin-left: 18%;width: 42vw;height: auto;" />
+                    @*<img src="~/Assets/LiveQuizRelated/shuruhoteshomoybaki.png" style="width: 100%;height: auto;margin-top: -8%;" />*@
+                    <br />
+
+                    <p style=" font-size: 25px; font-weight: bolder; color: #05156c; ">আজকের লাইভ কুইজে অংশগ্রহন এর সময় শেষ </p>
+
+                    <br />
+
+                    <p style="font-size: 23px;color: black;"> কাল আবার চেষ্টা করুন </p>
+
+                    @*<div style="margin-bottom: 20px;">
+                        <span style="width: 100%; text-align: center; color: #e3126e;">আপনার নাম এবং ফোন নাম্বারটি</span><br>
+                        <span style="width: 100%; text-align: center; color: #e3126e;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>
+                    </div>*@
+                    @*<div class="form-group">
+                        <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+                    </div>*@
+                    <div class="modal-footer">
+                        <div class="center" style="text-align: center; margin-bottom: 0%;" onclick="BackToHome('LiveQuizVideoAlreadyStartedOkayButton')">
+                            <img src="~/Assets/LiveQuizRelated/okaybutton.png" style="width: 30vw;height: auto;" />
+
+                            @*<button type="submit" class="btn btn-default" style="color: white; background: #e3126e; padding: 11px; border-radius: 16px;" onclick="SignUp()">লগইন</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="LiveQuiziPhoneUser" class="modal close" style="z-index:105;">
+            @*<div class="modal-overlay" onclick="CloseLiveQuizCountDownTimerModal()"></div>*@
+            <div class="modal-card" style="height:65%;margin-top: -15%;">
+                <div class="modal-body" style="text-align: center;background-repeat: no-repeat;background-size: cover;overflow-y: scroll;background-image: url('../Assets/LiveQuizRelated/livequizBackground.png')">
+                    @*<div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+            <span><i class="fas fa-times" onclick="CloseLiveQuizCountDownTimerModal()"></i></span>
+        </div>*@
+                    <img src="~/Assets/LiveQuizRelated/iPhoneUSersPopUP.png" style="transform: scale(0.9);margin-left: 18%;width: 42vw;height: auto;" />
+                    @*<img src="~/Assets/LiveQuizRelated/shuruhoteshomoybaki.png" style="width: 100%;height: auto;margin-top: -8%;" />*@
+                    <br />
+
+                    <p style=" font-size: 21px; font-weight: bolder; color: black; ">আইফোন ইউজাররা লাইভ কুইজ খেলতে নিচের লিংকটি ব্রাউজারে ওপেন করুন</p>
+
+                    <br />
+
+                    @*<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+                        <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
+                    </span>*@
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-9" id="ForTooltip" data-toggle="tooltip" title="Copied">
+                            <p id="ShortUrlresult" style="font-size: 15px;color: #05156c;display: inline;" onclick="CopyURLToClipBoard('ShortUrlresult')">https://rb.gy/7bcw0x</p>
+                            <i class="fas fa-copy" style="margin-left: 4%;color: #678bef;" onclick="CopyURLToClipBoard('ShortUrlresult')"></i>
+                        </div>
+                        <div class="col-md-2"></div>
+
+                    </div>
+
+
+                    @*<div style="margin-bottom: 20px;">
+            <span style="width: 100%; text-align: center; color: #e3126e;">আপনার নাম এবং ফোন নাম্বারটি</span><br>
+            <span style="width: 100%; text-align: center; color: #e3126e;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>
+        </div>*@
+                    @*<div class="form-group">
+            <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+        </div>*@
+                    <div class="modal-footer">
+                        <div class="center" style="text-align: center; margin-bottom: 0%;" onclick="BackToHome('LiveQuizVideoBackToHomeButtonIphoneUser')">
+                            <img src="~/Assets/LiveQuizRelated/QuizHomeButton.png" style="width: 43vw;height: auto;" />
+
+                            @*<button type="submit" class="btn btn-default" style="color: white; background: #e3126e; padding: 11px; border-radius: 16px;" onclick="SignUp()">লগইন</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="LQVHeader" style="position: absolute;top: 0;">
+                <img style="width:100%;height:auto;" src="~/Assets/LiveQuizRelated/LQVHeader.png" />
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="live" id="LiveVideoDiv">
+                @*<video class="livevid" id="LVideo" poster="~/Assets/LiveVideoThumbnail.jpg" muted>*@
+                <div style="margin-left: 4%;margin-top: 20%;">
+                    <video class="livevid" id="LVideo" muted preload="metadata" playsinline @*controls="true"*@>
+                        <source id="LSourceId" type="video/mp4">
+
+                    </video>
+                </div>
+
+                <img src="~/Assets/icons8mute.png" onclick="UnmuteVideo()" id="unmuteButton" style="display:none;" />
+
+
+                <!--<div class="liveques">
+
+                    <div class="container card" id="QuestionOptions" style="display: none; height: 45%; overflow-y: scroll !important;">-->
+
+                        @*<div style=" text-align: center; ">
+                    <span class="dot" style="height: 70px;width: 70px;background-color: transparent;border-radius: 50%;display: inline-block;border: solid;border-color: white;position: relative;"></span>
+                    <span class="dot OptionAppearingTimer" id="OptionAppearingTimerId" style="color:white;font-size:xx-large;position: absolute;left: 48%;top: 6%;">5</span>
+                </div>*@
+                        <!--<br />
+
+                        <div id="ShowingLiveQuestions" style="text-align:center;font-weight:bold;font-size: 19px;color: white; margin-top:2%">-->@*<span>সঠিক অপশনটি সিলেক্ট করুন  </span>*@<!--</div>
+                        <br />
+                        <div class="" onclick="OptionSelection('Option1')">
+                            <button class="button-17" id="optipon1label" role="button">Button 17</button>-->
+                            @*<input type="radio" id="Option1" name="QuizOptions" value="Option1">
+                    <label for="Option1" id="optipon1label"></label><br>*@
+                        <!--</div>
+                        <div style=" height: 6px; "></div>
+                        <div class="" onclick="OptionSelection('Option2')">
+                            <button class="button-17" id="optipon2label" role="button">Button 17</button>-->
+                            @*<input type="radio" id="Option2" name="QuizOptions" value="Option2">
+                    <label for="Option2" id="optipon2label"></label><br>*@
+                        <!--</div>
+                        <div style=" height: 6px; "></div>
+                        <div class="" onclick="OptionSelection('Option3')">
+                            <button class="button-17" id="optipon3label" role="button">Button 17</button>-->
+                            @*<input type="radio" id="Option3" name="QuizOptions" value="Option3">
+                    <label for="Option3" id="optipon3label"></label>*@
+                        <!--</div>-->
+                        @*<div style=" height: 6px; "></div>*@
+
+                     
+                        <!--<div class="center" style="text-align: center; margin-bottom: 1%; height: 9%;">-->
+                           @* <button type="submit" class="btn btn-default" style="color: white; background: #e3126e; padding: 7px; border-radius: 16px; width: 26%; margin-top: 5%; z-index: 1033;" onclick="SubmitAnswerOfLiveQuiz()">ওকে</button>*@
+                            <!--<div style="padding: 7px; border-radius: 16px; width: 26%; margin-top: 5%; z-index: 1033;"></div>
+                        </div>
+                    </div>
+
+                </div>-->
+
+
+                <div id="RadioQuizId" hidden="hidden"></div> @*shouldn't be removed*@
+                <div id="RadioQuizOptionId" hidden="hidden"></div> @*shouldn't be removed*@
+
+            </div>
+
+        </div>
+
+        @*<div class="row">
+            <div class="LQVFooter" style="position: absolute;bottom: 0;">
+
+
+               
+
+
+                <img style="width:100%;height:auto;" src="~/Assets/LiveQuizRelated/LQVFooter.png" />
+            </div>
+        </div>*@
+    </div>
+
+
+
+
+ 
+
+    @section leaderboard{
+        <div class="fixed-bottom">
+
+                <div class="row">
+                    <div class="liveques">
+
+                        @*<div class="container card" id="QuestionOptions" style="display: none; height: 45%; overflow-y: scroll !important;">*@
+                        <div class="container card" id="QuestionOptions" style="display: none; position: initial;">
+
+                            @*<div style=" text-align: center; ">
+                    <span class="dot" style="height: 70px;width: 70px;background-color: transparent;border-radius: 50%;display: inline-block;border: solid;border-color: white;position: relative;"></span>
+                    <span class="dot OptionAppearingTimer" id="OptionAppearingTimerId" style="color:white;font-size:xx-large;position: absolute;left: 48%;top: 6%;">5</span>
+                </div>*@
+                            <br />
+
+                            <div id="ShowingLiveQuestions" style="text-align:center;font-weight:bold;font-size: 19px;color: white; margin-top:2%">@*<span>সঠিক অপশনটি সিলেক্ট করুন  </span>*@</div>
+                            <br />
+                            <div class="" onclick="OptionSelection('Option1')">
+                                <button class="button-17" id="optipon1label" role="button">Button 17</button>
+                                @*<input type="radio" id="Option1" name="QuizOptions" value="Option1">
+                    <label for="Option1" id="optipon1label"></label><br>*@
+                            </div>
+                            <div style=" height: 6px; "></div>
+                            <div class="" onclick="OptionSelection('Option2')">
+                                <button class="button-17" id="optipon2label" role="button">Button 17</button>
+                                @*<input type="radio" id="Option2" name="QuizOptions" value="Option2">
+                    <label for="Option2" id="optipon2label"></label><br>*@
+                            </div>
+                            <div style=" height: 6px; "></div>
+                            <div class="" onclick="OptionSelection('Option3')">
+                                <button class="button-17" id="optipon3label" role="button">Button 17</button>
+                                @*<input type="radio" id="Option3" name="QuizOptions" value="Option3">
+                    <label for="Option3" id="optipon3label"></label>*@
+                            </div>
+                            <div style=" height: 6px; "></div>
+
+
+                            <!--<div class="center" style="text-align: center; margin-bottom: 1%; height: 9%;">-->
+                            @* <button type="submit" class="btn btn-default" style="color: white; background: #e3126e; padding: 7px; border-radius: 16px; width: 26%; margin-top: 5%; z-index: 1033;" onclick="SubmitAnswerOfLiveQuiz()">ওকে</button>*@
+                            <!--<div style="padding: 7px; border-radius: 16px; width: 26%; margin-top: 5%; z-index: 1033;"></div>
+            </div>-->
+                        </div>
+
+                    </div>
+                    <div>
+                        <img style="width: 100%; height:auto" src="~/Assets/LiveQuizRelated/LQVFooter.png" />
+                    </div>
+                    
+                </div>
+
+
+            <!--<div class="row" >
+                <div class="LQVFooter">
+
+                    <img style="width:100%;height:auto;" src="~/Assets/LiveQuizRelated/LQVFooter.png" />
+                </div>
+            </div>-->
+
+            @*<div class="oldFixedBottom">
+            <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+                <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                    <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+                </div>
+                <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                    <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+                </div>
+                <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                    <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+                </div>
+            </div>
+
+            <img style="width: 100%; height:auto" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+        </div>*@
+
+        </div>
+
+    }
+
+    @*<br />*@
+
+
+
+    @*Video Section End*@
+
+
+    <audio controls volume="0.5" id="aa" preload="none" hidden>
+        <source src="~/Assets/Countdown.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+</body>
+
+@section Scripts{
+    <script>
+
+
+        var right = 0;
+        var wrong = 0;
+        var numberQuestionShowed = 0;
+        var TimeTaken = 0;
+        let VideoListCount = 0;
+
+        var LiveQuizResult = {};
+        let count = 0;
+        var questionAppearingTimer = 0;
+
+        function LiveQuizLoginCloseModal() {
+            
+            document.querySelector("#reg").classList.remove("open");
+            document.querySelector("#reg").classList.add("close");
+
+            window.location.href = window.location.origin;
+
+        }
+
+        $(document).ready(function () {
+
+            //var UserAgentNavigator = navigator;
+
+            $(".hh").hide();
+            //$(".oldFixedBottom").hide();
+            var ckey = gettingCkeyFromParramSession();
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=LiveVideoButtonClick&srcurl=" + window.location.href, function (rData) { });
+
+            if (navigator.userAgent.toLowerCase().includes("iphone;") || navigator.userAgent.toLowerCase().includes("ipad;")) {
+
+                if (ckey == "009999") {
+
+                    //alert("iPhone detected");
+
+                    document.querySelector("#LiveQuiziPhoneUser").classList.remove("close");
+                    document.querySelector("#LiveQuiziPhoneUser").classList.add("open");
+
+                } else {
+                    DefualtInitialFunctionWork();
+                }
+
+
+            } else {
+                DefualtInitialFunctionWork();
+            }
+
+
+        });
+
+
+        function DefualtInitialFunctionWork() {
+
+            var ckey = gettingCkeyFromParramSession();
+
+                if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") == null) {
+
+                    //window.location.href = "../";
+                    //$('#topNavIcon').val()
+
+                    //if ($('#topNavIcon').prop('checked')) {
+                    //    $('#topNavIcon').prop('checked', false);
+                    //}
+
+
+                    //document.querySelector("#login").classList.remove("close");
+                    //document.querySelector("#login").classList.add("open");
+
+                    document.querySelector("#reg").classList.remove("close");
+                    document.querySelector("#reg").classList.add("open");
+
+
+                    $("#logoutMenu").hide();
+
+
+                } else {
+
+
+                    $.get(window.location.origin + "/landingpage/GetLiveQuizVideos", function (res) {
+
+                        console.log(res);
+                        LiveQuizResult = res;
+
+                        if (LiveQuizResult.response.length > 0) {
+
+                            debugger
+
+                            var ScheduledTime = LiveQuizResult.response[0].scheduledDateTime.split("T")[1].trim().split(":");
+
+                            var date = new Date();
+                            var seconds = date.getSeconds();
+                            var minutes = date.getMinutes();
+                            var hour = date.getHours();
+
+                            //var videoSourceList = new Array();
+                            //for (var j = 0; j < res.response.length; j++) {
+                            //    videoSourceList[j] = res.response[j].videoURL;
+
+                            //}
+
+                            if ((new Date() - new Date(LiveQuizResult.response[0].scheduledDateTime.replace(/-/g, '/').replace('T', ' '))) / 1000 >= Number.parseInt(LiveQuizResult.response[0].duration)) {
+
+                                document.querySelector("#LiveQuizAlreadyStartedModal").classList.remove("close");
+                                document.querySelector("#LiveQuizAlreadyStartedModal").classList.add("open");
+
+                            }
+                            else if ((new Date(LiveQuizResult.response[0].scheduledDateTime.replace(/-/g, '/').replace('T', ' ')) - new Date()) == 0) {
+
+                                $('#unmuteButton').show();
+                                debugger
+                                var video = document.getElementById('LVideo');
+                                var source = document.getElementById('LSourceId');
+
+                                source.setAttribute('src', LiveQuizResult.response[0].videoURL);
+                                //source.setAttribute('src', videoSourceList);
+                                video.preload = 'metadata';
+                                video.playsInline = true;
+                                video.autoplay = true;
+                                video.load();
+                                //video.play();
+
+                                if (ScheduledTime[2] <= seconds) {
+                                    var SD = new Date(LiveQuizResult.response[j].scheduledDateTime)
+                                    var dateDiff = (date - SD) / 1000;
+                                    console.log(dateDiff);
+
+                                    if (video.duration > dateDiff) {
+                                        video.currentTime = dateDiff;
+                                    } else {
+                                        //video.currentTime = 10;
+                                    }
+
+                                }
+
+                            }
+                            else if ((new Date(LiveQuizResult.response[0].scheduledDateTime.replace(/-/g,'/').replace('T',' ')) - new Date()) > 0) {
+
+                                document.querySelector("#LiveQuizTime").classList.remove("close");
+                                document.querySelector("#LiveQuizTime").classList.add("open");
+                                //document.querySelector("#LiveQuizAlreadyStartedModal").classList.remove("close");
+                                //document.querySelector("#LiveQuizAlreadyStartedModal").classList.add("open");
+
+                                debugger
+
+                                var countDownDate = new Date(LiveQuizResult.response[0].scheduledDateTime.replace(/-/g, '/').replace('T', ' ')).getTime();
+
+                                // Update the count down every 1 second
+                                var x = setInterval(function () {
+
+                                    // Get today's date and time
+                                    var now = new Date().getTime();
+
+                                    // Find the distance between now and the count down date
+                                    var distance = countDownDate - now;
+
+                                    // Time calculations for days, hours, minutes and seconds
+                                    //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                    // Display the result in the element with id="demo"
+                                    document.getElementById("CountDownTimer").innerHTML = hours + "h : "
+                                        + minutes + "m : " + seconds + "s ";
+
+                                    // If the count down is finished, write some text
+                                    if (distance < 0) {
+                                        clearInterval(x);
+
+                                        document.getElementById("CountDownTimer").innerHTML = "00" + "h : "
+                                            + "00" + "m : " + "00" + "s ";
+
+                                        document.querySelector("#LiveQuizTime").classList.remove("open");
+                                        document.querySelector("#LiveQuizTime").classList.add("close");
+
+
+                                        /////////////////////
+
+                                        debugger;
+
+                                        $('#unmuteButton').show();
+
+                                        //alert("Time didn't came");
+
+                                        //////////////
+                                        var video = document.getElementById('LVideo');
+                                        var source = document.getElementById('LSourceId');
+
+                                        //source.setAttribute('src', LiveQuizResult.response[0].videoURL);
+                                        video.setAttribute('src', LiveQuizResult.response[0].videoURL);
+                                        //video.setAttribute('src', videoSourceList);
+                                        video.preload = 'metadata';
+                                        video.playsInline = true;
+                                        video.autoplay = true;
+                                        video.load();
+
+                                        if (ScheduledTime[2] <= seconds) {
+                                            var SD = new Date(LiveQuizResult.response[0].scheduledDateTime)
+                                            var dateDiff = (date - SD) / 1000;
+                                            console.log(dateDiff);
+
+                                            if (video.duration > dateDiff) {
+                                                video.currentTime = dateDiff;
+                                            } else {
+                                                //video.currentTime = 4;
+                                            }
+
+                                        }
+
+                                        //for (var i = 0; i < res.response.length; i++) {
+                                        //    if (ScheduledTime[2] <= seconds) {
+                                        //        var SD = new Date(res.response[j].scheduledDateTime)
+                                        //        var dateDiff = (date - SD) / 1000;
+                                        //        console.log(dateDiff);
+
+                                        //        if (video.duration > dateDiff) {
+                                        //            video.currentTime = dateDiff;
+                                        //        } else {
+                                        //            video.currentTime = 4;
+                                        //        }
+
+                                        //    }
+                                        //}
+
+
+                                        //////////////////////
+
+
+                                        VideoTimeCheckingInterval();
+
+                                        ////////////////////////
+                                    }
+                                }, 1000);
+
+
+                                //var video = document.getElementById('LVideo');
+                                //var source = document.getElementById('LSourceId');
+
+                                //source.setAttribute('src', res.result[0].videoName);
+                                //video.autoplay = true;
+                                //video.load();
+                                ////video.play();
+
+                                //if (ScheduledTime[2] <= seconds) {
+                                //    var SD = new Date(res.result[0].scheduledDateTime)
+                                //    var dateDiff = (date - SD) / 1000;
+                                //    console.log(dateDiff);
+
+                                //    if (video.duration > dateDiff) {
+                                //        video.currentTime = dateDiff;
+                                //    } else {
+                                //        video.currentTime = 10;
+                                //    }
+
+                                //}
+
+
+                            }
+                            //else {
+
+                            //    document.querySelector("#LiveQuizTime").classList.remove("close");
+                            //    document.querySelector("#LiveQuizTime").classList.add("open");
+                            //    //document.querySelector("#LiveQuizAlreadyStartedModal").classList.remove("close");
+                            //    //document.querySelector("#LiveQuizAlreadyStartedModal").classList.add("open");
+
+                            //    debugger
+
+                            //    var countDownDate = new Date(LiveQuizResult.response[0].scheduledDateTime.replace('T', ' ')).getTime();
+
+                            //    // Update the count down every 1 second
+                            //    var x = setInterval(function () {
+
+                            //        // Get today's date and time
+                            //        var now = new Date().getTime();
+
+                            //        // Find the distance between now and the count down date
+                            //        var distance = countDownDate - now;
+
+                            //        // Time calculations for days, hours, minutes and seconds
+                            //        //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            //        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            //        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            //        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                            //        // Display the result in the element with id="demo"
+                            //        document.getElementById("CountDownTimer").innerHTML = hours + "h : "
+                            //            + minutes + "m : " + seconds + "s ";
+
+                            //        // If the count down is finished, write some text
+                            //        if (distance < 0) {
+                            //            clearInterval(x);
+
+                            //            document.getElementById("CountDownTimer").innerHTML = "00" + "h : "
+                            //                + "00" + "m : " + "00" + "s ";
+
+                            //            document.querySelector("#LiveQuizTime").classList.remove("open");
+                            //            document.querySelector("#LiveQuizTime").classList.add("close");
+
+
+                            //            /////////////////////
+
+                            //            debugger;
+
+                            //            $('#unmuteButton').show();
+
+                            //            //alert("Time didn't came");
+
+                            //            //////////////
+                            //            var video = document.getElementById('LVideo');
+                            //            var source = document.getElementById('LSourceId');
+
+                            //            //source.setAttribute('src', LiveQuizResult.response[0].videoURL);
+                            //            video.setAttribute('src', LiveQuizResult.response[0].videoURL);
+                            //            //video.setAttribute('src', videoSourceList);
+                            //            video.preload = 'metadata';
+                            //            video.playsInline = true;
+                            //            video.autoplay = true;
+                            //            video.load();
+
+                            //            if (ScheduledTime[2] <= seconds) {
+                            //                var SD = new Date(LiveQuizResult.response[0].scheduledDateTime)
+                            //                var dateDiff = (date - SD) / 1000;
+                            //                console.log(dateDiff);
+
+                            //                if (video.duration > dateDiff) {
+                            //                    video.currentTime = dateDiff;
+                            //                } else {
+                            //                    //video.currentTime = 4;
+                            //                }
+
+                            //            }
+
+                            //            //for (var i = 0; i < res.response.length; i++) {
+                            //            //    if (ScheduledTime[2] <= seconds) {
+                            //            //        var SD = new Date(res.response[j].scheduledDateTime)
+                            //            //        var dateDiff = (date - SD) / 1000;
+                            //            //        console.log(dateDiff);
+
+                            //            //        if (video.duration > dateDiff) {
+                            //            //            video.currentTime = dateDiff;
+                            //            //        } else {
+                            //            //            video.currentTime = 4;
+                            //            //        }
+
+                            //            //    }
+                            //            //}
+
+
+                            //            //////////////////////
+
+
+                            //            VideoTimeCheckingInterval();
+
+                            //            ////////////////////////
+                            //        }
+                            //    }, 1000);
+
+
+                            //    //var video = document.getElementById('LVideo');
+                            //    //var source = document.getElementById('LSourceId');
+
+                            //    //source.setAttribute('src', res.result[0].videoName);
+                            //    //video.autoplay = true;
+                            //    //video.load();
+                            //    ////video.play();
+
+                            //    //if (ScheduledTime[2] <= seconds) {
+                            //    //    var SD = new Date(res.result[0].scheduledDateTime)
+                            //    //    var dateDiff = (date - SD) / 1000;
+                            //    //    console.log(dateDiff);
+
+                            //    //    if (video.duration > dateDiff) {
+                            //    //        video.currentTime = dateDiff;
+                            //    //    } else {
+                            //    //        video.currentTime = 10;
+                            //    //    }
+
+                            //    //}
+                            //}
+                            //else {
+
+
+                            //    //console.log(j);
+                            //    debugger;
+
+                            //    $('#unmuteButton').show();
+
+                            //    //alert("Time didn't came");
+
+                            //    //////////////
+                            //    var video = document.getElementById('LVideo');
+                            //    var source = document.getElementById('LSourceId');
+
+                            //    //source.setAttribute('src', LiveQuizResult.response[0].videoURL);
+                            //    video.setAttribute('src', LiveQuizResult.response[0].videoURL);
+                            //    //video.setAttribute('src', videoSourceList);
+                            //    video.preload = 'metadata';
+                            //    video.playsInline = true;
+                            //    video.autoplay = true;
+                            //    video.load();
+
+                            //    if (ScheduledTime[2] <= seconds) {
+                            //        var SD = new Date(LiveQuizResult.response[0].scheduledDateTime)
+                            //        var dateDiff = (date - SD) / 1000;
+                            //        console.log(dateDiff);
+
+                            //        if (video.duration > dateDiff) {
+                            //            video.currentTime = dateDiff;
+                            //        } else {
+                            //            //video.currentTime = 4;
+                            //        }
+
+                            //    }
+
+
+                            //    //////////////////////
+
+
+                            //    VideoTimeCheckingInterval();
+
+
+                            //}
+
+                            console.log(hour + ":" + minutes + ":" + seconds);
+
+                            //let interval = setInterval(function () {
+
+                            //    var LVideo = document.getElementById('LVideo');
+
+                            //    if (VideoListCount > LiveQuizResult.response.length) {
+                            //        clearInterval(interval);
+                            //        //break;
+                            //    }
+                            //    else if ((Number.parseInt(LiveQuizResult.response[VideoListCount].duration) - Number.parseInt(LVideo.currentTime)) == 0) {
+                            //        //clearInterval(interval);
+                            //        VideoIntervalTimer();
+
+                            //        VideoListCount = VideoListCount + 1;
+                            //        console.log(VideoListCount);
+                            //        VideoRender(VideoListCount);
+                            //    }
+
+                            //    if (Number.parseInt(LVideo.currentTime) == LiveQuizResult.response[VideoListCount].optionAppearingTime) {
+
+                            //        ShowingOptionsWithModal(LiveQuizResult.response[VideoListCount]);
+                            //    }
+
+                            //}, 1000);
+
+                            ///////////////////////
+
+
+
+                            //for (var indxx = 0; indxx < res.response.length; indxx++) {
+
+                            //    let interval = setInterval(function () {
+
+                            //        var LVideo = document.getElementById('LVideo');
+
+                            //        if (VideoListCount > LiveQuizResult.response.length) {
+                            //            clearInterval(interval);
+                            //            //break;
+                            //        }
+                            //        else if ((Number.parseInt(LiveQuizResult.response[VideoListCount].duration) - Number.parseInt(LVideo.currentTime)) == 0) {
+                            //            clearInterval(interval);
+                            //            VideoIntervalTimer();
+
+                            //            VideoListCount = VideoListCount + 1;
+                            //            console.log(VideoListCount);
+                            //            VideoRender(VideoListCount);
+                            //        }
+
+                            //        if (Number.parseInt(LVideo.currentTime) == LiveQuizResult.response[VideoListCount].optionAppearingTime) {
+
+                            //            ShowingOptionsWithModal(LiveQuizResult.response[VideoListCount]);
+                            //        }
+
+                            //    }, 1000);
+
+                            //}
+
+                            //// function creation
+                            //let interval = setInterval(function () {
+
+                            //    var LVideo = document.getElementById('LVideo');
+
+                            //    if (VideoListCount > LiveQuizResult.response.length) {
+                            //        clearInterval(interval);
+                            //    }
+                            //    else if ((Number.parseInt(LiveQuizResult.response[VideoListCount].duration) - Number.parseInt(LVideo.currentTime)) == 0) {
+
+                            //        VideoIntervalTimer();
+                            //        VideoListCount = VideoListCount + 1;
+                            //        VideoRender(VideoListCount);
+                            //    }
+
+                            //    if (Number.parseInt(LVideo.currentTime) == LiveQuizResult.response[VideoListCount].optionAppearingTime) {
+
+                            //        ShowingOptionsWithModal(LiveQuizResult.response[VideoListCount]);
+                            //    }
+
+                            //    //// when count equals to 5, stop the function
+                            //    //if (Number.parseInt(LVideo.currentTime) == Number.parseInt(LVideo.duration)) {
+
+
+
+
+
+                            //    //}
+                            //    //else if (Number.parseInt(LVideo.currentTime) == Number.parseInt(LVideo.duration)) {
+                            //    //    debugger
+                            //    //    clearInterval(interval);
+                            //    //    //if (numberQuestionShowed == LiveQuizResult.result.length) {
+
+                            //    //    //    document.querySelector("#LiveQuizEndTime").classList.remove("close");
+                            //    //    //    document.querySelector("#LiveQuizEndTime").classList.add("open");
+                            //    //    //    var resultText = LiveQuizResult.result.length + " টির মধ্যে আপনি " + right + " টি প্রশ্নর সঠিক উত্তর দিয়েছেন ";
+                            //    //    //    $('#result').text(resultText);
+
+                            //    //    //}
+                            //    //}
+
+                            //    //for (var i = 0; i < LiveQuizResult.response.length; i++) {
+                            //    //    if (Number.parseInt(LVideo.currentTime) == LiveQuizResult.response[i].optionAppearingTime) {
+
+                            //    //        //document.querySelector("#QuestionOptions").classList.remove("close");
+                            //    //        //document.querySelector("#QuestionOptions").classList.add("open");
+
+                            //    //        //ShowingOptions(LiveQuizResult.result[i]);
+                            //    //        debugger
+                            //    //        ShowingOptionsWithModal(LiveQuizResult.response[i]);
+                            //    //    }
+                            //    //}
+
+
+                            //}, 1000);
+
+
+
+                        } else {
+                            alert("No live Quiz Scheduled.");
+                        }
+
+                    });
+
+
+                }
+
+            
+        }
+
+        function CopyURLToClipBoard(id) {
+            //var elm = document.getElementById(id);
+            //elm.select();
+            //navigator.clipboard.writeText(elm.value);
+
+            debugger
+
+            var text = document.getElementById(id).innerText;
+            var elem = document.createElement("textarea");
+            document.body.appendChild(elem);
+            elem.value = text;
+            elem.select();
+            document.execCommand("copy");
+            document.body.removeChild(elem);
+
+            //$('#ForTooltip').tooltip('show');
+
+            //var range = document.createRange();
+            //range.selectNode(id); //changed here
+            //window.getSelection().removeAllRanges();
+            //window.getSelection().addRange(range);
+            //document.execCommand("copy");
+            //window.getSelection().removeAllRanges();
+            //alert("data copied");
+        }
+
+
+        function VideoTimeCheckingInterval() {
+
+            let IIIinterval = setInterval(function () {
+
+                var LVideo = document.getElementById('LVideo');
+
+                if (VideoListCount > LiveQuizResult.response.length-1) {
+                    clearInterval(IIIinterval);
+                    //break;
+                }
+                
+                else if ((Number.parseInt(LiveQuizResult.response[VideoListCount].duration) - Number.parseInt(LVideo.currentTime)) == 0) {
+                    clearInterval(IIIinterval);
+                    if (VideoListCount == (LiveQuizResult.response.length - 1)) {
+
+                        debugger
+                        document.querySelector("#LiveQuizEndTime").classList.remove("close");
+                        document.querySelector("#LiveQuizEndTime").classList.add("open");
+                        var resultText = LiveQuizResult.response.length + " টির মধ্যে আপনি " + right + " টি প্রশ্নর সঠিক উত্তর দিয়েছেন। আপনার স্কোর " + right;
+                        $('#result').text(resultText);
+
+                    }
+                    else if (VideoListCount < (LiveQuizResult.response.length)) {
+                        VideoIntervalTimer();
+                    }
+                    //else if (VideoListCount > (LiveQuizResult.response.length - 1)) {
+
+                    //    debugger
+                    //    document.querySelector("#LiveQuizEndTime").classList.remove("close");
+                    //    document.querySelector("#LiveQuizEndTime").classList.add("open");
+                    //    var resultText = LiveQuizResult.response.length + " টির মধ্যে আপনি " + right + " টি প্রশ্নর সঠিক উত্তর দিয়েছেন ";
+                    //    $('#result').text(resultText);
+
+                    //}
+                }
+
+                //if (VideoListCount == (LiveQuizResult.response.length - 1)) {
+
+                //    debugger
+                //    document.querySelector("#LiveQuizEndTime").classList.remove("close");
+                //    document.querySelector("#LiveQuizEndTime").classList.add("open");
+                //    var resultText = LiveQuizResult.response.length + " টির মধ্যে আপনি " + right + " টি প্রশ্নর সঠিক উত্তর দিয়েছেন ";
+                //    $('#result').text(resultText);
+
+                //}
+
+                if (Number.parseInt(LVideo.currentTime) == Number.parseInt(LiveQuizResult.response[VideoListCount].optionAppearingTime)) {
+                    
+                    ShowingOptionsWithModal(LiveQuizResult.response[VideoListCount]);
+                }
+
+
+            }, 1000);
+
+        }
+
+        function VideoRender(VideoListCount) {
+
+            if (typeof LiveQuizResult.response[VideoListCount] != 'undefined') {
+                var video = document.getElementById('LVideo');
+                var source = document.getElementById('LSourceId');
+                //console.log(LiveQuizResult.response[VideoListCount].videoURL);
+
+                //source.setAttribute('src', LiveQuizResult.response[VideoListCount].videoURL);
+
+                video.src = "";
+                video.setAttribute('src', LiveQuizResult.response[VideoListCount].videoURL);
+                video.currentTime = 0;
+                /*console.log("Source: " + video.src);*/
+                video.preload = 'metadata';
+                video.playsInline = true;
+                video.autoplay = true;
+                video.load();
+            }
+            
+
+
+        }
+
+        function VideoIntervalTimer() {
+
+            
+
+            //var countDownDate = 3;
+
+
+
+            var x = 4;
+            let VideoIntervalTimerInterval = setInterval(function () {
+                var y = x;
+                
+                document.getElementById("CountDownTimerLiveQuizVideoIntervalTime").innerHTML = y-1;
+                document.querySelector("#LiveQuizVideoIntervalTime").classList.remove("close");
+                document.querySelector("#LiveQuizVideoIntervalTime").classList.add("open");
+
+                if (--x == 0) {
+
+                    clearInterval(VideoIntervalTimerInterval);
+
+                    document.querySelector("#LiveQuizVideoIntervalTime").classList.remove("open");
+                    document.querySelector("#LiveQuizVideoIntervalTime").classList.add("close");
+
+                    debugger
+
+                    VideoListCount = VideoListCount + 1;
+                    console.log(VideoListCount);
+                    VideoRender(VideoListCount);
+
+                    VideoTimeCheckingInterval();
+                }
+
+            }, 1000);
+
+
+
+            // Update the count down every 1 second
+
+            //let yy = setInterval(function myfunction() {
+            //    document.getElementById("CountDownTimerLiveQuizVideoIntervalTime").innerHTML = countDownDate;
+            //    document.querySelector("#LiveQuizVideoIntervalTime").classList.remove("close");
+            //    document.querySelector("#LiveQuizVideoIntervalTime").classList.add("open");
+
+            //    countDownDate = countDownDate - 1;
+
+            //    if (countDownDate < 1) {
+            //        debugger;
+                    
+            //        clearInterval(yy);
+
+            //        //VideoListCount = VideoListCount + 1;
+            //        //VideoRender(VideoListCount);
+
+            //        document.querySelector("#LiveQuizVideoIntervalTime").classList.remove("open");
+            //        document.querySelector("#LiveQuizVideoIntervalTime").classList.add("close");
+            //        //clearTimeout(x);
+
+                    
+
+            //    }
+            //},1000);
+
+            //for (var indx = 0; indx < 3; indx++) {
+            //    let y = setTimeout(function VideoIntervalTimerCount() {
+            //        document.getElementById("CountDownTimerLiveQuizVideoIntervalTime").innerHTML = countDownDate;
+            //        document.querySelector("#LiveQuizVideoIntervalTime").classList.remove("close");
+            //        document.querySelector("#LiveQuizVideoIntervalTime").classList.add("open");
+
+            //        countDownDate = countDownDate - 1;
+
+            //    }, 1000);
+            //    clearTimeout(y);
+            //    if (indx == 2) {
+            //        VideoListCount = VideoListCount + 1;
+            //        VideoRender(VideoListCount);
+
+            //        document.querySelector("#LiveQuizVideoIntervalTime").classList.remove("open");
+            //        document.querySelector("#LiveQuizVideoIntervalTime").classList.add("close");
+            //    }
+            //}
+            
+
+            //let x = setTimeout(function () {
+
+            //    // Get today's date and time
+            //    //var now = new Date().getTime();
+
+            //    //// Find the distance between now and the count down date
+            //    //var distance = countDownDate - now;
+
+            //    //// Time calculations for days, hours, minutes and seconds
+            //    ////var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            //    //var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            //    //var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            //    //var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            //    // Display the result in the element with id="demo"
+                
+            //    document.getElementById("CountDownTimerLiveQuizVideoIntervalTime").innerHTML = countDownDate;
+            //    document.querySelector("#LiveQuizVideoIntervalTime").classList.remove("close");
+            //    document.querySelector("#LiveQuizVideoIntervalTime").classList.add("open");
+
+            //    countDownDate = countDownDate - 1;
+
+            //    if (countDownDate < 1) {
+            //        //clearInterval(x);
+
+            //        clearTimeout(x);
+
+            //        VideoListCount = VideoListCount + 1;
+            //        VideoRender(VideoListCount);
+
+            //        document.querySelector("#LiveQuizVideoIntervalTime").classList.remove("open");
+            //        document.querySelector("#LiveQuizVideoIntervalTime").classList.add("close");
+
+            //    }
+            //}, 1000);
+            
+
+        }
+
+        function BackToHome(button) {
+            if (button == "Okay") {
+                button = "LiveQuizVideoTimesOkay";
+            }
+
+            DefaultLogFunction(button, window.location.href);
+
+            window.parent.location = window.location.origin;
+
+        }
+
+
+        function CloseLiveQuizCountDownTimerModal() {
+            //document.querySelector(".modal").classList.remove("open");
+            //document.querySelector(".modal").classList.add("close");
+
+            //document.querySelector("#login").classList.remove("open");
+            //document.querySelector("#login").classList.add("close");
+
+            document.querySelector("#LiveQuizTime").classList.remove("open");
+            document.querySelector("#LiveQuizTime").classList.add("close");
+        }
+
+        function SubmitAnswerOfLiveQuiz() {
+            debugger
+            var QuestionId = $("#RadioQuizId").val();
+            var optionId = $("#RadioQuizOptionId").val();
+
+
+
+
+            $.get(JhotpotAnswerWithTimeBkashForLiveVideoQuiz + "?fbid=" + sessionStorage.getItem("fbid") + "&qid=" + QuestionId + "&answer=" + optionId + "&timetaken=" + TimeTaken + "&ServiceName=QuizMaster&test=null&ServiceType=LiveQuizVideo", function (res) {
+                console.log(res);
+                if (res.isRight == 1) {
+                    right = right + 1;
+                } else {
+                    wrong = wrong + 1;
+                }
+            });
+            /*OptionDissapearFunction();*/
+
+            //if (numberQuestionShowed == LiveQuizResult.result.length) {
+
+            //    document.querySelector("#LiveQuizEndTime").classList.remove("close");
+            //    document.querySelector("#LiveQuizEndTime").classList.add("open");
+            //    var resultText = LiveQuizResult.result.length + " টির মধ্যে আপনি " + right + " টি প্রশ্নর সঠিক উত্তর দিয়েছেন ";
+            //    $('#result').text(resultText);
+
+            //}
+
+            TimeTaken = 0;
+
+        }
+
+        function UnmuteVideo() {
+            var video = document.getElementById('LVideo');
+            video.muted = false;
+            $("#unmuteButton").hide();
+        }
+
+        function ShowingOptionsWithModal(LiveQuizQuestion) {
+            deafault_select();
+            debugger
+            numberQuestionShowed = numberQuestionShowed + 1;
+
+            $("#RadioQuizId").val(LiveQuizQuestion.liveQuizVideoId);
+
+            $("#ShowingLiveQuestions").text(LiveQuizQuestion.question);
+
+            $("#optipon1label").text(LiveQuizQuestion.option1);
+            $("#optipon2label").text(LiveQuizQuestion.option2);
+            $("#optipon3label").text(LiveQuizQuestion.option3);
+            $("#OptionAppearingTimerId").text(LiveQuizQuestion.optionShowingDuration);
+
+            $("#QuestionOptions").slideDown("slow");
+
+
+            $('.roundedparent').show();
+
+            var x = 0;
+            let Optionsinterval = setInterval(function () {
+
+                if (++x == LiveQuizQuestion.optionShowingDuration) {
+                    TimeTaken = 0;
+                    clearInterval(Optionsinterval);
+                    /*$('.roundedparent').hide();*/
+                    OptionDissapearFunction();
+                }
+                var timerVal = $("#OptionAppearingTimerId").text()
+                $("#OptionAppearingTimerId").text(Number.parseInt(timerVal) - 1);
+
+                if ($("#RadioQuizId").val() != "" ) {
+                    var myAudio = document.getElementById('aa');
+                    myAudio.volume = 0.5;
+                    myAudio.play();
+                }
+                
+
+                TimeTaken = TimeTaken + 1;
+
+            }, 1000);
+
+            //setTimeout(function () {
+
+            //    OptionDissapearFunction();
+
+            //}, LiveQuizQuestion.optionShowingDurationSec * 1000); //
+
+
+        }
+
+        function OptionSelection(opt) {
+            debugger;
+            var op;
+
+            if (opt == "Option1") {
+                op = "optipon1label"
+            } if (opt == "Option2") {
+                op = "optipon2label"
+            } if (opt == "Option3") {
+                op = "optipon3label"
+            }
+
+
+
+            document.getElementById(op).style.backgroundColor = 'white';
+            document.getElementById(op).style.color = 'black';
+
+           
+
+            document.querySelector('#optipon1label').disabled = true;
+            document.querySelector('#optipon2label').disabled = true;
+            document.querySelector('#optipon3label').disabled = true;
+
+            
+
+            $("#RadioQuizOptionId").val(opt);
+
+            var myAudio = document.getElementById('aa');
+            myAudio.pause();
+            myAudio.currentTime = 0;
+
+            SubmitAnswerOfLiveQuiz();
+         /*   deafault_select();*/
+            //var QuestionId = $("#RadioQuizId").val();
+
+            //OptionDissapearFunction();
+
+            //$.get(JhotpotAnswerWithTimeBkashForSpecialQuiz + "?fbid=" + $.session.get('fbid') + "&qid=" + QuestionId + "&answer=" + opt + "&timetaken=" + TimeTaken + "&ServiceName=QuizMaster&ServiceType=LiveQuizVideo", function (res) {
+
+            //});
+            //TimeTaken = 0;
+        }
+
+        function OptionDissapearFunction() {
+            $("#QuestionOptions").hide(); //Hide options window
+            //$("#QuestionOptions").slideUp(""); //Hide options window
+
+            $("#RadioQuizOptionId").val("");
+            $("#RadioQuizId").val("");
+            $("#optipon1label").text("");
+            $("#optipon2label").text("");
+            $("#optipon3label").text("");
+            $("#ShowingLiveQuestions").text("");
+
+            $("input:radio").attr("checked", false);
+
+            $('.roundedparent').hide();
+            var myAudio = document.getElementById('aa');
+            myAudio.pause();
+            myAudio.currentTime = 0;
+
+
+        }
+        function deafault_select() {
+            document.querySelector('#optipon1label').disabled = false;
+            document.querySelector('#optipon2label').disabled = false;
+            document.querySelector('#optipon3label').disabled = false;
+
+            document.getElementById("optipon1label").style.backgroundColor = 'transparent';
+            document.getElementById("optipon1label").style.color = 'white';
+
+            document.getElementById("optipon2label").style.backgroundColor = 'transparent';
+            document.getElementById("optipon2label").style.color = 'white';
+
+
+            document.getElementById("optipon3label").style.backgroundColor = 'transparent';
+            document.getElementById("optipon3label").style.color = 'white';
+        }
+        function CraeteDynamicVideoElement(LiveQuizResult) {
+
+
+            for (var i = 0; i < LiveQuizResult.result.length; i++) {
+
+
+                var video = document.createElement('video');
+
+                video.id = "LVideo" + i;
+
+                video.src = LiveQuizResult.result[i].videoName;
+
+                //video.poster =
+                //    'https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217';
+
+                video.autoplay = true;
+                video.controls = false;
+                video.muted = true;
+                video.load();
+                video.pause();
+                //video.height = 240; // 👈️ in px
+                //video.width = 320; // 👈️ in px
+
+                //style = "width: 100%; height: 90%; position: absolute; z-index: -1; background-color: black;"
+
+                video.style.width = "100%";
+                video.style.height = "90%";
+                video.style.display = "none";
+                video.style.position = "absolute";
+                video.style["background-color"] = "black";
+                video.style["z-index"] = "-1";
+
+
+
+                var box = document.getElementById('LiveVideoDiv');
+
+                box.appendChild(video);
+
+
+
+            }
+
+
+        }
+
+                //function ShowingOptions(LiveQuizQuestion) {
+
+                //    $("#RadioQuizId").val(LiveQuizQuestion.questionId);
+                //    const inputOptions = new Promise(function (resolve) {
+                //        resolve({
+                //            Option1: LiveQuizQuestion.option1,
+                //            Option2: LiveQuizQuestion.option2,
+                //            Option3: LiveQuizQuestion.option3
+                //        });
+                //    });
+
+                //    Swal.fire({
+                //        title: 'Select what you performed.',
+                //        input: 'radio',
+                //        inputOptions: inputOptions,
+                //        timer: LiveQuizQuestion.optionShowingDurationSec * 1000,
+                //        allowOutsideClick: false,
+                //        inputValidator: function (result) {
+                //            return new Promise(function (resolve, reject) {
+                //                if (result) {
+                //                    resolve();
+                //                } else {
+                //                    reject('You need to select something!');
+                //                }
+                //            });
+                //        }
+                //    }).then(function (result) {
+
+                //    })
+
+
+                //}
+
+                //$(document).on("click", ".swal2-container input[name='swal2-radio']", function () {
+                //    var id = $('input[name=swal2-radio]:checked').val();
+                //    console.log('id: ' + id);
+                //    console.log('Quizid: ' + $("#RadioQuizId").val());
+                //    Swal.close();
+                //});
+
+
+
+    </script>
+
+}
+
+

@@ -1,0 +1,107 @@
+﻿
+@section Scripts{
+    <script type="text/javascript">
+
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // query string: ?foo=lorem&bar=&baz
+        var reference = getParameterByName('reference');
+        var status = getParameterByName('status');
+
+
+        let UserName = sessionStorage.getItem("username");
+        let MSISDN = sessionStorage.getItem("fbid");
+        let ServiceName = "QuizMaster";
+
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Sorry!',
+            text: `${status}`,
+            confirmButtonText: 'Home',
+            confirmButtonColor: '#e3126e',
+            allowOutsideClick: false
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                var ckey = sessionStorage.getItem("ckey");
+                ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                localStorage.clear();
+                sessionStorage.clear();
+                sessionStorage.setItem("ckey", ckey);
+                window.location.href = "../LandingPage/Index"
+            }
+        })
+
+
+
+        //function getParameterByName(name, url = window.location.href) {
+        //    name = name.replace(/[\[\]]/g, '\\$&');
+        //    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        //        results = regex.exec(url);
+        //    if (!results) return null;
+        //    if (!results[2]) return '';
+        //    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        //}
+
+        //// query string: ?foo=lorem&bar=&baz
+        //var errorCode = getParameterByName('status');
+        //var errorMessage = getParameterByName('status');
+
+
+        //let UserName = sessionStorage.getItem("username");
+        //let MSISDN = sessionStorage.getItem("fbid");
+        //let ServiceName = "QuizMaster";
+
+
+
+
+        //let userData = {
+        //    "UserName": UserName,
+        //    "MSISDN": MSISDN,
+        //    "ServiceName": ServiceName,
+        //    "TransactionStatus": "Initiate",
+        //    "SourceUrl": window.location.href,
+        //    "ErrorCode": errorCode,
+        //    "ErrorMessage": errorMessage
+        //}
+
+
+        //var settings = {
+        //    "url": "https://bkashpaymentapi.shabox.mobi/api/BkashCheckout/CheckoutUserData",
+        //    "method": "POST",
+        //    "timeout": 0,
+        //    "headers": {
+        //        "Content-Type": "application/json"
+        //    },
+        //    "data": JSON.stringify(userData),
+        //};
+
+        //$.ajax(settings).done(function (response) {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        title: 'Sorry!',
+        //        text: `${errorMessage}`,
+        //        confirmButtonText: 'Home',
+        //        confirmButtonColor: '#FF4081',
+        //        allowOutsideClick: false
+        //    }).then((result) => {
+        //        /* Read more about isConfirmed, isDenied below */
+        //        if (result.isConfirmed) {
+        //            localStorage.clear();
+        //            sessionStorage.clear();
+        //            window.location.href = "../Landingpage/Index"
+        //        }
+        //    })
+        //});
+
+    </script>
+
+}

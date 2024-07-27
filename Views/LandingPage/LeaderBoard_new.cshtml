@@ -1,0 +1,139 @@
+﻿
+
+
+@model IEnumerable<QuizMaster.Models.sp_Bkash_Result_Jhotpot_Result>
+<style>
+    header{
+        visibility:hidden;
+    }
+    table {
+        border-collapse: collapse;
+    }
+
+        table tr td {
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+        }
+
+    .table th, .table td {
+       
+        border-top: 0px;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: none !important;
+    }
+
+</style>
+
+@*<body style=" background-image: url('../Assets/leaderboard/123.png');">*@
+<body style="background:white">
+
+
+    @*<div class="fixed-bottom">
+            <div class=" row" style="color:white; margin-top: 5.5%; position: absolute; z-index: 1030;">
+                <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; "  onclick="leaderBoard()" id="leaderBoardz">
+                    <i class="fas fa-crown" ></i>
+                </div>
+                <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                    <i  class="fas fa-trophy"></i>
+                </div>
+            </div>
+
+            <img style="width:100vw; height:auto" src="~/Assets/leaderboard/1.png" />
+        </div>*@
+
+    <!--<div class="fixed-bottom">
+
+        <div class=" row" style="color:white; margin-top: 5.5%; position: absolute; z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/Daily-Winner.png" style="width: 13vw;margin-top: -52%;margin-left: -14%;" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/RegHome.png" style="text-align: center;width: 7vw;margin-top: -16.5%;margin-left: -3%;" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/HighLead.png" style="width: 12.5vw;margin-top: -52%;margin-left: -5%;" />
+            </div>
+        </div>-->
+    @*<img style="width:100vw; height:auto" src="~/Assets/leaderboard/1.png" />*@
+    <!--<img style="width:90vw; height:auto" src="~/Assets/Footer.png" />
+    </div>-->
+
+
+
+    <div style="position:relative; height: 100vh ">
+        @*<div class="row bg-white" style="font-size:20px; text-align:center; padding: 5px; margin-left:30%; margin-right:30%; margin-bottom:10px; margin-top:10px; border-radius: 40px; background:white !important">
+                <div class="col-12">
+                    <div class="row">
+
+                        <div class="center" style="line-height: 1.4; font-weight: 500; margin-top: 5px; color: #a20ec4">লিডারবোর্ড</div>
+                    </div>
+                </div>
+            </div>*@
+
+       @* <div id="loadingImage">
+            <!--Loading gif goes here-->
+            <img src="~/Assets/reload.gif" alt="Loading" />
+        </div>*@
+
+
+        <div class="table-responsive" style=" height: 100vh; ">
+
+            <table id="table" class="table text-center" style=" font-size: 12px; ">
+                <thead class="text-center" style="background-color: #357d93;  ">
+                    <tr class="row" style="width: 95vw; margin-left: 2%;">
+                        <th class="col-2" style="color: #ffda25;">রেঙ্ক</th>
+                        <th class="col-3" style=" margin-left: -3%; color: #ffda25;">নাম</th> 
+                        <th class="col-3" style="color: #ffda25;">মোবাইল</th>
+                      
+                        <th class="col-2" style="margin-left: 1%;color: #ffda25;">সময়</th>
+                        <th class="col-2" style="margin-left: 2%;color: #ffda25;">পয়েন্ট</th>
+                    </tr>
+                </thead>
+
+                
+
+                <tbody style="overflow-y: auto !important; height: 10vh ">
+                    @{ int id = 0; }
+                    @foreach (var item in Model)
+                    {
+                        id++;
+                        <tr class="row" style="color: #ffffff; height: 7.5vh; text-align: center; margin-left: 10px; margin-right: 10px; margin-bottom: 20px; margin-top: 10px; border-radius: 40px; background: #357d93 !important ">
+                            <td class="col-2">
+                                <label> @id </label>
+                            </td>
+                            <td class="col-3" style="text-align:left;">
+                                <label> @item.name </label>
+
+                            </td>
+                            <td class="col-3">
+                                <label> @item.fbid </label>
+
+                            </td>
+              
+                            <td class="col-2">
+                                <strong><label style="color: white; font-weight: bolder;"> @item.Time </label></strong>
+                            </td>
+                            <td class="col-2">
+                                <strong><label style="color: white; font-weight: bolder;"> @item.RightAns </label></strong>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+

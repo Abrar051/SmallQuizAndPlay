@@ -1,0 +1,368 @@
+﻿
+<style>
+
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    input[type="checkbox"][id^="myCheckbox"] {
+        display: none;
+    }
+
+    label[for^="myCheckbox"] {
+        border: 1px solid #fff;
+        padding: 10px;
+        display: block;
+        position: relative;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+        label[for^="myCheckbox"]:before {
+            background-color: white;
+            color: white;
+            content: " ";
+            display: block;
+            border-radius: 50%;
+            border: 1px solid grey;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 28px;
+            transition-duration: 0.4s;
+            transform: scale(0);
+        }
+
+        label[for^="myCheckbox"] img {
+            height: 100px;
+            width: 100px;
+            transition-duration: 0.2s;
+            transform-origin: 50% 50%;
+        }
+
+    :checked + label[for^="myCheckbox"] {
+        border-color: #ddd;
+    }
+
+        :checked + label[for^="myCheckbox"]:before {
+            content: "✓";
+            background-color: grey;
+            transform: scale(1);
+        }
+
+        :checked + label[for^="myCheckbox"] img {
+            transform: scale(0.9);
+            /* box-shadow: 0 0 5px #333; */
+            z-index: -1;
+        }
+
+
+
+
+    .carousel-indicators {
+        top: 80%;
+    }
+
+    .modal {
+        visibility: hidden;
+        /*transition: all 0.4s;*/
+        opacity: 0;
+    }
+
+        .modal.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    .modal,
+    .modal-overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 100;
+    }
+
+    .modal,
+    .modal-card,
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .modal-content {
+        overflow: auto;
+        flex-grow: 1;
+    }
+
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-body {
+        z-index: 101;
+        margin: auto;
+        max-height: calc(100vh - 1rem);
+        max-width: calc(100vw - 1rem);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 500px;
+        height: 300px;
+        background: white;
+    }
+
+    .modal-header,
+    .modal-content,
+    .modal-footer {
+        padding: 1rem;
+    }
+
+    .modal-header {
+        background: rebeccapurple;
+        text-transform: capitalize;
+        font-size: 1.25rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+
+
+</style>
+
+
+<div id="reg" class="modal close" style="z-index: 105; ">
+    <div class="modal-overlay" onclick="HelloCloseModal()"></div>
+    <div class="modal-card" style="height: 70vh; z-index: 1050;">
+
+        <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+
+            <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+
+
+                <span><i class="fas fa-times" onclick="HelloCloseModal()"></i></span>
+
+            </div>
+
+            <img src="~/Assets/LoginModalPopUp3.png" style="margin-bottom: -14%; height:230px; width:230px; margin:0 auto" />
+            <div style="margin-bottom: 20px;">
+                <span style="width: 100%; text-align: center; color: #357d93;">আপনার নাম এবং ফোন নাম্বারটি</span><br>
+                <span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+            </div>
+
+            <div class="modal-footer">
+                <div class="center" style="text-align: center; margin-bottom: -3%;">
+                    <button type="submit" class="btn btn-default" style="color: white; background: #357d93; padding: 11px; border-radius: 16px;" onclick="SignUp()">লগইন</button>
+                    @*<a onclick="loginModal()" style="padding-left:10px; font-size:12px; color:deeppink; text-decoration: underline;">
+                            আপনার অ্যাকাউন্টে লগ ইন করুন
+                        </a>*@
+
+                </div>
+                @*<div style="text-align:center" class="center">
+                        <a onclick="loginModal()" style="padding-left:10px; font-size:12px; color:deeppink; text-decoration: underline;">
+                            আপনার অ্যাকাউন্টে লগ ইন করুন
+                        </a>
+                    </div>*@
+                @*<div style="text-align: center; font-size:12px;" class="center">আমরা অথেনটিকেশনের জন্য কুইজমাস্টারের সাথে তথ্য শেয়ার করব।</div>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div style="height: 90vh; overflow-y: scroll; overflow-x: hidden;">
+
+    <h4>অনুগ্রহ করে যেকোনো ৩টি ক্যাটাগরি নির্বাচন করুন</h4>
+
+    <div class="container" style="text-align: center;">
+        <ul id="CategoryUL">
+            <!--<li>
+                <input type="checkbox" id="myCheckbox1" class="check" name="QuesCheck" />
+                <label id="myCheckbox1" for="myCheckbox1">
+                    <img class="container" src="~/Assets/ChallangeQuiz/Islamic.png" />-->
+            @*<img class="container" src="~/Assets/ChallangeQuiz/bangladesh.png" />*@
+            <!--</label>
+            </li>
+            <li>
+
+                <input type="checkbox" id="myCheckbox2" class="check" name="QuesCheck" />
+                <label id="myCheckbox2" for="myCheckbox2">
+                    <img src="~/Assets/ChallangeQuiz/film-slate.png" />
+                </label>
+            </li>
+            <li>
+
+                <input type="checkbox" id="myCheckbox3" class="check" name="QuesCheck" />
+                <label id="myCheckbox3" for="myCheckbox3">
+                    <img src="~/Assets/ChallangeQuiz/city.png" />
+                </label>
+            </li>
+            <li>
+
+                <input type="checkbox" id="myCheckbox4" class="check" name="QuesCheck" />
+                <label id="myCheckbox4" for="myCheckbox4">
+                    <img src="~/Assets/ChallangeQuiz/city.png" />
+                </label>
+            </li>
+            <li>
+
+                <input type="checkbox" id="myCheckbox5" class="check" name="QuesCheck" />
+                <label id="myCheckbox5" for="myCheckbox5">
+                    <img src="~/Assets/ChallangeQuiz/city.png" />
+                </label>
+            </li>-->
+        </ul>
+        <br />
+        <div class="row" style="margin-top:1%">
+            <div class="col-4"></div>
+            <div class="col-4 quizkhelun">
+                @*<img src="~/Assets/quizKhelunButton.png" id="quizKhelunButton" style="width: 23vw; margin-left: -11%; margin-top: -14%; position: fixed; bottom: 11%;" onclick="" disabled="disabled"/>*@
+                <button style="color: mediumvioletred; margin-top: -13px;" id="quizKhelunButton" onclick="ChallangeQuizkhelun_btn()" disabled="disabled">কুইজ খেলুন</button>
+            </div>
+            <div class="col-4"></div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+@section Scripts{
+    <script>
+
+            $(document).ready(function () {
+
+
+                function getParameterByName(name, url = window.location.href) {
+                    name = name.replace(/[\[\]]/g, '\\$&');
+                    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                        results = regex.exec(url);
+                    if (!results) return null;
+                    if (!results[2]) return '';
+                    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                }
+
+                $.get("../LandingPage/ChallangeQuizRandomCats", function (rdata) {
+
+                    if (rdata.result != null) {
+                        console.log(rdata);
+
+                        for (var i = 0; i < rdata.result.length; i++) {
+                            var imageUrl = window.location.protocol + "//" + window.location.host + '/Assets/ChallangeQuiz/' + rdata.result[i].homeThemeImage +'.png';
+                            $("#CategoryUL").append('<li><input type="checkbox" id="myCheckbox' + (i + 1) + '" class="check" name="QuesCheck" value="' + rdata.result[i].homeThemeImage + '" onclick="checkBoxSelection()"/><label id="myCheckbox' + (i + 1) + '" for="myCheckbox' + (i + 1) + '"><img class="container" src="' + imageUrl+'" /></label></li >');
+
+                        }
+
+
+                    }
+
+                });
+
+            });
+
+        
+
+        function checkBoxSelection() {
+            var catSelectionCount = 0;
+            $('input[name="QuesCheck"]:checked').each(function () {
+                catSelectionCount = catSelectionCount + 1;
+            });
+
+            if (catSelectionCount == 3) {
+                $("#quizKhelunButton").removeAttr('disabled');
+            }
+            //else if (catSelectionCount < 3) {
+                
+            //}
+            else {
+                $("#quizKhelunButton").prop("disabled", true);
+            }
+        }
+
+        function ChallangeQuizkhelun_btn() {
+
+            var number = sessionStorage.getItem("fbid");
+            var selectedCats = [];
+
+            $('input[name="QuesCheck"]:checked').each(function () {
+                selectedCats.push(this.value);
+            });
+
+            var selectedCatsSession = btoa(btoa(selectedCats));
+            sessionStorage.setItem("scs", selectedCatsSession);
+
+
+            console.log(selectedCats);
+
+            if (number != null) {
+                $.get("../LandingPage/IsSubscribed?fbid=" + number, function (rdata) {
+
+
+                    if (rdata.result === false) {
+                        paymentwithbkash();
+                    } else {
+                        if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                            
+                            document.querySelector("#reg").classList.remove("close");
+                            document.querySelector("#reg").classList.add("open");
+                            return false;
+                        }
+
+                        var CRPSResponse = CheckRecurringPaymentStatusFunc(number, CRPSResponse);
+
+                        if (CRPSResponse == "1") {
+                            window.location.href = "../LandingPage/Jhotpotround";
+                        }
+                    }
+                })
+            } else {
+                //if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                //    document.querySelector("#reg").classList.remove("close");
+                //    document.querySelector("#reg").classList.add("open");
+
+                //    $("#logoutMenu").hide();
+                //}
+
+                window.location.href = "../LandingPage/Jhotpotround";
+            }
+        }
+
+
+    </script>
+
+}
+
+
+
+
+

@@ -1,0 +1,315 @@
+﻿
+
+
+<style>
+
+
+    /* Older Tabs Start */
+
+    .ease {
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+    }
+
+    .tabs {
+        background: #fff;
+        position: relative;
+        margin-bottom: 50px;
+    }
+
+        .tabs > input,
+        .tabs > span {
+            width: 45%;
+            height: 60px;
+            line-height: 60px;
+            position: absolute;
+            top: 0;
+        }
+
+        .tabs > input {
+            cursor: pointer;
+            opacity: 0;
+            position: absolute;
+            z-index: 99;
+        }
+
+        .tabs > span {
+            background: #f0f0f0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+            .tabs > span i,
+            .tabs > span {
+                -webkit-transition: all .5s;
+                -moz-transition: all .5s;
+                -o-transition: all .5s;
+                transition: all .5s;
+            }
+
+        .tabs > input:hover + span {
+            background: rgba(255,255,255,.1);
+        }
+
+        .tabs > input:checked + span {
+            background: #fff;
+        }
+
+        .tabs > input:checked + span,
+        .tabs > input:hover + span {
+            color: #357d93;
+        }
+
+    #tab-1, #tab-1 + span {
+        left: 10%;
+        width: 78%;
+        border-radius: 29px 30px 28px 28px;
+        line-height: 66px;
+    }
+
+    #tab-2, #tab-2 + span {
+        left: 49.5%;
+        width: 49%;
+        border-radius: 0px 23px 23px 0px;
+        line-height: 66px;
+    }
+
+
+    #tab-4, #tab-4 + span {
+        left: 66%;
+        border-radius: 0px 23px 23px 0px;
+        width: 33%;
+        line-height: 66px;
+    }
+
+    .tabs [type="radio"]:checked + span {
+        background-color: #357d93;
+        color: white;
+    }
+
+
+
+    .tab-content {
+        width: 100%;
+        height: 80vh;
+    }
+
+        .tab-content section {
+            width: 100%;
+            display: none;
+            height: 100%;
+        }
+
+    #tab-1:checked ~ .tab-content #tab-item-1 {
+        display: block;
+        color: #357d93;
+    }
+
+    #tab-2:checked ~ .tab-content #tab-item-2 {
+        display: block;
+        color: #357d93;
+    }
+
+    #tab-4:checked ~ .tab-content #tab-item-4 {
+        display: block;
+        color: #357d93;
+    }
+
+    .effect-1 > input:checked + span {
+        background: #357d93;
+    }
+
+
+    h3 {
+        display: inline-block;
+        white-space: nowrap;
+        transform-origin: center;
+    }
+
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        height: 11vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+        .bottom-navbar img {
+            width: 4rem;
+        }
+
+</style>
+
+<div class="" style=" ">
+    <br />
+    <div style=" text-align: center; font-weight: bold; font-size: 18px; ">
+        <span>
+            গতকালকের উইনার লিস্ট
+            <br /><span id="yesterdayDate"></span>
+        </span>
+    </div>
+    <br />
+    <div style=" text-align: center; font-weight: bold; font-size: 14px; ">
+        <span>
+            আপনার গতকালকের স্কোর :
+            <span style="color: #357d93;" id="scoreyesterday"></span>
+        </span>
+    </div>
+@*    <div style=" text-align: center; font-weight: bold; font-size: 14px; ">
+        <span>
+            আপনার গতকালকের রেঙ্ক :
+            <span style="color: #357d93;" id="rankyesterday"></span>
+        </span>
+    </div>*@
+
+    <br>
+    <div class="tabs effect-1">
+        <input type="radio" id="tab-1" name="tab-effect-1" checked="checked" onclick="getingDSLeaderBoardDataByType('DailyWinner')">
+        <span id="quizTypeLabel">গতকালকের কুইজ উইনার</span>
+
+
+
+        <div class="tab-content" style="background-image:url('../Assets/reload.gif'); background-repeat: no-repeat; background-position: center; ">
+            <section id="tab-item-1">
+                <iframe width="100%" height="100%" style="border: none; " id="DWTab"></iframe>
+            </section>
+            <section id="tab-item-2">
+                <iframe width="100%" height="100%" style="border: none;  " id="GQTab"></iframe>
+            </section>
+            <section id="tab-item-4">
+                <iframe width="100%" height="100%" style="border: none; " id="QWTab"></iframe>
+                
+            </section>
+      
+
+        </div>
+    </div>
+
+</div>
+
+
+
+@*<div class="fixed-bottom" style="bottom: 0vw;">
+
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 2.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+    <img style="width: 100%;height: 18vw;margin-bottom: 1vh;" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>
+*@
+
+
+
+
+<div class="bottom-navbar">
+    <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+    <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" />
+    <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()"  />
+    <img src="~/Assets/LiveQuizRelated/winner.png" onclick="leaderBoard_Monthly()" style="margin-top: -8%;" />
+</div>
+
+
+
+
+
+
+<script>
+
+    var today = new Date();
+
+
+    var yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+
+    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+    var formattedDate = yesterday.toLocaleDateString('bn-BD', options);
+
+
+    document.getElementById('yesterdayDate').innerText = formattedDate;
+</script>
+<script>
+    var serviceName = "QuizMaster-MultiService4";
+
+    // Set the value in sessionStorage
+    sessionStorage.setItem('serviceName', serviceName);
+
+    var label = getServiceLabel();
+
+    document.getElementById('quizTypeLabel').innerText = label;
+
+    function getServiceLabel() {
+        return ' কুইজ উইনার';
+    }
+</script>
+<script>
+
+    window.onload = function () {                           
+        document.getElementById("tab-1").click();
+
+    }
+
+    $(document).ready(function () {
+      
+    });
+    function getingDSLeaderBoardDataByType(type) {
+        if (type == 'DailyWinner') {
+            $.ajax({
+                url: window.location.origin + "/home/YesterDayScore?MSISDN=" + sessionStorage.getItem('fbid') + "&type=" + type + "&Service=" + sessionStorage.getItem('serviceName'),
+                type: 'GET',
+                success: function (response) {
+
+                    $('#scoreyesterday').text(response);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                    console.error('Error: ' + textStatus + ', ' + errorThrown);
+                }
+            });
+            console.log(type);
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Leader_DailyWinner&srcurl=" + window.location.href, function (rData) { });
+            document.getElementById("DWTab").src = BASE_URL + "/LandingPage/LeaderBoard_new?type=" + type + "&ServiceName=" + sessionStorage.getItem('serviceName');
+            
+        } else if (type == 'WorldCupQuizWinner') {
+            console.log(type);
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Leader_WorldCupQuizWinner&srcurl=" + window.location.href, function (rData) { });
+            //document.getElementById("DQTab").src ="";
+            document.getElementById("SWTab").src = BASE_URL + "/LandingPage/LeaderBoard_new?type=" + type;
+        } else if (type == 'FunFriday') {
+            console.log(type);
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Leader_FunFridayWinner&srcurl=" + window.location.href, function (rData) { });
+            //document.getElementById("DQTab").src ="";
+            document.getElementById("FFTab").src = BASE_URL + "/LandingPage/LeaderBoard_new?type=" + type;
+        }
+ 
+        else if (type == 'WorldCup') {
+            console.log (type);
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "QuizMasterWorldCup" + "&theme=Leader_WorldCup&srcurl=" + window.location.href, function (rData) { });
+            //document.getElementById("DQTab").src ="";
+            document.getElementById("GQTab").src = BASE_URL + "/LandingPage/LeaderBoard_new?type=" + type;
+        }
+        else if (type == 'QuizMasterWeekly') {
+            console.log(type);
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Leader_WordGame&srcurl=" + window.location.href, function (rData) { });
+            //document.getElementById("QWTab").src ="";
+            document.getElementById("QWTab").src = BASE_URL + "/LandingPage/LeaderBoard_new?type=" + type;
+        }
+    }
+</script>
+
+
+

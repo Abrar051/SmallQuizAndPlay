@@ -1,0 +1,264 @@
+﻿body{
+    background-color:black;
+}
+
+@media only screen and (max-width: 360px) {
+
+    #QuestionOptions {
+        display: block;
+        position: absolute;
+        top: 43vh;
+        left: 5%;
+        background: rgba(0, 0, 0, 0.73);
+    }
+
+    #unmuteButton {
+        position: absolute;
+        top: 50vh;
+        right: 3%;
+        z-index: 3;
+    }
+
+    #LiveVideoDiv {
+        width: 100%;
+        height: 86vh;
+    }
+
+    #LVideo {
+        width: 100%;
+        height: 77%;
+        position: absolute;
+        z-index: -1;
+        background-color: black;
+    }
+
+}
+
+@media only screen and (min-width: 361px) and (max-width: 375px) {
+
+    #QuestionOptions {
+        display: none;
+        position: absolute;
+        top: 43vh;
+        left: 5%;
+        background: rgba(0, 0, 0, 0.73);
+    }
+
+    #unmuteButton {
+        position: absolute;
+        top: 50vh;
+        right: 3%;
+        z-index: 3;
+    }
+
+    #LiveVideoDiv {
+        width: 100%;
+        height: 86vh;
+    }
+
+    #LVideo {
+        width: 100%;
+        /*height: 74%;*/
+        height: 65%;
+        position: absolute;
+        z-index: -1;
+        background-color: black;
+    }
+
+}
+
+@media only screen and (min-width: 376px) and (max-width: 390px) {
+
+    #QuestionOptions {
+        display: none;
+        position: absolute;
+        top: 54vh;
+        left: 5%;
+        background: rgba(0, 0, 0, 0.73);
+    }
+
+    #unmuteButton {
+        position: absolute;
+        top: 50vh;
+        right: 3%;
+        z-index: 3;
+    }
+
+    #LiveVideoDiv {
+        width: 100%;
+        height: 86vh;
+    }
+
+    #LVideo {
+        width: 100%;
+        height: 80%;
+        position: absolute;
+        z-index: -1;
+        background-color: black;
+    }
+}
+
+@media only screen and (min-width: 391px) and (max-width: 415px) {
+
+    #QuestionOptions {
+        display: none;
+        position: absolute;
+        top: 55vh;
+        left: 5%;
+        background: rgba(0, 0, 0, 0.73);
+    }
+
+    #unmuteButton {
+        position: absolute;
+        top: 50vh;
+        right: 3%;
+        z-index: 3;
+    }
+
+    #LiveVideoDiv {
+        width: 100%;
+        height: 86vh;
+    }
+
+    #LVideo {
+        width: 100%;
+        height: 80%;
+        position: absolute;
+        z-index: -1;
+        background-color: black;
+    }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+    #QuestionOptions {
+        display: none;
+        position: absolute;
+        top: 38vh;
+        left: 5%;
+        background: rgba(0, 0, 0, 0.73);
+    }
+
+    #unmuteButton {
+        position: absolute;
+        top: 50vh;
+        right: 3%;
+        z-index: 3;
+    }
+
+    #LiveVideoDiv {
+        width: 100%;
+        height: 86vh;
+    }
+
+    #LVideo {
+        width: 100%;
+        height: 79%;
+        position: absolute;
+        z-index: -1;
+        background-color: black;
+    }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    #QuestionOptions {
+        display: none;
+        position: absolute;
+        top: 38vh;
+        left: 5%;
+        background: rgba(0, 0, 0, 0.73);
+    }
+
+    #unmuteButton {
+        position: absolute;
+        top: 50vh;
+        right: 3%;
+        z-index: 3;
+    }
+
+    #LiveVideoDiv {
+        width: 100%;
+        height: 86vh;
+    }
+
+    #LVideo {
+        width: 100%;
+        height: 79%;
+        position: absolute;
+        z-index: -1;
+        background-color: black;
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    #QuestionOptions {
+        display: none;
+        position: absolute;
+        top: 38vh;
+        left: 5%;
+        background: rgba(0, 0, 0, 0.73);
+    }
+
+    #unmuteButton {
+        position: absolute;
+        top: 50vh;
+        right: 3%;
+        z-index: 3;
+    }
+
+    #LiveVideoDiv {
+        width: 100%;
+        height: 86vh;
+    }
+
+    #LVideo {
+        width: 100%;
+        height: 79%;
+        position: absolute;
+        z-index: -1;
+        background-color: black;
+    }
+
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+    #QuestionOptions {
+        display: none;
+        position: absolute;
+        top: 38vh;
+        left: 5%;
+        background: rgba(0, 0, 0, 0.73);
+    }
+
+    #unmuteButton {
+        position: absolute;
+        top: 50vh;
+        right: 3%;
+        z-index: 3;
+    }
+
+    #LiveVideoDiv {
+        width: 100%;
+        height: 86vh;
+    }
+
+    #LVideo {
+        width: 100%;
+        height: 79%;
+        position: absolute;
+        z-index: -1;
+        background-color: black;
+    }
+
+}

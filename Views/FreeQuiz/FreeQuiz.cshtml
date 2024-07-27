@@ -1,0 +1,798 @@
+﻿
+<div style="overflow-y:scroll;height:90%">
+
+
+    <div class="row" style=" background-color: lightcyan;width: 80vw; border-radius: 10px; padding: 10px; margin:auto">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-6 result"><i class="far fa-check-square" style="color:green"></i> <span id="rt"> </span> </div>
+                <div class="col-6 result"><i class="far fa-times-circle" style="color:red"></i> <span id="ng">  </span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="CurrentQuizType" style="display:none;"></div>
+
+    <br />
+    <div id="gg" style="visibility: hidden; overflow-y: scroll; height: 71.5vh;">
+        <div class="jhotpot-card">
+            @*<div class="before-play">*@
+            <div>
+                <div style="text-align:center;margin: 2%">
+                    <br />
+                    <span class="" id="quesid">1</span> | <span class="" id="TotalQuesReg">60</span>
+                </div>
+                <br />
+                <div id="clockdivround">
+                    <div class="box-shadow">
+                        <span class="seconds" id="countdowntimer"></span>
+                    </div>
+                    <br />
+                </div>
+                <div style="margin-top:30%; margin-bottom:10px;">
+                    <input type="hidden" id="qindex" />
+                    <div style="margin:20px; text-align:center">
+                        <span id="questionImage" style="display:none"></span>
+                        <br />
+                        <span id="question"></span>
+                    </div>
+                    @*<div class="col-xs-10 col-sm-10 col-md-10 mt-2" id="option_layout">*@
+                    <div class="" id="option_layout">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    @*<div class="row" style=" background-color: lightcyan;width: 80vw; border-radius: 10px; padding: 10px; margin:auto">
+    <div class="col-10">
+    <div class="row">
+    <div class="col-6 result"><i class="far fa-check-square" style="color:green"></i> <span id="rt"> </span> </div>
+    <div class="col-6 result"><i class="far fa-times-circle" style="color:red"></i> <span id="ng">  </span></div>
+    </div>
+    </div>
+    </div>
+    </div>*@
+
+    <div class="modal" id="m_jh_pl" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title col-10" id="" style="width:100%; text-align:center; color:white">নিউ ইয়ার কুইজ</span>
+                    <div class="col-1" style="float:right">
+                        <button type="button" class="" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+                            <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <small style="text-align:center;" class="deeporange">আপনি ইতিমধ্যে দুইটি রাউন্ড খেলে ফেলেছেন, অনুগ্রহ করে কাল আবার চেষ্টা করুন।</small>
+                </div>
+                <div class="modal-footer element-center">
+                    <button type="button" class="btn bg-deeporange text-white" data-bs-dismiss="modal" onclick="closeModal()">ওকে</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="modal" id="m_jh_result" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+    <span class="modal-title col-11" id="result_title" style="width:100%; text-align:center; color:white"></span>
+    <div class="col-1" style="float:right">
+    <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+    <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+    </button>
+    </div>
+    </div>
+    <div class="modal-body text-center">
+    <div class="mb-2">
+    <img id="result_pic" src="" height="60" width="60" />
+    </div>
+    <small id="result_content" style="text-align:center;" class="deeporange"></small>
+    </div>
+    <div class="modal-footer element-center">
+    <button type="button" class="btn  text-white" style="background-color: #DD6E0F;" id="modal_button" onclick="reloadUI()">ওকে</button>
+    </div>
+    </div>
+    </div>
+    </div>*@
+
+
+    <div class="modal" id="m_jh_result" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background: transparent;">
+                <!--<div class="modal-header">-->
+                @*<span class="modal-title col-11" id="result_title" style="width:100%; text-align:center; color:white"></span>*@
+                @*<div class="col-11"></div>
+                <div class="col-1" style="float:right">
+                <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+                <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                </button>
+                </div>*@
+                <!--</div>-->
+                <div class="row">
+                    <div class="col-11"></div>
+                    <div class="col-1" style="margin-left: -1%;">
+                        <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+                            <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal-body text-center">
+
+                    @*<div class="mb-2">*@
+                    <div class="">
+                        <img id="result_pic" src="" style="width:100%;" />
+                    </div>
+                    @*<span class="modal-title col-11" id="result_title" style="width:100%; text-align:center;color: #ff1493;font-size: 25px;font-weight: bold;"></span>
+                    <br />
+                    <br />*@
+                    <small id="result_content" style="text-align:center;color:black;font-size: 16px;" class="deeporange"></small>
+                    <br />
+                    <small id="result_content2" style="text-align:center;color:black;font-size: 16px;" class="deeporange"></small>
+                </div>
+                <div class="modal-footer element-center">
+                    @*<button type="button" class="btn  text-white" style="background-color: #357d93;" id="modal_buttonPlay" onclick="subscribe()">সাবস্ক্রাইব করুন</button>*@
+                    @*<button type="button" class="btn text-white" style="background-color: #ff1fc7; border-radius: 17px; font-size: 1.5rem; position: relative; top: -187px;" id="modal_buttonPlay" onclick="subscribe()">সাবস্ক্রাইব করুন</button>*@
+                    <img src="~/Assets/subscribeRedirectButton.png" alt="Subscribe" onclick="subscribe()" style="cursor: pointer; position: relative; top: -202px; left: -4px ; width: 289px; height: 85px;" id="modal_buttonPlay" />
+                    @*<button type="button" class="btn  text-white" style="background-color: #357d93;" id="modal_button" onclick="RedirectOnOkay()">ওকে</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <audio id="aa" controls loop  hidden>
+        <source src="https://wap.shabox.mobi/CMS/Assets/VoiceInstruction/0bd63b47-1d32-48e1-adee-58ab14813a47.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+
+
+</div>
+
+
+@section leaderboard{
+    <div class="fixed-bottom">
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+        <img style="width: 100%;height: 18vw;margin-bottom: 1vh;" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>
+
+}
+<script src="~/Scripts/umlop/freequiz.js"></script>
+
+
+
+
+
+
+@*@section scripts{
+    <script>
+        //const { time } = require("modernizr");
+
+                var questionArray = [];
+                var index = 0;
+                var right = 0;
+                var wrong = 0;
+                var flag = false;
+                var timetaken = 0;
+                var fbid;
+
+                $(document).ready(function () {
+                    if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
+                        window.location.href = '../';
+                    }
+                    else {
+                        //if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+                        //    window.location.href = 'LandingPage/Index';
+                        //    return false;
+                        //}
+
+
+
+                        $("#rt").html(right);
+                        $("#ng").html(wrong);
+                        fbid = sessionStorage.getItem('fbid');
+                        FFPressed = sessionStorage.getItem("FFPressed");
+                        EQPressed = sessionStorage.getItem("EQPressed");
+
+
+                        $.get("../home/BkashQuizMasterQuizTimeChecking?quiztype=WinTime", function (rdata) {
+                            console.log (rdata);
+                            debugger
+
+                            if (rdata.response != null) {
+
+                                if (new Date().toString().includes("Fri ") == true && FFPressed == 1 && EQPressed == 0) {
+
+                                    $.get("../home/SpecialQuizPlayQountChecking?quiztype=FunFriday&msisdn=" + fbid, function (res) {
+
+                                        if (res != null && res != 0) {
+
+                                            $("#TotalQuesReg").text("10");
+                                            $(".CurrentQuizType").text("FunFriday");
+                                            sessionStorage.setItem("QT", "SQ");
+                                            sessionStorage.removeItem("FFPressed");
+                                            GetSpecialQuiz("FunFriday");
+
+                                        }
+
+                                    });
+                                }
+                                else {
+                                    var dt = new Date();//current Date that gives us current Time also
+
+                                    var startTime = rdata.response[0].startTime;
+                                    var endTime = rdata.response[0].endTime;
+
+                                    //var s = startTime.split(':');
+                                    var dt1 = new Date(dt.getFullYear() + '/' + (dt.getMonth() + 1) + '/' + dt.getDate() + ' ' +
+                                        startTime);
+
+                                    //var e = endTime.split(':');
+                                    var dt2 = new Date(dt.getFullYear() + '/' + (dt.getMonth() + 1) + '/' + dt.getDate() + ' ' +
+                                        endTime);
+
+
+
+                                    //alert((dt >= dt1 && dt <= dt2) ? 'Current time is between startTime and endTime' :
+                                    //    'Current time is NOT between startTime and endTime');
+                                    //alert('dt = ' + dt + ',  dt1 = ' + dt1 + ', dt2 =' + dt2)
+
+
+                                    if (dt >= dt1 && dt <= dt2) {
+                                        sessionStorage.setItem("QT", "SQ");
+                                        sessionStorage.removeItem("FFPressed");
+                                        console.log('Current time is between startTime and endTime');
+                                        //GetSpecialQuiz("EkusheyQuiz");
+                                        $(".CurrentQuizType").text("WorldCupQuiz");
+                                        GetSpecialQuiz("WorldCupQuiz");
+                                    } else {
+                                        sessionStorage.removeItem("QT");
+                                        $("#TotalQuesReg").text("60");
+                                        GetNormalQuiz();
+                                    }
+                                }
+
+
+
+
+
+
+                            }
+                            else {
+                                var challangeQuiz = sessionStorage.getItem("scs");
+                                if (challangeQuiz != null && challangeQuiz != "") {
+                                    GetChallangeQuiz();
+                                } else {
+                                    $("#TotalQuesReg").text("60");
+                                    GetNormalQuiz();
+                                }
+                            }
+                        });
+
+                    }
+                });
+
+
+
+
+
+                function GetChallangeQuiz() {
+                    var challangeQuiz = atob(atob(sessionStorage.getItem("scs")));
+                    console.log(challangeQuiz);
+                    console.log("scs");
+                    sessionStorage.removeItem("scs");
+
+
+                }
+
+                function GetSpecialQuiz(quiztype) {
+                   
+
+
+                    JhotpotThemeQuestionsForSpecialQuizes = window.location.origin + "/api/jhotpot/GetJhotpotFreeQuestionsNew";
+    
+              
+                    $.get(JhotpotThemeQuestionsForSpecialQuizes + "?fbid=" + fbid + "&ServiceType=" + quiztype, function (res) {
+
+                        var dd = res.result.isPlayed === "1";
+
+                        var node = document.getElementById('gg')
+                        var visibility = node.style.visibility;
+                        node.style.visibility = visibility == "visible" ? 'hidden' : "visible"
+                        questionArray = res.result.qlist;
+                            //console.log(res.result.Qlist);
+                            //var fortySeconds = 180;
+                        var fortySeconds = res.result.timeDuration;
+                        var display = document.getElementById("countdowntimer");
+                        startTimer(fortySeconds, display);
+                        var data = questionArray[0];
+                         updateQuestionForSpecialQuiz(data, 0);
+                    });
+                }
+
+
+                function updateQuestionForSpecialQuiz(data, index) {
+
+                    $("#questionImage").hide();
+
+                    $("#quesid").text(index + 1);
+
+                    $("#question").text(data.question);
+                    $("#qindex").val(index);
+
+                    if (data.questionImage != null) {
+                        var imageUrl = "https://wap.shabox.mobi/CMS/assets/images/QuizmasterQuestionImage/" + data.questionImage;
+
+                        $("#questionImage").show();
+                        $("#questionImage").val("");
+                        $("#questionImage").text("");
+                        $("#questionImage").append('<a><img src="' + imageUrl + '" id="edit-save" style="width: 30vw;height: 15vh;margin-bottom: 3%;"/></a>');
+
+                    }
+
+                    $("#option_layout").append('<div class="option-btn"><div class= "row" onclick="submitQuestionForSpecialQuiz(\'Option1\')"><div class="col-2" style="margin-left:10px; color:white">ক.</div><div class="col-8" style="11px;">' + data.option1 + '</div></div ></div >' +
+                        '<div class="option-btn"><div class="row" onclick="submitQuestionForSpecialQuiz(\'Option2\')"> <div class="col-2" style="margin-left:10px; color:white">খ.</div><div class="col-8" style="11px;">' + data.option2 + '</div></div> </div >' +
+                        '<div class="option-btn"><div class="row" onclick="submitQuestionForSpecialQuiz(\'Option3\')"><div class="col-2" style="margin-left:10px; color:white">গ.</div><div class="col-8" style="11px;">' + data.option3 + '</div> </div></div >');
+                }
+
+
+                function submitQuestionForSpecialQuiz(option) {
+                    var quiztype = $(".CurrentQuizType").text();
+                    var myAudio = document.getElementById('aa');
+                    if (myAudio.duration > 0 && !myAudio.paused) {
+
+                    } else {
+                        myAudio.play();
+                        //myAudio.load();
+                    }
+
+                    //console.log(option);
+                    var currentindexx = $("#qindex").val();
+                    if (questionArray.length === index + 1) {
+                        if (!flag) {
+                            var data = questionArray[currentindexx];
+                            if (data.Answer === option) {
+                                right += 1;
+                                $("#rt").text(right);
+                            } else {
+                                wrong += 1;
+                                $("#ng").text(wrong);
+                            }
+                            let fbid = $.session.get('fbid');
+
+                            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Submit_SpecialQuiz_Question&srcurl=" + window.location.href, function (rData) { });
+
+                            $.get(JhotpotAnswerWithTimeBkashForSpecialQuiz + "?fbid=" + $.session.get('fbid') + "&qid=" + data.id + "&answer=" + option + "&timetaken=" + timetaken + "&ServiceName=QuizMaster&ServiceType=" + quiztype, function (res) {
+
+                            });
+                            timetaken = 0;
+                            flag = true;
+                        }
+                        showResult();
+                    } else {
+                        var currentindex = $("#qindex").val();
+                        var data = questionArray[currentindex];
+                        if (data.answer === option) {
+                            right += 1;
+                            $("#rt").text(right);
+                        } else {
+                            wrong += 1;
+                            $("#ng").text(wrong);
+                        }
+
+                        $.get(JhotpotAnswerWithTimeBkashForSpecialQuiz + "?fbid=" + $.session.get('fbid') + "&qid=" + data.id + "&answer=" + option + "&timetaken=" + timetaken + "&ServiceName=QuizMaster&ServiceType=" + quiztype, function (res) {
+
+                        });
+                        timetaken = 0;
+
+
+                        index += 1;
+                        if (questionArray.length != index) {
+                            $("#option_layout").html('');
+                            data = questionArray[index];
+                            updateQuestionForSpecialQuiz(data, index);
+                            $("#qindex").val(index);
+                        }
+                    }
+                }
+
+
+                function GetNormalQuiz() {
+                    $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Quiz_Khelun&srcurl=" + window.location.href, function (rData) { });
+
+
+                    //$.ajax({
+
+                    //    url: "../LandingPage/SaveThemeInfo?msisdn=" + fbid + "&theme=" + "Quiz_Khelun", success: function (res) {
+
+
+                    //    }
+                    //});
+                    //$.get("https://wap.shabox.mobi/quizplaynew/api/jhotpot/GetJhotpotQuestionsTheme?fbid=" + fbid + "&theme=112", function (res) {
+                    //JHOTPOT_QUESTIONS = "https://wap.shabox.mobi/quizplaynew/api/jhotpot/GetJhotpotThemeQuestionsNew";
+
+                    JHOTPOT_QUESTIONS = BASE_URL + "/api/jhotpot/GetJhotpotFreeQuestionsNew";
+                    
+
+                    $.get(JHOTPOT_QUESTIONS, function (res) {
+
+                        console.log (res);
+                        debugger;
+                        var node = document.getElementById('gg')
+                        var visibility = node.style.visibility;
+                        node.style.visibility = visibility == "visible" ? 'hidden' : "visible"
+                        questionArray = res.result.qlist;
+                        //console.log(res.result.Qlist);
+                        var three_min = 3 * 60;
+                        var display = document.getElementById("countdowntimer");
+                        startTimer(three_min, display);
+
+                        var data = questionArray[0];
+                        updateQuestion(data, 0);
+                        //} else {
+                        //    /*   $("#m_jh_pl").modal('show');*/
+                        //    window.location.href = "../Home/SorryPage";
+                        //}
+                    });
+
+                }
+
+
+                function closeModal() {
+                    $("#m_jh_pl").modal('hide');
+                    window.location.href = BASE_URL + '/LandingPage/index';
+                    return false;
+                }
+
+                function updateQuestion(data, index) {
+                    $("#questionImage").hide();
+
+                    $("#quesid").text(index + 1);
+
+                    $("#question").text(data.question);
+                    $("#qindex").val(index);
+
+                    if (data.questionImage != null) {
+                        var imageUrl = "https://wap.shabox.mobi/CMS/assets/images/QuizmasterQuestionImage/" + data.questionImage;
+
+                        $("#questionImage").show();
+                        $("#questionImage").val("");
+                        $("#questionImage").text("");
+                        $("#questionImage").append('<a><img src="' + imageUrl + '" id="edit-save" style="width: 30vw;height: 15vh;margin-bottom: 3%;"/></a>');
+
+                    }
+
+                    $("#option_layout").append('<div class="option-btn"><div class= "row" onclick="submitQuestion(\'Option1\')"><div class="col-2" style="margin-left:10px; color:white">ক.</div><div class="col-8" style="11px;">' + data.option1 + '</div></div ></div >' +
+                        '<div class="option-btn"><div class="row" onclick="submitQuestion(\'Option2\')"> <div class="col-2" style="margin-left:10px; color:white">খ.</div><div class="col-8" style="11px;">' + data.option2 + '</div></div> </div >' +
+                        '<div class="option-btn"><div class="row" onclick="submitQuestion(\'Option3\')"><div class="col-2" style="margin-left:10px; color:white">গ.</div><div class="col-8" style="11px;">' + data.option3 + '</div> </div></div >');
+                }
+
+                function submitQuestion(option) {
+
+                    var myAudio = document.getElementById('aa');
+                    if (myAudio.duration > 0 && !myAudio.paused) {
+
+                    } else {
+                        myAudio.play();
+                        //myAudio.load();
+                    }
+
+                    //console.log(option);
+                    var currentindexx = $("#qindex").val();
+                    if (questionArray.length === index + 1) {
+                        if (!flag) {
+                            var data = questionArray[currentindexx];
+                            if (data.Answer === option) {
+                                right += 1;
+                                $("#rt").text(right);
+                            } else {
+                                wrong += 1;
+                                $("#ng").text(wrong);
+                            }
+                            let fbid = $.session.get('fbid');
+
+                            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Submit_Question&srcurl=" + window.location.href, function (rData) { });
+
+                            //$.ajax({
+
+                            //    url: "../LandingPage/SaveThemeInfo?msisdn=" + fbid + "&theme=" + "Submit_Question", success: function (res) {
+
+
+                            //    }
+                            //});
+
+                            $.get(JHOTPOT_ANSWER + "?fbid=" + $.session.get('fbid') + "&qid=" + data.id + "&answer=" + option + "&timetaken=" + timetaken + "&ServiceName=QuizMaster", function (res) {
+                                //console.log("From else: "+res.result)
+                            });
+                            timetaken = 0;
+                            flag = true;
+                        }
+                        showResult();
+                    } else {
+                        var currentindex = $("#qindex").val();
+                        var data = questionArray[currentindex];
+                        if (data.answer === option) {
+                            right += 1;
+                            $("#rt").text(right);
+                        } else {
+                            wrong += 1;
+                            $("#ng").text(wrong);
+                        }
+
+                        $.get(JHOTPOT_ANSWER + "?fbid=" + $.session.get('fbid') + "&qid=" + data.id + "&answer=" + option + "&timetaken=" + timetaken + "&ServiceName=QuizMaster", function (res) {
+                            //console.log("From else: "+res.result)
+                        });
+                        timetaken = 0;
+
+
+                        index += 1;
+                        if (questionArray.length != index) {
+                            $("#option_layout").html('');
+                            data = questionArray[index];
+                            updateQuestion(data, index);
+                            $("#qindex").val(index);
+                        }
+                    }
+                }
+
+                function showResult() {
+                    var QuizType = sessionStorage.getItem('QT');
+                    if (QuizType != null && typeof QuizType != "undefined" && QuizType == "SQ") {
+                        /*sessionStorage.removeItem("QT");*/
+
+                        var src1 = BASE_URL + '/Assets/PrizePushPop.png';
+                        $("#result_pic").attr("src", src1);
+                        var cssObject = $('#result_pic').prop('style'); cssObject.removeProperty('width');
+                        //$("#result_title").text("আপনি বিজয়ি হয়েছেন");
+                        $("#result_content").text("বিজয়ীদের নাম দেখুন ");
+                        $("#result_content2").text("লিডারবোর্ডে ");
+                        $("#modal_buttonPlay").text("প্রাইজ");
+                        $("#modal_button").text("ওকে");
+                        $("#modal_buttonPlay").attr("onclick", "RedirectOnPrize()");
+                        $("#modal_button").attr("onclick", "RedirectOnOkay()");
+
+                    } else {
+                        if (right >= 40) {
+                            //var src1 = BASE_URL + 'Assets/birthday.png';
+                            //$("#result_pic").attr("src", src1);
+                            //$("#result_title").text("অভিনন্দন");
+                            //$("#result_content").text("আপনি ৩০ টি প্রশ্নের সঠিক উত্তর দিয়ে বিজয়ি হয়েছেন।");
+                            //$("#modal_button").text("ওকে");
+                            //$("#modal_button").attr("onclick", "reloadUI()");
+
+                            var src1 = BASE_URL + '/Assets/WinnerCeleb.png';
+                            $("#result_pic").attr("src", src1);
+                            //$("#result_title").text("আপনি বিজয়ি হয়েছেন");
+                            $("#result_content").text("নিউ ইয়ার কুইজ খেলুন ");
+                            $("#result_content2").text("৫০ হাজার টাকা পর্যন্ত ক্যাশ প্রাইজ জিতুন");
+                            $("#modal_buttonPlay").text("আবার খেলুন");
+                            $("#modal_button").text("ওকে");
+                            $("#modal_buttonPlay").attr("onclick", "reloadUI()");
+                            $("#modal_button").attr("onclick", "RedirectOnOkay()");
+                        } else {
+                            //var src1 = BASE_URL + 'Assets/sad.png';
+                            //$("#result_pic").attr("src", src1);
+                            //$("#result_title").text("দুঃখিত");
+                            //$("#result_content").text("আপনি ৩০ টি প্রশ্নের সঠিক উত্তর দিতে পারেননি, পুরস্কার পেতে আবার খেলুন");
+                            //$("#modal_button").text("আবার খেলুন");
+                            //$("#modal_button").attr("onclick", "reloadUI()");
+
+                            var src1 = BASE_URL + '/Assets/';
+                            $("#result_pic").attr("src", src1);
+                            /*$("#result_title").text("আপনি হেরে গিয়েছেন?");*/
+                            $("#result_content").text("নিউ ইয়ার কুইজ খেলুন ");
+                            $("#result_content2").text("৫০ হাজার টাকা পর্যন্ত ক্যাশ প্রাইজ জিতুন");
+                            $("#modal_buttonPlay").text("আবার খেলুন");
+                            $("#modal_buttonPlay").attr("onclick", "reloadUI()");
+                            $("#modal_button").attr("onclick", "RedirectOnOkay()");
+                        }
+                    }
+
+                    $("#m_jh_result").modal('show');
+                    $(".CurrentQuizType").text("");
+                    return;
+                }
+
+
+                function showResultAfterTimeFinished() {
+
+                    if ($('#m_jh_result').is(':visible')) {
+
+                    } else {
+                        var src1 = BASE_URL + '/Assets/TimeUp.png';
+                        $("#result_pic").attr("src", src1);
+                        /*$("#result_title").text("আপনি হেরে গিয়েছেন?");*/
+                        $("#result_content").text("নিউ ইয়ার কুইজ খেলুন ");
+                        $("#result_content2").text("ক্যাশ প্রাইজ জিতুন");
+                        $("#modal_buttonPlay").text("আবার খেলুন");
+                        $("#modal_button").text("ওকে");
+                        $("#modal_buttonPlay").attr("onclick", "reloadUI()");
+                        $("#modal_button").attr("onclick", "RedirectOnOkay()");
+
+                        $("#m_jh_result").modal('show');
+                    }
+                    return;
+                }
+
+                function reloadUI() {
+                    window.location.reload();
+                    return true;
+                }
+
+                function GetBackToHome() {
+                    //window.location.href = BASE_URL + 'LandingPage/Index';
+                    var loc = BASE_URL + '/LandingPage/Index';
+                    window.location.href = loc;
+                    //window.location.replace(loc);
+                    //return true;
+                }
+
+                function exit() {
+                    let fbid = $.session.get('fbid');
+
+                    $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Exit&srcurl=" + window.location.href, function (rData) { });
+
+
+                    //$.ajax({
+
+                    //    url: "../LandingPage/SaveThemeInfo?msisdn=" + fbid + "&theme=" + "Exit", success: function (res) {
+
+
+                    //    }
+                    //});
+                    window.location.href = BASE_URL + '/LandingPage/Index';
+                    return false;
+                }
+
+                //new timer
+                function get_elapsed_time_string(total_seconds) {
+                    function pretty_time_string(num) {
+                        return (num < 10 ? "0" : "") + num;
+                    }
+
+                    var hours = Math.floor(total_seconds / 3600);
+                    total_seconds = total_seconds % 3600;
+
+                    var minutes = Math.floor(total_seconds / 60);
+                    total_seconds = total_seconds % 60;
+
+                    var seconds = Math.floor(total_seconds);
+
+                    // Pad the minutes and seconds with leading zeros, if required
+                    hours = pretty_time_string(hours);
+                    minutes = pretty_time_string(minutes);
+                    seconds = pretty_time_string(seconds);
+
+                    if (minutes == 3 && seconds > 3) {
+                        window.location = "";
+                    }
+
+                    // Compose the string for display
+                    var currentTimeString = hours + ":" + minutes + ":" + seconds;
+
+                    return currentTimeString;
+                }
+
+                function startTimer(duration, display) {
+                    debugger;
+                    var start = new Date();
+                    var timer = duration, minutes, seconds;
+                    var totalDuration = duration * 1000; //converting second to milisec
+                    var TimeInterval = setInterval(function () {
+                        var current = new Date();
+                        if (((current.getTime() - start.getTime()) / 1000) < (duration + 2)) { //(duration + 2) is added for the 1st and last missing sec of javascript, [forbidden]
+
+                            var s = Math.floor((totalDuration / 1000)) % 60;
+                            var m = Math.floor((totalDuration / 60000)) % 60;
+
+                            m = m < 10 ? "0" + m : m;
+                            s = s < 10 ? "0" + s : s;
+                            display.textContent = m + ":" + s;
+
+                            if (((current.getTime() - start.getTime()) / 1000) >= (duration + 2)) { //(duration + 2) is added for the 1st and last missing sec of javascript, [forbidden]
+                                totalDuration = 0;
+                                //clearInterval(this);
+                                clearInterval(TimeInterval);
+                                TimeInterval = 0;
+                                showResultAfterTimeFinished();
+                                return;
+                            } else {
+                                totalDuration = totalDuration - 1000;
+                                timetaken += 1;
+                            }
+                        } else {
+                            totalDuration = 0;
+                            //clearInterval(this);
+                            clearInterval(TimeInterval);
+                            TimeInterval = 0;
+                            showResultAfterTimeFinished();
+
+                            return;
+                        }
+                    }, 1000);
+                    //setInterval(function () {
+                    //    var current = new Date();
+                    //    var count = +current - +start;
+
+                    //    var s = Math.floor((count / 1000)) % 60;
+                    //    var m = Math.floor((count / 60000)) % 60;
+
+                    //    //minutes = parseInt(timer / 60, 10);
+                    //    //seconds = parseInt(timer % 60, 10);
+
+                    //    //minutes = minutes < 10 ? "0" + minutes : minutes;
+                    //    //seconds = seconds < 10 ? "0" + seconds : seconds;
+                    //    m = m < 10 ? "0" + m : m;
+                    //    s = s < 10 ? "0" + s : s;
+
+                    //    //display.textContent = minutes + ":" + seconds;
+                    //    display.textContent = m + ":" + s;
+
+
+                    //    if (((current.getTime() - start.getTime()) / 1000) >= 180) {
+                    //        clearInterval(this);
+                    //        showResult();
+                    //    } else {
+                    //        timetaken += 1;
+                    //    }
+
+                    //    //if (--timer < 0) {
+                    //    //    timer = duration;
+                    //    //    clearInterval(this);
+                    //    //    showResult();
+                    //    //} else {
+                    //    //    timetaken += 1;
+                    //    //}
+                    //}, 1000);
+                }
+
+                function RedirectOnOkay() {
+                    window.location.href = BASE_URL;
+                }
+
+                function RedirectOnPrize() {
+                    window.location.href = BASE_URL + "/Landingpage/Prizes";
+                }
+
+                function OldstartTimer(duration, display) {
+                    var timer = duration, minutes, seconds;
+                    setInterval(function () {
+                        minutes = parseInt(timer / 60, 10);
+                        seconds = parseInt(timer % 60, 10);
+
+                        minutes = minutes < 10 ? "0" + minutes : minutes;
+                        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                        display.textContent = minutes + ":" + seconds;
+
+                        if (--timer < 0) {
+                            timer = duration;
+                            clearInterval(this);
+                            showResult();
+                        } else {
+                            timetaken += 1;
+                        }
+                    }, 1000);
+                }
+
+
+    </script>
+}*@

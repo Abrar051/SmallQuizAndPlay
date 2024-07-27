@@ -1,0 +1,141 @@
+﻿
+<style>
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        height: 11vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .bottom-navbar img {
+        width: 4rem;
+    }
+</style>
+
+<div>
+    <div style="text-align: center; font-size: 8vw; color: white; font-weight: bold;">খেলার নিয়ম</div>
+</div>
+<br />
+<div class="container" style="overflow-y:scroll; height:80vh; color: white; background: rgba(0,0,0, 0.5)">
+    <br />
+    <div class="generalRules">
+        <div><b>কুইজমাস্টারে ৪টি ক্যাটাগরির অডিও কুইজ থাকবে-</b></div>
+        <br />
+        <ul>
+            <li>• বাংলাদেশ কুইজ</li>
+            <li>• সাধারন জ্ঞান কুইজ</li>
+            <li>• খেলাধুলা কুইজ</li>
+            <li>• বিনোদন কুইজ</li>
+        </ul>
+    </div>
+
+    <br />
+
+    <div class="DailyQuizRules">
+        <div><b>একজন ইউজার প্রতিদিন ২টি রাউন্ড খেলতে পারবেন।</b></div>
+        <br />
+        <ul>
+            <li>•	যেকোনো ক্যাটাগরি থেকে ২ রাউন্ড।</li>
+            <li>•	যেকোনো ২টি ক্যাটাগরি থেকে ১ রাউন্ড।</li>
+        </ul>
+    </div>
+
+    <br />
+
+    <div class="DailyQuizRules">
+        <div><b>সবগুলো ক্যাটাগরিতে কুইজ খেলার নিয়মঃ  </b></div>
+        <br />
+    </div>
+
+    <div class="DailyQuizPrize">
+        <div><b>	বাংলাদেশঃ</b></div>
+        <br />
+        <ul>
+            <li>• প্রতি রাউন্ড এ বাংলাদেশ সম্পর্কিত ১৫ টি প্রশ্ন থাকবে।</li>
+            <li>• ব্যাবহারকারী ২৪ ঘণ্টায় সর্বোচ্চ দুবার খেলতে পারবেন। </li>
+            <li>•  প্রতি রাউন্ড এর সময়সীমা ৫ মিনিট।</li>
+        </ul>
+    </div>
+
+    <br />
+    <div class="WordStarGameRules">
+        <div><b>	সাধারন জ্ঞানঃ</b></div>
+        <br />
+        <ul>
+            <li>• প্রতি রাউন্ড এ বাংলাদেশ সম্পর্কিত ১৫ টি প্রশ্ন থাকবে।</li>
+            <li>• ব্যাবহারকারী ২৪ ঘণ্টায় সর্বোচ্চ দুবার খেলতে পারবেন। </li>
+            <li>•  প্রতি রাউন্ড এর সময়সীমা ৫ মিনিট।</li>
+
+        </ul>
+    </div>
+
+    <br />
+
+    <div class="WordStarGameRules">
+        <div><b>	খেলাধুলাঃ </b></div>
+        <br />
+        <ul>
+            <li>• প্রতি রাউন্ড এ বাংলাদেশ সম্পর্কিত ১৫ টি প্রশ্ন থাকবে।</li>
+            <li>• ব্যাবহারকারী ২৪ ঘণ্টায় সর্বোচ্চ দুবার খেলতে পারবেন। </li>
+            <li>•  প্রতি রাউন্ড এর সময়সীমা ৫ মিনিট।</li
+
+        </ul>
+   
+    </div>
+    <br />
+
+    <div class="WordStarGameRules">
+        <div><b>	বিনোদনঃ </b></div>
+        <br />
+        <ul>
+            <li>• প্রতি রাউন্ড এ বাংলাদেশ সম্পর্কিত ১৫ টি প্রশ্ন থাকবে।</li>
+            <li>• ব্যাবহারকারী ২৪ ঘণ্টায় সর্বোচ্চ দুবার খেলতে পারবেন। </li>
+            <li>•  প্রতি রাউন্ড এর সময়সীমা ৫ মিনিট।</li>
+
+        </ul>
+
+    </div>
+
+    <div style="height:80px;"></div>
+
+
+</div>
+
+
+@section leaderboard{
+@*    <div class="fixed-bottom" style="bottom: 0vw;">
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+        <img style="width: 100%; height:9vh;" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>*@
+
+ <div class="bottom-navbar">
+    <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="width: 12%" />
+    <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+    <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" style="width: 17%" />
+    <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+    <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+</div>
+
+}
+
+
+
+
+
+

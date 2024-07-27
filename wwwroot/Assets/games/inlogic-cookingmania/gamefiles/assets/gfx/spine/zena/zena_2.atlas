@@ -1,0 +1,1466 @@
+
+zena_2.png
+size: 2000, 1836
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+belmo
+  rotate: false
+  xy: 364, 955
+  size: 292, 143
+  orig: 292, 143
+  offset: 0, 0
+  index: -1
+nahnevana_1
+  rotate: false
+  xy: 1497, 1796
+  size: 97, 33
+  orig: 97, 33
+  offset: 0, 0
+  index: -1
+nahnevana_2
+  rotate: false
+  xy: 4, 1623
+  size: 118, 49
+  orig: 118, 49
+  offset: 0, 0
+  index: -1
+nahnevana_3
+  rotate: false
+  xy: 1093, 1799
+  size: 97, 30
+  orig: 97, 33
+  offset: 0, 3
+  index: -1
+obocie_L
+  rotate: false
+  xy: 508, 1802
+  size: 117, 27
+  orig: 117, 27
+  offset: 0, 0
+  index: -1
+obocko_P
+  rotate: false
+  xy: 4, 1805
+  size: 80, 24
+  orig: 80, 24
+  offset: 0, 0
+  index: -1
+oci
+  rotate: false
+  xy: 753, 1545
+  size: 222, 62
+  orig: 222, 62
+  offset: 0, 0
+  index: -1
+ocne_linky
+  rotate: false
+  xy: 1528, 1704
+  size: 287, 43
+  orig: 287, 43
+  offset: 0, 0
+  index: -1
+ruka_predna_1
+  rotate: true
+  xy: 864, 233
+  size: 193, 462
+  orig: 193, 806
+  offset: 0, 344
+  index: -1
+ruka_predna_2
+  rotate: true
+  xy: 1333, 734
+  size: 148, 446
+  orig: 193, 806
+  offset: 1, 10
+  index: -1
+ruka_zadna_1
+  rotate: true
+  xy: 660, 947
+  size: 144, 439
+  orig: 201, 798
+  offset: 0, 359
+  index: -1
+ruka_zadna_2
+  rotate: true
+  xy: 465, 442
+  size: 177, 416
+  orig: 193, 806
+  offset: 1, 22
+  index: -1
+usmev_1
+  rotate: false
+  xy: 298, 1719
+  size: 112, 43
+  orig: 112, 43
+  offset: 0, 0
+  index: -1
+usmev_2
+  rotate: true
+  xy: 1939, 1627
+  size: 117, 55
+  orig: 117, 55
+  offset: 0, 0
+  index: -1
+usta_neutral
+  rotate: false
+  xy: 1598, 1796
+  size: 112, 33
+  orig: 112, 43
+  offset: 0, 5
+  index: -1
+viecka_prizmurene
+  rotate: false
+  xy: 1338, 1751
+  size: 290, 41
+  orig: 290, 41
+  offset: 0, 0
+  index: -1
+viecka_zmurk
+  rotate: false
+  xy: 1479, 1462
+  size: 288, 68
+  orig: 288, 68
+  offset: 0, 0
+  index: -1
+viecka_zmurk_2
+  rotate: false
+  xy: 230, 1494
+  size: 282, 59
+  orig: 282, 59
+  offset: 0, 0
+  index: -1
+viečka_nahnevana
+  rotate: false
+  xy: 370, 1616
+  size: 261, 49
+  orig: 261, 49
+  offset: 0, 0
+  index: -1
+zena_1_B/nahnevana_1
+  rotate: false
+  xy: 1714, 1796
+  size: 97, 33
+  orig: 97, 33
+  offset: 0, 0
+  index: -1
+zena_1_B/nahnevana_2
+  rotate: false
+  xy: 126, 1623
+  size: 118, 49
+  orig: 118, 49
+  offset: 0, 0
+  index: -1
+zena_1_B/nos
+  rotate: true
+  xy: 768, 1759
+  size: 39, 110
+  orig: 39, 110
+  offset: 0, 0
+  index: -1
+zena_1_B/obocie_L
+  rotate: false
+  xy: 629, 1802
+  size: 117, 27
+  orig: 117, 27
+  offset: 0, 0
+  index: -1
+zena_1_B/obocko_P
+  rotate: false
+  xy: 88, 1805
+  size: 80, 24
+  orig: 80, 24
+  offset: 0, 0
+  index: -1
+zena_1_B/oci
+  rotate: false
+  xy: 1553, 1534
+  size: 222, 62
+  orig: 222, 62
+  offset: 0, 0
+  index: -1
+zena_1_B/ocne_linky
+  rotate: false
+  xy: 4, 1676
+  size: 287, 43
+  orig: 287, 43
+  offset: 0, 0
+  index: -1
+zena_1_B/ruka_predna_1
+  rotate: true
+  xy: 1330, 201
+  size: 193, 461
+  orig: 193, 806
+  offset: 0, 345
+  index: -1
+zena_1_B/ruka_predna_2
+  rotate: true
+  xy: 4, 647
+  size: 148, 457
+  orig: 193, 806
+  offset: 9, 0
+  index: -1
+zena_1_B/ruka_zadna_1
+  rotate: true
+  xy: 1103, 923
+  size: 144, 440
+  orig: 201, 798
+  offset: 16, 358
+  index: -1
+zena_1_B/ruka_zadna_2
+  rotate: true
+  xy: 914, 591
+  size: 180, 414
+  orig: 201, 798
+  offset: 10, 0
+  index: -1
+zena_1_B/usmev_1
+  rotate: false
+  xy: 708, 1712
+  size: 112, 43
+  orig: 112, 43
+  offset: 0, 0
+  index: -1
+zena_1_B/usmev_2
+  rotate: false
+  xy: 1796, 1591
+  size: 117, 55
+  orig: 117, 55
+  offset: 0, 0
+  index: -1
+zena_1_B/viecka_prizmurene
+  rotate: false
+  xy: 1632, 1751
+  size: 290, 41
+  orig: 290, 41
+  offset: 0, 0
+  index: -1
+zena_1_B/viecka_zmurk
+  rotate: false
+  xy: 178, 1422
+  size: 288, 68
+  orig: 288, 68
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/dlan_P
+  rotate: true
+  xy: 294, 1223
+  size: 99, 125
+  orig: 99, 125
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/dlan_P_1
+  rotate: true
+  xy: 526, 1317
+  size: 91, 106
+  orig: 91, 106
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/dlan_Z
+  rotate: true
+  xy: 939, 1205
+  size: 100, 120
+  orig: 100, 120
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/nahnevana_1
+  rotate: false
+  xy: 1815, 1796
+  size: 97, 33
+  orig: 97, 33
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/nahnevana_2
+  rotate: false
+  xy: 248, 1619
+  size: 118, 49
+  orig: 118, 49
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/nahnevana_3
+  rotate: false
+  xy: 1295, 1797
+  size: 97, 32
+  orig: 97, 33
+  offset: 0, 1
+  index: -1
+zena_2/zena_2/zena_2/nos
+  rotate: true
+  xy: 882, 1757
+  size: 39, 110
+  orig: 39, 110
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/obocie_L
+  rotate: false
+  xy: 1691, 1653
+  size: 120, 47
+  orig: 133, 76
+  offset: 13, 14
+  index: -1
+zena_2/zena_2/zena_2/obocie_P
+  rotate: false
+  xy: 172, 1805
+  size: 80, 24
+  orig: 80, 24
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/oci
+  rotate: false
+  xy: 4, 1500
+  size: 222, 62
+  orig: 222, 62
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/ocne_linky
+  rotate: false
+  xy: 411, 1669
+  size: 287, 43
+  orig: 287, 43
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/palec_P
+  rotate: true
+  xy: 4, 1425
+  size: 71, 83
+  orig: 71, 83
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/past_A
+  rotate: true
+  xy: 663, 1101
+  size: 106, 126
+  orig: 106, 126
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/past_B
+  rotate: true
+  xy: 793, 1101
+  size: 106, 125
+  orig: 106, 125
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/pokrcene_prsty_B
+  rotate: true
+  xy: 1841, 1284
+  size: 95, 141
+  orig: 95, 141
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/prst_Z
+  rotate: false
+  xy: 1926, 1748
+  size: 69, 81
+  orig: 69, 81
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/prsty_P
+  rotate: true
+  xy: 1441, 1071
+  size: 116, 114
+  orig: 116, 114
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/prsty_Z
+  rotate: false
+  xy: 1781, 1176
+  size: 129, 104
+  orig: 129, 104
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/ruka_predna_1
+  rotate: true
+  xy: 4, 59
+  size: 193, 462
+  orig: 193, 806
+  offset: 0, 344
+  index: -1
+zena_2/zena_2/zena_2/ruka_predna_2
+  rotate: true
+  xy: 465, 623
+  size: 148, 445
+  orig: 193, 806
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/ruka_zadna_1
+  rotate: true
+  xy: 1547, 886
+  size: 144, 438
+  orig: 201, 798
+  offset: 0, 360
+  index: -1
+zena_2/zena_2/zena_2/ruka_zadna_2
+  rotate: false
+  xy: 1783, 469
+  size: 180, 413
+  orig: 201, 798
+  offset: 19, 20
+  index: -1
+zena_2/zena_2/zena_2/usmev_1
+  rotate: false
+  xy: 1118, 1707
+  size: 112, 43
+  orig: 112, 43
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/usmev_2
+  rotate: false
+  xy: 269, 1557
+  size: 117, 55
+  orig: 117, 55
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/usmev_3
+  rotate: false
+  xy: 307, 1766
+  size: 111, 35
+  orig: 112, 43
+  offset: 0, 3
+  index: -1
+zena_2/zena_2/zena_2/viecka_dolne
+  rotate: false
+  xy: 757, 1611
+  size: 261, 49
+  orig: 261, 49
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/viecka_prizmurenea
+  rotate: false
+  xy: 4, 1723
+  size: 290, 41
+  orig: 290, 41
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/viecka_zmurk
+  rotate: false
+  xy: 731, 1409
+  size: 288, 68
+  orig: 288, 68
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/zapastie_Z
+  rotate: true
+  xy: 636, 1314
+  size: 91, 108
+  orig: 91, 108
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/zatvorene_oci
+  rotate: false
+  xy: 742, 1481
+  size: 282, 59
+  orig: 282, 59
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/zena_2_happy
+  rotate: true
+  xy: 1856, 1383
+  size: 82, 111
+  orig: 82, 111
+  offset: 0, 0
+  index: -1
+zena_2_B/nahnevana_1
+  rotate: false
+  xy: 4, 1768
+  size: 97, 33
+  orig: 97, 33
+  offset: 0, 0
+  index: -1
+zena_2_B/nahnevana_2
+  rotate: false
+  xy: 635, 1612
+  size: 118, 49
+  orig: 118, 49
+  offset: 0, 0
+  index: -1
+zena_2_B/nahnevana_3
+  rotate: false
+  xy: 1396, 1797
+  size: 97, 32
+  orig: 97, 33
+  offset: 0, 1
+  index: -1
+zena_2_B/nos
+  rotate: true
+  xy: 996, 1756
+  size: 39, 110
+  orig: 39, 110
+  offset: 0, 0
+  index: -1
+zena_2_B/obocie_L
+  rotate: false
+  xy: 1815, 1650
+  size: 120, 47
+  orig: 133, 76
+  offset: 13, 14
+  index: -1
+zena_2_B/obocie_P
+  rotate: false
+  xy: 256, 1805
+  size: 80, 24
+  orig: 80, 24
+  offset: 0, 0
+  index: -1
+zena_2_B/oci
+  rotate: false
+  xy: 516, 1487
+  size: 222, 62
+  orig: 222, 62
+  offset: 0, 0
+  index: -1
+zena_2_B/ocne_linky
+  rotate: false
+  xy: 818, 1664
+  size: 287, 43
+  orig: 287, 43
+  offset: 0, 0
+  index: -1
+zena_2_B/ruka_predna_1
+  rotate: true
+  xy: 470, 36
+  size: 193, 462
+  orig: 193, 806
+  offset: 0, 344
+  index: -1
+zena_2_B/ruka_predna_2
+  rotate: true
+  xy: 1332, 582
+  size: 148, 445
+  orig: 193, 806
+  offset: 0, 0
+  index: -1
+zena_2_B/ruka_zadna_1
+  rotate: true
+  xy: 4, 807
+  size: 144, 438
+  orig: 201, 798
+  offset: 0, 360
+  index: -1
+zena_2_B/ruka_zadna_2
+  rotate: true
+  xy: 1346, 398
+  size: 180, 416
+  orig: 201, 798
+  offset: 21, 0
+  index: -1
+zena_2_B/ruky/dlan_P
+  rotate: true
+  xy: 423, 1214
+  size: 99, 125
+  orig: 99, 125
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/dlan_Z
+  rotate: true
+  xy: 1063, 1205
+  size: 100, 120
+  orig: 100, 120
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/happy
+  rotate: true
+  xy: 1726, 1359
+  size: 82, 111
+  orig: 82, 111
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/palec_P
+  rotate: true
+  xy: 91, 1425
+  size: 71, 83
+  orig: 71, 83
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/past_A
+  rotate: true
+  xy: 922, 1095
+  size: 106, 125
+  orig: 106, 125
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/past_B
+  rotate: true
+  xy: 1051, 1095
+  size: 106, 126
+  orig: 106, 126
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/prst_Z
+  rotate: false
+  xy: 1917, 1542
+  size: 69, 81
+  orig: 69, 81
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/prsty_P
+  rotate: false
+  xy: 1559, 1034
+  size: 116, 114
+  orig: 116, 114
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/prsty_Z
+  rotate: false
+  xy: 1559, 1152
+  size: 129, 104
+  orig: 129, 104
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/zapastie_L
+  rotate: true
+  xy: 748, 1314
+  size: 91, 108
+  orig: 91, 108
+  offset: 0, 0
+  index: -1
+zena_2_B/ruky/zapastie_P
+  rotate: true
+  xy: 860, 1314
+  size: 91, 106
+  orig: 91, 106
+  offset: 0, 0
+  index: -1
+zena_2_B/usmev_1
+  rotate: false
+  xy: 1819, 1701
+  size: 112, 43
+  orig: 112, 43
+  offset: 0, 0
+  index: -1
+zena_2_B/usmev_2
+  rotate: false
+  xy: 390, 1557
+  size: 117, 55
+  orig: 117, 55
+  offset: 0, 0
+  index: -1
+zena_2_B/usmev_3
+  rotate: false
+  xy: 422, 1762
+  size: 111, 36
+  orig: 112, 43
+  offset: 1, 7
+  index: -1
+zena_2_B/viecka_prizmurenea
+  rotate: false
+  xy: 414, 1716
+  size: 290, 41
+  orig: 290, 41
+  offset: 0, 0
+  index: -1
+zena_2_B/viecka_zmurk
+  rotate: false
+  xy: 1023, 1404
+  size: 288, 68
+  orig: 288, 68
+  offset: 0, 0
+  index: -1
+zena_2_B/viečka_nahnevana
+  rotate: false
+  xy: 1022, 1606
+  size: 261, 49
+  orig: 261, 49
+  offset: 0, 0
+  index: -1
+zena_3/dolne_viecka
+  rotate: false
+  xy: 1287, 1604
+  size: 261, 49
+  orig: 261, 49
+  offset: 0, 0
+  index: -1
+zena_3/nahnevana_1
+  rotate: false
+  xy: 105, 1768
+  size: 97, 33
+  orig: 97, 33
+  offset: 0, 0
+  index: -1
+zena_3/nahnevana_2
+  rotate: false
+  xy: 1552, 1604
+  size: 118, 49
+  orig: 118, 49
+  offset: 0, 0
+  index: -1
+zena_3/nahnevana_3
+  rotate: false
+  xy: 992, 1800
+  size: 97, 29
+  orig: 97, 33
+  offset: 0, 4
+  index: -1
+zena_3/nos
+  rotate: true
+  xy: 1110, 1756
+  size: 39, 110
+  orig: 39, 110
+  offset: 0, 0
+  index: -1
+zena_3/obocie_L
+  rotate: false
+  xy: 750, 1802
+  size: 117, 27
+  orig: 117, 27
+  offset: 0, 0
+  index: -1
+zena_3/obocie_P
+  rotate: false
+  xy: 340, 1805
+  size: 80, 24
+  orig: 80, 24
+  offset: 0, 0
+  index: -1
+zena_3/oci
+  rotate: false
+  xy: 1028, 1478
+  size: 222, 62
+  orig: 222, 62
+  offset: 0, 0
+  index: -1
+zena_3/ocne_linky
+  rotate: false
+  xy: 1109, 1659
+  size: 287, 43
+  orig: 287, 43
+  offset: 0, 0
+  index: -1
+zena_3/ruka_predna_1
+  rotate: true
+  xy: 936, 4
+  size: 193, 461
+  orig: 193, 806
+  offset: 0, 345
+  index: -1
+zena_3/ruka_predna_2
+  rotate: true
+  xy: 4, 495
+  size: 148, 457
+  orig: 193, 806
+  offset: 19, 0
+  index: -1
+zena_3/ruka_zadna_1
+  rotate: true
+  xy: 446, 799
+  size: 144, 439
+  orig: 201, 798
+  offset: 0, 358
+  index: -1
+zena_3/ruka_zadna_2
+  rotate: true
+  xy: 4, 310
+  size: 181, 421
+  orig: 201, 798
+  offset: 14, 8
+  index: -1
+zena_3/ruky/3_pokrcene_prsty
+  rotate: true
+  xy: 4, 1250
+  size: 96, 141
+  orig: 96, 141
+  offset: 0, 0
+  index: -1
+zena_3/ruky/dlan_P
+  rotate: true
+  xy: 552, 1211
+  size: 99, 125
+  orig: 99, 125
+  offset: 0, 0
+  index: -1
+zena_3/ruky/dlan_Z
+  rotate: true
+  xy: 1187, 1192
+  size: 100, 120
+  orig: 100, 120
+  offset: 0, 0
+  index: -1
+zena_3/ruky/happy
+  rotate: true
+  xy: 296, 1336
+  size: 82, 111
+  orig: 82, 111
+  offset: 0, 0
+  index: -1
+zena_3/ruky/palec_P
+  rotate: true
+  xy: 470, 1412
+  size: 71, 83
+  orig: 71, 83
+  offset: 0, 0
+  index: -1
+zena_3/ruky/palec_Z
+  rotate: true
+  xy: 1779, 1518
+  size: 69, 81
+  orig: 69, 81
+  offset: 0, 0
+  index: -1
+zena_3/ruky/past_A
+  rotate: true
+  xy: 403, 1105
+  size: 105, 126
+  orig: 105, 126
+  offset: 0, 0
+  index: -1
+zena_3/ruky/past_B
+  rotate: true
+  xy: 1181, 1082
+  size: 106, 126
+  orig: 106, 126
+  offset: 0, 0
+  index: -1
+zena_3/ruky/prsty_P
+  rotate: false
+  xy: 4, 1024
+  size: 116, 114
+  orig: 116, 114
+  offset: 0, 0
+  index: -1
+zena_3/ruky/prsty_Z
+  rotate: false
+  xy: 4, 1142
+  size: 129, 104
+  orig: 129, 104
+  offset: 0, 0
+  index: -1
+zena_3/ruky/zapastie_P
+  rotate: true
+  xy: 970, 1309
+  size: 91, 106
+  orig: 91, 106
+  offset: 0, 0
+  index: -1
+zena_3/ruky/zapastie_Z
+  rotate: true
+  xy: 1080, 1309
+  size: 91, 108
+  orig: 91, 108
+  offset: 0, 0
+  index: -1
+zena_3/usmev_1
+  rotate: false
+  xy: 295, 1672
+  size: 112, 43
+  orig: 112, 43
+  offset: 0, 0
+  index: -1
+zena_3/usmev_2
+  rotate: false
+  xy: 511, 1557
+  size: 117, 55
+  orig: 117, 55
+  offset: 0, 0
+  index: -1
+zena_3/usmev_3
+  rotate: false
+  xy: 653, 1761
+  size: 111, 37
+  orig: 112, 43
+  offset: 0, 4
+  index: -1
+zena_3/viecka_prizmurene
+  rotate: false
+  xy: 824, 1711
+  size: 290, 41
+  orig: 290, 41
+  offset: 0, 0
+  index: -1
+zena_3/viecka_zmurk
+  rotate: false
+  xy: 1434, 1390
+  size: 288, 68
+  orig: 288, 68
+  offset: 0, 0
+  index: -1
+zena_3/zatvorene_oci
+  rotate: false
+  xy: 979, 1544
+  size: 283, 58
+  orig: 283, 58
+  offset: 0, 0
+  index: -1
+zena_3_B/3_B_pokrcene_prsty
+  rotate: true
+  xy: 149, 1250
+  size: 96, 141
+  orig: 96, 141
+  offset: 0, 0
+  index: -1
+zena_3_B/dolne_viecka
+  rotate: false
+  xy: 4, 1566
+  size: 261, 49
+  orig: 261, 49
+  offset: 0, 0
+  index: -1
+zena_3_B/nahnevana_1
+  rotate: false
+  xy: 206, 1768
+  size: 97, 33
+  orig: 97, 33
+  offset: 0, 0
+  index: -1
+zena_3_B/nahnevana_2
+  rotate: false
+  xy: 1674, 1600
+  size: 118, 49
+  orig: 118, 49
+  offset: 0, 0
+  index: -1
+zena_3_B/nahnevana_3
+  rotate: false
+  xy: 1194, 1799
+  size: 97, 30
+  orig: 97, 33
+  offset: 0, 2
+  index: -1
+zena_3_B/nos
+  rotate: true
+  xy: 1224, 1754
+  size: 39, 110
+  orig: 39, 110
+  offset: 0, 0
+  index: -1
+zena_3_B/obocie_L
+  rotate: false
+  xy: 871, 1802
+  size: 117, 27
+  orig: 117, 27
+  offset: 0, 0
+  index: -1
+zena_3_B/obocie_P
+  rotate: false
+  xy: 424, 1805
+  size: 80, 24
+  orig: 80, 24
+  offset: 0, 0
+  index: -1
+zena_3_B/oci
+  rotate: false
+  xy: 1254, 1476
+  size: 221, 62
+  orig: 221, 62
+  offset: 0, 0
+  index: -1
+zena_3_B/ocne_linky
+  rotate: false
+  xy: 1400, 1657
+  size: 287, 43
+  orig: 287, 43
+  offset: 0, 0
+  index: -1
+zena_3_B/ruka_predna_1
+  rotate: true
+  xy: 1401, 4
+  size: 193, 461
+  orig: 193, 806
+  offset: 0, 345
+  index: -1
+zena_3_B/ruka_predna_2
+  rotate: true
+  xy: 885, 430
+  size: 148, 457
+  orig: 193, 806
+  offset: 0, 0
+  index: -1
+zena_3_B/ruka_zadna_1
+  rotate: true
+  xy: 889, 775
+  size: 144, 440
+  orig: 201, 798
+  offset: 0, 358
+  index: -1
+zena_3_B/ruka_zadna_2
+  rotate: true
+  xy: 429, 256
+  size: 182, 431
+  orig: 201, 798
+  offset: 19, 0
+  index: -1
+zena_3_B/ruky/dlan_P
+  rotate: true
+  xy: 681, 1211
+  size: 99, 125
+  orig: 99, 125
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/dlan_Z
+  rotate: true
+  xy: 1311, 1191
+  size: 100, 120
+  orig: 100, 120
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/happy
+  rotate: true
+  xy: 411, 1326
+  size: 82, 111
+  orig: 82, 111
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/palec_P
+  rotate: true
+  xy: 557, 1412
+  size: 71, 83
+  orig: 71, 83
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/palec_Z
+  rotate: true
+  xy: 1864, 1469
+  size: 69, 81
+  orig: 69, 81
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/past_A
+  rotate: true
+  xy: 533, 1102
+  size: 105, 126
+  orig: 105, 126
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/past_B
+  rotate: true
+  xy: 1311, 1081
+  size: 106, 126
+  orig: 106, 126
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/prsty_P
+  rotate: false
+  xy: 124, 1024
+  size: 116, 114
+  orig: 116, 114
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/prsty_Z
+  rotate: false
+  xy: 137, 1142
+  size: 129, 104
+  orig: 129, 104
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/zapastie_P
+  rotate: true
+  xy: 1192, 1309
+  size: 91, 106
+  orig: 91, 106
+  offset: 0, 0
+  index: -1
+zena_3_B/ruky/zapastie_Z
+  rotate: true
+  xy: 1302, 1296
+  size: 91, 108
+  orig: 91, 108
+  offset: 0, 0
+  index: -1
+zena_3_B/usmev_1
+  rotate: false
+  xy: 702, 1665
+  size: 112, 43
+  orig: 112, 43
+  offset: 0, 0
+  index: -1
+zena_3_B/usmev_2
+  rotate: false
+  xy: 632, 1553
+  size: 117, 55
+  orig: 117, 55
+  offset: 0, 0
+  index: -1
+zena_3_B/usmev_3
+  rotate: false
+  xy: 537, 1762
+  size: 112, 36
+  orig: 112, 43
+  offset: 0, 3
+  index: -1
+zena_3_B/viecka_prizmurene
+  rotate: false
+  xy: 1234, 1706
+  size: 290, 41
+  orig: 290, 41
+  offset: 0, 0
+  index: -1
+zena_3_B/viecka_zmurk
+  rotate: false
+  xy: 4, 1350
+  size: 288, 68
+  orig: 288, 68
+  offset: 0, 0
+  index: -1
+zena_3_B/zatvorene_oci
+  rotate: false
+  xy: 1266, 1542
+  size: 283, 58
+  orig: 283, 58
+  offset: 0, 0
+  index: -1
+zena_ruky/dlan_P
+  rotate: true
+  xy: 810, 1211
+  size: 99, 125
+  orig: 99, 125
+  offset: 0, 0
+  index: -1
+zena_ruky/dlan_P_1
+  rotate: true
+  xy: 1414, 1295
+  size: 91, 106
+  orig: 91, 106
+  offset: 0, 0
+  index: -1
+zena_ruky/dlan_Z
+  rotate: true
+  xy: 1435, 1191
+  size: 100, 120
+  orig: 100, 120
+  offset: 0, 0
+  index: -1
+zena_ruky/palec_P
+  rotate: true
+  xy: 644, 1412
+  size: 71, 83
+  orig: 71, 83
+  offset: 0, 0
+  index: -1
+zena_ruky/prst_Z
+  rotate: true
+  xy: 1771, 1445
+  size: 69, 81
+  orig: 69, 81
+  offset: 0, 0
+  index: -1
+zena_ruky/prsty_P
+  rotate: false
+  xy: 244, 997
+  size: 116, 114
+  orig: 116, 114
+  offset: 0, 0
+  index: -1
+zena_ruky/prsty_Z
+  rotate: false
+  xy: 270, 1115
+  size: 129, 104
+  orig: 129, 104
+  offset: 0, 0
+  index: -1
+zena_ruky/uzavreta_ruka
+  rotate: true
+  xy: 1692, 1066
+  size: 106, 126
+  orig: 106, 126
+  offset: 0, 0
+  index: -1
+zena_ruky/uzavreta_ruka_2
+  rotate: true
+  xy: 1822, 1066
+  size: 106, 125
+  orig: 106, 125
+  offset: 0, 0
+  index: -1
+zena_ruky/uzavreta_ruka_3
+  rotate: true
+  xy: 1636, 1260
+  size: 95, 141
+  orig: 95, 141
+  offset: 0, 0
+  index: -1
+zena_ruky/uzavreta_ruka_4
+  rotate: true
+  xy: 1315, 1391
+  size: 81, 115
+  orig: 126, 159
+  offset: 34, 10
+  index: -1
+zena_ruky/zapastie_Z
+  rotate: true
+  xy: 1524, 1295
+  size: 91, 108
+  orig: 91, 108
+  offset: 0, 0
+  index: -1
+
+zena_2_2.png
+size: 1920, 1680
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+blesk
+  rotate: true
+  xy: 496, 1431
+  size: 242, 492
+  orig: 253, 504
+  offset: 7, 4
+  index: -1
+ciarky
+  rotate: true
+  xy: 783, 778
+  size: 301, 516
+  orig: 321, 534
+  offset: 8, 9
+  index: -1
+krk
+  rotate: true
+  xy: 800, 1083
+  size: 297, 315
+  orig: 297, 315
+  offset: 0, 0
+  index: -1
+slza
+  rotate: true
+  xy: 4, 1458
+  size: 215, 488
+  orig: 453, 494
+  offset: 119, 2
+  index: -1
+srdce
+  rotate: false
+  xy: 4, 99
+  size: 446, 411
+  orig: 556, 503
+  offset: 67, 5
+  index: -1
+zena_1_B/krk
+  rotate: true
+  xy: 1119, 1083
+  size: 297, 315
+  orig: 297, 315
+  offset: 0, 0
+  index: -1
+zena_1_B/ofina
+  rotate: false
+  xy: 323, 824
+  size: 456, 306
+  orig: 456, 306
+  offset: 0, 0
+  index: -1
+zena_1_B/tvar_oprava
+  rotate: true
+  xy: 454, 72
+  size: 382, 484
+  orig: 410, 496
+  offset: 0, 12
+  index: -1
+zena_2/zena_2/zena_2/cervena
+  rotate: false
+  xy: 1350, 399
+  size: 374, 370
+  orig: 415, 496
+  offset: 41, 126
+  index: -1
+zena_2/zena_2/zena_2/krk
+  rotate: true
+  xy: 1438, 1083
+  size: 297, 315
+  orig: 297, 315
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/ofina
+  rotate: false
+  xy: 992, 1384
+  size: 380, 289
+  orig: 380, 289
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/tvar
+  rotate: true
+  xy: 942, 4
+  size: 391, 484
+  orig: 421, 496
+  offset: 0, 12
+  index: -1
+zena_2/zena_2/zena_2/zvlast/golier
+  rotate: false
+  xy: 463, 463
+  size: 439, 311
+  orig: 466, 341
+  offset: 17, 14
+  index: -1
+zena_2_B/krk
+  rotate: true
+  xy: 4, 860
+  size: 297, 315
+  orig: 297, 315
+  offset: 0, 0
+  index: -1
+zena_2_B/ofina
+  rotate: false
+  xy: 1376, 1384
+  size: 380, 289
+  orig: 380, 289
+  offset: 0, 0
+  index: -1
+zena_2_B/tvar
+  rotate: true
+  xy: 1430, 4
+  size: 391, 484
+  orig: 421, 496
+  offset: 0, 12
+  index: -1
+zena_2_B/zvlast/golier
+  rotate: false
+  xy: 906, 458
+  size: 440, 311
+  orig: 466, 341
+  offset: 16, 14
+  index: -1
+zena_3/krk
+  rotate: true
+  xy: 4, 1161
+  size: 293, 394
+  orig: 293, 394
+  offset: 0, 0
+  index: -1
+zena_3/ofina
+  rotate: false
+  xy: 1303, 773
+  size: 455, 306
+  orig: 456, 306
+  offset: 1, 0
+  index: -1
+zena_3_B/krk
+  rotate: true
+  xy: 402, 1134
+  size: 293, 394
+  orig: 293, 394
+  offset: 0, 0
+  index: -1
+zena_3_B/ofina
+  rotate: false
+  xy: 4, 514
+  size: 455, 306
+  orig: 456, 306
+  offset: 1, 0
+  index: -1
+
+zena_2_3.png
+size: 1712, 1996
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+cervene_nahnevana
+  rotate: true
+  xy: 980, 4
+  size: 411, 496
+  orig: 411, 496
+  offset: 0, 0
+  index: -1
+telo
+  rotate: false
+  xy: 784, 1200
+  size: 459, 792
+  orig: 488, 819
+  offset: 0, 10
+  index: -1
+vlasy_zadne
+  rotate: false
+  xy: 4, 1199
+  size: 776, 793
+  orig: 776, 793
+  offset: 0, 0
+  index: -1
+zena_1_B/telo
+  rotate: false
+  xy: 1247, 452
+  size: 459, 759
+  orig: 488, 759
+  offset: 0, 0
+  index: -1
+zena_1_B/vlasy_zadne
+  rotate: false
+  xy: 4, 402
+  size: 776, 793
+  orig: 776, 793
+  offset: 0, 0
+  index: -1
+zena_2/zena_2/zena_2/telo
+  rotate: false
+  xy: 784, 419
+  size: 459, 777
+  orig: 500, 800
+  offset: 12, 7
+  index: -1
+zena_2_B/telo_1
+  rotate: false
+  xy: 1247, 1215
+  size: 459, 777
+  orig: 500, 801
+  offset: 12, 8
+  index: -1
+zena_3/tvar
+  rotate: true
+  xy: 4, 7
+  size: 391, 484
+  orig: 415, 496
+  offset: 4, 12
+  index: -1
+zena_3_B/tvar
+  rotate: true
+  xy: 492, 7
+  size: 391, 484
+  orig: 415, 496
+  offset: 4, 12
+  index: -1
+
+zena_2_4.png
+size: 1532, 1620
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+nahnevany
+  rotate: false
+  xy: 1071, 632
+  size: 436, 518
+  orig: 453, 535
+  offset: 6, 6
+  index: -1
+tvar_1
+  rotate: false
+  xy: 1039, 91
+  size: 456, 508
+  orig: 465, 510
+  offset: 5, 0
+  index: -1
+zena_2/zena_2/zena_2/vlasy_zadne
+  rotate: false
+  xy: 532, 18
+  size: 503, 547
+  orig: 503, 547
+  offset: 0, 0
+  index: -1
+zena_2_B/vlasy_zadne
+  rotate: false
+  xy: 564, 603
+  size: 503, 547
+  orig: 503, 547
+  offset: 0, 0
+  index: -1
+zena_3/telo
+  rotate: true
+  xy: 4, 1154
+  size: 459, 759
+  orig: 488, 759
+  offset: 0, 0
+  index: -1
+zena_3/vlasy_zadne
+  rotate: true
+  xy: 4, 569
+  size: 581, 556
+  orig: 581, 556
+  offset: 0, 0
+  index: -1
+zena_3_B/telo
+  rotate: true
+  xy: 767, 1154
+  size: 459, 758
+  orig: 488, 758
+  offset: 0, 0
+  index: -1
+zena_3_B/vlasy_zadne
+  rotate: true
+  xy: 4, 4
+  size: 561, 524
+  orig: 561, 524
+  offset: 0, 0
+  index: -1

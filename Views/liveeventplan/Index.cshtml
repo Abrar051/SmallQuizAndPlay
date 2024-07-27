@@ -1,0 +1,116 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Event</title>
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        .form-container {
+            border: 2px solid #ccc;
+            padding: 10px;
+        }
+
+        .event-container {
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+            .event-container h1 {
+                font-size: 12px;
+                font-weight: bold;
+            }
+
+            .event-container p {
+                margin: 10px 0;
+            }
+
+            .event-container a {
+                color: #3366cc; /* Updated link color */
+                text-decoration: none;
+            }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+            .form-container label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .form-container input[type="text"] {
+                width: 100%;
+                padding: 5px;
+                font-size: 16px;
+                border-radius: 5px;
+            }
+
+            .form-container input[type="submit"] {
+                margin-top: 10px;
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #3366cc;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div class="event-container">
+        <h1>
+            কুইজমাস্টার '১৫/০৭/২০২৩' ইং তারিখ সকাল ১১ টায় একটি লাইভ ইভেন্ট এর আয়োজন করতে যাচ্ছে। ইভেন্টটি কুইজ মাস্টারের অফিসে অনুষ্ঠিত হবে। অংশগ্রহন করতে নিম্নে উল্লেখিত ফর্মটি ফিল আপ করুন।
+            ফর্ম ফিল আপ কারিদের মধ্য থেকে লটারির মাধ্যমে ১০ জন ভাগ্যবান বিজয়ী লাইভ ইভেন্টে অংশগ্রহন করতে পারবেন।
+            অংশগ্রহনকারী ১০ জন কে নিয়ে লাইভ কুইজ ও গেম এর আয়োজন করা হবে।<br />
+            সকলের জন্য রয়েছে আকর্ষণীয় সব পুরস্কার। <br /><br />
+            ☑ প্রথম পুরস্কার: ২৫০০ টাকা <br />
+            ☑ দ্বিতীয় পুরস্কারঃ ২০০০ টাকা <br />
+            ☑ তৃতীয় পুরস্কারঃ ১৫০০ টাকা <br />
+            ☑ চতুর্থ পুরস্কার: ১০০০ টাকা <br />
+            ☑ পঞ্চম-দশমঃ ৫০০ টাকা<br />
+            <br />
+        </h1>
+    </div>
+
+    <div class="form-container">
+       
+            <div class="form-group">
+                <label for="name" class="font-weight-bold" style="font-size: 13px;">আপনার নাম লিখুন</label>
+                <input type="text" id="name"  class="form-control" style="font-size: 14px;" required />
+            </div>
+            <div class="form-group">
+                <label for="phone" class="font-weight-bold" style="font-size: 13px;">আপনার ফোন নম্বর লিখুন</label>
+                <input type="text" id="phone"  class="form-control" style="font-size: 14px;" required />
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
+       
+    </div>
+</body>
+</html>
+<script>
+    function submit(){
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+
+        $.get("../liveeventplan/submitinfo?name=" + name + "&phone=" + phone, function (rData) { });
+
+      
+        window.location.href = "../liveeventplan/thankyou";
+    }
+
+</script>

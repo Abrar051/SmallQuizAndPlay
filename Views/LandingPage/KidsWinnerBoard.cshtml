@@ -1,0 +1,268 @@
+﻿
+
+
+
+<style>
+
+
+    .fotergrid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        gap: 10px;
+        padding: 1px;
+    }
+
+        .fotergrid-container > div {
+            text-align: center;
+        }
+
+
+    /* Tabs Start */
+
+    .ease {
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+    }
+
+    .tabs {
+        background: #fff;
+        position: relative;
+        margin-bottom: 50px;
+    }
+
+        .tabs > input,
+        .tabs > span {
+            width: 45%;
+            height: 60px;
+            line-height: 60px;
+            position: absolute;
+            top: 0;
+        }
+
+        .tabs > input {
+            cursor: pointer;
+            opacity: 0;
+            position: absolute;
+            z-index: 99;
+        }
+
+        .tabs > span {
+            background: #f0f0f0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+            .tabs > span i,
+            .tabs > span {
+                -webkit-transition: all .5s;
+                -moz-transition: all .5s;
+                -o-transition: all .5s;
+                transition: all .5s;
+            }
+
+        .tabs > input:hover + span {
+            background: rgba(255,255,255,.1);
+        }
+
+        .tabs > input:checked + span {
+            background: #fff;
+        }
+
+        .tabs > input:checked + span,
+        .tabs > input:hover + span {
+            color: #02767B;
+        }
+
+    #tab-1, #tab-1 + span {
+        /*new*/
+        left: 50%;
+        /*border-radius: 23px 0px 0px 23px;*/
+        /*old*/
+        border-radius: 23px 23px 23px 23px;
+        width: 50%;
+    }
+
+    #tab-2, #tab-2 + span {
+        left: 2%;
+        border-radius: 23px 23px 23px 23px;
+        width: 96%;
+    }
+
+    .tabs [type="radio"]:checked + span {
+        background-color: #de4756;
+        color: white;
+    }
+
+
+
+    .tab-content {
+        width: 100%;
+        height: 80vh;
+    }
+
+        .tab-content section {
+            width: 100%;
+            display: none;
+            height: 100%;
+        }
+
+    #tab-1:checked ~ .tab-content #tab-item-1 {
+        display: block;
+        color: #02767B;
+    }
+
+    #tab-2:checked ~ .tab-content #tab-item-2 {
+        display: block;
+        color: #02767B;
+    }
+
+    .effect-1 > input:checked + span {
+        background: #fff0;
+    }
+
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0px;
+    }
+
+        .bottom-navbar img {
+            width: 14%;
+        }
+
+</style>
+
+
+
+<div class="" style=" ">
+
+    <div style=" text-align: center; font-weight: bold; font-size: 18px; ">
+        <span style="color: white" id="GameName"></span>
+        <span style="color: white">উইনারবোর্ড</span>
+        <br />
+        <span style="color: white">গতকালকের স্কোর :</span>
+        <span style="color: white" id="score"></span>
+        <br />
+    </div>
+    <br>
+
+    <div class="tabs effect-1">
+
+        @*Old Design*@
+        @*<input type="radio" id="tab-1" name="tab-effect-1" checked="checked" onclick="getingLeaderBoardDataByType('WTL')">
+        <span>উইকলি স্কোর</span>*@
+        <input type="radio" id="tab-2" name="tab-effect-1" checked="checked" onclick="getingLeaderBoardDataByType('DTL')">
+        <span>ডেইলি স্কোর</span>
+
+        <div class="tab-content" style="background-image:url('../Assets/reload.gif'); background-repeat: no-repeat; background-position: center; ">
+            @*<section id="tab-item-1">
+            <iframe width="100%" height="100%" style="border: none;  " id="WQTab"></iframe>
+            </section>*@
+            <section id="tab-item-2">
+                <iframe width="100%" height="100%" style="border: none;  " id="DQTab"></iframe>
+            </section>
+        </div>
+
+
+        @*New Design*@
+        @*<input type="radio" id="tab-1" name="tab-effect-1" checked="checked" onclick="getingLeaderBoardDataByType('DTL')">
+        <span>ডেইলি</span>
+        <input type="radio" id="tab-2" name="tab-effect-1" onclick="getingLeaderBoardDataByType('WTL')">
+        <span>উইকলি</span>
+
+        <div class="tab-content">
+        <section id="tab-item-1">
+        <iframe width="100%" height="100%" style="border: none;  " id="DQTab"></iframe>
+        </section>
+        <section id="tab-item-2">
+        <iframe width="100%" height="100%" style="border: none; " id="WQTab"></iframe>
+        </section>
+        </div>*@
+
+    </div>
+
+</div>
+
+<div class="bottom-navbar">
+    <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="width: 12%" />
+    <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+    <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" />
+    <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+    <img src="~/Assets/LiveQuizRelated/winner.png" onclick="leaderBoard_Monthly()" style="margin-top: -10%;"/>
+</div>
+
+
+
+<script type="text/javascript">
+
+    const startTime = new Date().getTime();
+
+    // Function to calculate and log the time spent
+
+    // Add an event listener for when the user leaves the page
+
+</script>
+
+<script>
+    function KidsHome() {
+        window.location.href = '/KidsProfileSetup/KidsHome';
+    }
+
+    window.onload = function () {                           /// Added for loading without clicking
+        //document.getElementById("tab-1").click();
+        document.getElementById("tab-2").click();
+
+
+    }
+    $(document).ready(function () {
+        //HeaderShow();
+        //$("#searchOpener").hide();
+        //getingLeaderBoardDataByType("WTL");
+        getingLeaderBoardDataByType("DTL");
+        var MSISDN = sessionStorage.getItem('msisdn');
+        var tournamentGameName = sessionStorage.getItem('TournamentGame');
+
+        $.ajax({
+            url: window.location.origin + "/home/YesterDayScore?MSISDN=" + sessionStorage.getItem('fbid'),
+            type: 'GET',
+            success: function (response) {
+                // The 'response' parameter holds the data returned from the server.
+                $('#score').text(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // Handle any errors here.
+                console.error('Error: ' + textStatus + ', ' + errorThrown);
+            }
+        });
+
+        //$('#GameName').text('রাফটিং অ্যাডভেঞ্চার');
+
+    });
+    function getingLeaderBoardDataByType(type) {
+        var msisdn = sessionStorage.getItem('msisdn');
+        console.log(msisdn);
+        var ckey = sessionStorage.getItem('ckey');
+
+        //var LOG = window.location.origin + "/api/gameplay/";
+
+        if (type == 'DTL') {
+
+            //$.get(LOG + "SaveCapmLog?msisdn=" + msisdn + "&ckey=" + ckey + "&cname=" + networkName + "&theme=click_kidstarLeaderboard&srcurl=" + srcurl, function (rData) { });
+            //document.getElementById("WQTab").src = "";
+            document.getElementById("DQTab").src = window.location.origin + "/LandingPage/KidStarWinnerBoardPreviousDay?type=" + type + "&serviceName=GameStarTournamentGame5"; //+ sessionStorage.getItem("TournamentGame");
+        } else if (type == 'WTL') {
+            //$.get(LOG + "SaveCapmLog?msisdn=" + msisdn + "&ckey=" + ckey + "&cname=" + networkName + "&theme=click_kidstarLeaderboard&srcurl=" + srcurl, function (rData) { });
+            //document.getElementById("DQTab").src ="";
+            document.getElementById("WQTab").src = window.location.origin + "/LandingPage/KidStarWinnerBoardPreviousDay?type=" + type + "&serviceName=GameStarTournamentGame5";//+ sessionStorage.getItem("TournamentGame");
+        }
+    }
+</script>
+
+

@@ -1,0 +1,92 @@
+﻿
+
+.slick span {
+    display: block;
+    background: #eaa149;
+    color: #fff;
+    font-size: 34px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    line-height: 102px;
+    position: relative;
+    text-align: center;
+    opacity: .5;
+    margin: auto auto;
+    padding: 0.5px;
+}
+
+.slick-slide {
+    margin-top:1.5vh;
+    border: solid 1px #2dc38000;
+    transform: scale(.5);
+    transition: transform .4s ease;
+}
+
+    .slick-slide.slick-center {
+        transform: scale(.8);
+    }
+
+        .slick-slide.slick-center span {
+            z-index: 1;
+            transform: scale(.9);
+            /* make the centered slides solid */
+            opacity: 1;
+            color: #ff1493;
+        }
+
+.slick-prev,
+.slick-next {
+    position: absolute;
+    top: 14vh;
+    margin-top: -10px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    color: transparent;
+    outline: none;
+    z-index: 100;
+}
+
+.slick-prev {
+    margin-top: -8%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 15px 15px 0;
+    border-color: transparent #ff1493 transparent transparent;
+    left: -6px;
+    display:none;
+}
+
+.slick-next {
+    margin-top: -8%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 15px;
+    border-color: transparent transparent transparent #ff1493;
+    right: 0px;
+    display: none;
+}
+
+.slick-prev:before {
+    content: none;
+}
+
+.slick-next:before {
+    content: none;
+}
+
+.slick_section {
+    height: 130px;
+    /*background-color: #D3D3D3;*/
+    /*background-image: url(../Assets/RoundCarosoulBG.png);*/
+    background-image: url(../Assets/WINNERS.png);
+    background-size:98%;
+    background-repeat:no-repeat;
+    margin-top:2%;
+    margin-left:1%;
+}
+

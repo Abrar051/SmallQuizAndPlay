@@ -1,0 +1,167 @@
+﻿<style>
+    /*.text-center {
+        text-align: center;
+    }*/
+
+    .img-fluid {
+        width: 30%;
+        height: auto;
+    }
+
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        height: 11vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+        .bottom-navbar img {
+            width: 3.5rem;
+        }
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+<div class="container center" style="overflow-y:scroll;">
+    <div class="card text-white bg-primary mb-3 avatar-card">
+        <div class="card-body">
+            <h5 class="card-title text-center">Choose Your Avatar</h5>
+            <div class="d-flex justify-content-center flex-wrap gap-3 w-100 mt-5" id="avatarContainer">
+                <img class="w-25 avatar-img" src="~/Assets/ProfileEmojiList/babycar.png" />
+                <img class="w-25 avatar-img" src="~/Assets/ProfileEmojiList/babygirl.png" />
+                <img class="w-25 avatar-img" src="~/Assets/ProfileEmojiList/bbgl2.png" />
+                <img class="w-25 avatar-img" src="~/Assets/ProfileEmojiList/boy.png" />
+                <img class="w-25 avatar-img" src="~/Assets/ProfileEmojiList/dianosour.png" />
+                <img class="w-25 avatar-img" src="~/Assets/ProfileEmojiList/bigboy.png" />
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-white bg-primary mb-3  avatar-detail-card" style="display: none; overflow-y:scroll; height:120vh;">
+        <div class="card-body" style="overflow-y:scroll; height:100vh;">
+            <button class="btn btn-success btn-back">
+                <span class="oi oi-arrow-left"></span> Back
+            </button>
+            <h5 class="card-title text-center flex-wrap">Student Detail</h5>
+            <img class="form-group" id="avatarImage" style="width:20%; margin-left:40%;"/>
+            <div class="form-group">
+                <label for="fullName">Student Name</label>
+                <input type="text" class="form-control" id="fullName">
+            </div>
+            <div class="form-group">
+                <label for="parentName">Parent Name</label>
+                <input type="text" class="form-control" id="parentName">
+            </div>
+            <div class="form-group">
+                <label for="birthDate">Enter Birth Date</label>
+                <input type="date" class="form-control" id="birthDate">
+            </div>
+            <div class="form-group">
+                <label for="city">Select City</label>
+                <select class="form-control" id="city">
+                    <option value="Dhaka">Dhaka</option>
+                    <option value="Chattogram">Chattogram</option>
+                    <option value="Khulna">Khulna</option>
+                    <option value="Rajshahi">Rajshahi</option>
+                    <option value="Barishal">Barishal</option>
+                    <option value="Sylhet">Sylhet</option>
+                    <option value="Rangpur">Rangpur</option>
+                    <option value="Mymensingh">Mymensingh</option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label for="inputImage">Attach Student Id</label>
+                <input type="file" class="form-control" id="inputImage">
+            </div>
+
+            <div class="card-footer d-flex justify-content-center">
+                <button onclick="postProfileData()" class="btn btn-success">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".avatar-img").on("click", function () {
+            var imgSrc = $(this).attr("src");
+            sessionStorage.setItem("avatarImgSrc", imgSrc);
+            $(".avatar-card").slideUp();
+            $(".avatar-detail-card").slideDown();
+            /// Setting the profile image for the next slide 
+            $("#avatarImage").attr("src", sessionStorage.getItem("avatarImgSrc"));
+        });
+    });
+
+
+    $(".btn-back").on("click", function () {
+        $(".avatar-detail-card").slideUp();
+        $(".avatar-card").slideDown();
+    });
+
+    function postProfileData ()
+    {
+        var birthDate = new Date(document.getElementById('birthDate').value);
+        var currentDate = new Date();
+        var ageDifferenceMs = currentDate - birthDate;
+        var ageInYears = ageDifferenceMs / (1000 * 60 * 60 * 24 * 365.25);
+        var age = Math.floor(ageInYears);
+
+        var obj = {
+            fullName : document.getElementById('fullName').value ,
+            parentName: document.getElementById('parentName').value,
+            birthDate: age.toString() ,
+            city: document.getElementById('city').value,
+            msisdn: sessionStorage.getItem("fbid"),
+            imageLocation: sessionStorage.getItem("avatarImgSrc")
+        }
+        //debugger;
+        $.ajax({
+            type: "POST",
+            url: "/KidsProfileSetup/PostUserDetails",
+            contentType: "application/json",
+            data: JSON.stringify(obj),
+            success: function (response) {
+                // Handle the success response from the server, if needed
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'আপনি সফলভাবে প্রোফাইল সেটাপ করেছেন।',
+                    confirmButtonText: 'Go To Home',
+                    confirmButtonColor: '#e3126e'
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+
+
+                        window.location.href = "../LandingPage/Index"
+                    }
+                })
+            }
+        });
+
+      
+
+    }
+
+</script>
+
+
+
+
+<div class="bottom-navbar">
+    <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+    <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" />
+    <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+    <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+</div>

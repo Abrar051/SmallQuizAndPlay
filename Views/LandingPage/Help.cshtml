@@ -1,0 +1,687 @@
+﻿
+<style>
+    .modal {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+        .modal.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    .modal,
+    .modal-overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 100;
+    }
+
+    .modal,
+    .modal-card,
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .modal-content {
+        overflow: auto;
+        flex-grow: 1;
+    }
+
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-body {
+        z-index: 101;
+        margin: auto;
+        max-height: calc(100vh - 1rem);
+        max-width: calc(100vw - 1rem);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 500px;
+        height: 300px;
+        background: white;
+    }
+
+    .modal-header,
+    .modal-content,
+    .modal-footer {
+        padding: 2vh;
+    }
+
+    .modal-header {
+        background: #357d93;
+        text-transform: capitalize;
+        font-size: 1.25rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /*    input[type="radio"]:checked {
+                background-color: #e3126e;
+            }*/
+
+    /*label {*/
+    /*display: inline-block;*/
+    /* margin-bottom: 0.5rem; */
+    /*margin-left: 3%;
+            }*/
+
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0px;
+    }
+
+        .bottom-navbar img {
+            width: 14%;
+        }
+</style>
+
+<div id="reg" class="modal close" >
+    <div class="modal-overlay" onclick="HelloCloseModalHelp()"></div>
+    <div class="modal-card" style="height:65%">
+        <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+            <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                <span><i class="fas fa-times" onclick="HelloCloseModalHelp()"></i></span>
+            </div>
+            <img src="~/Assets/LoginModalPopUp3.png" style="transform: scale(.7);margin-bottom: -14%;" />
+            <div style="margin-bottom: 20px;">
+                <span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার খেলতে প্রোফাইল সেটআপ করুন</span><br>
+                @*<span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>*@
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control modal-bg-dark" placeholder="আপনার নাম লিখুন" id="name" required onblur="validateName()">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control modal-bg-dark" placeholder="মোবাইল নাম্বার লিখুন" id="fbid" required>
+            </div>
+            <div class="modal-footer">
+                <div class="center" style="text-align: center; margin-bottom: -3%;">
+                    <button type="submit" class="btn btn-default" style="color: white; background: #357d93; padding: 11px; border-radius: 16px;" onclick="setUserNameProfileForUnSubscription()">লগইন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="unsubscribeModal" tabindex="-1" role="dialog" aria-labelledby="unsubscribeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content card">
+            <!-- Added 'card' class for card-like design -->
+            <div style="text-align: right;margin-right: 10px;">
+                <span><i class="fas fa-times" onclick="UnsubscriptionCloseModal()"></i></span>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Unsubscribe করতে এগিয়ে যান :
+                </p>
+                <div class="btn-group-vertical btn-block" role="group" style="top: -11%; left: -4%; width: 100%;">
+                    <p>
+                        <h5 style="font-weight:bold;">
+                            <span class="lang">Quiz App In App</span>
+                        </h5>
+                        <button type="button" style="color: white; background-color: #357d93;width: 39vw;position: inherit;left: 12vh;border-radius: 20px;height: 5vh;" onclick="UnSubscriptionButtonOfModalMultiTournament('QuizMaster')">আন্সাবস্ক্রাইব</button>
+                    </p>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="UnsubscriptionModal" class="modal close" style="z-index:105;">
+    <div class="modal-overlay" onclick="UnsubscriptionCloseModal()"></div>
+    <div class="modal-card" style="height:73%">
+        <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+            <div style="text-align: right;margin-right: 10px;">
+                <span><i class="fas fa-times" onclick="UnsubscriptionCloseModal()"></i></span>
+            </div>
+            <div>
+                <img src="~/Assets/UnsubscriptionPopUp.png" style="width: 26vw;margin-bottom: 3%;" />
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <span style="width: 100%; text-align: center; color: #357d93; font-weight: bold; font-size: 20px;">আনসাবস্ক্রাইব করতে নিচের যেকোন অপশনে ক্লিক করুন</span><br>
+                @*<span style="width: 100%; text-align: center; color: #e3126e;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>*@
+            </div>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <label style="">আনসাবস্ক্রাইব করার কারণ?</label>
+                </div>
+                <div class="row">
+                    <input type="radio" id="q1" name="SurveyQuestion" value="38">
+                    <label style="margin-left: 3%; margin-bottom:0;" for="q1">জিততে পারছিনা </label>
+                </div>
+                <br>
+                <div class="row">
+                    <input type="radio" id="q2" name="SurveyQuestion" value="39">
+                    <label style="margin-left: 3%; margin-bottom:0;" for="q2">সার্ভিসে সমস্যা </label>
+                </div>
+                <br>
+                <div class="row">
+                    <input type="radio" id="q3" name="SurveyQuestion" value="40">
+                    <label style="margin-left: 3%; margin-bottom:0;" for="q3">খেলার  নিয়ম বুঝিনি </label>
+                </div>
+                <br>
+                <div class="row">
+                    <input type="radio" id="q4" name="SurveyQuestion" value="41">
+                    <label style="margin-left: 3%; margin-bottom:0;" for="q4">প্রাইজ পাইনি </label>
+                </div>
+                <br>
+                @*<div class="row">
+                <input type="radio" id="q5" name="SurveyQuestion" value="42">
+                <label style="margin-left: 3%; margin-bottom:0;" for="q5">অন্যান্য </label>
+                </div>*@
+            </div>
+
+
+
+
+            @*<div class="form-group">
+            <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+            </div>
+            <div class="form-group">
+            <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+            </div>*@
+            <div class="modal-footer">
+                <div class="center" style="text-align: center; margin-bottom: -3%;">
+                    <button type="submit" class="btn btn-default" style="color: white; background: #357d93; padding: 12px; border-radius: 17px;" onclick="UnSubscriptionButtonOfModal()">আনসাবস্ক্রিপশন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="status-bar">
+        <div class="title" style=" color: #e3126e; ">হেল্প</div>
+    </div>*@
+
+<div>
+    <div style=" text-align: center; font-size: 25px; color: white; ">হেল্প</div>
+</div>
+
+<br />
+<div class="container" style="overflow-y:auto; height:80vh; color: white; background-color: rgba(0, 0, 0, 0.5);">
+
+    <div class="terms-card" style="margin-top:8vh">
+        <h5 id="HelpLine">
+            ১। হেল্পলাইন নম্বরটি কী?
+        </h5>
+        <p style=" color: #565656; ">উঃ <a href="tel:+8801936236705"><u>8801936236705</u></a></p>
+    </div>
+
+
+    <div class="terms-card">
+        <h5 id="SupportMail">
+            ২। হেল্পলাইনে ফোন করার সময়সূচী?
+        </h5>
+        <p>উঃ <a><u>রবিবার থেকে বৃহস্পতিবার সকাল ১০ টা থেকে বিকাল ৬ টা।</u></a></p>
+    </div>
+
+
+    <div class="terms-card">
+        <h5 id="SupportMail">
+            ৩। সাপোর্ট ইমেইল ঠিকানা কি?
+        </h5>
+        <p style=" color: #565656; ">উঃ <a href="mailto:kidstar.help2024@gmail.com><u>quizmaster.help@gmail.com</u></a></p>
+    </div>
+
+    <div class="terms-card">
+        <h5 id="Link">
+            ৪। কিডস্টার লিংকটি <a href="https://kidstar.shabox.mobi" style=" color: #357d93; ">কি?</a>
+        </h5>
+        <p style=" color: #565656; ">উঃ <a href="https://kidstar.shabox.mobi"><u>https://kidstar.shabox.mobi</u></a></p>
+    </div>
+
+    <div class="terms-card">
+        <h5 id="QMFbLink">
+            ৫। কিডস্টার ফেসবুক লিংকটি কি?
+        </h5>
+        <p style=" color: #565656; ">উঃ <a href="https://www.facebook.com/profile.php?id=61557689583394"><u>https://www.facebook.com/Quizstar-101311827946147</u></a></p>
+    </div>
+
+    <div class="terms-card">
+        <h5 id="QMMessageLink">
+            ৬| আমাদের সাথে সরাসরি কন্টাক্ট করুন নিচের আইকনে ক্লিক করে ।
+        </h5>
+        <p style=" color: #565656; "><a href="https://m.me/270675172793255"><img src="~/Assets/messenger.png" style=" height: auto; width: 13%; " /></a></p>
+
+    </div>
+
+    <div class="terms-card">
+        <h5 id="unSubscriptionModal">
+            ৭| কিডস্টার থেকে আন্সাবস্ক্রাইব করতে নিচের বাটনে ক্লিক করুন।
+        </h5>
+        @*<button type="button" class="btn btn-default" style="color: #40034e;background-image: linear-gradient(90deg, #C85E6C 0%, #f9dc56 100%,transparent 100%);width: 33%;border: transparent;border-radius: 26px;" onclick="UnSubModalOnHelp()">আন্সাবস্ক্রাইব</button>*@
+        <img onclick="UnSubscriptionButtonOfModalMultiTournament('KidStar')" style=" width: 30vw; " src="~/Assets/unsubscription.png" />
+    </div>
+
+
+
+    <div style="height:20vh"></div>
+</div>
+
+@section leaderboard{
+@*    <div class="fixed-bottom" style="bottom: 0vw;">
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+        <img style="width: 100%; height:9vh" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>*@
+
+    <div class="bottom-navbar">
+        <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="width: 12%" />
+        <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+        <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" style="width: 17%" />
+        <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+        <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+    </div>
+
+}
+
+
+@section scripts{
+    <script>
+        function KidsHome() {
+            window.location.href = '/KidsProfileSetup/KidsHome';
+        }
+
+        function UnsubscriptionCloseModal() {
+            //document.querySelector(".modal").classList.remove("open");
+            //document.querySelector(".modal").classList.add("close");
+
+            //document.querySelector("#login").classList.remove("open");
+            //document.querySelector("#login").classList.add("close");
+
+            document.querySelector("#unsubscribeModal").classList.remove("open");
+            document.querySelector("#unsubscribeModal").classList.add("close");
+        }
+
+
+        function OpenUnSubOptions() {
+            $('#unsubscribeModal').modal('show');
+        }
+
+
+        function UnSubModalOnHelp() {
+            let fbid = sessionStorage.getItem("fbid");
+            if (sessionStorage.getItem("isLogin") == null || sessionStorage.getItem("isLogin") == undefined) {
+                document.querySelector("#reg").classList.remove("close");
+                document.querySelector("#reg").classList.add("open");
+                $("#logoutMenu").hide();
+            }
+            else {
+                document.querySelector("#unsubscribeModal").classList.remove("close");
+                document.querySelector("#unsubscribeModal").classList.add("open");
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Unsubscription_Clicked&srcurl=" + window.location.href, function (rData) { });
+
+                //$.get("../LandingPage/IsSubscribed?fbid=" + fbid, function (rdata) {
+                //    if (rdata.result === false) {
+                //        Swal.fire({
+                //            title: '<p style="font-size:14px;">আপনাকে প্রথমে সাবস্ক্রাইব করতে হবে</p>',
+                //            showDenyButton: false,
+                //            showCancelButton: true,
+                //            confirmButtonText: 'হ্যাঁ',
+                //            denyButtonText: `Yesss`,
+                //            cancelButtonText: 'না'
+                //        }).then((result) => {
+                //            if (result.isConfirmed) {
+                //                window.location.href = "../Home/BkashPayment";
+                //            } else if (result.isDenied) {
+                //            }
+                //        });
+                //    }
+                //});
+
+                //$.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Unsubscription_Clicked&srcurl=" + window.location.href, function (rData) { });
+
+                //Swal.fire({
+                //    title: '<p style="font-size:14px;">আপনি কি আনসাবস্ক্রাইব করতে চান?</p>',
+                //    showDenyButton: false,
+                //    showCancelButton: true,
+                //    confirmButtonText: 'হ্যাঁ',
+                //    confirmButtonColor: '#e3126e',
+                //    denyButtonText: `Yesss`,
+                //    cancelButtonText: 'না'
+                //}).then((result) => {
+                //    /* Read more about isConfirmed, isDenied below */
+                //    if (result.isConfirmed) {
+
+                //        $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Unsubscription_Done&srcurl=" + window.location.href, function (rData) { });
+                //        var msisdn = sessionStorage.getItem("fbid");
+                //        $.ajax({
+                //            type: "POST",
+                //            url: "../Home/UnSubscription?msisdn=" + msisdn,
+                //            success: function (res) {
+                //                var ckey = sessionStorage.getItem("ckey");
+                //                var FTU = sessionStorage.getItem("FTU");
+                //                ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                //                var su = sessionStorage.getItem("su");
+                //                su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                //                sessionStorage.clear();
+                //                localStorage.clear();
+                //                sessionStorage.setItem("ckey", ckey);
+                //                sessionStorage.setItem("FTU", FTU);
+                //                sessionStorage.setItem("su", su);
+                //                $("#logoutMenu").hide();
+                //                window.location.href = "../Home/UnSubscriptionView";
+                //            },
+                //            error: function (errMsg) {
+                //                var ckey = sessionStorage.getItem("ckey");
+                //                var FTU = sessionStorage.getItem("FTU");
+                //                ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                //                var su = sessionStorage.getItem("su");
+                //                su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                //                localStorage.clear();
+                //                sessionStorage.clear();
+                //                sessionStorage.setItem("ckey", ckey);
+                //                sessionStorage.setItem("FTU", FTU);
+                //                sessionStorage.setItem("su", su);
+                //                $("#logoutMenu").hide();
+                //                window.location.href = "../";
+                //                console.log("Error");
+                //            }
+                //        });
+                //    } else if (result.isDenied) {
+
+                //    }
+                //});
+            }
+        }
+
+
+        function loginModalOpen ()
+        {
+            if (sessionStorage.getItem("fbid") == null) {
+                document.querySelector("#reg").classList.add("open");
+                document.querySelector("#reg").classList.remove("close");
+            }
+
+            else 
+            {
+                document.querySelector("#unsubscribeModal").classList.add("open");
+                document.querySelector("#unsubscribeModal").classList.remove("close");
+            }
+
+        }
+
+
+        function setUserNameProfileForUnSubscription ()
+        {
+            if (sessionStorage.getItem("fbid") == null )
+            {
+                sessionStorage.setItem ("fbid", document.getElementById('fbid').value);
+                document.querySelector("#reg").classList.remove("open");
+                document.querySelector("#reg").classList.add("close");
+            }
+            else 
+            {
+                document.querySelector("#unsubscribeModal").classList.add("open");
+                document.querySelector("#unsubscribeModal").classList.remove("close");
+            }
+
+        }
+
+        //// New update
+        function UnSubscriptionButtonOfModalMultiTournament(serviceName) {
+           
+            console.log("unsub Clicked");
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Unsubscription_Done&srcurl=" + window.location.href, function (rData) { });
+         
+            var msisdn = sessionStorage.getItem("fbid");
+            sessionStorage.setItem("serviceName", serviceName);
+
+            $.ajax({
+                type: "GET",
+                url: '../Landingpage/IsSubscribedForMultiTournament?fbid=' + msisdn + "&serviceName=" + sessionStorage.getItem('serviceName'),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (rdata) {
+                    if (rdata.result === false) {
+                        sessionStorage.setItem("isLogin", "Yes");
+                        paymentwithbkashMultiTournament();
+                    } 
+                    else if (rdata.result === true) {
+                        //debugger;
+                        Swal.fire({
+                        
+                            title: '<p style="font-size:14px;">আপনি কি আনসাবস্ক্রাইব করতে চান?</p>',
+                            showDenyButton: false,
+                            showCancelButton: true,
+                            confirmButtonText: 'হ্যাঁ',
+                            confirmButtonColor: '#e3126e',
+                            denyButtonText: `Yesss`,
+                            cancelButtonText: 'না'
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "../Home/UnSubscriptionFromMultiTournament?msisdn=" + sessionStorage.getItem("fbid") + "&serviceName=" + serviceName,
+                                    success: function (res) {
+                                        var ckey = sessionStorage.getItem("ckey");
+                                        var FTU = sessionStorage.getItem("FTU");
+                                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                                        var su = sessionStorage.getItem("su");
+                                        su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                                        var sent = sessionStorage.getItem("sentToServer");
+
+                                        //sessionStorage.clear();
+                                        //localStorage.clear();
+
+                                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                                        sessionStorage.setItem("ckey", ckey);
+                                        sessionStorage.setItem("FTU", FTU);
+                                        sessionStorage.setItem("su", su);
+                                        $("#logoutMenu").hide();
+                                        window.location.href = "../Home/UnSubscriptionView";
+                                    },
+                                    error: function (errMsg) {
+                                        var ckey = sessionStorage.getItem("ckey");
+                                        var FTU = sessionStorage.getItem("FTU");
+                                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                                        var su = sessionStorage.getItem("su");
+                                        su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+
+                                        var sent = sessionStorage.getItem("sentToServer");
+
+                                        //localStorage.clear();
+                                        //sessionStorage.clear();
+
+                                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                                        sessionStorage.setItem("ckey", ckey);
+                                        sessionStorage.setItem("FTU", FTU);
+                                        sessionStorage.setItem("su", su);
+                                        $("#logoutMenu").hide();
+                                        window.location.href = "../Home/UnSubscriptionView";
+                                        console.log("Error");
+                                    }
+                                });
+
+                            } else if (result.isDenied) {
+                                window.location.href = "../Home/Help";
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+
+
+
+        ////
+
+
+
+
+        function UnSubscriptionButtonOfModal() {
+            var surveyRes = $('input[name="SurveyQuestion"]:checked').val();
+            if (typeof surveyRes == 'undefined') {
+                alert("আনসাবস্ক্রাইব করতে নিচের যেকোন অপশনে ক্লিক করুন");
+            } else {
+                //debugger
+                $.get("../LandingPage/SaveUnsubscriptionSurveyResult?msisdn=" + sessionStorage.getItem("fbid") + "&answer=" + surveyRes, function (rData) {
+
+                });
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Unsubscription_Done&srcurl=" + window.location.href, function (rData) { });
+                var msisdn = sessionStorage.getItem("fbid");
+                $.ajax({
+                    type: "POST",
+                    url: "../Home/UnSubscription?msisdn=" + msisdn,
+                    success: function (res) {
+                        var ckey = sessionStorage.getItem("ckey");
+                        var FTU = sessionStorage.getItem("FTU");
+                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                        var su = sessionStorage.getItem("su");
+                        su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                        var sent = sessionStorage.getItem("sentToServer");
+
+                        //sessionStorage.clear();
+                        //localStorage.clear();
+
+                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                        sessionStorage.setItem("ckey", ckey);
+                        sessionStorage.setItem("FTU", FTU);
+                        sessionStorage.setItem("su", su);
+                        $("#logoutMenu").hide();
+                        window.location.href = "../Home/UnSubscriptionView";
+                    },
+                    error: function (errMsg) {
+                        var ckey = sessionStorage.getItem("ckey");
+                        var FTU = sessionStorage.getItem("FTU");
+                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                        var su = sessionStorage.getItem("su");
+                        su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+
+                        var sent = sessionStorage.getItem("sentToServer");
+
+                        //localStorage.clear();
+                        //sessionStorage.clear();
+
+                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                        sessionStorage.setItem("ckey", ckey);
+                        sessionStorage.setItem("FTU", FTU);
+                        sessionStorage.setItem("su", su);
+                        $("#logoutMenu").hide();
+                        window.location.href = "../";
+                        console.log("Error");
+                    }
+                });
+            }
+            //debugger
+            console.log(surveyRes);
+        }
+
+
+    </script>
+
+    <script>
+        function exit() {
+            window.location.href = '@Url.Action("Index", "LandingPage")';
+            return;
+        }
+
+        function HelloCloseModalHelp() {
+            //document.querySelector(".modal").classList.remove("open");
+            //document.querySelector(".modal").classList.add("close");
+
+            //document.querySelector("#login").classList.remove("open");
+            //document.querySelector("#login").classList.add("close");
+            document.querySelector("#reg").classList.remove("open");
+            document.querySelector("#reg").classList.add("close");
+            document.querySelector("#loadingModal").classList.remove("open");
+            document.querySelector("#loadingModal").classList.add("close");
+
+
+        }
+
+        function validateName() {
+            var nameInput = document.getElementById("name");
+            var name = nameInput.value;
+            var regex = /^[\u0980-\u09FFa-zA-Z\s.]+$/;
+            // Regular expression to allow only alphabets and spaces
+
+            if (!regex.test(name) && name.length > 0) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'দুঃখিত',
+                    text: 'দুঃখিত বিশেষ অক্ষর গ্রহণযোগ্য নয়',
+                    confirmButtonText: 'ওকে',
+                    confirmButtonColor: '#e3126e',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var ckey = sessionStorage.getItem("ckey");
+                        var FTU = sessionStorage.getItem("FTU");
+                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                        var su = sessionStorage.getItem("su");
+                        su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                        var FCT = sessionStorage.getItem("FCT");
+                        FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                        var sent = sessionStorage.getItem("sentToServer");
+
+                        //sessionStorage.clear();
+                        //localStorage.clear();
+
+                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                        sessionStorage.setItem("ckey", ckey);
+                        sessionStorage.setItem("FTU", FTU);
+                        sessionStorage.setItem("su", su);
+                        if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                        document.querySelector("#login").classList.remove("open");
+                        document.querySelector("#login").classList.add("close");
+
+                        document.querySelector("#reg").classList.remove("close");
+                        document.querySelector("#reg").classList.add("open");
+
+                        $("#logoutMenu").hide();
+                    }
+                });
+                nameInput.value = ""; // Clear the input field
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+}
+
+
+

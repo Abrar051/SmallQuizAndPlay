@@ -1,0 +1,34 @@
+﻿ <div style="z-index:300000" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-bg-dark">
+            <div class="modal-header" style=" background-color: #ff1493;">
+                <span class="modal-title col-11" id="" style="width:100%; text-align:center; color:white">আপনার প্রোফাইল সেট আপ করুন</span>
+                <div class="col-1" style="float:right">
+                    <button type="button" class="m-0 p-0" style="width:25px; background-color: transparent; color: white; margin-top: 5px; height:25px; border-radius: 50%; border:none; float:right" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color: white; font-size: 15px;">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body mb-3">
+                <div class="form-group" style="display:none">
+                    <div class="form-control" style="border: 1px dashed white; background-color: rgba(40, 55, 71);">
+                        <p style="text-align:center; color: wheat;font-size:12px">** আপনার নাম এবং মোবাইল নাম্বারটি দিন **</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control modal-bg-dark" placeholder="আপনার নাম লিখুন" id="username" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control modal-bg-dark" placeholder="মোবাইল নাম্বার লিখুন" id="mobile" required>
+                </div>
+                @*<p style="color: wheat; font-size: 10px">সাবস্ক্রিপশনের আগে থাকছে একবার ফ্রি খেলার সুযোগ</p>*@
+                @*<button type="submit" id="myBtn" class="btn btn-default" style="float: right; color: white; background: #28a745 " onclick="save()">সাবমিট</button>
+                    <button id="bKash_button" class="btn btn-danger">Pay With bKash</button>*@
+
+                <button type="submit" id="bKash_button" class="btn btn-default" style="float: right; color: white; background: #28a745" onclick="save()">সাবমিট</button>
+
+            </div>
+        </div>
+    </div>
+</div>

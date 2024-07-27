@@ -1,0 +1,92 @@
+﻿
+
+
+
+<style>
+    .Quiz1Leader {
+        width: 93%;
+        height: 22%;
+        position: absolute;
+        left: 5vw;
+        top: 17vh;
+    }
+
+    .Quiz2Leader {
+        width: 93%;
+        height: 22%;
+        position: absolute;
+        left: 5vw;
+        top: 40vh;
+    }
+
+    .Quiz3Leader {
+        width: 93%;
+        height: 22%;
+        position: absolute;
+        left: 5vw;
+        top: 63vh;
+    }
+
+    .Quiz4Leader {
+        width: 93%;
+        height: 42%;
+        position: absolute;
+        left: 5vw;
+        top: 86vh;
+        padding-bottom:20vh;
+    }
+</style>
+
+
+<div  style="max-height: 1000vh;overflow-y: scroll;">
+
+    <div class="">
+        <div name="Daily Quiz">
+
+            <img class="Quiz1Leader" src="~/Assets/LiveQuizRelated/DailyQuizLeader.png" onclick="leaderBoard_MonthlyDirect('QuizMaster-MultiService3')" />
+        </div>
+        <div name="Movie Quiz">
+
+
+            <img class="Quiz2Leader" src="~/Assets/LiveQuizRelated/MovieLeader.png" onclick="leaderBoard_MonthlyDirect('QuizMaster-MultiService4')" />
+
+        </div>
+        <div name="Spelling Quiz">
+
+
+            <img class="Quiz3Leader" src="~/Assets/LiveQuizRelated/SpellingLeader.png" onclick="leaderBoard_MonthlyDirect('QuizMaster-MultiService5')" />
+
+        </div>
+
+        <div name="Audio Quiz">
+
+
+            <img class="Quiz4Leader" src="~/Assets/LiveQuizRelated/SpellingLeader.png" onclick="leaderBoard_MonthlyDirect('QuizMaster-MultiService6')" />
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div class="fixed-bottom">
+
+
+    <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+        <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+            @*<i class="fas fa-crown"></i>*@
+            <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+        </div>
+        <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+            <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+        </div>
+        <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+            <img src="~/Assets/LiveQuizRelated/Leaderboard 2.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+        </div>
+    </div>
+
+    <img style="width: 100%;height: 18vw;margin-bottom: 1vh;" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+</div>
+

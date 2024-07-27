@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">User Profile</h5>
+                        <div id="profileData"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Fetch user profile data from API
+            $.ajax({
+                url: '/KidsProfileSetup/GetUserProfile?MSISDN=8801834006610', // Replace with your API endpoint
+                method: 'GET',
+                success: function (data) {
+                    // Parse JSON response
+                    var profileData = JSON.parse(data);
+
+                    // Generate HTML content for profile card
+                    var profileHtml = '';
+                    profileHtml += '<p><strong>Full Name:</strong> ' + profileData.FullName + '</p>';
+                    profileHtml += '<p><strong>Parent Name:</strong> ' + profileData.ParentName + '</p>';
+                    profileHtml += '<p><strong>City:</strong> ' + profileData.City + '</p>';
+                    profileHtml += '<p><strong>MSISDN:</strong> ' + profileData.MSISDN + '</p>';
+                    profileHtml += '<p><strong>Age:</strong> ' + profileData.Age + '</p>';
+
+                    // Append profile HTML to profileData div
+                    $('#profileData').html(profileHtml);
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText); // Log any errors
+                }
+            });
+        });
+    </script>
+</body>
+</html>

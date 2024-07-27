@@ -1,0 +1,203 @@
+﻿<style>
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        height: 11vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+        .bottom-navbar img {
+            width: 4rem;
+        }
+
+    
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron&display=swap">
+
+<div style="overflow-y:scroll;height:100vh">
+
+    <br />
+    <div class="row" style=" background-color: #59dbbc;width: 64vw; border-radius: 10px; padding: 6px; margin:auto">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-6 result"><i class="far fa-check-square" style="color:green"></i> <span id="rt"> </span> </div>
+                <div class="col-6 result"><i class="far fa-times-circle" style="color:red"></i> <span id="ng">  </span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="CurrentQuizType" style="display:none;"></div>
+
+    <br />
+    <div id="gg" style="visibility: hidden; overflow-y: scroll; height: 83.5vh;padding-bottom:23vh">
+        <div class="jhotpot-card">
+            @*<div class="before-play">*@
+            <div>
+                <div style="text-align:center;margin: -5%">
+                    <br />
+                    <span class="" id="quesid">1</span> | <span class="" id="TotalQuesReg">60</span>
+                </div>
+                <br />
+                <div id="clockdivround">
+                    <div class="box-shadow">
+                        <span class="seconds" id="countdowntimer"></span>
+                    </div>
+                    <br />
+                </div>
+                <div style="margin-top:30%; margin-bottom:10px;">
+                    <input type="hidden" id="qindex" />
+                    <div style="margin:20px; text-align:center">
+                        <span id="questionImage" style="display:none"></span>
+                        <br />
+                        <span id="question"></span>
+                    </div>
+  
+                    <div class="" id="option_layout">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+  
+
+    <div class="modal" id="m_jh_pl" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title col-10" id="" style="width:100%; text-align:center; color:white">নিউ ইয়ার কুইজ</span>
+                    <div class="col-1" style="float:right">
+                        <button type="button" class="" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+                            <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <small style="text-align:center;" class="deeporange">আপনি ইতিমধ্যে দুইটি রাউন্ড খেলে ফেলেছেন, অনুগ্রহ করে কাল আবার চেষ্টা করুন।</small>
+                </div>
+                <div class="modal-footer element-center">
+                    <button type="button" class="btn bg-deeporange text-white" data-bs-dismiss="modal" onclick="closeModal()">ওকে</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="modal" id="m_jh_result" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title col-11" id="result_title" style="width:100%; text-align:center; color:white"></span>
+                        <div class="col-1" style="float:right">
+                            <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+                                <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="mb-2">
+                            <img id="result_pic" src="" height="60" width="60" />
+                        </div>
+                        <small id="result_content" style="text-align:center;" class="deeporange"></small>
+                    </div>
+                    <div class="modal-footer element-center">
+                        <button type="button" class="btn  text-white" style="background-color: #DD6E0F;" id="modal_button" onclick="reloadUI()">ওকে</button>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+    <div class="modal" id="m_jh_result" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <!--<div class="modal-header">-->
+                @*<span class="modal-title col-11" id="result_title" style="width:100%; text-align:center; color:white"></span>*@
+                @*<div class="col-11"></div>
+                    <div class="col-1" style="float:right">
+                        <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+                            <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                        </button>
+                    </div>*@
+                <!--</div>-->
+                <div class="row">
+                    <div class="col-11"></div>
+                    <div class="col-1" style="margin-left: -1%;">
+                        <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+                            <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal-body text-center">
+
+                    @*<div class="mb-2">*@
+                    @*<div class="">
+                        <img id="result_pic" src="" style="width:100%;" />
+                    </div>*@
+                    @*<span class="modal-title col-11" id="result_title" style="width:100%; text-align:center;color: #ff1493;font-size: 25px;font-weight: bold;"></span>
+                        <br />
+                        <br />*@
+                    <small id="result_content" style="text-align:center;color:black;font-size: 16px;" class="deeporange"></small>
+                    <br />
+                    <small id="result_content2" style="text-align:center;color:black;font-size: 16px;" class="deeporange"></small>
+                </div>
+                <div class="modal-footer element-center">
+                    <button type="button" class="btn  text-white" style="background-color: #357d93;" id="modal_buttonPlay" onclick="reloadUI()">আবার খেলুন</button>
+                    <button type="button" class="btn  text-white" style="background-color: #357d93;" id="modal_button" onclick="RedirectOnOkay()">ওকে</button>
+                   @* <a id="messengerid" onclick="openMessengerChat()" style="color: white;">
+                        <img src="~/Assets/facebook.png" alt="Facebook" style="width: 92px;height: 66px;height: 68px;ertical-align: middle;" />*@
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <audio id="aa" controls loop autoplay hidden>
+        <source src="~/Assets/background.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+
+
+</div>
+
+
+@section leaderboard{
+    @*<div class="fixed-bottom">
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+        <img style="width: 100%;height: 18vw;margin-bottom: 1vh;" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>*@
+
+    <div class="bottom-navbar">
+        <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+        <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="margin-top: -8%;" />
+        <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+        <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+    </div>
+
+
+
+}
+
+@section scripts{
+    <script src="~/Scripts/umlop/rapid.js"></script>
+}

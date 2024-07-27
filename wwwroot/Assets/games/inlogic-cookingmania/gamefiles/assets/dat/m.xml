@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<stringresources>
+    <strings>
+        <string id="You win">
+            <en>YOU WIN</en>
+            <es>GANAS</es>
+            <de>DU GEWINNST</de>
+            <it>VINCI</it>
+            <fr>VOUS GAGNEZ</fr>
+            <ru>ВЫ ВЫИГРАЛИ</ru>
+            <br>VOCÊ GANHA</br>
+        </string>
+        <string id="You lose">
+            <en>YOU LOSE</en>
+            <es>PIERDES</es>
+            <de>DU VERLIERST</de>
+            <it>PERDI</it>
+            <fr>VOUS PERDEZ</fr>
+            <ru>ВЫ ПРОИГРАЛИ</ru>
+            <br>VOCÊ PERDE</br>
+        </string>
+        <string id="RESTAURANT_1">
+            <en>BURGER FAST FOOD</en>
+            <es>HAMBURGUESAS COMIDA RÁPIDA</es>
+            <de>BURGER SCHNELLIMBISS</de>
+            <it>BURGER FAST FOOD</it>
+            <fr>BURGER FAST FOOD</fr>
+            <ru>БУРГЕРНЫЙ ФАСТФУД</ru>
+            <br>HAMBÚRGUER FAST FOOD</br>
+        </string>
+        <string id="RESTAURANT_2">
+            <en>BURGER RESTAURANT</en>
+            <es>HAMBURGUESERÍA</es>
+            <de>BURGER-RESTAURANT</de>
+            <it>RISTORANTE DI HAMBURGER</it>
+            <fr>RESTAURANT DE BURGERS</fr>
+            <ru>БУРГЕРНЫЙ РЕСТОРАН</ru>
+            <br>HAMBÚRGUER RESTAURANTE</br>
+        </string>
+        <string id="RESTAURANT_3">
+            <en>FISH FAST FOOD</en>
+            <es>PESCADO COMIDA RÁPIDA</es>
+            <de>FISCH-FASTFOOD</de>
+            <it>FAST FOOD DI PESCE</it>
+            <fr>RESTAURATION RAPIDE DE POISSON</fr>
+            <ru>РЫБНЫЙ ФАСТФУД</ru>
+            <br>FAST FOOD PARA PEIXES</br>
+        </string>
+        <string id="RESTAURANT_4">
+            <en>FISH RESTAURANT</en>
+            <es>RESTAURANTE DE PESCADO</es>
+            <de>FISCHRESTAURANT</de>
+            <it>RISTORANTE DI PESCE</it>
+            <fr>RESTAURANT DE POISSON</fr>
+            <ru>РЫБНЫЙ РЕСТОРАН</ru>
+            <br>RESTAURANTE DE PEIXE</br>
+        </string>
+        <string id="RESTAURANT_5">
+            <en>STEAK RESTAURANT</en>
+            <es>COMIDA RÁPIDA DE PESCADO</es>
+            <de>STEAK-RESTAURANT</de>
+            <it>RISTORANTE STEAK</it>
+            <fr>RESTAURANT RAPIDE</fr>
+            <ru>СТЕЙКОВЫЙ РЕСТОРАН</ru>
+            <br>RESTAURANTE STEAK</br>
+        </string>
+        <string id="CLAIM">
+            <en>CLAIM</en>
+            <es>RECLAMAR</es>
+            <de>ANSPRUCH</de>
+            <it>RIVENDICAZIONE</it>
+            <fr>RÉCLAMER</fr>
+            <ru>ПРЕТЕНДОВАТЬ</ru>
+            <br>REIVINDICAÇÃO</br>
+        </string>
+        <string id="SETTINGS">
+            <en>SETTINGS</en>
+            <es>AJUSTES</es>
+            <de>EINSTELLUNGEN</de>
+            <it>IMPOSTAZIONI</it>
+            <fr>PARAMÈTRES</fr>
+            <ru>НАСТРОЙКИ</ru>
+            <br>CONFIGURAÇÕES</br>
+        </string>
+        <string id="INSTRUCTIONS">
+            <en>INSTRUCTIONS</en>
+            <es>INSTRUCCIONES</es>
+            <de>ANLEITUNGEN</de>
+            <it>ISTRUZIONI PER L'USO</it>
+            <fr>INSTRUCTIONS</fr>
+            <ru>ИНСТРУКЦИИ</ru>
+            <br>INSTRUÇÕES</br>
+        </string>
+        <string id="UPGRADES">
+            <en>UPGRADES</en>
+            <es>ACTUALIZACIONES</es>
+            <de>AUFRÜSTUNGEN</de>
+            <it>AGGIORNAMENTI</it>
+            <fr>MISES À JOUR</fr>
+            <ru>ОБНОВЛЕНИЯ</ru>
+            <br>ATUALIZAÇÕES</br>
+        </string>
+        <string id="HOME">
+            <en>HOME</en>
+            <es>INICIO</es>
+            <de>STARTSEITE</de>
+            <it>CASA</it>
+            <fr>ACCUEIL</fr>
+            <ru>ГЛАВНАЯ</ru>
+            <br>INÍCIO</br>
+        </string>
+        <string id="LEVEL">
+            <en>LEVEL</en>
+            <es>NIVEL</es>
+            <de>EBENE</de>
+            <it>LIVELLO</it>
+            <fr>NIVEAU</fr>
+            <ru>УРОВЕНЬ</ru>
+            <br>NÍVEL</br>
+        </string>
+        <string id="COINS_COLLECTED">
+            <en>COINS COLLECTED</en>
+            <es>MONEDAS RECOGIDAS</es>
+            <de>GESAMMELTE MÜNZEN</de>
+            <it>MONETE RACCOLTE</it>
+            <fr>PIÈCES COLLECTÉES</fr>
+            <ru>СОБРАНО МОНЕТ</ru>
+            <br>MOEDAS COLETADAS</br>
+        </string>
+        <string id="BONUS_REWARD">
+            <en>BONUS REWARD</en>
+            <es>BONIFICACIÓN</es>
+            <de>BONUS-BELOHNUNG</de>
+            <it>PREMIO BONUS</it>
+            <fr>RÉCUPÉRATION DU BONUS</fr>
+            <ru>БОНУСНОЕ ВОЗНАГРАЖДЕНИЕ</ru>
+            <br>RECOMPENSA DE BÔNUS</br>
+        </string>
+        <string id="TOTAL">
+            <en>TOTAL</en>
+            <es>TOTAL</es>
+            <de>GESAMT</de>
+            <it>TOTALE</it>
+            <fr>TOTAL</fr>
+            <ru>ВСЕГО</ru>
+            <br>TOTAL</br>
+        </string>
+        <string id="SLOT">
+            <en>SLOT</en>
+            <es>TRAGAPERRAS</es>
+            <de>SPIELAUTOMAT</de>
+            <it>SLOT</it>
+            <fr>MACHINE À SOUS</fr>
+            <ru>СЛОТ</ru>
+            <br>SLOT</br>
+        </string>
+        <string id="TIME">
+            <en>TIME</en>
+            <es>TIEMPO</es>
+            <de>ZEIT</de>
+            <it>TEMPO</it>
+            <fr>TEMPS</fr>
+            <ru>ВРЕМЯ</ru>
+            <br>HORA</br>
+        </string>
+        <string id="GOLD">
+            <en>GOLD</en>
+            <es>ORO</es>
+            <de>GOLD</de>
+            <it>ORO</it>
+            <fr>OR</fr>
+            <ru>ЗОЛОТО</ru>
+            <br>OURO</br>
+        </string>
+        <string id="2X_REWARD">
+            <en>2X REWARD!</en>
+            <es>¡RECOMPENSA 2X!</es>
+            <de>2X-BELOHNUNG!</de>
+            <it>RICOMPENSA 2X!</it>
+            <fr>RÉCOMPENSE 2X !</fr>
+            <ru>ВОЗНАГРАЖДЕНИЕ 2X!</ru>
+            <br>2X RECOMPENSA!</br>
+        </string>
+        <string id="TUTORIAL_0_10_TAP">
+            <en>TAP ON BUN</en>
+            <es>TOQUE EN EL BOLLO</es>
+            <de>TIPPE AUF BRÖTCHEN</de>
+            <it>TOCCARE LO PANINO</it>
+            <fr>TAPEZ SUR LA BRIOCHE</fr>
+            <ru>НАЖМИТЕ НА ХЛЕБ</ru>
+            <br>BATER NO PÃO</br>
+        </string>
+        <string id="TUTORIAL_0_10_CLICK">
+            <en>CLICK ON BUN</en>
+            <es>HAGA CLIC EN BOLLO</es>
+            <de>KLICKEN SIE AUF BRÖTCHEN</de>
+            <it>CLICCA SU PANINO</it>
+            <fr>CLIQUEZ SUR LE BRIOCHE</fr>
+            <ru>НАЖМИТЕ НА БУЛКУ</ru>
+            <br>CLIQUE NO PÃOZINHO</br>
+        </string>
+        <string id="TUTORIAL_1_7_11_TAP">
+            <en>TAP ON MEAT</en>
+            <es>TOQUE EN LA CARNE</es>
+            <de>TIPPE AUF FLEISCH</de>
+            <it>TOCCA LA CARNE</it>
+            <fr>TAPEZ SUR LA VIANDE</fr>
+            <ru>НАЖМИТЕ НА МЯСО</ru>
+            <br>BATER NA CARNE</br>
+        </string>
+        <string id="TUTORIAL_1_7_11_CLICK">
+            <en>CLICK ON MEAT</en>
+            <es>HAGA CLIC EN CARNE</es>
+            <de>KLICKEN SIE AUF FLEISCH</de>
+            <it>FARE CLIC SULLA CARNE</it>
+            <fr>CLIQUEZ SUR LA VIANDE</fr>
+            <ru>НАЖМИТЕ НА МЯСО</ru>
+            <br>CLIQUE NA CARNE</br>
+        </string>
+        <string id="TUTORIAL_2_8">
+            <en>WAIT</en>
+            <es>ESPERE</es>
+            <de>WARTEN</de>
+            <it>ATTENDERE</it>
+            <fr>ATTENDEZ</fr>
+            <ru>ПОДОЖДИТЕ</ru>
+            <br>AGUARDE</br>
+        </string>
+        <string id="TUTORIAL_3_12_TAP">
+            <en>TAP TO COMBINE</en>
+            <es>PULSE PARA COMBINAR</es>
+            <de>ZUM KOMBINIEREN ANTIPPEN</de>
+            <it>TOCCA PER COMBINARE</it>
+            <fr>TOUCHEZ POUR COMBINER</fr>
+            <ru>НАЖМИТЕ, ЧТОБЫ СОЕДИНИТЬ</ru>
+            <br>TOQUE PARA COMBINAR</br>
+        </string>
+        <string id="TUTORIAL_3_12_CLICK">
+            <en>CLICK TO COMBINE</en>
+            <es>PULSE PARA COMBINAR</es>
+            <de>ZUM KOMBINIEREN ANKLICKEN</de>
+            <it>FARE CLIC PER COMBINARE</it>
+            <fr>CLIQUEZ POUR COMBINER</fr>
+            <ru>НАЖМИТЕ ДЛЯ СОВМЕЩЕНИЯ</ru>
+            <br>CLIQUE PARA COMBINAR</br>
+        </string>
+        <string id="TUTORIAL_4_6">
+            <en>SERVE</en>
+            <es>SIRVA</es>
+            <de>SERVIEREN SIE</de>
+            <it>SERVIRE</it>
+            <fr>SERVEZ</fr>
+            <ru>ПОДАТЬ</ru>
+            <br>SERVIR</br>
+        </string>
+        <string id="TUTORIAL_5_CLICK">
+            <en>CLICK ON JUICER TO MAKE DRINKS</en>
+            <es>HAZ CLIC EN EL EXPRIMIDOR PARA PREPARAR BEBIDAS</es>
+            <de>KLICKE AUF DEN ENTSAFTER, UM GETRÄNKE HERZUSTELLEN</de>
+            <it>CLICCARE SULLO SPREMIAGRUMI PER PREPARARE BEVANDE</it>
+            <fr>CLIQUEZ SUR LA CENTRIFUGEUSE POUR PRÉPARER DES BOISSONS</fr>
+            <ru>НАЖМИТЕ НА СОКОВЫЖИМАЛКУ, ЧТОБЫ ПРИГОТОВИТЬ НАПИТКИ</ru>
+            <br>CLIQUE NO ESPREMEDOR PARA FAZER BEBIDAS</br>
+        </string>
+        <string id="TUTORIAL_5_TAP">
+            <en>TAP ON JUICER TO MAKE DRINKS</en>
+            <es>PULSE SOBRE EL EXPRIMIDOR PARA PREPARAR BEBIDAS</es>
+            <de>TIPPEN SIE AUF DEN ENTSAFTER, UM GETRÄNKE HERZUSTELLEN</de>
+            <it>TOCCARE LO SPREMIAGRUMI PER PREPARARE LE BEVANDE</it>
+            <fr>CLIQUER SUR LE PRESSE-AGRUMES POUR PRÉPARER DES BOISSONS</fr>
+            <ru>НАЖМИТЕ НА СОКОВЫЖИМАЛКУ, ЧТОБЫ ПРИГОТОВИТЬ НАПИТКИ</ru>
+            <br>BATER NO ESPREMEDOR PARA FAZER BEBIDAS</br>
+        </string>
+        <string id="TUTORIAL_9_TAP">
+            <en>IF YOU BURN THE FOOD, DOUBLE TAP TO TRASH IT</en>
+            <es>SI QUEMAS LA COMIDA, TOCA DOS VECES PARA TIRARLA A LA BASURA</es>
+            <de>WENN DAS ESSEN VERBRANNT IST, TIPPE DOPPELT, UM ES ZU ENTSORGEN.</de>
+            <it>SE SI BRUCIA IL CIBO, TOCCARE DUE VOLTE PER CESTINARLO</it>
+            <fr>SI VOUS BRÛLEZ LA NOURRITURE, TAPEZ DEUX FOIS POUR LA METTRE À LA POUBELLE.</fr>
+            <ru>ЕСЛИ ВЫ СОЖГЛИ ЕДУ, ДВАЖДЫ КОСНИТЕСЬ ЕЕ, ЧТОБЫ ВЫБРОСИТЬ.</ru>
+            <br>SE VOCÊ QUEIMAR OS ALIMENTOS, DÊ UMA PANCADA DUPLA PARA JOGÁ-LOS NO LIXO</br>
+        </string>
+        <string id="TUTORIAL_9_CLICK">
+            <en>IF YOU BURN THE FOOD, DOUBLE CLICK TO TRASH IT</en>
+            <es>SI QUEMAS LA COMIDA, HAZ DOBLE CLIC PARA TIRARLA A LA BASURA</es>
+            <de>WENN DU DAS ESSEN VERBRENNST, DOPPELKLICKE, UM ES ZU ENTSORGEN</de>
+            <it>SE SI BRUCIA IL CIBO, FARE DOPPIO CLIC PER CESTINARLO</it>
+            <fr>SI VOUS BRÛLEZ LA NOURRITURE, DOUBLE-CLIQUEZ POUR LA METTRE À LA POUBELLE.</fr>
+            <ru>ЕСЛИ ВЫ СОЖГЛИ ЕДУ, ДВАЖДЫ ЩЕЛКНИТЕ, ЧТОБЫ ВЫБРОСИТЬ ЕЕ.</ru>
+            <br>SE VOCÊ QUEIMAR OS ALIMENTOS, DÊ UM DUPLO CLIQUE PARA JOGÁ-LOS NO LIXO</br>
+        </string>
+        <string id="TUTORIAL_13_TAP">
+            <en>DOUBLE TAP TO TRASH, YOU CAN TRASH UNWANTED FOOD</en>
+            <es>DOBLE TOQUE PARA TIRAR A LA BASURA LA COMIDA NO DESEADA</es>
+            <de>DOPPELTIPPEN SIE AUF , UM UNERWÜNSCHTE LEBENSMITTEL ZU ENTSORGEN.</de>
+            <it>TOCCANDO DUE VOLTE PER CESTINARE, È POSSIBILE CESTINARE IL CIBO INDESIDERATO</it>
+            <fr>DOUBLE TAPEZ POUR METTRE À LA POUBELLE, VOUS POUVEZ METTRE À LA POUBELLE LES ALIMENTS NON DÉSIRÉS.</fr>
+            <ru>ДВОЙНОЕ НАЖАТИЕ НА КОРЗИНУ ПОЗВОЛЯЕТ ВЫБРОСИТЬ НЕНУЖНУЮ ЕДУ.</ru>
+            <br>BATE DUAS VEZES NO LIXO, VOCÊ PODE JOGAR NO LIXO ALIMENTOS INDESEJADOS</br>
+        </string>
+        <string id="TUTORIAL_13_CLICK">
+            <en>DOUBLE CLICK TO TRASH, YOU CAN TRASH UNWANTED FOOD</en>
+            <es>DOBLE CLICK PARA TIRAR, PUEDES TIRAR LA COMIDA NO DESEADA</es>
+            <de>DOPPELKLICK ZUM MÜLLEIMER: UNERWÜNSCHTES ESSEN KANN ENTSORGT WERDEN</de>
+            <it>DOPPIO CLIC PER CESTINARE, SI PUÒ CESTINARE IL CIBO INDESIDERATO</it>
+            <fr>DOUBLE-CLIQUEZ POUR METTRE À LA POUBELLE, VOUS POUVEZ METTRE À LA POUBELLE LES ALIMENTS NON DÉSIRÉS.</fr>
+            <ru>ДВОЙНОЙ ЩЕЛЧОК ПО МУСОРУ ПОЗВОЛЯЕТ ВЫБРАСЫВАТЬ НЕНУЖНУЮ ЕДУ</ru>
+            <br>DUPLO CLIQUE NO LIXO, VOCÊ PODE JOGAR NO LIXO ALIMENTOS INDESEJADOS</br>
+        </string>
+        <string id="TUTORIAL_14">
+            <en>USE POWERUPS FOR SHORT BOOST</en>
+            <es>USA POTENCIADORES PARA UN IMPULSO CORTO</es>
+            <de>VERWENDE POWERUPS FÜR EINEN KURZEN BOOST</de>
+            <it>UTILIZZARE I POTENZIAMENTI PER UN BREVE INCREMENTO</it>
+            <fr>UTILISEZ LES POWERUPS POUR UN PETIT COUP DE POUCE</fr>
+            <ru>ИСПОЛЬЗУЙТЕ БОНУСЫ ДЛЯ КРАТКОВРЕМЕННОГО УСИЛЕНИЯ</ru>
+            <br>USAR POWERUPS PARA UM IMPULSO CURTO</br>
+        </string>
+        <string id="INSTR_01_TAP">
+            <en>COOK FOOD BY TAPPING ON IT</en>
+            <es>COCINA LOS ALIMENTOS PULSANDO SOBRE ELLOS</es>
+            <de>KOCHE LEBENSMITTEL, INDEM DU SIE ANTIPPST</de>
+            <it>CUOCERE IL CIBO TOCCANDOLO</it>
+            <fr>FAITES CUIRE LES ALIMENTS EN LES TAPANT</fr>
+            <ru>ГОТОВЬТЕ ЕДУ, НАЖАВ НА НЕЕ</ru>
+            <br>COZINHAR OS ALIMENTOS BATENDO NELES</br>
+        </string>
+        <string id="INSTR_01_CLICK">
+            <en>COOK FOOD BY CLICKING ON IT</en>
+            <es>COCINA LA COMIDA HACIENDO CLIC SOBRE ELLA</es>
+            <de>KOCHE ESSEN, INDEM DU DARAUF KLICKST</de>
+            <it>CUOCERE IL CIBO FACENDO CLIC SU DI ESSO</it>
+            <fr>CUISINEZ DES ALIMENTS EN CLIQUANT DESSUS.</fr>
+            <ru>ПРИГОТОВЬТЕ ЕДУ, НАЖАВ НА НЕЕ</ru>
+            <br>COZINHE OS ALIMENTOS, CLICANDO SOBRE ELES</br>
+        </string>
+        <string id="INSTR_02_CLICK">
+            <en>CLICK ON JUICER TO MAKE DRINKS</en>
+            <es>PULSA EN EL EXPRIMIDOR PARA PREPARAR BEBIDAS</es>
+            <de>KLICKE AUF DEN ENTSAFTER, UM GETRÄNKE HERZUSTELLEN</de>
+            <it>FARE CLIC SULLO SPREMIAGRUMI PER PREPARARE BEVANDE</it>
+            <fr>CLIQUEZ SUR LA CENTRIFUGEUSE POUR PRÉPARER DES BOISSONS</fr>
+            <ru>НАЖМИТЕ НА СОКОВЫЖИМАЛКУ, ЧТОБЫ ПРИГОТОВИТЬ НАПИТКИ</ru>
+            <br>CLIQUE NO ESPREMEDOR PARA FAZER BEBIDAS</br>
+        </string>
+        <string id="INSTR_02_TAP">
+            <en>TAP ON JUICER TO MAKE DRINKS</en>
+            <es>PULSE SOBRE EL EXPRIMIDOR PARA HACER BEBIDAS</es>
+            <de>TIPPE AUF DIE SAFTPRESSE, UM GETRÄNKE HERZUSTELLEN</de>
+            <it>TOCCARE LO SPREMIAGRUMI PER PREPARARE LE BEVANDE</it>
+            <fr>TAPE SUR LE PRESSE-AGRUMES POUR FAIRE DES BOISSONS</fr>
+            <ru>НАЖМИТЕ НА СОКОВЫЖИМАЛКУ, ЧТОБЫ ПРИГОТОВИТЬ НАПИТКИ</ru>
+            <br>BATER NO ESPREMEDOR PARA FAZER BEBIDAS</br>
+        </string>
+        <string id="INSTR_03_TAP">
+            <en>DOUBLE TAP TO TRASH THE FOOD</en>
+            <es>DOBLE TOQUE PARA TIRAR LA COMIDA</es>
+            <de>DOPPELTIPPEN, UM DAS ESSEN ZU ENTSORGEN</de>
+            <it>DOPPIO TOCCO PER CESTINARE IL CIBO</it>
+            <fr>DOUBLE-CLIQUEZ POUR METTRE LA NOURRITURE À LA POUBELLE</fr>
+            <ru>ДВАЖДЫ НАЖМИТЕ, ЧТОБЫ ВЫБРОСИТЬ ЕДУ</ru>
+            <br>BATER DUAS VEZES PARA JOGAR OS ALIMENTOS NO LIXO</br>
+        </string>
+        <string id="INSTR_03_CLICK">
+            <en>DOUBLE CLICK TO TRASH THE FOOD</en>
+            <es>DOBLE CLICK PARA TIRAR LA COMIDA</es>
+            <de>DOPPELKLICK, UM DAS ESSEN ZU ENTSORGEN</de>
+            <it>DOPPIO CLIC PER CESTINARE IL CIBO</it>
+            <fr>DOUBLE-CLIQUEZ POUR METTRE LA NOURRITURE À LA POUBELLE</fr>
+            <ru>ДВАЖДЫ ЩЕЛКНИТЕ, ЧТОБЫ ВЫБРОСИТЬ ЕДУ</ru>
+            <br>DUPLO CLIQUE PARA DESTRUIR OS ALIMENTOS</br>
+        </string>
+        <string id="INSTR_04">
+            <en>UPGRADE YOUR RESTAURANT</en>
+            <es>MEJORA TU RESTAURANTE</es>
+            <de>VERBESSERE DEIN RESTAURANT</de>
+            <it>POTENZIA IL TUO RISTORANTE</it>
+            <fr>AMÉLIOREZ VOTRE RESTAURANT</fr>
+            <ru>УЛУЧШАЙТЕ СВОЙ РЕСТОРАН</ru>
+            <br>ATUALIZE SEU RESTAURANTE</br>
+        </string>
+        <string id="INSTR_05">
+            <en>COLLECT POWERUPS</en>
+            <es>RECOGE POTENCIADORES</es>
+            <de>SAMMLE POWERUPS</de>
+            <it>RACCOGLIERE POTENZIAMENTI</it>
+            <fr>COLLECTEZ DES BONUS</fr>
+            <ru>СОБИРАЙТЕ БОНУСЫ</ru>
+            <br>COLETA DE ENERGIA</br>
+        </string>
+        <string id="GOLD_RUSH">
+            <en>GOLD RUSH: BOOSTS YOUR INCOME BY (50%) FOR (X) SECONDS</en>
+            <es>FIEBRE DEL ORO: AUMENTA TUS INGRESOS UN (50%) DURANTE (X) SEGUNDOS.</es>
+            <de>GOUDEN RUSH: ERHÖHT DEIN EINKOMMEN UM (50%) FÜR (X) SEKUNDEN</de>
+            <it>CORSA ALL'ORO: AUMENTA LE ENTRATE DEL (50%) PER (X) SECONDI</it>
+            <fr>RUÉE VERS L'OR : AUGMENTE VOS REVENUS DE (50 %) PENDANT (X) SECONDES.</fr>
+            <ru>ЗОЛОТАЯ ЛИХОРАДКА: УВЕЛИЧИВАЕТ ВАШ ДОХОД НА (50%) НА (Х) СЕКУНД</ru>
+            <br>CORRIDA DE OURO: AUMENTA SUA RENDA EM (50%) POR (X) SEGUNDOS</br>
+        </string>
+        <string id="DRINK_RUSH">
+            <en>DRINK RUSH: BOOSTS DRINK PRODUCTION BY (50%) FOR (X) SECONDS</en>
+            <es>FIEBRE DE BEBIDAS: AUMENTA LA PRODUCCIÓN DE BEBIDAS UN (50%) DURANTE (X) SEGUNDOS.</es>
+            <de>GETRÄNKERAUSCH: ERHÖHT DIE GETRÄNKEPRODUKTION UM (50%) FÜR (X) SEKUNDEN</de>
+            <it>DRINK RUSH: AUMENTA LA PRODUZIONE DI BEVANDE DEL (50%) PER (X) SECONDI</it>
+            <fr>RUÉE VERS LES BOISSONS : AUGMENTE LA PRODUCTION DE BOISSONS DE (50%) PENDANT (X) SECONDES.</fr>
+            <ru>ПИТЬЕВАЯ ЛИХОРАДКА: УВЕЛИЧИВАЕТ ПРОИЗВОДСТВО НАПИТКОВ НА (50%) НА (Х) СЕКУНД</ru>
+            <br>DRINK RUSH: AUMENTA A PRODUÇÃO DE BEBIDAS EM (50%) POR (X) SEGUNDOS</br>
+        </string>
+        <string id="ANTI_FIRE">
+            <en>BLOCKS BURNING FOR (X) SECONDS</en>
+            <es>BLOQUES ARDIENDO PARA (X) SEGUNDOS</es>
+            <de>BLÖCKE BRENNEN FÜR (X) SEKUNDEN</de>
+            <it>BLOCCHI CHE BRUCIANO PER (X) SECONDI</it>
+            <fr>BLOCS BRÛLÉS POUR (X) SECONDES</fr>
+            <ru>БЛОКИРУЕТ ГОРЕНИЕ НА (X) СЕКУНД</ru>
+            <br>BLOCOS QUEIMANDO PARA (X) SEGUNDOS</br>
+        </string>
+        <string id="FOOD_RUSH">
+            <en>FOOD RUSH: BOOSTS COOKING BY (50%) FOR (X) SECONDS</en>
+            <es>FIEBRE DE COMIDA: AUMENTA LA COCCIÓN UN (50%) DURANTE (X) SEGUNDOS.</es>
+            <de>ESSENSRAUSCH: ERHÖHT DAS KOCHEN UM (50%) FÜR (X) SEKUNDEN</de>
+            <it>CORSA AL CIBO: AUMENTA LA COTTURA DEL (50%) PER (X) SECONDI.</it>
+            <fr>RUÉE VERS LA NOURRITURE : AUGMENTE LA CUISSON DE (50 %) PENDANT (X) SECONDES.</fr>
+            <ru>ПИЩЕВАЯ ЛИХОРАДКА: УСКОРЯЕТ ПРИГОТОВЛЕНИЕ ПИЩИ НА (50%) НА (Х) СЕКУНД.</ru>
+            <br>FOOD RUSH: AUMENTA O COZIMENTO EM (50%) POR (X) SEGUNDOS</br>
+        </string>
+        <string id="PAUSED">
+            <en>PAUSED</en>
+            <es>EN PAUSA</es>
+            <de>PAUSE</de>
+            <it>PAUSA</it>
+            <fr>EN PAUSE</fr>
+            <ru>ПАУЗА</ru>
+            <br>PAUSADO</br>
+        </string>
+        <string id="TAP_TO_CONTINUE">
+            <en>TAP TO CONTINUE!</en>
+            <es>PULSE PARA CONTINUAR</es>
+            <de>TIPPEN SIE AUF, UM FORTZUFAHREN!</de>
+            <it>TOCCARE PER CONTINUARE!</it>
+            <fr>TAPEZ POUR CONTINUER !</fr>
+            <ru>НАЖМИТЕ, ЧТОБЫ ПРОДОЛЖИТЬ!</ru>
+            <br>TOQUE PARA CONTINUAR!</br>
+        </string>
+        <string id="CLICK_TO_CONTINUE">
+            <en>CLICK TO CONTINUE!</en>
+            <es>HAGA CLIC PARA CONTINUAR</es>
+            <de>ZUM FORTFAHREN ANKLICKEN!</de>
+            <it>CLICCA PER CONTINUARE!</it>
+            <fr>CLIQUEZ POUR CONTINUER !</fr>
+            <ru>НАЖМИТЕ ДЛЯ ПРОДОЛЖЕНИЯ!</ru>
+            <br>CLIQUE PARA CONTINUAR!</br>
+        </string>
+        <string id="WATCH_AD">
+            <en>WATCH AD</en>
+            <es>WATCH AD</es>
+            <de>WATCH AD</de>
+            <it>WATCH AD</it>
+            <fr>WATCH AD</fr>
+            <ru>ПОСМОТРЕТЬ РЕКЛАМУ</ru>
+            <br>WATCH AD</br>
+        </string>
+        <string id="REACH_LEVEL">
+            <en>REACH LEVEL (X) IN (Y)</en>
+            <es>ALCANZA EL NIVEL (X) EN (Y)</es>
+            <de>ERREICHE LEVEL (X) IN (Y)</de>
+            <it>RAGGIUNGI IL LIVELLO (X) IN (Y)</it>
+            <fr>ATTEINDRE LE NIVEAU (X) EN (Y)</fr>
+            <ru>ДОСТИГНИТЕ (X) УРОВНЯ ЗА (Y)</ru>
+            <br>NÍVEL DE ALCANCE (X) EM (Y)</br>
+        </string>
+        <string id="TUTORIAL_COMPLETED">
+            <en>YOU'VE FINISHED THE TUTORIAL</en>
+            <es>HAS TERMINADO EL TUTORIAL</es>
+            <de>DU HAST DAS LERNPROGRAMM ABGESCHLOSSEN</de>
+            <it>HAI FINITO IL TUTORIAL</it>
+            <fr>VOUS AVEZ TERMINÉ LE TUTORIEL</fr>
+            <ru>ВЫ ЗАВЕРШИЛИ ОБУЧЕНИЕ</ru>
+            <br>VOCÊ TERMINOU O TUTORIAL</br>
+        </string>
+    </strings>
+</stringresources>

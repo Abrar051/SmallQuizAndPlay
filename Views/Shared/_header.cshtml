@@ -1,0 +1,292 @@
+﻿<style>
+
+    .hh {
+        position: relative;
+    }
+
+    .hhh {
+        position: absolute;
+        transform: translate(225%, 10%);
+    }
+
+   
+
+    .pinkbg {
+        background-color: #f48fb1;
+        width: 500px;
+        height: 300px;
+        margin: 0 auto;
+        border-radius: 50px;
+    }
+
+    .text-box {
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 40px;
+        color: #fff;
+    }
+
+    h2 {
+        font-size: 25px;
+        color: #fff;
+    }
+
+    h3 {
+        font-size: 20px;
+        color: #fff;
+    }
+
+    .text-box {
+        background-color: white;
+        padding: 10px;
+        width: 50%;
+        margin: 0 auto;
+        font-size: 20px;
+        color: blue;
+        border-radius: 50%;
+    }
+
+    .roundedparent {
+        position: relative;
+    }
+
+
+        .roundedparent .round {
+            height: 43px;
+            width: 43px;
+            background-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            border: solid;
+            border-color: white;
+        }
+
+        .roundedparent .count {
+            position: absolute;
+            color: white;
+            font-size: x-large;
+            transform: translate(-85%, -5%);
+            padding: 12px 24px;
+        }
+
+</style>
+
+<header class="hh">
+
+
+    @*<div><img style=" width: 100vw; height: auto; float: left; " src="~/Assets/Upper Shape.png" /></div>*@
+
+    <nav>
+        <input type="checkbox" name="toggle-nav" id="topNavIcon">
+        <label for="toggle-nav">
+            <span class="menu-icon"></span>
+
+        </label>
+
+
+        <section class="side-nav-panel">
+            <ul class="top-nav">
+
+                <li><hr style=" width: 110%; " /><a style="color: white; font-size: 16px;" onclick="home()"><i class="fas fa-home"></i> &nbsp; হোম</a><hr style=" width: 110%; " /></li>
+
+                <li><a asp-controller="Landingpage" asp-action="Terms" style="color: white; font-size: 16px;" onclick="terms()"><i class="fas fa-book"></i> &nbsp; টার্মস এন্ড কন্ডিশন </a><hr style=" width: 110%; " /></li>
+
+               @* <li><a onclick="SubStatus()" style="color: white; font-size: 16px;"><i class="fas fa-file-invoice-dollar"></i> &nbsp; পেমেন্ট হিস্টোরি</a><hr style=" width: 110%; " /></li>*@
+
+                @*<hr />*@
+               @* <li><a asp-controller="Landingpage" asp-action="Prizes" style="color: white; font-size: 16px;" onclick="Prizes()"><i class="fas fa-trophy"></i> &nbsp; প্রাইজ </a><hr style=" width: 110%; " /></li>*@
+                @*<hr />*@
+
+                <li><a style="color: white; font-size: 16px;" onclick="Profile()"><i class="fa fa-user"></i> &nbsp; প্রোফাইল </a><hr style=" width: 110%; " /></li>
+
+                <li><a asp-controller="Landingpage" asp-action="Help" style="color: white; font-size: 16px;" onclick="help()"><i class="fab fa-hire-a-helper"></i> &nbsp; হেল্প </a><hr style=" width: 110%; " /></li>
+
+
+                <li><a id="whatsappid" onclick="whatsapp()" style="color: white;"> <img src="~/Assets/whatsapp.png" alt="WhatsApp" style="width: 17px; height: 17px; vertical-align: middle;" /> &nbsp; হোয়াটসঅ্যাপ</a><br /> <hr style="border-top: 1px solid white;margin: -1%;width: 112%;"><br /></li>
+                <li>
+
+                        <a id="messengerid" onclick="openMessengerChat()" style="color: white;">
+                            <img src="~/Assets/messenger.png" alt="Messenger" style="width: 17px; height: 17px; vertical-align: middle;" />
+                            &nbsp; মেসেঞ্জার
+                        </a>
+                
+                    <br />
+                    <hr style="border-top: 1px solid white; margin: -1%; width: 112%;" />
+                    <br />
+                </li>
+                @*<hr />*@
+                <li id="logoutMenu"><a onclick="logout()" style="color: white; font-size: 16px;"><i class="fas fa-sign-out-alt"></i> &nbsp; লগ আউট</a><hr style=" width: 110%; " /></li>
+
+
+                @*Extra Added*@
+                @*<li><a asp-controller="Landingpage" asp-action="LiveQuizVideo" style="color: white; font-size: 16px;" ><i class="fab fa-hire-a-helper"></i> &nbsp; Live Quiz Video 1 </a><hr style=" width: 110%; " /></li>*@
+                @*<li><a asp-controller="Landingpage" asp-action="LiveQuizVideoV2" style="color: white; font-size: 16px;"><i class="fab fa-hire-a-helper"></i> &nbsp; Live Quiz Video </a><hr style=" width: 110%; " /></li>*@
+                @*<li><a asp-controller="Landingpage" asp-action="LiveQuizVideoV3" style="color: white; font-size: 16px;"><i class="fab fa-hire-a-helper"></i> &nbsp; Live Quiz Video 3 </a><hr style=" width: 110%; " /></li>*@
+
+            </ul>
+
+
+        </section>
+    </nav>
+
+
+
+  
+    @*<a asp-controller="Landingpage" asp-action="index" class="header-logo"><img class="logo" src="~/Assets/QuizMaster.png" alt="Logo"></a>*@
+
+
+
+    @*<div class="roundedparent">
+    <span class="dot" style="margin-top: 7%;margin-left: 39%;height: 43px;width: 43px;background-color: transparent;border-radius: 50%;display: inline-block;border: solid;border-color: white;position: relative;"></span>
+    <span class="dot OptionAppearingTimer" id="OptionAppearingTimerId" style="color:white;font-size: x-large;position: absolute;right: 10.5%;top: 2%;">5</span>
+    </div>*@
+
+
+
+
+
+
+    <section class="social-nav social-nav__header">
+    </section>
+
+    <div class="hhh">
+        <div class="roundedparent" style="display:none;">
+            <span class="round"></span>
+            <span class="count" id="OptionAppearingTimerId">5</span>
+        </div>
+    </div>
+
+</header>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1CPCSJWLX4"></script>
+<script>
+    function home(){
+        window.location.href = '/KidsProfileSetup/KidsHome';
+    }
+
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-1CPCSJWLX4');
+</script>
+
+<!-- Google Tag Manager -->
+@*<script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W6QMW8M');
+    </script>*@
+
+<!-- End Google Tag Manager -->
+@*<script>
+    (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TKS9NR6');
+    </script>*@
+<!-- End Google Tag Manager -->
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+    // Create the WhatsApp
+    function whatsapp() {
+        var phoneNumber = "8801936236705"; 
+
+       
+        var whatsappURL = "https://api.whatsapp.com/send?phone=" + phoneNumber;
+
+        window.open(whatsappURL, "_blank");
+        $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=whatsapp&srcurl=", function (rData) { });
+    }
+
+
+    function openMessengerChat() {
+        var messengerURL = "https://www.facebook.com/quizmaster.vu/";
+
+        window.open(messengerURL, "_blank");
+        $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=MessengerIconNavbar&srcurl=", function (rData) { });
+
+    }
+     function openMessengerChat1() {
+        var messengerURL = "https://www.facebook.com/quizmaster.vu/";
+
+        window.open(messengerURL, "_blank");
+        $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=FaceBookIconFooter&srcurl=", function (rData) { });
+
+    }
+
+
+
+
+
+
+
+
+
+
+    $(document).ready(function () {
+
+        var number = sessionStorage.getItem("fbid");
+
+        $.ajax({
+            type: "GET",
+            url: '../Landingpage/IsSubscribed?fbid=' + number,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (rdata) {
+                if (rdata.result === false) {
+                    /* console.log(rdata.result);*/
+                    /*  $('#myModal').modal('hide');*/
+                    $("#unsubs").hide();
+                }
+                else if (rdata.result === true) {
+                    sessionStorage.setItem("islogin", "Yes");
+                    //console.log(rdata.result);
+                    /* $('#myModal').modal('hide');*/
+                    $("#unsubs").show();
+
+                }
+            }
+        });
+
+
+        if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+            $("#logoutMenu").hide();
+        }
+
+    });
+
+
+
+    $('#topNavIcon').click(function () {
+        //console.log($('#topNavIcon').val());
+        //console.log($('#topNavIcon').prop('checked'));
+    });
+
+</script>
+

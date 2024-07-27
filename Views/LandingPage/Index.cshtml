@@ -1,0 +1,3426 @@
+﻿<head><meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta property="og:title" content="কুইজ মাস্টার">
+    <meta property="og:description" content="কুইজ খেলে জিতে নিন ১ লক্ষ টাকা পর্যন্তু পুরুষ্কার।।">
+    <meta property="og:image" content="https://quizmaster.shabox.mobi/Assets/bannerimage.png">
+    <meta property="og:url" content="https://quizmaster.shabox.mobi/?cKey=57783718">
+    <meta property="og:type" content="website">
+    <title>কুইজ মাস্টার</title>
+</head>
+
+<link href="~/css/Custom Css/BlinkingFeature.css" rel="stylesheet" />
+<link href="~/css/Custom Css/HomeScreenMediaQuery.css" rel="stylesheet" />
+
+
+
+<style>
+
+
+
+    .loginCMP {
+        position: absolute;
+        top: -14vw;
+        left: 14vw;
+    }
+
+    #loadingModal .close {
+        background-color: #0000;
+    }
+
+    .carousel-indicators {
+        top: 80%;
+    }
+
+    .modal {
+        visibility: hidden;
+        /*transition: all 0.4s;*/
+        opacity: 1;
+    }
+
+
+        .modal.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    .modal,
+    .modal-overlay {
+        position: fixed;
+        left: 0;
+        top: -19px;
+        height: 88vh;
+        width: 99vw;
+        z-index: 100;
+    }
+
+    .modal,
+    .modal-overlay1 {
+        position: fixed;
+        left: -6px;
+        top: -19px;
+        height: 103vh;
+        width: 103vw;
+        z-index: 100;
+    }
+
+    .modal,
+    .modal-card,
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .modal-content {
+        overflow: auto;
+        flex-grow: 1;
+    }
+
+    .modal-overlay {
+    }
+
+    .modal-overlay1 {
+        background: rgb(0,0,0,0.7);
+    }
+
+    .modal-overlay2 {
+        background: rgb(0,0,0,0.99);
+    }
+
+    .modal-body {
+        z-index: 101;
+        margin: auto;
+        max-height: calc(100vh - 1rem);
+        max-width: calc(100vw - 1rem);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 413px;
+        height: 300px;
+        background: white;
+    }
+
+    .modal-header,
+    .modal-content,
+    .modal-footer {
+        padding: 1rem;
+    }
+
+    .modal-header {
+        background: #357d93;
+        text-transform: capitalize;
+        font-size: 1.25rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .quiz-image {
+        width: 73vw;
+        margin-bottom: 24px;
+        transition: transform 0.1s ease;
+    }
+
+        /* CSS for the transformed image size */
+        .quiz-image.clicked {
+            transform: scale(1.2);
+        }
+
+    .button {
+        padding: 10px 20px;
+        font-size: 2.5vh;
+        font-family: 'Siyam Rupali';
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        font-weight: bolder;
+        font-display: auto;
+        color: #357d93;
+        background-color: #ffff;
+        border: none;
+        border-radius: 30px;
+        border: 2px solid #357d93;
+        transition: transform 0.3s, box-shadow 0.3s; /* Add box-shadow to the transition */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6); /* Add a shadow effect */
+        position: relative; /* Make the button's position fixed */
+        left: 35%; /* Center horizontally */
+        /*  transform: translateX(-50%);*/ /* Center horizontally */
+        bottom: 29vh; /* Adjust the bottom position as needed */
+        /*  display: flex;*/
+        flex-direction: column;
+    }
+
+    .button1 {
+        padding: 10px 20px;
+        font-size: 2.5vh;
+        font-family: 'Siyam Rupali';
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        font-weight: bolder;
+        font-display: auto;
+        color: #357d93;
+        background-color: #ffff;
+        border: none;
+        border-radius: 30px;
+        border: 2px solid #357d93;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+        position: relative;
+        left: 35%;
+        /* transform: translateX(-50%); */
+        /*bottom: 28vh;*/
+        top: 120vw;
+        /* display: flex; */
+        flex-direction: column;
+    }
+    /* Hover state for the button */
+
+
+
+    .button:hover { /* Add a slight scale effect on hover */
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Increase the shadow effect on hover */
+        background-color: #e8436d;
+        color: white;
+    }
+
+    .button:active {
+        background-color: #e8436d;
+        color: white;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px)scale(0.7);
+    }
+
+    .button1:hover { /* Add a slight scale effect on hover */
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Increase the shadow effect on hover */
+        background-color: #e8436d;
+        color: white;
+    }
+
+    .button1:active {
+        background-color: #e8436d;
+        color: white;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px)scale(0.7);
+    }
+
+    .btn-rounded {
+        border-radius: 30px;
+    }
+
+    .btn-wide {
+        width: 100%;
+    }
+
+    .btn-height {
+        height: 102px;
+    }
+
+    .modal-content {
+        background-color: #357d93;
+    }
+
+    .image-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    #image {
+        width: 314px;
+        height: 549px;
+        margin-bottom: 225px;
+    }
+
+       .close-button {
+       
+            top: 6vh;
+           right: 2vh;
+
+        position: fixed;
+        cursor: pointer;
+        font-size: 12px;
+        background-color: #ff2b5c;
+        padding: 8px;
+        color: #ffffff;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+    }
+
+    .button-container {
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+    }
+
+    .play-button {
+        width: 194px;
+        height: 70px;
+        font-size: 27px;
+        margin-top: 40px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+        .play-button img {
+            width: 116%;
+            height: 128%;
+            margin-top: 54px;
+        }
+
+
+    /*Sliding option start */
+
+    .slider-container {
+        position: absolute;
+        max-width: 98vw;
+        overflow: hidden;
+        top: 11vw;
+        right: -0.5vw;
+    }
+
+    /*#marqPara {
+                position: absolute;
+                top: 200%; /* Adjust the top position as needed */
+    /*font-size: 13px;
+                font-family: system-ui;
+                line-height: -90;
+                white-space: nowrap;
+                color: black;
+                width: 100%;
+                text-align: center;
+            }*/
+
+    /* Styling for the images */
+    .slider-img {
+        width: 93vw;
+        height: 52vw;
+        display: none;
+        transition: opacity 0.5s;
+    }
+
+    /* Styling for navigation buttons */
+    .slider-btn {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        padding: 2px; /* Further reduced button size */
+        font-size: 10px; /* Further reduced font size */
+        color: transparent;
+        border: none;
+        outline: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .slider-btn:hover {
+            /* background-color: rgba(0, 0, 0, 0.8); */
+        }
+
+    slider-btn-left {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        left: 10px; /* Adjust the left position */
+        cursor: pointer;
+        color: transparent;
+        padding: 2px; /* Further reduced button size */
+        /* Further reduced font size */
+        background-color: transparent;
+    }
+
+    .slider-btn-right {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        right: 15px; /* Adjust the right position */
+        cursor: pointer;
+        background-color: transparent; /* Make the right button transparent */
+    }
+
+    .modal1 {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+    }
+
+    .modal-content1 {
+        position: fixed;
+        left: 10vw;
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        top: 22vh;
+        height: 28vh;
+        border-radius: 20px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    /* Add top control */
+    .slider-btn-top {
+        position: absolute;
+        top: 20px; /* Adjust the top position as needed */
+    }
+    /*Sliding option end*/
+
+    #clock-icon {
+        font-size: 20px;
+        margin-right: 5px;
+        position: fixed;
+        top: 109vw;
+        left: 17vw; /* Adjust spacing as needed */
+    }
+
+    #countdown {
+        position: fixed;
+        font-weight: bold;
+        margin-right: 13vw;
+        left: 28vw;
+        top: 67vh;
+    }
+
+    #countdown-text {
+        position: fixed;
+        margin-right: 13vw;
+        /* margin-top: -140vw; */
+        left: 25vw;
+        top: 110vw;
+        font-size: 15px;
+        color: black;
+    }
+
+    #countdown-time {
+        position: fixed;
+        font-weight: bold;
+        margin-right: 13vw;
+        font-size: 15px;
+        left: 50vw;
+        top: 110vw;
+        color: #357d93;
+    }
+
+    .scrollable-div {
+        max-height: 1000vh;
+        overflow-y: scroll; /* Enable vertical scrolling */
+    }
+
+
+
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0px;
+    }
+
+        .bottom-navbar img {
+            width: 14%;
+        }
+
+        body{
+
+            background-color: #01F8F0;
+        }
+
+    #lesson-gallery img{
+        width: 45%;
+        margin: 7px;
+    }
+
+</style>
+
+
+<body>
+   <div class="text-center">
+    <img src="~/Assets/LiveQuizRelated/kidstar.png" class="w-75 mt-3" alt="Tournament Game Banner" onclick="playTournamentGame()">
+</div>
+   <div class="text-center">
+    <img src="~/Assets/LiveQuizRelated/learnPlay.png" class="w-50 mt-5 mb-5" alt="Tournament Game Banner">
+</div>
+
+<div id="lesson-gallery" class="d-flex flex-wrap gap-4 mx-3">
+    <img src="~/Assets/LiveQuizRelated/guessWord.png" onclick="DailyQuizButtonClick('KidStar-GuessWord')" />
+    <img src="~/Assets/LiveQuizRelated/mathNlogic.png" onclick="DailyQuizButtonClick('KidStar-Math')" />
+        <img src="~/Assets/LiveQuizRelated/makeSentence.png" onclick="DailyQuizButtonClick('KidStar-Trivia')" />
+    <img src="~/Assets/LiveQuizRelated/pronounCiation.png" onclick="DailyQuizButtonClick('KidStar-Poem')" />
+</div>
+
+    <div class="scrollable-div" id="scrollable-div">
+        <div name="Bangladesh Quiz">
+
+            <img class="leader" src="~/Assets/LiveQuizRelated/LeaderIm.png" onclick="leaderBoard_MonthlyDirect('QuizMaster')" />
+            <img class="winner" src="~/Assets/LiveQuizRelated/winnerim.png" onclick=" leaderBoardDirect('QuizMaster')" />
+        </div>
+        <div name="Binodon Quiz">
+
+            <img class="leader1" src="~/Assets/LiveQuizRelated/LeaderIm.png" onclick="leaderBoard_MonthlyDirect('QuizMaster-MultiService1')" />
+            <img class="winner1" src="~/Assets/LiveQuizRelated/winnerim.png" onclick=" leaderBoardDirect('QuizMaster-MultiService1')" />
+        </div>
+  
+    
+        <div name="Sports Quiz">
+
+
+            <img class="leader2" src="~/Assets/LiveQuizRelated/LeaderIm.png" onclick="leaderBoard_MonthlyDirect('QuizMaster-MultiService2')" />
+            <img class="winner2" src="~/Assets/LiveQuizRelated/winnerim.png" onclick="leaderBoardDirect('QuizMaster-MultiService2')" />
+        </div>
+  
+
+    </div>
+
+    <div name="GK Quiz">
+
+
+    </div>
+
+
+
+
+
+    <div class="bottom-navbar">
+        <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="margin-top: -10%; width: 12%" />
+        <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" style="width: 17%" />
+        <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" />
+        <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+        <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+    </div>
+
+
+@*    <div id="splashscreen" class="modal close" style="z-index: 37567;" onclick="splashscreen()">
+        <!-- change here splashscreen -->
+        <div class="modal-overlay1" style="z-index: 100;"></div>
+        <div class="modal-card">
+            <div style="text-align: center; z-index: 105;">
+                <img style="position: absolute;width: 94vw;top: 22vh;left: 6vw;" src="~/Assets/Splashscreen.png" asp-append-version="true" />
+            </div>
+        </div>
+    </div>*@
+
+    @*<div id="splashscreen2" class="modal close" style="z-index: 37567; overflow: hidden; background-color: rgba(247, 242, 242, 0.99); opacity:1;" onclick="splashscreen2()">
+        <button class="close-button" onclick="home()">X</button>
+        <video id="video" class="video" height="400" style="width: 86%;position:absolute;top: 12%;left: 9vw;height: 41%;" controls poster="~/Content/33.jpg">
+            <source src="~/Assets/quizcampaignvideo.mp4" type="video/mp4">
+        </video>
+
+
+
+        <div id="imageContainer" style="position: relative; text-align: center; z-index: 105; margin-top: 45%;">
+
+            <div class="loginCMP">
+
+                <div style=" margin-bottom: 20px;">  <span style="width: 100%; text-align: center; color: #ff1493; font-size:14px;">---কুইজ খেলতে মোবাইল নাম্বারটি লিখুন---</span></div>
+                <div class="form-group">
+                    <input type="number" class="form-control modal-bg-dark" style=" border: 1px solid #df2626;" placeholder="০১xxxxxxxxx" id="mobile1" required>
+                    <img src="~/Content/quiz1.png" class="img-fluid" alt="..." style="width: 95vw;position: absolute;top: 22vw;width: 33vw;left: 17vw;z-index:2000" id="mutePauseButton" onclick="saveCamp()">
+                </div>
+
+        </div>
+    </div>
+    </div>*@
+
+
+
+
+
+
+    <div id="loadingModal" class="modal close" style="z-index: 1031;">
+
+        <div class="modal-card" style="height:70%">
+
+            <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+                <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                </div>
+                <img src="~/Assets/reload.gif" style="transform: scale(.7);margin-bottom: -14%;" asp-append-version="true" />
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="login" class="modal close" style="z-index:105;">
+        <div class="modal-overlay" onclick="HelloCloseModal()"></div>
+        <div class="modal-card" style=" height: 65%; ">
+
+            <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+
+
+                <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+
+
+
+                    <span><i class="fas fa-times" style="padding:8px; background:#357d93; border-radius:10vw;" onclick="HelloCloseModal()"></i></span>
+
+                </div>
+                @*<img src="~/Assets/LoginModalPopUp3.png" style="transform: scale();margin-bottom: -14%;position: relative;height: 35vh;width: 32vh;left: 8vw;top: 3vh;top: -5vh;" asp-append-version="true" />*@
+                <div style="margin-bottom: 20px;">  <span style="width: 100%; text-align: center; color: #ff1493;">আপনার অ্যাকাউন্টে লগ ইন করুন</span></div>
+
+                <div class="form-group">
+                    <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobile" size="11" required>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="center" style="text-align: center; margin-bottom: -2%;">
+                        <button type="submit" class="btn btn-default" style="color: white;background: #357d93;/* padding: 16px; */border-radius: 26px;border-radius: -6px;height: 14vw;width: 36vw;" onclick="save()">লগ-ইন</button>
+
+                    </div>
+                    <div style="text-align:center" class="center">
+                        <a onclick="regmodal()" style="padding-bottom:12px; font-size:12px; color:deeppink; text-decoration: underline;">
+                            নতুন ব্যবহারকারী? নতুন অ্যাকাউন্ট তৈরি করুন
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Division modal for the new campaign Update on 2023-06-25 -->
+    <!-- Modal -->
+    <div id="splashscreen" class="modal close" style="z-index: 1031;" onclick="splashscreen()">
+
+        <div class="modal-overlay" onclick="HelloCloseModal()"></div>
+        <div class="modal-card" style="height:80%">
+            <img src="~/Assets/LiveQuizRelated/kidstar.png" style="transform: scale(.7);margin-bottom: -14%;" asp-append-version="true" />
+            <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+                <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+
+
+                    <span><i class="fas fa-times" style="padding:8px; background:#357d93; border-radius:10vw;" onclick="HelloCloseModal()"></i></span>
+
+                    <div style="margin-bottom: 20px;">
+                    </div>
+
+                    <span style="width: 100%; text-align: center; color: #357d93;">কুইজ খেলার জন্য আপনার নাম এবং মোবাইল নাম্বার লিখুন</span><br>
+                    @*<span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>*@
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control modal-bg-dark" placeholder="আপনার নাম লিখুন" id="usernameSU" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control modal-bg-dark" placeholder="মোবাইল নাম্বার লিখুন" id="mobileSU" required>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="center" style="text-align: center; margin-bottom: -3%;">
+                        <button type="submit" class="btn btn-default" style="color: white;background: #357d93;/* padding: 16px; */border-radius: 26px;border-radius: -6px;height: 14vw;width: 36vw;" onclick="SignUpMultiTournament(sessionStorage.getItem('serviceName'))">লগইন</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!---->
+
+
+
+
+
+    <div id="reg" class="modal close" style="z-index: 1031;">
+
+        <div class="modal-overlay" onclick="HelloCloseModal()"></div>
+        <div class="modal-card" style="height:80%">
+
+            <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+                <div style="text-align: right; margin-right: 10px; margin-bottom: -21%;" id="closeButtonDiv">
+
+
+                    <span><i class="fas fa-times" style="padding:8px; background:#357d93; border-radius:10vw;" onclick="HelloCloseModal()"></i></span>
+
+                </div>
+                <img id="quizImage" src="~/Assets/LiveQuizRelated/kidstar.png" style="transform: scale(.5);margin-bottom: 24%;" asp-append-version="true" />
+                <div style="margin-bottom: 20px;">
+                    <span style="width: 100%; text-align: center; color: #357d93;"></span><br>
+                    @*<span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>*@
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control modal-bg-dark" placeholder="আপনার নাম লিখুন" id="name" required onblur="validateName()">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control modal-bg-dark" placeholder="মোবাইল নাম্বার লিখুন" id="fbid" required>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="center" style="text-align: center; margin-bottom: -3%;">
+                        <button id="loginButton" type="submit" class="btn btn-default" style="color: white;background: #357d93;/* padding: 16px; */border-radius: 26px;border-radius: -6px;height: 14vw;width: 36vw;" onclick="SignUpMultiTournament(sessionStorage.getItem('serviceName'))">লগইন</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div>
+
+        <div class="kimu">
+
+
+            <br />
+
+
+        </div>
+    </div>
+
+
+    <br />
+    <br />
+
+    @*Added for Superhour terms and Condition*@
+
+    <div class="modal" id="SH_term" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title col-11" style="width:100%; text-align:center; color:white" id="SH_title"></span>
+                    <div class="col-1" style="float:right">
+                        <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="hideSHModal()">
+                            <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body" id="Sh_Modal_body">
+                </div>
+                <div class="modal-footer element-center">
+                    <button type="button" class="btn bg-deeporange text-white" data-bs-dismiss="modal" onclick="hideSHModal()">ওকে</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W6QMW8M"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+@section leaderboard{
+    <div class="fixed-bottom">
+        <div id="LiveQuizAlreadyStartedModal" class="modal close" style="z-index:105;">
+            @*<div class="modal-overlay" onclick="CloseLiveQuizCountDownTimerModal()"></div>*@
+            <div class="modal-card" style="height:65%;margin-top: -15%;">
+                <div class="modal-body" style="text-align: center;background-repeat: no-repeat;background-size: cover;overflow-y: scroll;background-image: url('../Assets/LiveQuizRelated/livequizBackground.png')">
+                    @*<div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                <span><i class="fas fa-times" onclick="CloseLiveQuizCountDownTimerModal()"></i></span>
+                </div>*@
+                    <img src="~/Assets/LiveQuizRelated/cryingEmojii.png" style="transform: scale(.7);margin-left: 18%;width: 42vw;height: auto;" />
+                    @*<img src="~/Assets/LiveQuizRelated/shuruhoteshomoybaki.png" style="width: 100%;height: auto;margin-top: -8%;" />*@
+                    <br />
+
+                    <p style=" font-size: 25px; font-weight: bolder; color: #05156c; ">আজকের লাইভ কুইজে অংশগ্রহন এর সময় শেষ </p>
+
+                    <br />
+
+                    <p style="font-size: 23px;color: black;"> কাল আবার চেষ্টা করুন </p>
+
+                    <div class="modal-footer">
+                        <div class="center" style="text-align: center; margin-bottom: 0%;" onclick="BackToDailyQuiz('Okay')">
+                            <img src="~/Assets/LiveQuizRelated/okaybutton.png" style="width: 30vw;height: auto;" />
+
+                            @*<button type="submit" class="btn btn-default" style="color: white; background: #e3126e; padding: 11px; border-radius: 16px;" onclick="SignUp()">লগইন</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="LiveQuizTime" class="modal close" style="z-index:105;">
+            @*<div class="modal-overlay" onclick="CloseLiveQuizCountDownTimerModal()"></div>*@
+            <div class="modal-card" style="height:65%;margin-top: -15%;">
+                <div class="modal-body" style="text-align: center;background-repeat: no-repeat;background-size: cover;overflow-y: scroll;background-image: url('../Assets/LiveQuizRelated/livequizBackground.png')">
+                    @*<div style="text-align: right; margin-right: 10px; margin-bottom: -21%;">
+                <span><i class="fas fa-times" onclick="CloseLiveQuizCountDownTimerModal()"></i></span>
+                </div>*@
+                    <img src="~/Assets/LiveQuizRelated/LiveQuizLogo.png" style="/* transform: scale(.7); */margin-left: -2%;width: 92vw;height: auto;" />
+                    <img src="~/Assets/LiveQuizRelated/shuruhoteshomoybaki.png" style="width: 100%;height: auto;margin-top: -8%;" />
+                    <br />
+                    <img src="~/Assets/LiveQuizRelated/timer.png" style="width: 18vw;height: auto;margin-left: 38%;" />
+
+                    <br />
+                    <p id="CountDownTimer" style=" font-size: xx-large; font-weight: bolder; color: #05156c; "></p>
+
+
+                    <div class="modal-footer">
+                        <div class="center" style="text-align: center; margin-bottom: 0%;" onclick="BackToDailyQuiz('Okay')">
+                            <img src="~/Assets/LiveQuizRelated/okaybutton.png" style="width: 34vw;height: auto;" />
+
+                            @*<button type="submit" class="btn btn-default" style="color: white; background: #e3126e; padding: 11px; border-radius: 16px;" onclick="SignUp()">লগইন</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adding extra field -->
+
+        <audio id="aa" controls hidden>
+            <source src="~/Assets/LiveQuizRelated/appaudio.mp3" type="audio/mpeg">
+            your browser does not support the audio element.
+        </audio>
+
+        <div id="customAlert" class="modal1">
+            <div class="modal-content1">
+                <span class="close" onclick="closeCustomAlert()">&times;</span>
+                <p style="margin-top: 10vh; margin-bottom: 1rem;color: #357d93;font-size: 1.3rem;" id="alertMessage"></p>
+            </div>
+        </div>
+
+
+        <div id="customAlert1" class="modal1">
+            <div class="modal-content1">
+                <span class="close" onclick="closeCustomAlert1()">&times;</span>
+                <p style="margin-top: 10vh; margin-bottom: 1rem;color: #357d93;font-size: 1.3rem;" id="alertMessage1"></p>
+            </div>
+        </div>
+
+
+
+        <div id="BiggerDevices">
+
+
+
+        </div>
+
+
+
+
+
+    }
+
+   
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+
+    <script>
+        function KidsHome() {
+            window.location.href = '/KidsProfileSetup/KidsHome';
+        }
+
+        function comingSoon() {
+            Swal.fire({
+                title: "This service is coming soon",
+                icon: "question"
+            });
+        }
+
+        $(document).ready(function () {
+            document.querySelector("#reg").classList.remove("open");
+            document.querySelector("#reg").classList.add("close");
+
+            // Delay the execution of the second block using setTimeout
+            setTimeout(function () {
+                document.querySelector("#loadingModal").classList.remove("open");
+                document.querySelector("#loadingModal").classList.add("close");
+            }, 1); // Adjust the delay time as needed (in milliseconds)
+        });
+
+
+    </script>
+
+@*<script>
+ 
+function logDeviceDimensions() {
+    // Get the width and height of the device screen
+    //var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    // Log the dimensions
+    console.log( 'Device Height: ' + screenHeight);
+  }
+
+  var scrollStartTime;
+var scrollEndTime;
+var scrollingTimer;
+
+   function logImagePosition() {
+    var startTime = new Date();
+     if (!scrollStartTime) {
+        scrollStartTime = new Date();
+        console.log('Scrolling started at: ' + scrollStartTime);
+    }
+
+    //clearTimeout(scrollingTimer);
+    
+
+    //scrollingTimer = setTimeout(function () {
+  
+    //    scrollEndTime = new Date();
+    //    console.log('Scrolling stopped at: ' + scrollEndTime);
+    //    var timeDifference = scrollEndTime - scrollStartTime;
+    //    console.log('Time spent scrolling: ' + timeDifference + ' milliseconds');
+    //    scrollStartTime = null;
+    //}, 10);
+
+    // Get the image element
+    var image = document.getElementById('Quiz1');
+    var image1 = document.getElementById('Quiz2');
+    var image2 = document.getElementById('Quiz3');
+
+    var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    // Get the position of the image relative to the viewport
+      var rect1 = image.getBoundingClientRect();
+      var rect2 = image1.getBoundingClientRect();
+      var rect3 = image2.getBoundingClientRect();
+
+
+
+    if(Math.abs(screenHeight - rect1.top) >(screenHeight/2) && Math.abs(screenHeight - rect1.top)<screenHeight){
+        console.log('Now you are in  Daily Quiz');
+        var endTime = new Date();
+        console.log ('Daily time' + endTime - startTime);
+    }
+     if(Math.abs(screenHeight - rect2.top) >(screenHeight/2) && Math.abs(screenHeight - rect2.top)<screenHeight){
+        console.log('Now you are in  Movie Quiz');
+    }
+   if(Math.abs(screenHeight - rect3.top) >(screenHeight/2) && Math.abs(screenHeight - rect3.top)<screenHeight){
+        console.log('Now you are in  Spelling Quiz');
+    }
+  }
+
+
+  //window.onscroll = logImagePosition;
+
+  //window.onload = logImagePosition;
+</script>
+
+
+
+
+<script>
+        var scrollingTimer;
+        var isScrolling = false;
+
+        var startDate;
+        var rect1;
+        var rect2;
+        var rect3;
+        var image ;
+        var image1;
+        var image2;
+        var screenHeight;
+
+        function startScrolling() {
+            if (!isScrolling) {
+                startDate = new Date();
+                //console.log('Scroll Started');
+                isScrolling = true;
+                image = document.getElementById('Quiz1');
+                image1 = document.getElementById('Quiz2');
+                image2 = document.getElementById('Quiz3');
+
+                screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+                // Get the position of the image relative to the viewport
+                rect1 = image.getBoundingClientRect();
+                rect2 = image1.getBoundingClientRect();
+                rect3 = image2.getBoundingClientRect();
+            }
+
+            // Clear the previous scrolling timer
+            clearTimeout(scrollingTimer);
+
+            // Set a new timer to execute after a delay (e.g., 500 milliseconds) when scrolling stops
+            scrollingTimer = setTimeout(function () {
+                var endDate = new Date();
+                var difference = endDate - startDate;
+                //console.log ('Scrolling time ' + difference);
+                //console.log('Scroll Stopped');
+                if(Math.abs(screenHeight - rect1.top) >(screenHeight/2) && Math.abs(screenHeight - rect1.top)<screenHeight){
+                    console.log('Daily Quiz time : ' + difference);
+                    var logTime = 'Daily Quiz time : ' + difference;
+                    $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem('fbid') + "&ckey=" + sessionStorage.getItem('ckey') + "&cname=" + "Daily Quiz" + "&theme=" + difference + "&srcurl=" + window.location.href, function (rData) { });
+                }
+                 if(Math.abs(screenHeight - rect2.top) >(screenHeight/2) && Math.abs(screenHeight - rect2.top)<screenHeight){
+                    console.log('Movie Quiz time : ' + difference);
+                    var logTime = 'Movie Quiz time : ' + difference;
+                    $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem('fbid') + "&ckey=" + sessionStorage.getItem('ckey') + "&cname=" + "Movie Quiz" + "&theme=" + difference + "&srcurl=" + window.location.href, function (rData) { });
+                }
+               if(Math.abs(screenHeight - rect3.top) >(screenHeight/2) && Math.abs(screenHeight - rect3.top)<screenHeight){
+                    console.log('Spelling Quiz time : ' + difference);
+                    var logTime = 'Spelling Quiz time : ' + difference;
+                    $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem('fbid') + "&ckey=" + sessionStorage.getItem('ckey') + "&cname=" + "Spelling" + "&theme=" + difference + "&srcurl=" + window.location.href, function (rData) { });
+                }
+                isScrolling = false;
+            }, 500); // Adjust the delay as needed
+        }
+
+        window.onscroll = startScrolling;
+</script>*@
+
+
+    <script>
+
+    function saveCamp() {
+            var number = $('#mobile1').val();
+            var username = "FromCampaign";
+
+            if (number === null || number === undefined || number === "") {
+                window.location.reload();
+                document.querySelector("#reg").classList.remove("close");
+                document.querySelector("#reg").classList.add("open");
+            }
+
+
+            document.querySelector("#reg").classList.remove("close");
+            document.querySelector("#reg").classList.add("open");
+
+            if (!number.startsWith('880')) {
+                if (number.startsWith('0')) {
+                    number = '88' + number;
+
+                }
+                else {
+                    number = '880' + number;
+
+                }
+            }
+
+            if (number.length == 13) {
+
+                sessionStorage.setItem("fbid", number);
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("isLogin", "Yes")
+                sessionStorage.setItem("serviceName", "QuizMaster")
+
+                localStorage.setItem("fbid", number);
+                localStorage.setItem("username", username);
+
+
+
+                $.post('../Home/Login?userName=' + username + "&msisdn=" + number, function (data) { console.log(data) })
+
+
+                var data = {
+                    "fbid": number
+                }
+
+                $.ajax({
+                  
+                    type: "GET",
+                    url: '../Landingpage/IsSubscribedForMultiTournament?fbid=' + number+ "&serviceName=QuizMaster",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (rdata) {
+                        if (rdata.result === false) {
+                     
+
+
+                            let fbid = sessionStorage.getItem('fbid');
+
+                            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=clicked_QuizMasterCkeySplash&srcurl=" + sessionStorage.getItem("sourceURL"), function (rData) { });
+
+
+
+                            $.post("../Home/CreateCheckoutUrlMultiTournamentHardCode?msisdn=" + sessionStorage.getItem("fbid") + "&serviceName=QuizMaster" + "&ckey=" + sessionStorage.getItem("ckey"), function (data) {
+
+
+                                window.location.href = data;
+                            });
+
+                        }
+                        else if (rdata.result === true) {
+                            sessionStorage.setItem("islogin", "Yes");
+
+                            /* $('#myModal').modal('hide');*/
+                            window.location.href = "../Landingpage/Index";
+                        }
+                    }
+                });
+
+            } else {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'দুঃখিত',
+                    text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                    confirmButtonText: 'ওকে',
+                    confirmButtonColor: '#e3126e',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var ckey = sessionStorage.getItem("ckey");
+                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+
+                        var sent = sessionStorage.getItem("sentToServer");
+
+                        sessionStorage.clear();
+                        localStorage.clear();
+
+                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                        sessionStorage.setItem("ckey", ckey);
+                        //window.location.href = "../LandingPage/Index"
+
+                        document.querySelector("#reg").classList.remove("close");
+                        document.querySelector("#reg").classList.add("open");
+                    }
+                });
+            }
+
+
+        }
+ </script>
+
+    <script>
+        $(document).ready(function () {
+            var baseurl = window.location.href;
+            var currentDate = new Date();
+            var seconds = currentDate.getSeconds();
+            console.log(seconds);
+            console.log(new URLSearchParams(window.location.search).get("mbl"));
+            if (window.location.href.includes('mbl')==true)
+            {
+                sessionStorage.setItem("fbid", new URLSearchParams(window.location.search).get("mbl"));
+                localStorage.setItem("fbid", new URLSearchParams(window.location.search).get("mbl"));
+                sessionStorage.setItem("isLogin", "Yes");
+            }
+            if (sessionStorage.getItem("fbid")=='null')
+            {
+                sessionStorage.setItem("fbid",localStorage.getItem("fbid"));
+            }
+            if (seconds >= 10 && seconds <= 12) {
+                console.log('Loaded here');
+                if (baseurl.includes('009999') || baseurl.includes('009999')) {
+                    window.location.href = "https://wordstar.shabox.mobi/?ckey=12345";
+                }
+            }
+            if (seconds >= 20 && seconds <= 23) {
+                console.log('Loaded here');
+                if (baseurl.includes('009999') || baseurl.includes('009999')) {
+                    window.location.href = "https://wordstar.shabox.mobi/?ckey=12345";
+                }
+            }
+            if (seconds >= 35 && seconds <= 38) {
+                console.log('Loaded here');
+                if (baseurl.includes('009999') || baseurl.includes('009999')) {
+                    window.location.href = "https://wordstar.shabox.mobi/?ckey=12345";
+                }
+            }
+            if (seconds >= 57 && seconds <= 59) {
+                console.log('Loaded here');
+                if (baseurl.includes('009999') || baseurl.includes('009999')) {
+                    window.location.href = "https://wordstar.shabox.mobi/?ckey=12345";
+                }
+            }
+
+
+        });
+        function Updatenav() {
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=navclick&srcurl=" , function (rData) { });
+        }
+    </script>
+
+    <script>
+        document.querySelector('#bkash_btn').style.display = 'none';
+
+
+        $(document).ready(function () {
+
+                var urlParams = new URLSearchParams(window.location.href);
+                var mblValue = urlParams.get('mbl');
+                console.log(urlParams.get('mbl'));
+                document.querySelector("#loadingModal").classList.remove("open");
+                document.querySelector("#loadingModal").classList.add("close");
+
+                console.log("Page loaded");
+                //sessionStorage.setItem("fbid",urlParams.get('mbl'));
+
+                
+
+                var number = sessionStorage.getItem("fbid");
+                var ckey = gettingCkeyFromSession();
+
+                //if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                //    document.querySelector("#reg").classList.remove("close");
+                //    document.querySelector("#reg").classList.add("open");
+                //}
+                //else if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                //    document.querySelector("#reg").classList.remove("close");
+                //    document.querySelector("#reg").classList.add("open");
+                //    return false;
+                //}
+
+
+
+            });
+    </script>
+
+
+
+
+
+@section scripts{
+
+
+    @*    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="~/slick/slick.min.js"></script>
+
+    @*<script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js'></script>*@
+
+
+
+        <script>
+
+            function getThemeFromSession() {
+
+                if (sessionStorage.getItem('theme')) {
+                    // Retrieve and return the theme value
+                    return sessionStorage.getItem('theme');
+                } else {
+
+                    alert('World Cup theme is not selected.');
+                }
+            }
+
+
+            // Execute the script when the page finishes loading
+
+
+
+
+
+            
+
+
+        </script>
+
+
+
+
+        @*<script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Find the image element
+                const image = document.getElementById('mutePauseButton');
+
+                if (image) {
+                    // Add a click event listener to the image
+                    image.addEventListener('click', function () {
+
+                        removeFFPressedFromSession();
+
+                        var ckey = gettingCkeyFromSession();
+                        $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=videopopupbutton&srcurl=" + window.location.href, function (rData) { });
+                        // Find the iframe element
+                        const iframe = document.querySelector('.video');
+
+                        if (iframe) {
+                            // Disable the iframe by setting its src to an empty string
+                            iframe.src = '';
+                            DailyQuizButtonClick();
+                        } else {
+                            console.error("Iframe element not found.");
+                            DailyQuizButtonClick();
+                        }
+                    });
+                } else {
+                    console.error("Image element not found.");
+                    DailyQuizButtonClick();
+                }
+            });
+        </script>*@
+
+        <script>
+
+            function showImage() {
+                $("#quizImage").show();
+            }
+            
+            function hideImage1() {
+                $("#quizImage").hide();
+               
+                document.getElementById("closeButtonDiv").style.marginBottom = "10%";
+            }
+
+            $("#name, #fbid").click(hideImage1);
+        </script>
+
+        <script>
+            // Function to show the image
+            function showImage() {
+                $("#quizImage").show();
+                document.getElementById("closeButtonDiv").style.marginBottom = "-21%";
+            }
+
+            // Add a click event listener to the login button
+            $("#loginButton").click(showImage);
+        </script>
+
+
+
+        <script>
+            //function Redirecting() {
+            //    // Get the Page value from the session (you might need to adjust this code based on how you store the value)
+            //    var pageValue = sessionStorage.getItem("RD");
+            //    console.log(pageValue);
+            //    if (pageValue === "Page2") {
+
+            //        DailyQuizButtonClick();
+            //    } else if (pageValue === "Page1") {
+
+            //        WorldCupQuizButtonClick1();
+            //    }
+            //}
+
+            //function WorldCupQuizButtonClick1() {
+
+
+            //    removeFFPressedFromSession();
+
+            //    var ckey = gettingCkeyFromSession();
+            //    $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Daily_Quiz_WorldCup&srcurl=" + window.location.href, function (rData) { });
+
+
+            //    // Setting data for redirecting
+            //    var Page2 = "Page2";
+            //    sessionStorage.setItem("Page", Page2);
+            //    var number = sessionStorage.getItem("fbid");
+            //    if (number == null) {
+            //        var audioElement = document.getElementById("aa1");
+            //        audioElement.play();
+            //    }
+
+            //    quizkhelun_btnWC();
+
+            //    //console.log (getURLParameter('msisdn'));
+
+            //    //sessionStorage.setItem("fbid", getURLParameter('msisdn'));
+            //    //LiveQuizTimeCheckingForIndex("DailyQuizHome", "");
+
+
+
+            //}
+
+
+
+        //    function BreakTimeQuizButtonClick() {
+
+
+
+        //        removeFFPressedFromSession();
+
+        //        var ckey = gettingCkeyFromSession();
+        //        $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Breattime_Quiz_WorldCup&srcurl=" + window.location.href, function (rData) { });
+
+
+        //        // Setting data for redirecting
+        //        var Page2 = "Page3";
+        //        sessionStorage.setItem("Page", Page2);
+        //        var number = sessionStorage.getItem("fbid");
+        //        if (number == null) {
+        //            var audioElement = document.getElementById("aa1");
+        //            audioElement.play();
+        //        }
+        //        breaktimequizkhelun_btn();
+
+
+
+
+        //    }
+
+
+
+        //</script>
+
+        <script>
+
+            function checkPlayedOrNot(fbidw, round) {
+                var BASE_URL = window.location.origin;
+                var JHOTPOT_ANSWER_BreakTime = BASE_URL + "/api/jhotpot/HasPlayedForRoundToday";
+
+                $.ajax({
+                    url: JHOTPOT_ANSWER_BreakTime + "?fbId=" + fbidw + "&round=" + round,
+                    type: 'GET',
+                })
+                    .then(function (response) {
+                        console.log('Response:', response);
+
+                        response.hasPlayedForRoundToday === true
+                            ? showCustomAlert1('আপনি ইতিমধ্যে ব্রেকটাইম কুইজটি খেলে ফেলেছেন ', 8000)
+                            : window.location.href = "../LandingPage/JhotpotroundBT";
+                    })
+                    .catch(function (error) {
+                        console.error('Error checking play status', error);
+                    });
+            }
+
+
+
+            const fbidw = sessionStorage.getItem('fbid');
+            const round = 1;
+
+
+
+
+            function showCustomAlert(message, duration = 1000) {
+                HelloCloseModal();
+                var customAlert = document.getElementById('customAlert');
+                var alertMessage = document.getElementById('alertMessage');
+                alertMessage.innerText = message;
+                customAlert.style.display = 'block';
+
+
+                setTimeout(function () {
+                    customAlert.style.display = 'none';
+
+                    window.location.href = "../LandingPage/Index";
+                }, duration);
+            }
+            function showCustomAlert1(message, duration = 1000) {
+                var customAlert1 = document.getElementById('customAlert1');
+                var alertMessage1 = document.getElementById('alertMessage1');
+                alertMessage1.innerText = message;
+                customAlert1.style.display = 'block';
+
+                setTimeout(function () {
+                    customAlert1.style.display = 'none';
+
+                    window.location.href = "../LandingPage/Index";
+                }, duration);
+            }
+
+            function closeCustomAlert() {
+                var customAlert = document.getElementById('customAlert');
+                customAlert.style.display = 'none';
+                // Redirect to the index page after closing the alert
+                window.location.href = "../LandingPage/Index";
+            }
+
+            function closeCustomAlert1() {
+                var customAlert = document.getElementById('customAlert1');
+                customAlert1.style.display = 'none';
+                // Redirect to the index page after closing the alert
+                window.location.href = "../LandingPage/Index";
+            }
+            function checkHappyHoursAndRedirect() {
+                var BASE_URL = window.location.origin;
+                var GetResponseHappy = BASE_URL + "/home/GetHappyHoursForCurrentDate";
+                $.ajax({
+                    type: "GET",
+                    url: GetResponseHappy,
+                    success: function (response) {
+                        console.log(response);
+                        ////debugger;
+                        if (response === true) {
+                            checkPlayedOrNot(fbidw, round);
+                        } else {
+
+                            updateCountdown1();
+
+
+                        }
+                    },
+                    error: function () {
+                        // Handle any errors here
+                    }
+                });
+            }
+
+        </script>
+
+
+
+        @*<script type="text/javascript">
+
+            const startTime = new Date().getTime();
+
+            // Function to calculate and log the time spent
+            function logTimeSpent() {
+                const endTime = new Date().getTime();
+                const timeSpent = (endTime - startTime) / 1000; // Convert to seconds
+                var pageName = "index";
+
+                var timeSpentTheme = "Time Spent in " + pageName + " " + timeSpent.toString();
+
+                $.get(
+                    "../LandingPage/SaveCapmTimeLog",
+                    {
+                        msisdn: sessionStorage.getItem('msisdn'),
+                        ckey: sessionStorage.getItem('ckey'),
+                        cname: "QuizMaster",
+                        theme: timeSpentTheme.toString(),
+                        srcurl: window.location.href
+                    },
+                    function (rData) {
+                        // Callback function to handle the response (if needed)
+                    }
+                );
+
+
+                console.log("Time spent on the page: " + timeSpent + " seconds");
+                console.log(timeSpentTheme);
+
+            }
+
+            // Add an event listener for when the user leaves the page
+            window.addEventListener("beforeunload", logTimeSpent);
+
+
+        </script>*@
+
+    @*sliding script end *@
+
+
+       <script type="text/javascript">
+
+        //$(document).ready(function() {
+
+        //        if (window.location.href.indexOf("ckey=42856627") !== -1 || window.location.href.indexOf("cKey=42856627") !== -1 || window.location.href.indexOf("ckey=54898416") !== -1 || window.location.href.indexOf("cKey=54898416") !== -1 || window.location.href.indexOf("cKey=69422592") !== -1) {
+            
+               
+        //    //document.querySelector("#splashscreen").classList.remove("open");
+        //    //document.querySelector("#splashscreen").classList.add("close");
+        //    console.log("URL contains 'ckey'.");
+        //    //document.querySelector("#splashscreen2").classList.add("open");
+        //    //document.querySelector("#splashscreen").classList.remove("open");
+        //    //document.querySelector("#splashscreen").classList.add("close");
+
+        //    $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=enter_freeQuizpageWithCkey&srcurl=" + window.location.href, function (rData) { });
+        //    console.log("Ckey data entered");
+        //    //document.querySelector("#splashscreen").classList.remove("open");
+             
+            
+      
+        //  } else {
+          
+        //    console.log("URL does not contain 'ckey'.");
+        //        if (window.location.href.indexOf("msisdn") !== -1) {
+        //            console.log(new URLSearchParams(window.location.search).get("msisdn"));
+        //            var number = new URLSearchParams(window.location.search).get("msisdn");
+        //            sessionStorage.setItem("fbid", new URLSearchParams(window.location.search).get("msisdn"));
+        //            console.log (number);
+                    
+        //        }
+        //    //document.querySelector("#splashscreen").classList.add("open");
+        //    //document.querySelector("#splashscreen2").classList.remove("open");
+        //    // Perform your alternative action here
+        //  }
+
+          
+        //});
+
+
+
+            function redirectToImage() {
+                console.log("Clicked");
+                window.location.href = "../FreeQuiz";
+            }
+
+
+            function getURLParameter(name) {
+                return new URLSearchParams(window.location.search).get(name);
+            }
+
+
+
+            function validateName() {
+                var nameInput = document.getElementById("name");
+                var name = nameInput.value;
+                var regex = /^[\u0980-\u09FFa-zA-Z\s.]+$/;
+                // Regular expression to allow only alphabets and spaces
+
+                if (!regex.test(name) && name.length > 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'দুঃখিত',
+                        text: 'দুঃখিত বিশেষ অক্ষর গ্রহণযোগ্য নয়',
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#e3126e',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            var ckey = sessionStorage.getItem("ckey");
+                            var FTU = sessionStorage.getItem("FTU");
+                            ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                            var su = sessionStorage.getItem("su");
+                            su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                            var FCT = sessionStorage.getItem("FCT");
+                            FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                            var sent = sessionStorage.getItem("sentToServer");
+
+                            //sessionStorage.clear();
+                            //localStorage.clear();
+                            //window.location.href = "../LandingPage/Index"
+
+                            window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                            sessionStorage.setItem("ckey", ckey);
+                            sessionStorage.setItem("FTU", FTU);
+                            sessionStorage.setItem("su", su);
+                            if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                            document.querySelector("#login").classList.remove("open");
+                            document.querySelector("#login").classList.add("close");
+
+                            document.querySelector("#reg").classList.remove("close");
+                            document.querySelector("#reg").classList.add("open");
+
+                            $("#logoutMenu").hide();
+                        }
+                    });
+                    nameInput.value = ""; // Clear the input field
+                    return false;
+                }
+                return true;
+            }
+
+
+            function splashscreen() {
+
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Popup_Bannar_Clicked&srcurl=" + window.location.href, function (rData) { });
+
+                document.querySelector("#splashscreen").classList.remove("open");
+                document.querySelector("#splashscreen").classList.add("close");
+
+                //document.querySelector("#myModal").classList.remove("open");
+                //document.querySelector("#myModal").classList.add("close");
+
+                var audioElement = document.getElementById("aa");
+
+                // Play the audio
+                audioElement.play();
+
+                $("#spashscreen").hide();
+                $("#campaignJuly").show();
+
+                function getParameterByName(name, url = window.location.href) {
+                    name = name.replace(/[\[\]]/g, '\\$&');
+                    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                        results = regex.exec(url);
+                    if (!results) return null;
+                    if (!results[2]) return '';
+                    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                }
+
+
+                var ckey = getParameterByName('ckey');
+                //console.log(ckey);
+
+
+
+                if (ckey != null && typeof ckey != "undefined" && ckey != "null") {
+
+                } else {
+                    ckey = getParameterByName('cKey');
+                }
+
+                //LiveQuizTimeCheckingForIndex();
+                //LiveQuizTimeCheckingForIndex("", ckey);
+
+                //  window.location.href = "../LandingPage/Help";
+            }
+
+
+            function splashscreen2() {
+
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Popup_Bannar_CloseClicked&srcurl=" + window.location.href, function (rData) { });
+
+                //document.querySelector("#splashscreen2").classList.remove("open");
+                //document.querySelector("#splashscreen2").classList.add("close");
+                document.querySelector("#splashscreen").classList.remove("open");
+                document.querySelector("#splashscreen").classList.add("close");
+
+                //document.querySelector("#myModal").classList.remove("open");
+                //document.querySelector("#myModal").classList.add("close");
+
+                var audioElement = document.getElementById("aa");
+
+                // Play the audio
+                audioElement.play();
+
+                //$("#spashscreen2").hide();
+                //$("#campaignJuly").show();
+
+                function getParameterByName(name, url = window.location.href) {
+                    name = name.replace(/[\[\]]/g, '\\$&');
+                    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                        results = regex.exec(url);
+                    if (!results) return null;
+                    if (!results[2]) return '';
+                    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                }
+
+
+                var ckey = getParameterByName('ckey');
+                //console.log(ckey);
+
+
+
+                if (ckey != null && typeof ckey != "undefined" && ckey != "null") {
+
+                } else {
+                    ckey = getParameterByName('cKey');
+                }
+
+                //LiveQuizTimeCheckingForIndex();
+                //LiveQuizTimeCheckingForIndex("", ckey);
+
+                //  window.location.href = "../LandingPage/Help";
+            }
+
+
+
+
+            function HappyHourBanner() {
+                removeFFPressedFromSession();
+                $.get("../home/HappyHourBannerLogic", function (rdata) {
+
+                    if (rdata.result != null) {
+
+                        $('.happyHourBanner').prepend('<img src="' + rdata.result + '" style=" width: 100%; " asp-append-version="true"/> <p style="text-align: center;margin-top: -16.8%;margin-bottom:-100px; margin-left:36px;color: #f9f959;font-size: 18px;font-weight: 700;">' + rdata.startTime + ' - ' + rdata.endTime + '</p>');
+
+                    }
+                });
+
+            }
+
+            function hideSHModal() {
+                $('#SH_term').modal('hide');
+            }
+
+            function MegaPrizeBanner() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Mega_Prize_Bannar&srcurl=" + window.location.href, function (rData) { });
+
+                window.location.href = "../LandingPage/Prizes";
+
+            }
+
+            function WeeklyPrizeBanner() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Weekly_Prize_Bannar&srcurl=" + window.location.href, function (rData) { });
+
+                //window.location.href = "../LandingPage/Prizes";
+
+                $.get(BASE_URL + "/LandingPage/GettingTermRules?type=Prizes_HappyHourPrizes", function (res) {
+                    var dd = res.term.replace(/\n/g, "<br/>");
+                    dd = "<style> #swal2-title { color: #cc1063; } </style>" + dd;
+                    Swal.fire({
+                        title: 'উইকলি কুইজ প্রাইজ',
+                        html: dd,
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#e3126e',
+                        showCancelButton: false,
+                        cancelButtonColor: '#efaf11',
+                        cancelButtonText: 'হোম',
+                        allowOutsideClick: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "../LandingPage/Index";
+                            ////debugger
+                            //$.get(INS + "?type=Winner", function (res) {
+                            //    $("#SH_title").text("কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?  ");
+                            //    var dd = res.term.replace(/\n/g, "<br/>");
+                            //    document.getElementById("Sh_Modal_body").innerHTML = dd;
+                            //});
+                            //$('#SH_term').modal('show');
+                            //WinTimeButtonTimeChecking();
+
+                        } else {
+                            window.location.href = "../LandingPage/Index";
+                        }
+                    });
+
+                });
+
+            }
+            function MonthlyBanner() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Monthly_Prize_Bannar&srcurl=" + window.location.href, function (rData) { });
+
+                //window.location.href = "../LandingPage/Prizes";
+
+                $.get(BASE_URL + "/LandingPage/GettingTermRules?type=Prizes_MegaPrizes", function (res) {
+                    var dd = res.term.replace(/\n/g, "<br/>");
+                    dd = "<style> #swal2-title { color: #cc1063; } </style>" + dd;
+                    Swal.fire({
+                        title: 'মেগা কুইজ প্রাইজ',
+                        html: dd,
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#e3126e',
+                        showCancelButton: false,
+                        cancelButtonColor: '#efaf11',
+                        cancelButtonText: 'হোম',
+                        allowOutsideClick: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "../LandingPage/Index";
+                            ////debugger
+                            //$.get(INS + "?type=Winner", function (res) {
+                            //    $("#SH_title").text("কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?  ");
+                            //    var dd = res.term.replace(/\n/g, "<br/>");
+                            //    document.getElementById("Sh_Modal_body").innerHTML = dd;
+                            //});
+                            //$('#SH_term').modal('show');
+                            //WinTimeButtonTimeChecking();
+
+                        } else {
+                            window.location.href = "../LandingPage/Index";
+                        }
+                    });
+
+                });
+
+
+            }
+
+            function MegaPrizesInfo() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Mega_Prize_Button&srcurl=" + window.location.href, function (rData) { });
+
+                Swal.fire({
+                    //icon: 'warning',
+                    //title: 'দুঃখিত',
+                    //text: '<img src="~/Assets/mp.png" style=" width: 35vw;" onclick="MegaPrizesInfo()" />',
+                    imageUrl: '../Assets/mp1.png',
+                    imageWidth: '100%',
+                    imageHeight: '100%',
+                    imageAlt: 'Custom image',
+                    animation: false,
+
+                    confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                    confirmButtonColor: '#e3126e',
+                    showCancelButton: true,
+                    cancelButtonColor: '#efaf11',
+                    cancelButtonText: 'হোম',
+                    allowOutsideClick: true
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        window.location.href = "../LandingPage/Terms";
+                    } else {
+                        window.location.href = "../LandingPage/Index";
+                    }
+                });
+
+            }
+
+            function IftaarQuizPrizeInfo() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Iftaar_Prize_Button&srcurl=" + window.location.href, function (rData) { });
+                Swal.fire({
+                    //icon: 'warning',
+                    //title: 'দুঃখিত',
+                    //text: '<img src="~/Assets/mp.png" style=" width: 35vw;" onclick="MegaPrizesInfo()" />',
+                    imageUrl: '../Assets/Iftar-Quiz.png',
+                    imageWidth: '100%',
+                    imageHeight: '100%',
+                    imageAlt: 'Custom image',
+                    animation: false,
+
+                    confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                    confirmButtonColor: '#e3126e',
+                    showCancelButton: true,
+                    cancelButtonColor: '#efaf11',
+                    cancelButtonText: 'হোম',
+                    allowOutsideClick: true
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        window.location.href = "../LandingPage/Terms";
+                    } else {
+                        window.location.href = "../LandingPage/Index";
+                    }
+                });
+
+            }
+
+            function SehriQuizPrizeInfo() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Sehri_Prize_Button&srcurl=" + window.location.href, function (rData) { });
+                Swal.fire({
+                    //icon: 'warning',
+                    //title: 'দুঃখিত',
+                    //text: '<img src="~/Assets/mp.png" style=" width: 35vw;" onclick="MegaPrizesInfo()" />',
+
+                    imageUrl: '../Assets/Sehri_Quiz_prize_info.png',
+                    imageWidth: '100%',
+                    imageHeight: '100%',
+                    imageAlt: 'Custom image',
+                    animation: false,
+
+                    confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                    confirmButtonColor: '#e3126e',
+                    showCancelButton: true,
+                    cancelButtonColor: '#efaf11',
+                    cancelButtonText: 'হোম',
+                    allowOutsideClick: true
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        window.location.href = "../LandingPage/Terms";
+                    } else {
+                        window.location.href = "../LandingPage/Index";
+                    }
+                });
+
+            }
+
+            function EidQuizPrizeInfo() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Eid_Prize_Button&srcurl=" + window.location.href, function (rData) { });
+                Swal.fire({
+                    //icon: 'warning',
+                    //title: 'দুঃখিত',
+                    //text: '<img src="~/Assets/mp.png" style=" width: 35vw;" onclick="MegaPrizesInfo()" />',
+
+                    imageUrl: '../Assets/Eid-Quiz-Prize.png',
+                    imageWidth: '100%',
+                    imageHeight: '100%',
+                    imageAlt: 'Custom image',
+                    animation: false,
+
+                    confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                    confirmButtonColor: '#e3126e',
+                    showCancelButton: true,
+                    cancelButtonColor: '#efaf11',
+                    cancelButtonText: 'হোম',
+                    allowOutsideClick: true
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        window.location.href = "../LandingPage/Terms";
+                    } else {
+                        window.location.href = "../LandingPage/Index";
+                    }
+                });
+
+            }
+
+            function WinTimeQuizPrizeInfo() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Win_Time_Prize_Button&srcurl=" + window.location.href, function (rData) { });
+                Swal.fire({
+                    //icon: 'warning',
+                    //title: 'দুঃখিত',
+                    //text: '<img src="~/Assets/mp.png" style=" width: 35vw;" onclick="MegaPrizesInfo()" />',
+
+                    imageUrl: '../Assets/Win time-Quiz.png',
+                    imageWidth: '100%',
+                    imageHeight: '100%',
+                    imageAlt: 'Custom image',
+                    animation: false,
+
+                    confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                    confirmButtonColor: '#e3126e',
+                    showCancelButton: true,
+                    cancelButtonColor: '#efaf11',
+                    cancelButtonText: 'হোম',
+                    allowOutsideClick: true
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        window.location.href = "../LandingPage/Terms";
+                    } else {
+                        window.location.href = "../LandingPage/Index";
+                    }
+                });
+
+            }
+
+
+            function DailyQuizPrizeInfo() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Daily_Prize_Button&srcurl=" + window.location.href, function (rData) { });
+                Swal.fire({
+                    //icon: 'warning',
+                    //title: 'দুঃখিত',
+                    //text: '<img src="~/Assets/mp.png" style=" width: 35vw;" onclick="MegaPrizesInfo()" />',
+                    imageUrl: '../Assets/Daily-Quiz.png',
+                    imageWidth: '100%',
+                    imageHeight: '100%',
+                    imageAlt: 'Custom image',
+                    animation: false,
+
+                    confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                    confirmButtonColor: '#e3126e',
+                    showCancelButton: true,
+                    cancelButtonColor: '#efaf11',
+                    cancelButtonText: 'হোম',
+                    allowOutsideClick: true
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        window.location.href = "../LandingPage/Terms";
+                    } else {
+                        window.location.href = "../LandingPage/Index";
+                    }
+                });
+
+            }
+
+            function DailyQuizClick() {
+
+                removeFFPressedFromSession();
+
+                var ckey = gettingCkeyFromSession();
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Daily_Quiz_Banner&srcurl=" + window.location.href, function (rData) { });
+
+                //quizkhelun_btn();
+
+                $.get(BASE_URL + "/LandingPage/GettingTermRules?type=Prizes_DailyQuizPrizes", function (res) {
+                    var dd = res.term.replace(/\n/g, "<br/>");
+                    dd = "<style> #swal2-title { color: #cc1063; } </style>" + dd;
+                    Swal.fire({
+                        title: 'নিউ ইয়ার কুইজ প্রাইজ',
+                        html: dd,
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#e3126e',
+                        showCancelButton: false,
+                        cancelButtonColor: '#efaf11',
+                        cancelButtonText: 'হোম',
+                        allowOutsideClick: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "../LandingPage/Index";
+                            ////debugger
+                            //$.get(INS + "?type=Winner", function (res) {
+                            //    $("#SH_title").text("কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?  ");
+                            //    var dd = res.term.replace(/\n/g, "<br/>");
+                            //    document.getElementById("Sh_Modal_body").innerHTML = dd;
+                            //});
+                            //$('#SH_term').modal('show');
+                            //WinTimeButtonTimeChecking();
+
+                        } else {
+                            window.location.href = "../LandingPage/Index";
+                        }
+                    });
+
+                });
+
+            }
+
+            function loadingmodal() {
+                document.querySelector("#loadingModal").classList.remove("close");
+                document.querySelector("#loadingModal").classList.add("open");
+
+                //DailyQuizButtonClick();
+            }
+
+            /////
+
+            function DailyQuizButtonClick(serviceName) {
+
+
+
+                removeFFPressedFromSession();
+
+                var ckey = gettingCkeyFromSession();
+                //$.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme="+serviceName+"&srcurl=" + window.location.href, function (rData) { });
+
+                // Setting data for redirecting
+                var Page1 = "Page1";
+                sessionStorage.setItem("Page", Page1);
+                sessionStorage.setItem("serviceName",serviceName);
+                //console.log (getURLParameter('msisdn'));
+
+                //sessionStorage.setItem("fbid", getURLParameter('msisdn'));
+                //LiveQuizTimeCheckingForIndex("DailyQuizHome", "");
+                var number = sessionStorage.getItem("fbid");
+                if (number == null) {
+                    //var audioElement = document.getElementById("aa1");
+                    //audioElement.play();
+                }
+
+                quizkhelun_btnMultiTournament(serviceName);
+
+                //quizkhelun_btn();
+            }
+
+
+            ////
+            function BackToDailyQuiz(button) {
+                if (button == "Okay") {
+                    button = "DailyQuizLiveQuizVideoTimesOkay";
+                }
+
+                DefaultLogFunction(button, window.location.href);
+
+                quizkhelun_btn();
+
+            }
+
+            function HappyHourBannerTimeChecking() {
+                removeFFPressedFromSession();
+
+                $.get("../home/HappyHourBannerTimeChecking", function (rdata) {
+                    //$.get("../home/BkashQuizMasterQuizTimeChecking?quiztype=HappyHour", function (rdata) {
+                    if (rdata.result == "true") {
+
+                        quizkhelun_btn();
+
+                    } else if (rdata.result == "false") {
+                        Swal.fire({
+                            icon: 'warning',
+                            //title: 'দুঃখিত',
+                            text: 'আজকের হ্যাপি আওয়ার এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',
+                            confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                            confirmButtonColor: '#e3126e',
+                            showCancelButton: true,
+                            cancelButtonColor: '#efaf11',
+                            cancelButtonText: 'হোম',
+                            allowOutsideClick: true
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                window.location.href = "../LandingPage/Terms";
+
+
+
+
+                            } else {
+                                window.location.href = "../LandingPage/Index";
+                            }
+                        });
+                    }
+                });
+
+            }
+
+            function IftaarBannerTimeChecking() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Iftaar_Quiz_Banner&srcurl=" + window.location.href, function (rData) { });
+
+                $.get("../home/BkashQuizMasterQuizTimeChecking?quiztype=Iftaar", function (rdata) {
+
+                    if (rdata.result == "true") {
+
+                        quizkhelun_btn();
+
+                    } else if (rdata.result == "false") {
+                        Swal.fire({
+                            icon: 'warning',
+                            //title: 'দুঃখিত',
+                            text: 'আজকের ইফতার কুইজ এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',
+                            confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                            confirmButtonColor: '#e3126e',
+                            showCancelButton: true,
+                            cancelButtonColor: '#efaf11',
+                            cancelButtonText: 'হোম',
+                            allowOutsideClick: true
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                window.location.href = "../LandingPage/Terms";
+                            } else {
+                                window.location.href = "../LandingPage/Index";
+                            }
+                        });
+                    }
+                });
+
+            }
+
+            function SehriBannerTimeChecking() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Sehri_Quiz_Banner&srcurl=" + window.location.href, function (rData) { });
+
+                $.get("../home/BkashQuizMasterQuizTimeChecking?quiztype=Sehri", function (rdata) {
+
+                    if (rdata.result == "true") {
+
+                        quizkhelun_btn();
+
+                    } else if (rdata.result == "false") {
+                        Swal.fire({
+                            icon: 'warning',
+                            //title: 'দুঃখিত',
+                            text: 'আজকের সেহরি কুইজ এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',
+                            confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                            confirmButtonColor: '#e3126e',
+                            showCancelButton: true,
+                            cancelButtonColor: '#efaf11',
+                            cancelButtonText: 'হোম',
+                            allowOutsideClick: true
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                window.location.href = "../LandingPage/Terms";
+                            } else {
+                                window.location.href = "../LandingPage/Index";
+                            }
+                        });
+                    }
+                });
+
+            }
+
+            function EidBannerTimeChecking() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Eid_Quiz_Banner&srcurl=" + window.location.href, function (rData) { });
+
+                $.get("../home/BkashQuizMasterQuizTimeChecking?quiztype=Eid", function (rdata) {
+
+                    if (rdata.result == "true") {
+
+                        quizkhelun_btn();
+
+                    } else if (rdata.result == "false") {
+                        Swal.fire({
+                            icon: 'warning',
+                            //title: 'দুঃখিত',
+                            text: 'আজকের ঈদ কুইজ এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',
+                            confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                            confirmButtonColor: '#e3126e',
+                            showCancelButton: true,
+                            cancelButtonColor: '#efaf11',
+                            cancelButtonText: 'হোম',
+                            allowOutsideClick: true
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                window.location.href = "../LandingPage/Terms";
+                            } else {
+                                window.location.href = "../LandingPage/Index";
+                            }
+                        });
+                    }
+                });
+
+            }
+
+            function SuperHourBannerTimeChecking() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Super_Hour_Banner&srcurl=" + window.location.href, function (rData) { });
+
+                $.get("../home/BkashQuizMasterQuizTimeChecking?quiztype=SuperHour", function (rdata) {
+
+                    if (rdata.result == "true") {
+
+                        quizkhelun_btn();
+
+                    } else if (rdata.result == "false") {
+                        Swal.fire({
+                            icon: 'warning',
+                            //title: 'দুঃখিত',
+                            text: 'আজকের সুপার আওয়ার এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',
+                            confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                            confirmButtonColor: '#e3126e',
+                            showCancelButton: true,
+                            cancelButtonColor: '#efaf11',
+                            cancelButtonText: 'হোম',
+                            allowOutsideClick: true
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                //window.location.href = "../LandingPage/Terms";
+
+                                ////debugger
+                                $.get(INS + "?type=Winner", function (res) {
+                                    $("#SH_title").text("কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?  ");
+                                    var dd = res.term.replace(/\n/g, "<br/>");
+                                    document.getElementById("Sh_Modal_body").innerHTML = dd;
+                                });
+                                $('#SH_term').modal('show');
+
+
+                            } else {
+                                window.location.href = "../LandingPage/Index";
+                            }
+                        });
+                    }
+                });
+
+            }
+
+            function SuperHourButtonTimeChecking() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Super_Hour_Button&srcurl=" + window.location.href, function (rData) { });
+
+                $.get("../home/BkashQuizMasterQuizTimeChecking?quiztype=SuperHour", function (rdata) {
+
+                    if (rdata.result == "true") {
+
+                        quizkhelun_btn();
+
+                    } else if (rdata.result == "false") {
+                        Swal.fire({
+                            icon: 'warning',
+                            //title: 'দুঃখিত',
+                            text: 'আজকের সুপার আওয়ার এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',
+                            confirmButtonText: 'টার্মস এন্ড কন্ডিশন',
+                            confirmButtonColor: '#e3126e',
+                            showCancelButton: true,
+                            cancelButtonColor: '#efaf11',
+                            cancelButtonText: 'হোম',
+                            allowOutsideClick: true
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                //window.location.href = "../LandingPage/Terms";
+                                ////debugger
+                                $.get(INS + "?type=Winner", function (res) {
+                                    $("#SH_title").text("কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?  ");
+                                    var dd = res.term.replace(/\n/g, "<br/>");
+                                    document.getElementById("Sh_Modal_body").innerHTML = dd;
+                                });
+                                $('#SH_term').modal('show');
+
+                            } else {
+                                window.location.href = "../LandingPage/Index";
+                            }
+                        });
+                    }
+                });
+
+            }
+
+            function WinTimeBannerTimeChecking() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=WinTime_Quiz_Banner&srcurl=" + window.location.href, function (rData) { });
+
+                $.get("../home/BkashQuizMasterQuizTimeChecking?quiztype=WinTime", function (rdata) {
+                    var messageOne = "";
+                    var messageTwo = "";
+                    var SuperHourQuizStage = 0;
+                    if (rdata.response != null) {
+                        if (rdata.response[0].result == "true") {
+                            SuperHourQuizStage = 1;
+                            messageOne = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: #4d6ad5;font-weight:bold'>আজকের প্রথম সুপার আওয়ার এর সময় শুরু হয়ে গেছে </span>  </div>";
+                        } else if (rdata.response[0].result == "false") {
+                            messageOne = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: black;'>আজকের প্রথম সুপার আওয়ার এর সময় </span>  <span style='width: 100 %; text - align: center; color: #4d6ad5; font-weight:bold'> " + rdata.response[0].startTime + " থেকে " + rdata.response[0].endTime + "</span></div>";
+                        }
+
+                        if (rdata.response[1].result == "true") {
+                            SuperHourQuizStage = 1;
+                            messageTwo = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: 4d6ad5;font-weight:bold'>আজকের দ্বিতীয় সুপার আওয়ার এর সময় শুরু হয়ে গেছে </span>  </div>";
+                        } else if (rdata.response[1].result == "false") {
+                            messageTwo = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: black;'>আজকের দ্বিতীয় সুপার আওয়ার এর সময় </span>  <span style='width: 100 %; text - align: center; color: #4d6ad5; font-weight:bold'> " + rdata.response[1].startTime + " থেকে " + rdata.response[1].endTime + "</span></div>";
+                        }
+
+                        Swal.fire({
+                            //icon: 'warning',
+                            //iconHtml: '<img style="margin-top: -14%;" src="../Assets/SuperHourButtonImage (2).png" />',
+                            imageUrl: '../Assets/SuperHourButtonImage (2).png',
+                            imageWidth: '100%',
+                            //imageMargintop:'0%',
+                            //imageHeight: '100%',
+                            //imageHtml: '<img style="margin-top: -14%;" src="../Assets/SuperHourButtonImage (2).png" />',
+                            //title: 'দুঃখিত',
+                            /*text: 'আজকের উইন টাইম কুইজ এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',*/
+                            //text: 'আজকের সুপার আওয়ার এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',
+                            confirmButtonText: 'প্রাইজ',
+                            confirmButtonColor: '#e3126e',
+                            showCancelButton: true,
+                            cancelButtonColor: '#e3126e',
+                            cancelButtonText: 'ওকে',
+                            allowOutsideClick: true,
+                            showCloseButton: true,
+                            html: "<style> .swal2-image { margin-top: 0%; } </style> " + messageOne + " <br> " + messageTwo
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                //window.location.href = "../LandingPage/Index";
+                                ////debugger
+                                //$.get(INS + "?type=Winner", function (res) {
+                                //    $("#SH_title").text("কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?  ");
+                                //    var dd = res.term.replace(/\n/g, "<br/>");
+                                //    document.getElementById("Sh_Modal_body").innerHTML = dd;
+                                //});
+                                //$('#SH_term').modal('show');
+                                SuperHourTermButtonClick();
+                            } else {
+                                if (SuperHourQuizStage == 1) {
+                                    quizkhelun_btn();
+                                } else {
+                                    window.location.href = "../LandingPage/Index";
+                                }
+                            }
+                        });
+
+                    }
+
+
+         
+                });
+
+            }
+
+            function FunFridayBannerTimeChecking() {
+
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=FunFriday_Quiz_Banner&srcurl=" + window.location.href, function (rData) { });
+
+                var messageOne = "";
+                var messageTwo = "";
+                var FunFridayQuizStage = 0;
+                if (new Date().toString().includes("Fri ")) {
+                    FunFridayQuizStage = 1;
+                    messageOne = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: ff1493;font-weight:bold'>আজকের ফান ফ্রাইডে এর সময় শুরু হয়ে গেছে </span> <br> <span style='width: 100 %; text - align: center; color: ff1493;font-weight:bold'>খেলতে ওকে প্রেস করুন । </span> </div>";
+                } else {
+                    messageOne = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: black;'>ফান ফ্রাইডে খেলতে আগামী শুক্রবার অনলাইন থাকুন</span></div>";
+                }
+
+
+                Swal.fire({
+                    imageUrl: '../Assets/SuperHourButtonImage (2).png',
+                    imageWidth: '100%',
+                    confirmButtonText: 'প্রাইজ',
+                    confirmButtonColor: '#e3126e',
+                    showCancelButton: true,
+                    cancelButtonColor: '#e3126e',
+                    cancelButtonText: 'ওকে',
+                    allowOutsideClick: true,
+                    showCloseButton: true,
+                    html: "<style> .swal2-image { margin-top: 0%; } </style> " + messageOne
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        FunFridayTermButtonClick();
+                    } else {
+                        if (FunFridayQuizStage == 1) {
+                            sessionStorage.setItem("FFPressed", 1);
+                            quizkhelun_btn();
+                        }
+                    }
+                });
+            }
+
+            //function LiveQuizButtonClick() {
+            //    var ckey = gettingCkeyFromSession();
+            //    DefaultLogFunction('LiveQuizButtonClick', window.location.href);
+
+            //    window.parent.location.href = window.location.origin + '/landingpage/livequizvideo';
+            //}
+
+            function WorldCupQuizButtonClick() {
+                var ckey = gettingCkeyFromSession();
+                DefaultLogFunction('WorldCupQuizButtonClick', window.location.href);
+
+                console.log('WorldCupQuizButtonClick');
+
+                WinTimeButtonTimeChecking();
+
+
+            }
+
+
+            function FunFridayTimeButtonTimeChecking() {
+
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=FunFriday_Quiz_Button&srcurl=" + window.location.href, function (rData) { });
+
+                var messageOne = "";
+                var messageTwo = "";
+                var FunFridayQuizStage = 0;
+                if (new Date().toString().includes("Fri ") == true) { //Need to add false for testing except friday
+                    FunFridayQuizStage = 1;
+                    messageOne = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: ff1493;font-weight:bold'>আজকের ফান ফ্রাইডে এর সময় শুরু হয়ে গেছে </span> <br> <span style='width: 100 %; text - align: center; color: ff1493;font-weight:bold'>খেলতে ওকে প্রেস করুন । </span> </div>";
+                } else {
+                    messageOne = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: black;'>ফান ফ্রাইডে খেলতে আগামী শুক্রবার অনলাইন থাকুন</span></div>";
+                }
+
+
+                Swal.fire({
+                    imageUrl: '../Assets/FunFridayTopPop.png',
+                    imageWidth: '100%',
+                    confirmButtonText: 'প্রাইজ',
+                    confirmButtonColor: '#e3126e',
+                    showCancelButton: true,
+                    cancelButtonColor: '#e3126e',
+                    cancelButtonText: 'ওকে',
+                    allowOutsideClick: true,
+                    showCloseButton: true,
+                    html: "<style> .swal2-image { margin-top: 0%; } </style> " + messageOne
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        FunFridayTermButtonClick();
+                    } else {
+                        if (FunFridayQuizStage == 1) {
+                            sessionStorage.setItem("FFPressed", 1);
+                            quizkhelun_btn();
+                        }
+                    }
+                });
+            }
+
+            function WinTimeButtonTimeChecking() {
+                removeFFPressedFromSession();
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=WinTime_Quiz_Button&srcurl=" + window.location.href, function (rData) { });
+
+                $.get("../home/BkashQuizMasterQuizTimeChecking?quiztype=WinTime", function (rdata) {
+
+                    var messageOne = "";
+                    var messageTwo = "";
+                    var SuperHourQuizStage = 0;
+                    if (rdata.response != null) {
+                        if (rdata.response[0].result == "true") {
+                            SuperHourQuizStage = 1;
+                            messageOne = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: #357d93;font-weight:bold'>আজকের নিউ ইয়ার কুইজ এর সময় শুরু হয়ে গেছে </span>  </div>";
+                        } else if (rdata.response[0].result == "false") {
+                            messageOne = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: black;'>আজকের নিউ ইয়ার কুইজ এর সময় </span>  <span style='width: 100 %; text - align: center; color: #357d93; font-weight:bold'> " + rdata.response[0].startTime + " থেকে " + rdata.response[0].endTime + "</span></div>";
+                        }
+
+                        //if (rdata.response[1].result == "true") {
+                        //    SuperHourQuizStage = 1;
+                        //    messageTwo = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: ff1493;font-weight:bold'>আজকের দ্বিতীয় সুপার আওয়ার এর সময় শুরু হয়ে গেছে </span>  </div>";
+                        //} else if (rdata.response[1].result == "false") {
+                        //    messageTwo = "<div style='margin- bottom: 20px; '> <span style='width: 100 %; text - align: center; color: black;'>আজকের দ্বিতীয় সুপার আওয়ার এর সময় </span>  <span style='width: 100 %; text - align: center; color: #ff1493; font-weight:bold'> " + rdata.response[1].startTime + " থেকে " + rdata.response[1].endTime + "</span></div>";
+                        //}
+
+                        Swal.fire({
+                            //icon: 'warning',
+                            //iconHtml: '<img style="margin-top: -14%;" src="../Assets/SuperHourButtonImage (2).png" />',
+                            imageUrl: '../Assets/SuperHourButtonImage (2).png',
+                            imageWidth: '100%',
+                            //imageMargintop:'0%',
+                            //imageHeight: '100%',
+                            //imageHtml: '<img style="margin-top: -14%;" src="../Assets/SuperHourButtonImage (2).png" />',
+                            //title: 'দুঃখিত',
+                            /*text: 'আজকের উইন টাইম কুইজ এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',*/
+                            //text: 'আজকের সুপার আওয়ার এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',
+                            confirmButtonText: 'প্রাইজ',
+                            confirmButtonColor: '#357d93',
+                            showCancelButton: true,
+                            cancelButtonColor: '#357d93',
+                            cancelButtonText: 'ওকে',
+                            allowOutsideClick: true,
+                            showCloseButton: true,
+                            html: "<style> .swal2-image { margin-top: 0%; } .swal2-popup {border-radius: 14px;} </style> " + messageOne + " <br> " + messageTwo
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                //window.location.href = "../LandingPage/Index";
+                                ////debugger
+                                //$.get(INS + "?type=Winner", function (res) {
+                                //    $("#SH_title").text("কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?  ");
+                                //    var dd = res.term.replace(/\n/g, "<br/>");
+                                //    document.getElementById("Sh_Modal_body").innerHTML = dd;
+                                //});
+                                //$('#SH_term').modal('show');
+                                SuperHourTermButtonClick();
+                            } else {
+                                if (SuperHourQuizStage == 1) {
+                                    quizkhelun_btn();
+                                } else {
+                                    window.location.href = "../LandingPage/Index";
+                                }
+                            }
+                        });
+
+                    }
+
+
+                });
+
+            }
+
+            function SuperHourTermButtonClick() {
+                removeFFPressedFromSession();
+                $.get(INS + "?type=Supper_hours", function (res) {
+                    //$("#SH_title").text("কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?  ");
+                    var dd = res.term.replace(/\n/g, "<br/>");
+                    //document.getElementById("Sh_Modal_body").innerHTML = dd;
+                    dd = "<style> #swal2-title { color: #357d93; } .swal2-close { display: flex; margin-top: -5%; } .swal2-image { width: 100%; margin-top: -2%; } </style>" + dd;
+
+
+                    Swal.fire({
+                        //icon: 'warning',
+                        //iconHtml: '<img style="margin-top: -14%;" src="../Assets/SuperHourButtonImage (2).png" />',
+                        imageUrl: '../Assets/BQP.png',
+                        imageWidth: '100%',
+                        //imageMargintop:'0%',
+                        //imageHeight: '100%',
+                        //imageHtml: '<img style="margin-top: -14%;" src="../Assets/SuperHourButtonImage (2).png" />',
+                        //title: 'দুঃখিত',
+                        /*text: 'আজকের উইন টাইম কুইজ এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',*/
+                        //text: 'আজকের সুপার আওয়ার এর সময় ' + rdata.startTime + ' থেকে ' + rdata.endTime + '',
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#357d93',
+                        showCancelButton: true,
+                        cancelButtonColor: '#357d93',
+                        cancelButtonText: 'হোম',
+                        allowOutsideClick: true,
+                        showCloseButton: true,
+                        html: dd,
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            window.location.href = "../LandingPage/Index";
+                        } else {
+                            window.location.href = "../LandingPage/Index";
+                        }
+                    });
+
+
+
+                });
+
+
+            }
+
+            function FunFridayTermButtonClick() {
+
+                var ckey = gettingCkeyFromSession();
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=FunFridayTerm_Home_Button&srcurl=" + window.location.href, function (rData) { });
+
+                $.get(INS + "?type=Fun_Friday", function (res) {
+                    var dd = res.term.replace(/\n/g, "<br/>");
+                    dd = "<style> #swal2-title { color: #cc1063; } </style>" + dd;
+                    Swal.fire({
+                        title: 'ফান ফ্রাইডে কুইজ প্রাইজ',
+                        html: dd,
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#e3126e',
+                        showCancelButton: false,
+                        cancelButtonColor: '#efaf11',
+                        cancelButtonText: 'হোম',
+                        allowOutsideClick: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "../LandingPage/Index";
+     
+
+                        } else {
+                            window.location.href = "../LandingPage/Index";
+                        }
+                    });
+
+                });
+
+
+            }
+
+
+            function gettingCkeyFromSession() {
+                function getParameterByName(name, url = window.location.href) {
+                    name = name.replace(/[\[\]]/g, '\\$&');
+                    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                        results = regex.exec(url);
+                    if (!results) return null;
+                    if (!results[2]) return '';
+                    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                }
+                var ckey = getParameterByName('ckey');
+                if (ckey != null && typeof ckey != "undefined" && ckey != "null") {
+                } else {
+                    ckey = getParameterByName('cKey');
+                }
+                if (ckey == null || typeof ckey == "undefined" || ckey == "null" || ckey == "") {
+                    ckey = sessionStorage.getItem("ckey");
+                }
+                if (ckey == null || typeof ckey == "undefined" || ckey == "null" || ckey == "") ckey = "000000";
+                return ckey;
+            }
+
+
+
+            $(document).ready(function () {
+
+                //var screenHeight = $(window).height();
+                //console.log(window.innerHeight);
+                //console.log(document.documentElement.clientHeight);
+                //console.log(document.body.clientHeight);
+                var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+                var screenWidth = window.screen.width;
+    
+
+                var su = window.location.href;
+
+                if (sessionStorage.getItem("su") == null || sessionStorage.getItem("su") == undefined) {
+                    var encodedString = btoa(su);
+
+                    // Decode the String
+                    //var decodedString = atob(encodedString);
+                    sessionStorage.setItem("su", encodedString);
+                }
+
+
+
+                if (sessionStorage.getItem("FTU") != null && typeof sessionStorage.getItem("FTU") != "undefined") {
+
+                    document.querySelector("#splashscreen").classList.remove("open");
+                    document.querySelector("#splashscreen").classList.add("close");
+                    //document.querySelector("#myModal").classList.remove("open");
+                    //document.querySelector("#myModal").classList.remove("open");
+
+                    $("#splashscreen").hide();
+                    //$("#myModal").hide();
+
+                    document.querySelector("#login").classList.remove("open");
+                    document.querySelector("#login").classList.add("close");
+
+                } else {
+                    document.querySelector("#login").classList.remove("open");
+                    document.querySelector("#login").classList.add("close");
+                }
+
+
+
+                function getParameterByName(name, url = window.location.href) {
+                    name = name.replace(/[\[\]]/g, '\\$&');
+                    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                        results = regex.exec(url);
+                    if (!results) return null;
+                    if (!results[2]) return '';
+                    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                }
+
+                var ckey = "";
+                ckey = sessionStorage.getItem("ckey");
+                if (ckey == null || typeof ckey == "undefined" || ckey == "null" || ckey == "" || ckey == "000000") {
+
+                    ckey = getParameterByName('ckey');
+                    //console.log(ckey);
+
+                    if (ckey != null && typeof ckey != "undefined" && ckey != "null" && ckey != "000000") {
+
+                    } else {
+                        ckey = getParameterByName('cKey');
+                    }
+
+                    if (ckey == null || typeof ckey == "undefined" || ckey == "null" || ckey == "") {
+                        ckey = "000000";
+                    } else {
+                        var encodedString = btoa(su);
+
+                        // Decode the String
+                        //var decodedString = atob(encodedString);
+                        sessionStorage.setItem("su", encodedString);
+                    }
+                }
+
+                //ckey = getParameterByName('ckey');
+                //console.log(ckey);
+
+                //if (ckey != null && typeof ckey != "undefined" && ckey != "null") {
+
+                //} else {
+                //    ckey = getParameterByName('cKey');
+                //}
+
+                //if (ckey == null || typeof ckey == "undefined" || ckey == "null" || ckey == "") {
+                //    ckey = "000000";
+                //}
+
+
+                sessionStorage.setItem("ckey", ckey);
+
+
+
+
+
+
+
+                //sessionStorage.setItem("ckey", ckey);
+
+                //var ckey = getParameterByName('ckey') === null ? "00000000" : getParameterByName('ckey');
+                //console.log("Ckey: " + ckey);
+                var mms = getParameterByName('msisdn');
+                sessionStorage.setItem("BkashMsisdn", mms);
+
+
+                HappyHourBanner();
+
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + "0000000000" + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=Init_QuizMaster&srcurl=" + window.location.href, function (rData) { });
+
+
+
+
+                //var number = $.session.get('fbid');
+
+                var number = sessionStorage.getItem("fbid");
+
+                if (number != null) {
+                    $("#logoutMenu").show();
+                    //$.get("../LandingPage/IsSubscribed?fbid=" + number, function (rdata) {
+
+
+                    //    if (rdata.result === false) {
+                    //        sessionStorage.clear();
+                    //        localStorage.clear();
+                    //        document.querySelector(".modal").classList.remove("close");
+                    //        document.querySelector(".modal").classList.add("open");
+                    //    }
+                    //})
+                }
+
+
+
+
+
+                if (sessionStorage.getItem("isLogin") == null || sessionStorage.getItem("isLogin") == undefined) {
+                    var su1 = sessionStorage.getItem("su");
+                    //var FTU = sessionStorage.getItem("FTU");
+                    //ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+
+                    $("#logoutMenu").hide();
+                    var FCT = sessionStorage.getItem("FCT");
+                    FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                    var sent = sessionStorage.getItem("sentToServer");
+                    //if (window.location.href.indexOf("msisdn") == -1) {
+                    //sessionStorage.clear();
+                    //localStorage.clear();
+
+                    //}
+                    window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                    document.querySelector(".modal").classList.remove("close");
+                    document.querySelector(".modal").classList.add("open");
+
+                    //setting ckey for the seesion
+                    if (ckey != null && typeof ckey != "undefined" && ckey != "null" && ckey != "") {
+                        sessionStorage.setItem("ckey", ckey);
+                    }
+                    sessionStorage.setItem('FTU', 1);
+                    sessionStorage.setItem('su', su1);
+                    if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                }
+
+
+
+                GettingSuperHourData();
+
+
+
+            });
+
+            function GettingSuperHourData() {
+                removeFFPressedFromSession();
+                var message = 'কুইজ খেলে জিতে নিন ৭০,০০০ টাকা পর্যন্ত পুরষ্কার,প্রতিদিন ২০০ জন নিশ্চিত বিজয়ী';
+                //document.getElementById("marqPara").textContent = message;
+              /*  document.getElementById("marqPara").setAttribute("title", message);*/ // Add a title attribute to show full text on hover
+            }
+
+        </script>
+
+
+
+        <script>
+            // START DarkModeJS
+            const body = document.querySelector('body');
+
+            // Dark Mode Action
+            let darkMode = localStorage.getItem("darkMode");
+            const darkModeToggle = document.querySelector('.dark-mode-button');
+
+            // Enable Dark Mode
+            const enableDarkMode = () => {
+                body.classList.add("dark-mode");
+                localStorage.setItem("darkMode", "enabled")
+            }
+
+            // Disable Dark Mode
+            const disableDarkMode = () => {
+                body.classList.remove("dark-mode");
+                localStorage.setItem("darkMode", null)
+            }
+
+            if (darkMode == "enabled") {
+                enableDarkMode();
+            }
+
+            // Desktop Button
+            //darkModeToggle.addEventListener('click', () => {
+            //    darkMode = localStorage.getItem("darkMode");
+            //    if (darkMode !== "enabled") {
+            //        enableDarkMode();
+            //    } else {
+            //        disableDarkMode();
+            //    }
+            //})
+            // END DarkModeJS
+
+            // START SideNavJS
+            const parentMenuItems = document.querySelectorAll('.top-nav .parent-item');
+            const submenusList = document.querySelectorAll('.parent-item .submenu');
+
+            parentMenuItems.forEach(parentMenu => {
+                parentMenu.addEventListener("click", toggleSubmenu);
+            })
+
+            function toggleSubmenu() {
+                let submenu = this.getElementsByClassName('submenu')[0];
+                this.classList.toggle('active');
+                submenu.classList.toggle('active');
+            }
+            // END SideNavJS
+
+
+
+            function WordPuzzleGameKhelun() {
+                var number = sessionStorage.getItem("fbid") != null && sessionStorage.getItem("fbid") != "" ? sessionStorage.getItem("fbid") : "0000000000";
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + number + "&cname=" + "KidStar" + "&theme=WordPuzzleGameButtonClick&srcurl=" + window.location.href, function (rData) { });
+
+                window.location.href = BASE_URL + "/home/wordmixupgame";
+            }
+
+            function removeFFPressedFromSession() {
+                sessionStorage.removeItem("FFPressed");
+            }
+
+
+
+            //khelun world cup controller
+
+            function quizkhelun_btnWC() {
+
+
+                loadingmodal();
+                //var number = $.session.get('fbid');
+                var number = sessionStorage.getItem("fbid");
+                console.log(number);
+                //document.querySelector("#loadingModal").classList.add("open");
+                if (number != null) {
+                    $.get("../LandingPage/IsSubscribed?fbid=" + number, function (rdata) {
+
+
+                        if (rdata.result === false) {
+                            //window.location.href = '../Home/BkashPayment';
+                            document.querySelector("#loadingModal").classList.remove("open");
+                            paymentwithbkash();
+                        } else {
+                            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                                //sessionStorage.clear();
+                                //localStorage.clear();
+
+                                //document.querySelector("#login").classList.remove("close");
+                                //document.querySelector("#login").classList.add("open");
+                                document.querySelector("#loadingModal").classList.remove("open");
+                                //document.querySelector("#reg").classList.remove("close");
+                                //document.querySelector("#reg").classList.add("open");
+                                return false;
+                            }
+
+                            console.log("kb");
+                            //document.querySelector("#loadingModal").classList.add("open");
+                            //var CRPSResponse = 0;
+
+                            var worldCupData = "WC"; // Replace this with the actual data you want to save
+                            sessionStorage.setItem("nameWC", worldCupData);
+                            var startTime = new Date().getTime();
+                            var CRPSResponse = CheckRecurringPaymentStatusFunc(number, CRPSResponse);
+                            //var CRPResponse = GetCPRResponse(number);
+                            //document.querySelector("#loadingModal").classList.remove("open");
+                            var endTime = new Date().getTime(); // Capture the end time
+                            var timeTaken = endTime - startTime; // Calculate the time difference in milliseconds
+                            console.log("Time taken: " + timeTaken + "ms");
+                            //document.querySelector("#loadingModal").classList.remove("open");
+                            if (CRPSResponse == "1") {
+                                console.log("Reached here");
+                                window.location.href = "../LandingPage/JhotpotRoundWC";
+                            }
+                        }
+                    })
+                } else {
+                    if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                        //sessionStorage.clear();
+                        //localStorage.clear();
+
+                        //document.querySelector("#login").classList.remove("close");
+                        //document.querySelector("#login").classList.add("open");
+
+                        //document.querySelector("#reg").classList.remove("close");
+                        //document.querySelector("#reg").classList.add("open");
+                        return false;
+                    }
+                }
+
+       
+            }
+
+
+
+
+            //////////////////////////////////////////////////////////////end
+            function quizkhelun_btnMultiTournament(serviceName) {
+                //loadingmodal();
+                
+                var number = sessionStorage.getItem("fbid");
+                console.log(number);
+               
+                if (number != null) {
+                    $.get('../kidsprofilesetup/GetProfileExistence?MSISDN=' + number, function (rdata) {
+
+
+                        if (rdata.result === false) {
+                          
+                            document.querySelector("#loadingModal").classList.remove("open");
+                            //paymentwithbkashMultiTournament();
+                            window.location.href = "../KidsProfileSetup/Index";
+                        } else {
+
+                            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                                //sessionStorage.clear();
+                                //localStorage.clear();
+
+                                //document.querySelector("#login").classList.remove("close");
+                                //document.querySelector("#login").classList.add("open");
+                                document.querySelector("#loadingModal").classList.remove("open");
+                                document.querySelector("#reg").classList.remove("close");
+                                document.querySelector("#reg").classList.add("open");
+                                return false;
+                            }
+
+                            console.log("kb");
+                            if(serviceName == 'QuizMaster-MultiService3'){
+                               var serviceName = sessionStorage.getItem('serviceName');
+                               window.location.href = "../LandingPage/JhotpotRoundAudio?serviceName=" + encodeURIComponent(serviceName);
+
+                            }
+                            else if (sessionStorage.getItem('serviceName') == 'KidStar-Math') {
+                                $.get("../KidsProfileSetup/GetUserAge?MSISDN=" + number, function (rdata) {
+                                    console.log(rdata);
+                                    if (rdata >= 12) {
+                                        window.location.href = 'https://games.shabox.mobi/Assets/Games/MathGameWithScoreCard/index.html';
+                                    }
+                                    else if (rdata <= 11) {
+                                        window.location.href = "../LandingPage/Jhotpotround";
+                                    }
+                                })
+                            }
+                                else if (sessionStorage.getItem('serviceName') == 'KidStar-GuessWord')
+                                {
+                                    $.get("../KidsProfileSetup/GetUserAge?MSISDN=" + number, function (rdata) {
+                                            console.log(rdata);
+                                            if (rdata >= 12)
+                                            {
+                                                window.location.href = "../Home/WordMixupGame";
+                                            }
+                                            else if (rdata <=11)
+                                            {
+                                                window.location.href = "../LandingPage/Jhotpotround";
+                                            }
+                                    })
+                                    //window.location.href = "../Home/WordMixupGame";
+                                }
+                            else if (sessionStorage.getItem('serviceName') == 'KidStar-Trivia') {
+                                window.location.href = "../KidsProfileSetup/trivia";
+                            }
+                            else if (sessionStorage.getItem('serviceName') == 'KidStar-Poem') {
+                                window.location.href = "../KidsProfileSetup/Poem";
+                            }
+                                else{
+                                    var serviceName = sessionStorage.getItem('serviceName');
+                                    window.location.href = "../LandingPage/JhotpotRoundAudio?serviceName=" + encodeURIComponent(serviceName);
+                            }
+                        }
+                    })
+                } else {
+                    if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                        document.querySelector("#reg").classList.remove("close");
+                        document.querySelector("#reg").classList.add("open");
+                        return false;
+                    }
+                }
+
+
+            }
+
+
+
+            /////////////////////////////////////
+
+
+            function quizkhelun_btn() {
+                loadingmodal();
+                //var number = $.session.get('fbid');
+                var number = sessionStorage.getItem("fbid");
+                console.log(number);
+                //document.querySelector("#loadingModal").classList.add("open");
+                if (number != null) {
+                    $.get("../LandingPage/IsSubscribed?fbid=" + number, function (rdata) {
+
+
+                        if (rdata.result === false) {
+                            //window.location.href = '../Home/BkashPayment';
+                            document.querySelector("#loadingModal").classList.remove("open");
+                            paymentwithbkash();
+                        } else {
+
+                            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                                //sessionStorage.clear();
+                                //localStorage.clear();
+
+                                //document.querySelector("#login").classList.remove("close");
+                                //document.querySelector("#login").classList.add("open");
+                                document.querySelector("#loadingModal").classList.remove("open");
+                                document.querySelector("#reg").classList.remove("close");
+                                document.querySelector("#reg").classList.add("open");
+                                return false;
+                            }
+
+                            console.log("kb");
+                            //document.querySelector("#loadingModal").classList.add("open");
+                            //var CRPSResponse = 0;
+
+                            var NormalQuizData = "NQZ"; // Replace this with the actual data you want to save
+                            sessionStorage.setItem("nameNQZ", NormalQuizData);
+                            var startTime = new Date().getTime();
+                            var CRPSResponse = CheckRecurringPaymentStatusFunc(number, CRPSResponse);
+                            //var CRPResponse = GetCPRResponse(number);
+                            //document.querySelector("#loadingModal").classList.remove("open");
+                            var endTime = new Date().getTime(); // Capture the end time
+                            var timeTaken = endTime - startTime; // Calculate the time difference in milliseconds
+                            console.log("Time taken: " + timeTaken + "ms");
+                            //document.querySelector("#loadingModal").classList.remove("open");
+                            if (CRPSResponse == "1") {
+                                console.log("Reached here");
+                                window.location.href = "../LandingPage/Jhotpotround";
+                            }
+                        }
+                    })
+                } else {
+                    if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                        document.querySelector("#reg").classList.remove("close");
+                        document.querySelector("#reg").classList.add("open");
+                        return false;
+                    }
+                }
+
+
+            }
+
+
+            ////////////
+
+            function breaktimequizkhelun_btn() {
+                loadingmodal();
+                //var number = $.session.get('fbid');
+                var number = sessionStorage.getItem("fbid");
+                console.log(number);
+                //document.querySelector("#loadingModal").classList.add("open");
+                if (number != null) {
+                    $.get("../LandingPage/IsSubscribed?fbid=" + number, function (rdata) {
+
+
+                        if (rdata.result === false) {
+                            //window.location.href = '../Home/BkashPayment';
+                            document.querySelector("#loadingModal").classList.remove("open");
+                            paymentwithbkash();
+                        } else {
+                            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                                //sessionStorage.clear();
+                                //localStorage.clear();
+
+                                //document.querySelector("#login").classList.remove("close");
+                                //document.querySelector("#login").classList.add("open");
+                                document.querySelector("#loadingModal").classList.remove("open");
+                                document.querySelector("#reg").classList.remove("close");
+                                document.querySelector("#reg").classList.add("open");
+                                return false;
+                            }
+
+                            console.log("kb");
+
+
+
+                            var startTime = new Date().getTime();
+                            var CRPSResponse = CheckRecurringPaymentStatusFunc(number, CRPSResponse);
+                            //var CRPResponse = GetCPRResponse(number);
+                            //document.querySelector("#loadingModal").classList.remove("open");
+                            var endTime = new Date().getTime(); // Capture the end time
+                            var timeTaken = endTime - startTime; // Calculate the time difference in milliseconds
+                            console.log("Time taken: " + timeTaken + "ms");
+                            //document.querySelector("#loadingModal").classList.remove("open");
+                            if (CRPSResponse == "1") {
+                                checkHappyHoursAndRedirect();
+
+                            }
+                        }
+                    })
+                } else {
+                    if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                        //sessionStorage.clear();
+                        //localStorage.clear();
+
+                        //document.querySelector("#login").classList.remove("close");
+                        //document.querySelector("#login").classList.add("open");
+
+                        document.querySelector("#reg").classList.remove("close");
+                        document.querySelector("#reg").classList.add("open");
+                        return false;
+                    }
+                }
+
+            }
+
+
+
+
+            function CheckRecurringPaymentStatusFunc(number, CRPSResponse) {
+                //document.querySelector("#loadingModal").classList.add("open");
+                console.log("Came here at first");
+
+                if (number != null && number != "") {
+                    $.ajax({
+                        url: '../LandingPage/CheckRecurringPaymentStatus?fbid=' + number,
+                        method: 'get',
+                        async: false,
+                        success: function (rdata, textStatus, jqXHR) {
+                            console.log(rdata.result);
+                            if (rdata.result == "false") {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'দুঃখিত',
+                                    text: 'আপনার শেষ পেমেন্ট ব্যর্থ হয়েছে, অনুগ্রহ করে বিকাশ ওয়ালেট আবার রিচার্জ করুন',
+                                    confirmButtonText: 'ওকে',
+                                    confirmButtonColor: '#e3126e',
+                                    allowOutsideClick: false
+                                }).then((result) => {
+                                    /* Read more about isConfirmed, isDenied below */
+                                    if (result.isConfirmed) {
+
+                                        window.location.href = "../LandingPage/Index"
+                                    }
+                                });
+                                CRPSResponse = 0;
+                            }
+                            else {
+                                CRPSResponse = 1;
+                            }
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            toastr.error('', 'confirmation message');
+                            console.log(jqXHR);
+                            console.log(textStatus);
+                            console.log(errorThrown);
+                        },
+                        complete: function () {
+                            //document.querySelector("#loadingModal").classList.remove("open");
+                            console.log(CRPSResponse);
+                            return CRPSResponse;
+                        }
+                    });
+
+
+                    if (CRPSResponse == 1) {
+                        document.querySelector("#loadingModal").classList.remove("open");
+                        return 1;
+                    }
+
+                }
+
+
+                /// New add and changing ajax request
+
+
+
+            }
+
+
+
+
+
+            // Usage example
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            function LiveQuizTimeCheckingForIndex(type, ckey) {
+
+
+                $.get(BASE_URL + "/landingpage/GetLiveQuizVideos", function (res) {
+
+                    console.log(res);
+                    LiveQuizResult = res;
+
+                    if (LiveQuizResult.response.length > 0) {
+
+                        //debugger
+
+                        var ScheduledTime = LiveQuizResult.response[0].scheduledDateTime.split("T")[1].trim().split(":");
+
+                        var date = new Date();
+                        var seconds = date.getSeconds();
+                        var minutes = date.getMinutes();
+                        var hour = date.getHours();
+
+                        //var videoSourceList = new Array();
+                        //for (var j = 0; j < res.response.length; j++) {
+                        //    videoSourceList[j] = res.response[j].videoURL;
+
+                        //}
+
+                        if (type == "DailyQuizHome") {
+
+                            if ((new Date() - new Date(LiveQuizResult.response[0].scheduledDateTime.replace(/-/g, '/').replace('T', ' '))) / 1000 >= Number.parseInt(LiveQuizResult.response[0].duration)) {
+
+                                document.querySelector("#LiveQuizAlreadyStartedModal").classList.remove("close");
+                                document.querySelector("#LiveQuizAlreadyStartedModal").classList.add("open");
+
+                                //quizkhelun_btn();
+
+                            }
+                            else if ((new Date(LiveQuizResult.response[0].scheduledDateTime.replace(/-/g, '/').replace('T', ' ')) - new Date()) > 0) {
+
+                                document.querySelector("#LiveQuizTime").classList.remove("close");
+                                document.querySelector("#LiveQuizTime").classList.add("open");
+                                //document.querySelector("#LiveQuizAlreadyStartedModal").classList.remove("close");
+                                //document.querySelector("#LiveQuizAlreadyStartedModal").classList.add("open");
+
+                                //debugger
+
+                                var countDownDate = new Date(LiveQuizResult.response[0].scheduledDateTime.replace(/-/g, '/').replace('T', ' ')).getTime();
+
+                                // Update the count down every 1 second
+                                var x = setInterval(function () {
+
+                                    // Get today's date and time
+                                    var now = new Date().getTime();
+
+                                    // Find the distance between now and the count down date
+                                    var distance = countDownDate - now;
+
+                                    // Time calculations for days, hours, minutes and seconds
+                                    //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                    // Display the result in the element with id="demo"
+                                    document.getElementById("CountDownTimer").innerHTML = hours + "h : "
+                                        + minutes + "m : " + seconds + "s ";
+
+                                    // If the count down is finished, write some text
+                                    if (distance < 0) {
+                                        clearInterval(x);
+
+                                        document.getElementById("CountDownTimer").innerHTML = "00" + "h : "
+                                            + "00" + "m : " + "00" + "s ";
+
+                                        document.querySelector("#LiveQuizTime").classList.remove("open");
+                                        document.querySelector("#LiveQuizTime").classList.add("close");
+
+
+                                        /////////////////////
+
+                                        //debugger;
+
+                                        window.location.href = BASE_URL + "/landingpage/livequizvideo";
+                                    }
+                                }, 1000);
+
+
+                            }
+
+
+                        }
+                        else {
+                            if (ckey == "009999") {
+                                window.location.href = BASE_URL + "/landingpage/livequizvideo";
+                            }
+
+                        }
+
+
+
+                    } else {
+                        alert("No Quiz Scheduled.");
+                    }
+
+
+                });
+
+
+            }
+
+
+        </script>
+
+
+
+    }
+
+

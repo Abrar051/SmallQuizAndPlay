@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Buttons Inside Card Example</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles */
+        .big-button {
+            font-size: 24px; /* Adjust the font size as needed */
+            padding: 20px 40px; /* Adjust the padding as needed */
+        }
+
+        .card-container {
+            background-color: #7FFFD4; /* Set background color */
+            border: 1px solid black; /* Add black border */
+        }
+
+        .card-body {
+            text-align: center; /* Center align text */
+        }
+
+        .bottom-navbar {
+            position: fixed;
+            bottom: 0;
+            background: white;
+            width: 100vw;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0px;
+        }
+
+            .bottom-navbar img {
+                width: 14%;
+            }
+
+        body {
+            background-color: #ff172e;
+            background-image: url('../Assets/LiveQuizRelated/BGDesign.png');
+            background-size: 100vw 100vh;
+            padding-bottom: 13vh;
+        }
+
+        .custom-card {
+            border-radius: 20px; /* Adjust the border-radius to your preference */
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); 
+            font-family: 'Chewy', cursive;
+        }
+
+        .nextBtn {
+            width: 32%;
+            margin-top: 8%;
+        }
+
+        .card-title,
+        .card-text { 
+            font-size: 24px; /* Adjust the font size as needed */
+        }
+
+        .page-number{
+            background: white;
+            padding: 20px;
+            width: 5rem;
+            height: auto;
+            border-radius: 50%;
+            font-size: 2em;
+            color: black;
+            text-align: center;
+            font-family: 'Poppins';
+            font-weight: 900;
+        }
+
+        #bangla{
+            font-size: 1.8em;
+            margin: 20px 0px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+
+    <div class="container mt-5">
+        <div class="row" >
+            <div class="col-md-6 offset-md-3">
+                <div class="card custom-card" style="background:#75fff2">
+                    <div class="card-body" >
+                        <h5 class="card-text" id="english">Learn Translation</h5>
+                        <p class="card-text" id="bangla"></p>
+                        <div class="d-flex justify-content-between">
+                            <img id="previousBtn" src="~/Assets/nextbuttonreverse.png" class="img-fluid nextBtn" alt="Responsive image" onclick="previousPage()">
+                            <p class="page-number" id="pagenmbr">0</p>
+                            <img id="nextBtn" src="~/Assets/nextbutton.png" class="img-fluid nextBtn" alt="Responsive image" onclick="nextPage()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Abar shikhun modal-->
+    <div class="modal fade" id="translationEnd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    অনুবাদ ইংরেজি থেকে বাংলা
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href = '../KidsProfileSetup/KidsHome'">হোম</button>
+                    <button type="button" class="btn btn-primary" onclick="window.location.reload()">আবার শিখুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---->
+
+    <div class="bottom-navbar">
+        <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="width: 12%" />
+        <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+        <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" style="width: 17%" />
+        <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+        <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+    </div>
+
+    <script>
+        var translationData;
+
+        function nextPage ()
+        {
+
+            if (parseInt(document.getElementById('pagenmbr').textContent) == 10)
+            {
+                showModal();
+                document.getElementById('pagenmbr').textContent = 0;
+            }
+            else 
+            {
+                document.getElementById('pagenmbr').textContent = parseInt(document.getElementById('pagenmbr').textContent) + parseInt(1);
+                document.getElementById('english').textContent = translationData[parseInt(document.getElementById('pagenmbr').textContent)-1].English;
+                document.getElementById('bangla').textContent = translationData[parseInt(document.getElementById('pagenmbr').textContent)-1].Bangla;
+            }
+            
+        }
+
+        function previousPage () {
+
+            if (parseInt(document.getElementById('pagenmbr').textContent) > 1) {
+                document.getElementById('pagenmbr').textContent = parseInt(document.getElementById('pagenmbr').textContent) - parseInt(1);
+                document.getElementById('english').textContent = translationData[parseInt(document.getElementById('pagenmbr').textContent) - 1].English;
+                document.getElementById('bangla').textContent = translationData[parseInt(document.getElementById('pagenmbr').textContent) - 1].Bangla;
+            }
+
+        }
+
+        function KidsHome() {
+            window.location.href = '/KidsProfileSetup/KidsHome';
+        }
+
+        function showModal() {
+            $('#translationEnd').modal('show');
+        }
+
+        window.onload = function () {
+            $.ajax({
+                type: "GET",
+                url: '../KidsProfileSetup/GetTranslation',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (rdata) {
+                    console.log(rdata);
+                    translationData = rdata;
+                }
+            });
+        };
+
+    </script>
+
+</body>

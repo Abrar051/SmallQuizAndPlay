@@ -1,0 +1,45 @@
+﻿
+
+
+<div style="text-align:center;">
+    <h1 style=" font-weight: bolder; ">Device Checking Api</h1>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<div style="text-align:center;">
+    <h3>Ip Checking</h3>
+    <span id="IPofTheDevice" style=" font-size: xxx-large; color: red; "></span>
+</div>
+<br />
+<div style="text-align:center;">
+    <h3>Device Model Checking</h3>
+    <span style=" font-size: xxx-large; color: red; " id="ModelOfTheDevice"></span>
+    @*<span id="OsOftheDevice"></span>*@
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.hh').hide();
+
+        //alert("ready!");
+
+        var UA = navigator.userAgent;
+        //debugger;
+        $.get(window.location.origin + "/LandingPage/GetDeviceSpecificData", function (rData) {
+
+            if (rData != null) {
+
+                $('#IPofTheDevice').text(rData.deviceIp);
+                $('#ModelOfTheDevice').text(rData.deviceModel);
+
+            }
+
+        });
+
+    });
+</script>

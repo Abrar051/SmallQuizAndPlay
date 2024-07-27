@@ -1,0 +1,377 @@
+﻿<!-- Add your custom CSS styles -->
+<style>
+
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 46%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        height: 65vh;
+        z-index: 999;
+    }
+
+    .modal-content {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .modal-title {
+        font-size: 7vw;
+        margin-bottom: -1px;
+        color: #357d93;
+    }
+
+    .modal-body {
+        margin-bottom: 15px;
+    }
+
+    .text-muted {
+        color: #6c757d;
+    }
+
+    /* Input and button styles */
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #357d93;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        button:hover {
+            background-color: #357d93;
+        }
+
+    .modal1 {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+    }
+
+    .modal-content1 {
+        position: fixed;
+        left: 10vw;
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        top: 22vh;
+        height: 39vh;
+        border-radius:16px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+</style>
+
+<!-- Modal -->
+<div class="modal" id="quizModal">
+    <div class="modal-content">
+        <div class="modal-title">ব্রেক টাইম কুইজ</div>
+
+        <div class="modal-body">
+            <small class="text-muted"></small>
+
+            <div id="question-container">
+                <h3>Loading question...</h3>
+            </div>
+
+            <button class="mt-2" onclick="submitAnswer()">সাবমিট করুন</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="customAlert" class="modal1">
+    <div class="modal-content1">
+        <span class="close" onclick="closeCustomAlert()">&times;</span>
+        <p style="margin-top: 10vh; margin-bottom: 1rem;color: #357d93;font-size: 19px;" id="alertMessage"></p>
+         <a id="messengerid" onclick="openMessengerChat()" style="color: white;">
+        <img src="~/Assets/facebook1.png" alt="Facebook" style="width: 54px;height: 66px;height: 54px;ertical-align: middle;right-margin: 12vw;margin-right: 27vw;position: absolute;left: 34vw;"/>
+        </a>
+    </div>
+</div>
+
+<div id="customAlert1" class="modal1">
+    <div class="modal-content1">
+        <span class="close" onclick="closeCustomAlert1()">&times;</span>
+        <p style="margin-top: 10vh; margin-bottom: 1rem;color: #357d93;font-size: 19px;" id="alertMessage1"></p>
+         <a id="messengerid" onclick="openMessengerChat()" style="color: white;">
+            <img src="~/Assets/facebook1.png" alt="Facebook" style="width: 54px;height: 66px;height: 54px;ertical-align: middle;right-margin: 12vw;margin-right: 27vw;position: absolute;left: 34vw;" />
+        </a>
+    </div>
+</div>
+
+<!-- Your leaderboard section -->
+@section leaderboard{
+    <div class="fixed-bottom">
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 9vw;margin-top: -18.5%;margin-left: -3%;height: 12vw;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+        <img style="width: 100%;height: 18vw;margin-bottom: 1vh;" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>
+
+    }
+
+@section scripts{
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+
+    <script>
+
+
+        function leaderBoard() {
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Viewed_Leader_Board&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+            //window.location.href = "../LandingPage/Leaderboard";
+            window.location.href = "../LandingPage/Tab_layoutForDSBoard";
+        }
+
+        function leaderBoard_Monthly() {
+            //let fbid = sessionStorage.getItem('fbid');
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Leader_Board_Button&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+            //window.location.href = "../LandingPage/Leaderboard_new";
+            window.location.href = "../LandingPage/Tab_layout";
+        }
+
+
+
+        function home() {
+            let fbid = sessionStorage.getItem('fbid');
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=nav_home&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+            sessionStorage.setItem('FTU', 1);
+            window.location.href = "../";
+        }
+        var BASE_URL = window.location.origin;
+        var JHOTPOT_BreakTime = BASE_URL + "/landingpage/BreaktimeQuizQuestion";
+        var questions;
+
+
+        function showModal() {
+            var quizModal = document.getElementById('quizModal');
+            if (quizModal) {
+                quizModal.style.display = 'block';
+
+                var answerInput = document.getElementById('answer-input');
+                if (answerInput) {
+                    answerInput.style.display = 'block';
+                } else {
+                    console.error('Answer input not found');
+                }
+            } else {
+                console.error('Quiz modal not found');
+            }
+        }
+
+
+
+        function closeModal() {
+            document.getElementById('quizModal').style.display = 'none';
+        }
+        function showCustomAlert(message) {
+            var customAlert = document.getElementById('customAlert');
+            var alertMessage = document.getElementById('alertMessage');
+            alertMessage.innerText = message;
+            customAlert.style.display = 'block';
+        }
+
+        function showCustomAlert1(message) {
+            var customAlert = document.getElementById('customAlert1');
+            var alertMessage = document.getElementById('alertMessage1');
+            alertMessage.innerText = message;
+            customAlert.style.display = 'block';
+        }
+
+        function closeCustomAlert() {
+            var customAlert = document.getElementById('customAlert');
+            customAlert.style.display = 'none';
+            window.location.href = "../LandingPage/Index";
+        }
+
+        function closeCustomAlert1() {
+            var customAlert = document.getElementById('customAlert1');
+            customAlert.style.display = 'none';
+            window.location.href = "../LandingPage/Index";
+        }
+
+
+
+
+
+        async function fetchData() {
+            try {
+                const response = await fetch(JHOTPOT_BreakTime);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                questions = await response.json();
+                console.log('Questions from the server:', questions);
+
+                document.getElementById('question-container').innerHTML = '';
+
+                questions.forEach((question, index) => {
+                    const questionElement = document.createElement('p');
+                    questionElement.textContent = `প্রশ্ন ${index + 1}: ${question.question}`;
+                    document.getElementById('question-container').appendChild(questionElement);
+
+                    // Answer input box for each question
+                    const answerInput = document.createElement('input');
+                    answerInput.type = 'text';
+                    answerInput.id = `answer-input-${index}`;
+                    answerInput.placeholder = 'আপনার উত্তর লিখুন';
+                    answerInput.required = true; // Add the required attribute
+                    document.getElementById('question-container').appendChild(answerInput);
+
+                });
+
+
+                showModal();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+
+        fetchData();
+
+        function submitAnswer() {
+            const answers = [];
+            const questionCount = questions.length;
+
+            for (let i = 0; i < questionCount; i++) {
+                const answer = document.getElementById(`answer-input-${i}`).value;
+                answers.push(answer);
+            }
+
+            console.log('Submitted answers:', answers);
+
+            // Get the 'fbid' from sessionStorage
+            const fbid = sessionStorage.getItem('fbid');
+
+
+            if (fbid) {
+                sendAnswersToServer(answers, fbid);
+            } else {
+                console.error('fbid not found in sessionStorage');
+            }
+        }
+
+
+        function sendAnswersToServer(answers, fbid) {
+            var BASE_URL = window.location.origin;
+            var JHOTPOT_ANSWER_BreakTime = BASE_URL + "/api/jhotpot/BreaktimequizAnswer";
+
+            $.ajax({
+                type: "POST",
+                url: JHOTPOT_ANSWER_BreakTime,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    fbid: fbid,
+                    round: 1,
+                    answers: answers,
+                }),
+                dataType: "json",
+              success: function (result) {
+                    console.log('Server response:', result);
+
+                    if (result.result === 'Success' || result.result === 'NewUserForDate') {
+                        showCustomAlert1('ধন্যবাদ। আপনার উত্তর সাবমিট হয়েছে। বিজয়ীর নাম জানতে চোখ রাখুন আমাদের ফেসবুক পেইজে।');
+
+                        const someItem = sessionStorage.getItem('yourItemKey');
+                        console.log('Value from sessionStorage:', someItem);
+                    } else if (result.result === 'AlreadyPlayed') {
+                       
+                        showCustomAlert('আপনি ইতিমধ্যে ব্রেকটাইম কুইজটি  খেলে ফেলেছেন ');
+                    } else {
+                        console.warn('Data not saved successfully');
+                    }
+                },
+
+                error: function (error) {
+                    console.error('Error sending answers to the server:', error);
+                }
+            });
+        }
+
+
+
+
+
+
+
+    </script>
+
+    }
+
+

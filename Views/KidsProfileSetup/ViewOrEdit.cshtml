@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Buttons Inside Card Example</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles */
+        .big-button {
+            font-size: 24px; /* Adjust the font size as needed */
+            padding: 20px 40px; /* Adjust the padding as needed */
+        }
+
+        .card-container {
+            background-color: #7FFFD4; /* Set background color */
+            border: 1px solid black; /* Add black border */
+        }
+
+        .card-body {
+            text-align: center; /* Center align text */
+        }
+
+        .bottom-navbar {
+            position: fixed;
+            bottom: 0;
+            background: white;
+            width: 100vw;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0px;
+        }
+
+            .bottom-navbar img {
+                width: 14%;
+            }
+
+        body {
+            background-color: #ff172e;
+            background-image: url('../Assets/LiveQuizRelated/BGDesign.png');
+            background-size: 100vw 100vh;
+            padding-bottom: 13vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <!-- Center align content -->
+            <div class="col-md-6">
+                <div class="card card-container">
+                    <!-- Apply custom styles -->
+                    <div class="card-body">
+                        <h5 class="card-title">প্রোফাইল অপশন</h5>
+                        <p class="card-text">
+                            পূর্বে প্রোফাইল সেটাপ করা থাকলে প্রোফাইল ভিউ করুন নাহলে প্রোফাইল সেটাপ করুন
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary btn-lg btn-block big-button mb-3 rounded-pill" onclick="profileSetup()">প্রোফাইল সেটাপ</button>
+                                <button type="button" class="btn btn-primary btn-lg btn-block big-button rounded-pill" onclick="profileEdit()">প্রোফাইল ভিউ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bottom-navbar">
+        <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="width: 12%" />
+        <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+        <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" style="width: 17%" />
+        <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+        <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+
+    <script>
+
+        function KidsHome() {
+            window.location.href = '/KidsProfileSetup/KidsHome';
+        }
+        function profileSetup ()
+        {
+            window.location.href = "../KidsProfileSetup/Index";
+        }
+        function profileEdit() {
+            window.location.href = "../KidsProfileSetup/Profile";
+        }
+    </script>
+
+</body>
+</html>

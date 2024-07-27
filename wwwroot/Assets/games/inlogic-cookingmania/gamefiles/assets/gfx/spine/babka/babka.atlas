@@ -1,0 +1,537 @@
+
+babka.png
+size: 1994, 1756
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+babca_2/krk
+  rotate: true
+  xy: 4, 601
+  size: 342, 344
+  orig: 342, 344
+  offset: 0, 0
+  index: -1
+babca_2/nahnevana_1
+  rotate: false
+  xy: 404, 1723
+  size: 94, 29
+  orig: 94, 29
+  offset: 0, 0
+  index: -1
+babca_2/nahnevane_1
+  rotate: false
+  xy: 107, 1680
+  size: 123, 41
+  orig: 130, 48
+  offset: 4, 4
+  index: -1
+babca_2/nahnevane_2
+  rotate: false
+  xy: 1817, 1712
+  size: 99, 40
+  orig: 106, 47
+  offset: 3, 3
+  index: -1
+babca_2/najnevana_2
+  rotate: false
+  xy: 618, 1672
+  size: 112, 45
+  orig: 112, 45
+  offset: 0, 0
+  index: -1
+babca_2/najnevana_3
+  rotate: false
+  xy: 107, 1726
+  size: 94, 26
+  orig: 94, 29
+  offset: 0, 2
+  index: -1
+babca_2/nos
+  rotate: true
+  xy: 1327, 1658
+  size: 53, 120
+  orig: 53, 120
+  offset: 0, 0
+  index: -1
+babca_2/oci
+  rotate: false
+  xy: 1451, 1655
+  size: 210, 56
+  orig: 210, 56
+  offset: 0, 0
+  index: -1
+babca_2/ofina
+  rotate: false
+  xy: 421, 815
+  size: 452, 270
+  orig: 452, 270
+  offset: 0, 0
+  index: -1
+babca_2/okuliare
+  rotate: false
+  xy: 4, 1363
+  size: 391, 122
+  orig: 400, 130
+  offset: 5, 4
+  index: -1
+babca_2/ruka_predna_1
+  rotate: true
+  xy: 1309, 912
+  size: 209, 476
+  orig: 209, 811
+  offset: 0, 335
+  index: -1
+babca_2/ruka_predna_2
+  rotate: true
+  xy: 794, 1271
+  size: 163, 423
+  orig: 209, 811
+  offset: 0, 0
+  index: -1
+babca_2/ruka_zadna_1
+  rotate: true
+  xy: 1221, 1125
+  size: 177, 455
+  orig: 231, 817
+  offset: 6, 362
+  index: -1
+babca_2/ruka_zadna_2
+  rotate: true
+  xy: 4, 947
+  size: 204, 413
+  orig: 231, 817
+  offset: 14, 0
+  index: -1
+babca_2/ruky/dlan_P
+  rotate: true
+  xy: 850, 1564
+  size: 98, 126
+  orig: 98, 126
+  offset: 0, 0
+  index: -1
+babca_2/ruky/dlan_Z
+  rotate: true
+  xy: 1110, 1555
+  size: 101, 120
+  orig: 101, 120
+  offset: 0, 0
+  index: -1
+babca_2/ruky/palec_P
+  rotate: true
+  xy: 342, 1601
+  size: 71, 83
+  orig: 71, 83
+  offset: 0, 0
+  index: -1
+babca_2/ruky/palec_Z
+  rotate: false
+  xy: 1920, 1671
+  size: 70, 81
+  orig: 70, 81
+  offset: 0, 0
+  index: -1
+babca_2/ruky/pokrcene_prsty_A
+  rotate: true
+  xy: 136, 1494
+  size: 107, 151
+  orig: 107, 151
+  offset: 0, 0
+  index: -1
+babca_2/ruky/prsty_P
+  rotate: false
+  xy: 1755, 1534
+  size: 116, 114
+  orig: 116, 114
+  offset: 0, 0
+  index: -1
+babca_2/ruky/prsty_Z
+  rotate: false
+  xy: 1358, 1548
+  size: 129, 103
+  orig: 129, 103
+  offset: 0, 0
+  index: -1
+babca_2/ruky/zapastie_L
+  rotate: true
+  xy: 626, 1574
+  size: 92, 108
+  orig: 92, 108
+  offset: 0, 0
+  index: -1
+babca_2/ruky/zapastie_P
+  rotate: true
+  xy: 516, 1577
+  size: 91, 106
+  orig: 91, 106
+  offset: 0, 0
+  index: -1
+babca_2/tvar
+  rotate: true
+  xy: 352, 178
+  size: 390, 484
+  orig: 421, 497
+  offset: 0, 13
+  index: -1
+babca_2/usmev_1
+  rotate: false
+  xy: 734, 1670
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+babca_2/usmev_2
+  rotate: false
+  xy: 600, 1721
+  size: 100, 31
+  orig: 100, 31
+  offset: 0, 0
+  index: -1
+babca_2/usmev_3
+  rotate: false
+  xy: 205, 1725
+  size: 97, 27
+  orig: 100, 31
+  offset: 0, 0
+  index: -1
+babca_2/viecka
+  rotate: false
+  xy: 1059, 1715
+  size: 250, 37
+  orig: 250, 37
+  offset: 0, 0
+  index: -1
+babca_2/viecka_dolne
+  rotate: false
+  xy: 361, 1676
+  size: 253, 41
+  orig: 253, 41
+  offset: 0, 0
+  index: -1
+babca_2/viecka_privrete
+  rotate: false
+  xy: 1313, 1715
+  size: 248, 37
+  orig: 248, 37
+  offset: 0, 0
+  index: -1
+babca_2/zatvorene_oci
+  rotate: false
+  xy: 1074, 1660
+  size: 249, 51
+  orig: 249, 51
+  offset: 0, 0
+  index: -1
+belmo
+  rotate: false
+  xy: 1334, 1422
+  size: 282, 122
+  orig: 282, 122
+  offset: 0, 0
+  index: -1
+blesk
+  rotate: true
+  xy: 864, 448
+  size: 241, 492
+  orig: 253, 504
+  offset: 7, 4
+  index: -1
+krk
+  rotate: false
+  xy: 4, 252
+  size: 344, 345
+  orig: 344, 345
+  offset: 0, 0
+  index: -1
+nahnevane_1
+  rotate: false
+  xy: 234, 1679
+  size: 123, 41
+  orig: 130, 48
+  offset: 4, 4
+  index: -1
+nahnevane_2
+  rotate: false
+  xy: 4, 1683
+  size: 99, 40
+  orig: 106, 47
+  offset: 3, 3
+  index: -1
+najnevaba_3
+  rotate: false
+  xy: 306, 1724
+  size: 94, 28
+  orig: 94, 29
+  offset: 0, 1
+  index: -1
+najnevana_1
+  rotate: false
+  xy: 502, 1723
+  size: 94, 29
+  orig: 94, 29
+  offset: 0, 0
+  index: -1
+najnevana_2
+  rotate: false
+  xy: 846, 1670
+  size: 112, 45
+  orig: 112, 45
+  offset: 0, 0
+  index: -1
+oci
+  rotate: false
+  xy: 1665, 1652
+  size: 209, 56
+  orig: 209, 56
+  offset: 0, 0
+  index: -1
+ofina
+  rotate: false
+  xy: 1360, 419
+  size: 452, 270
+  orig: 452, 270
+  offset: 0, 0
+  index: -1
+okuliare
+  rotate: false
+  xy: 399, 1322
+  size: 391, 122
+  orig: 400, 130
+  offset: 5, 4
+  index: -1
+otaznik
+  rotate: true
+  xy: 352, 572
+  size: 239, 508
+  orig: 244, 517
+  offset: 2, 0
+  index: -1
+ruka_predna_1
+  rotate: true
+  xy: 877, 699
+  size: 209, 477
+  orig: 209, 811
+  offset: 0, 334
+  index: -1
+ruka_predna_2
+  rotate: true
+  xy: 4, 1155
+  size: 163, 423
+  orig: 209, 811
+  offset: 0, 0
+  index: -1
+ruka_zadna_1
+  rotate: true
+  xy: 431, 1089
+  size: 178, 456
+  orig: 231, 817
+  offset: 0, 336
+  index: -1
+ruka_zadna_2
+  rotate: true
+  xy: 891, 916
+  size: 205, 414
+  orig: 231, 817
+  offset: 23, 0
+  index: -1
+slza
+  rotate: true
+  xy: 1358, 693
+  size: 215, 488
+  orig: 453, 494
+  offset: 119, 2
+  index: -1
+srdce
+  rotate: false
+  xy: 1328, 4
+  size: 446, 411
+  orig: 556, 503
+  offset: 67, 5
+  index: -1
+tvar
+  rotate: true
+  xy: 840, 54
+  size: 390, 484
+  orig: 421, 497
+  offset: 0, 13
+  index: -1
+tvar_cervena
+  rotate: false
+  xy: 1620, 1306
+  size: 365, 224
+  orig: 421, 497
+  offset: 56, 219
+  index: -1
+usmev_1
+  rotate: false
+  xy: 962, 1666
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+usmev_2
+  rotate: false
+  xy: 704, 1721
+  size: 100, 31
+  orig: 100, 31
+  offset: 0, 0
+  index: -1
+usmev_3
+  rotate: false
+  xy: 4, 1727
+  size: 99, 25
+  orig: 100, 31
+  offset: 1, 6
+  index: -1
+viecka_privrete
+  rotate: false
+  xy: 1565, 1715
+  size: 248, 37
+  orig: 248, 37
+  offset: 0, 0
+  index: -1
+viecka_spodne
+  rotate: false
+  xy: 808, 1719
+  size: 247, 33
+  orig: 421, 497
+  offset: 136, 216
+  index: -1
+viecka_zavrete
+  rotate: false
+  xy: 4, 1612
+  size: 249, 63
+  orig: 249, 63
+  offset: 0, 0
+  index: -1
+vikricnik
+  rotate: true
+  xy: 843, 1438
+  size: 111, 487
+  orig: 112, 494
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/dlan_P
+  rotate: true
+  xy: 980, 1558
+  size: 98, 126
+  orig: 98, 126
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/dlan_P_1
+  rotate: true
+  xy: 1878, 1576
+  size: 91, 106
+  orig: 91, 106
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/dlan_Z
+  rotate: true
+  xy: 1234, 1553
+  size: 101, 120
+  orig: 101, 120
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/palec_P
+  rotate: true
+  xy: 429, 1601
+  size: 71, 83
+  orig: 71, 83
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/prst_Z
+  rotate: true
+  xy: 257, 1605
+  size: 70, 81
+  orig: 70, 81
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/prsty_P
+  rotate: false
+  xy: 445, 1459
+  size: 116, 114
+  orig: 116, 114
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/prsty_Z
+  rotate: false
+  xy: 1491, 1548
+  size: 129, 103
+  orig: 129, 103
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/prsty_roztiahnute
+  rotate: false
+  xy: 565, 1455
+  size: 145, 115
+  orig: 156, 126
+  offset: 7, 9
+  index: -1
+zena_ruky/zena_ruky/ruka_mavanie
+  rotate: true
+  xy: 714, 1448
+  size: 122, 125
+  orig: 122, 125
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/ruka_okuliare
+  rotate: true
+  xy: 291, 1489
+  size: 108, 150
+  orig: 108, 150
+  offset: 0, 0
+  index: -1
+zena_ruky/zena_ruky/uzavreta_ruka
+  rotate: true
+  xy: 4, 1503
+  size: 105, 128
+  orig: 126, 159
+  offset: 16, 3
+  index: -1
+zena_ruky/zena_ruky/uzavreta_ruka_2
+  rotate: true
+  xy: 1624, 1544
+  size: 104, 127
+  orig: 126, 159
+  offset: 17, 4
+  index: -1
+zena_ruky/zena_ruky/zapastie_Z
+  rotate: true
+  xy: 738, 1574
+  size: 92, 108
+  orig: 92, 108
+  offset: 0, 0
+  index: -1
+
+babka_2.png
+size: 1480, 1123
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+babca_2/telo
+  rotate: true
+  xy: 560, 566
+  size: 553, 864
+  orig: 575, 879
+  offset: 0, 0
+  index: -1
+babca_2/vlasy_zadne
+  rotate: false
+  xy: 4, 568
+  size: 552, 551
+  orig: 552, 551
+  offset: 0, 0
+  index: -1
+telo
+  rotate: true
+  xy: 4, 9
+  size: 553, 896
+  orig: 575, 910
+  offset: 0, 10
+  index: -1
+vlasy_zadne
+  rotate: true
+  xy: 904, 4
+  size: 558, 572
+  orig: 558, 572
+  offset: 0, 0
+  index: -1

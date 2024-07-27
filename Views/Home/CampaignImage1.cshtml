@@ -1,0 +1,451 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />*@
+
+
+    <title>বিকাশ কুইজ</title>
+
+    <style>
+
+        .modal {
+            visibility: hidden;
+            transition: all 0.4s;
+            opacity: 0;
+        }
+
+            .modal.open {
+                visibility: visible;
+                opacity: 1;
+            }
+
+        .modal,
+        .modal-overlay {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 100vw;
+            z-index: 100;
+        }
+
+        .modal,
+        .modal-card,
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-content {
+            overflow: auto;
+            flex-grow: 1;
+        }
+
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-body {
+            z-index: 101;
+            margin: auto;
+            max-height: calc(100vh - 1rem);
+            max-width: calc(100vw - 1rem);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 500px;
+            height: 450px;
+            background: white;
+        }
+
+        .modal-header,
+        .modal-content,
+        .modal-footer {
+            padding: 1rem;
+        }
+
+        .modal-header {
+            background: rebeccapurple;
+            text-transform: capitalize;
+            font-size: 1.25rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+
+    <div class="container ">
+       
+        <div id="campaignModal" class="modal close" style="z-index:375676576567;">
+            <div class="modal-overlay" onclick="HelloCloseModal()"></div>
+            <div class="modal-card" style=" height: 66%; ">
+
+                <div class="modal-body" style="text-align: center; overflow-y: scroll;">
+                    <div style="text-align:right; margin-right:10px;">
+
+                        <span><i class="fas fa-times" onclick="HelloCloseModal()"></i></span>
+
+                    </div>
+                    <img src="~/Assets/bkash.png" style="height: 42px;width: 77px;position: relative;left: 36vw;top: 0vw;" class="center" />
+                    <img src="~/Assets/LoginModalPopUp3.png" style="height: 230px;width: 230px;margin: 0 auto;" class="center" />
+
+                    @*<div style=" margin-bottom: 20px;">  <span style="width: 100%; text-align: center; color: #ff1493;">কুইজমাস্টার</span></div>*@
+                    <div style=" margin-bottom: 20px;">  <span style="width: 100%; text-align: center; color: #ff1493; font-size:14px;">--- আপনার মোবাইল নাম্বারটি লিখুন ---</span></div>
+                    <div class="form-group">
+                        <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobile" required>
+                    </div>
+
+                    <div class="text-center">
+                        <div style="text-align:center;">
+                            <button type="submit" class="btn btn-default" style=" color: white; background: #ff1493; margin-top: 10px;" onclick="saveCamp()">কুইজ খেলুন</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="container text-center mt-5">
+
+        <img src="~/Content/LP2.png" class="img-fluid" alt="..." style=" width:95vw;" onclick="OpenCampModal()">
+      
+
+    </div>
+
+   @*  <button id="playAudioButton" style="display: none;"></button>*@
+    <div style="position:fixed; bottom:0; top:0; z-index:-1;">
+
+        <img src="~/Assets/UntitledCard2.png" onclick="OpenCampModal()" style=" height: 100%; " />
+    </div>
+
+
+
+
+
+
+
+    <script src="~/js/sweetalert.js"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            console.log(window.location.href);
+            var sourceURL = window.location.href;
+            sessionStorage.setItem("sourceURL", sourceURL);
+
+            function getParameterByName(name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+
+
+            var ckey = getParameterByName('ckey');
+            //console.log(ckey);
+
+
+
+            if (ckey != null && typeof ckey != "undefined" && ckey != "null") {
+
+            } else {
+                ckey = getParameterByName('cKey');
+            }
+
+            sessionStorage.setItem("ckey", ckey);
+            var mms = getParameterByName('msisdn');
+            sessionStorage.setItem("CamMsisdn", mms);
+
+            //removing param from querystring
+            //Change 2023-07-24 Author :Abrar Shortening the link
+
+            //var newURL = location.href.split("?")[0];
+            //window.history.replaceState('object', document.title, newURL);
+
+            ///
+
+
+
+
+            //$.get("../LandingPage/SaveCapmLog?msisdn=" + mms + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=access_QuizMaster&srcurl=" + sessionStorage.getItem("sourceURL"), function (rData) { });
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + mms + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=access_QuizMasterCampaignImage&srcurl=" + sourceURL, function (rData) { });
+            //            if (mms === "" || mms == null || mms == undefined) {
+
+
+            //                $.ajax({
+            //                    url: 'https://wap.shabox.mobi/quizplaynew/api/Master/getMSISDN',
+            //                    method: 'get',
+            //                    success: function (data, textStatus, jqXHR) {
+            //                        msisddn = data;
+            //                        theme = "access";
+
+
+            //                        window.location.href = "../home/campaignImage?ckey=" + ckey + "&msisdn=" + msisddn + "";
+            //        return false;
+            //    },
+            //    error: function (jqXHR, textStatus, errorThrown) {
+            //        toastr.error('', 'confirmation message');
+            //        console.log(jqXHR);
+            //        console.log(textStatus);
+            //        console.log(errorThrown);
+            //    }
+            //});
+            //            }
+
+
+
+        });
+
+        function playAudio() {
+            // Create an audio element
+            var audio = new Audio('https://wap.shabox.mobi/CMS/Assets/VoiceInstruction/0bd63b47-1d32-48e1-adee-58ab14813a47.mp3');
+            audio.play(); // Play the audio
+        }
+
+      
+
+        function OpenCampModal() {
+                playAudio();
+            document.querySelector("#campaignModal").classList.remove("close");
+            document.querySelector("#campaignModal").classList.add("open");
+        }
+
+        function HelloCloseModal() {
+            console.log("Hello");
+            document.querySelector("#campaignModal").classList.remove("open");
+            document.querySelector("#campaignModal").classList.add("close");
+            $("#quizImage").show();
+            document.getElementById("closeButtonDiv").style.marginBottom = "-21%";
+        }
+
+
+
+
+
+        function saveCamp() {
+            var number = $('#mobile').val();
+            var username = "FromCampaign";
+
+            if (number === null || number === undefined || number === "") {
+                window.location.reload();
+                document.querySelector("#campaignModal").classList.remove("close");
+                document.querySelector("#campaignModal").classList.add("open");
+            }
+
+
+            document.querySelector("#campaignModal").classList.remove("open");
+            document.querySelector("#campaignModal").classList.add("close");
+
+            if (!number.startsWith('880')) {
+                if (number.startsWith('0')) {
+                    number = '88' + number;
+
+                }
+                else {
+                    number = '880' + number;
+
+                }
+            }
+
+            if (number.length == 13) {
+
+                sessionStorage.setItem("fbid", number);
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("isLogin", "Yes")
+                sessionStorage.setItem("serviceName", "QuizMaster")
+
+                localStorage.setItem("fbid", number);
+                localStorage.setItem("username", username);
+
+
+
+                //$.ajax({
+                //    type: 'POST',
+                //    url: '../Home/Login?userName=' + username + "&msisdn=" + number,
+                //    success: function (data, status, xhr) {
+                //        console.log('data: ', data);
+                //    }
+                //});
+
+                $.post('../Home/Login?userName=' + username + "&msisdn=" + number, function (data) { console.log(data) })
+
+                /* document.getElementById('mylbtn').click();*/
+
+                //$.ajax({
+
+                //    url: "../LandingPage/SaveThemeInfo?msisdn=" + number + "&theme=" + "submit_msisdn", success: function (res) {
+
+
+                //    }
+                //});
+
+                var data = {
+                    "fbid": number
+                }
+
+                $.ajax({
+                    type: "GET",
+                    url: '../Landingpage/IsSubscribed?fbid=' + number,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (rdata) {
+                        if (rdata.result === false) {
+                            /* console.log(rdata.result);*/
+                            /*  $('#myModal').modal('hide');*/
+
+
+                            let fbid = sessionStorage.getItem('fbid');
+
+                            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=clicked_CampaignImage&srcurl=" + sessionStorage.getItem("sourceURL"), function (rData) { });
+
+                            $.ajax({
+                                url: "../HOME/GenerateUniQueSubscriptionRequestIdForCampaign",
+                                type: "GET",
+                                async: false,
+                                data: {
+                                    ckey: sessionStorage.getItem("ckey"),
+                                    msisdn: sessionStorage.getItem("fbid")
+                                },
+                                success: function (rData) {
+                                    localStorage.setItem("UserPacket", rData);
+                                    $.post("../Home/MultiTournamentInBuildCheckoutUrl?packetData=" + localStorage.getItem("UserPacket"), function (data) {
+
+                                        window.parent.location.href = data;
+                                    });
+                                }
+                            });
+
+                        }
+                        else if (rdata.result === true) {
+                            sessionStorage.setItem("islogin", "Yes");
+
+                            /* $('#myModal').modal('hide');*/
+                            window.location.href = "../Landingpage/Index";
+                        }
+                    }
+                });
+
+            } else {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'দুঃখিত',
+                    text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                    confirmButtonText: 'ওকে',
+                    confirmButtonColor: '#e3126e',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var ckey = sessionStorage.getItem("ckey");
+                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+
+                        var sent = sessionStorage.getItem("sentToServer");
+
+                        sessionStorage.clear();
+                        localStorage.clear();
+
+                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                        sessionStorage.setItem("ckey", ckey);
+                        //window.location.href = "../LandingPage/Index"
+
+                        document.querySelector("#campaignModal").classList.remove("close");
+                        document.querySelector("#campaignModal").classList.add("open");
+                    }
+                });
+            }
+
+
+        }
+
+
+
+
+
+
+                //$(document).ready(function () {
+
+                //    function getParameterByName(name, url = window.location.href) {
+                //        name = name.replace(/[\[\]]/g, '\\$&');
+                //        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                //            results = regex.exec(url);
+                //        if (!results) return null;
+                //        if (!results[2]) return '';
+                //        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                //    }
+
+
+                //    var ckey = getParameterByName('ckey');
+
+                //    sessionStorage.setItem("ckey", ckey);
+
+                //});
+
+    //    window.onload = function () {
+    //        document.getElementById("playAudioButton").click();
+    //    };
+
+    //    // Function to play the audio
+    //    function playAudio1() {
+    //        var audio = new Audio('https://wap.shabox.mobi/CMS/Assets/VoiceInstruction/05feddd2-3d5e-49a6-9f95-7ebd2a215c99.mp3');
+    //        audio.play();
+    //    }
+
+    //    // Simulate button click to play the audio
+    //    document.getElementById("playAudioButton").addEventListener("click", playAudio1);
+    //</script>
+    <audio id="myaudio" controls  style="display: none;">
+        <source src="https://wap.shabox.mobi/cms/assets/voiceinstruction/05feddd2-3d5e-49a6-9f95-7ebd2a215c99.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var audio = document.getElementById('myAudio');
+            audio.play();
+        });
+    </script>
+</body>
+</html>
+

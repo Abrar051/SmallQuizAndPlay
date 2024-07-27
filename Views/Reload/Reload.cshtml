@@ -1,0 +1,68 @@
+﻿
+<div class="text-center" style="margin-top:20vh;overflow-y: scroll; height: 90vh;">
+
+    <img src="~/Assets/SadEmoji.png" class="rounded" alt="...">
+    <br /><br />
+    <h4 style="color: #357d93;">
+        দুঃখিত
+    </h4>
+
+    <h4 style="color: #357d93;">আপনি <span id="playedCount">২</span> বার খেলেছেন</h4>
+
+    <h4 style="color: #357d93;"><span id="nextTime">আগামীকাল</span> আবার চেষ্টা করুন</h4>
+    <div class="container">
+        <a asp-controller="LandingPage" asp-action="Index"><button type="button" class="btn btn-lg" style="background-color: #357d93; color:white;">হোম </button> </a>
+    </div>
+
+
+</div>
+
+@section leaderboard{
+    <div class="fixed-bottom">
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+        <img style="width: 100%;height: 18vw;margin-bottom: 1vh;" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>
+
+}
+
+
+
+@section scripts{
+
+    <script>
+
+        $(document).ready(function () {
+            function getParameterByName(name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+
+            var SQ = getParameterByName('SQ');
+
+            if (SQ == 1) {
+                $("#playedCount").text("১");
+                $("#nextTime").text("আগামী কাল");
+            }
+
+
+        });
+
+    </script>
+
+}

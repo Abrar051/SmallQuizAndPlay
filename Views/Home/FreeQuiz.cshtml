@@ -1,0 +1,39 @@
+﻿
+    <div style="margin-bottom: 20px;">
+        <span style="width: 100%; text-align: center; color: #357d93;">আপনার নাম এবং ফোন নাম্বারটি</span><br>
+        <span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control modal-bg-dark" placeholder="ইউজার নাম" id="usernameSU" required>
+    </div>
+    <div class="form-group">
+        <input type="number" class="form-control modal-bg-dark" placeholder="০১xxxxxxxxx" id="mobileSU" required>
+    </div>
+
+    <div class="modal-footer">
+        <div class="center" style="text-align: center; margin-bottom: -3%;">
+        <button type="submit" class="btn btn-default" style="color: white;background: #357d93;/* padding: 16px; */border-radius: 26px;border-radius: -6px;height: 14vw;width: 36vw;" onclick="SubmitForm()">কুইজ খেলুন</button>
+
+        </div>
+    </div>
+
+<script>
+    function SubmitForm() {
+        var msisdn = $('#mobileSU').val();
+        var name = $('#usernameSU').val();
+        console.log(msisdn);
+        console.log(name);
+        // Perform any additional validation if needed
+        $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=freeQuizsubmit&srcurl=" + window.location.href, function (rData) { });
+        // Make the GET request to insert the data
+        //$.get("https://localhost:5001/landingpage/InsertFreeQuizData?msisdn=" + msisdn + "&name=" + name + "&ckey=" + "000000", function (rData) {
+        //    console.log(rData);
+        //});
+
+        var url = "https://localhost:5001/landingpage/InsertFreeQuizData?msisdn=" + msisdn + "&name=" + name + "&ckey=" + "000000";
+        //var url = '/FreeQuiz/InsertData?name=' + encodeURIComponent(name) + '&msisdn=' + encodeURIComponent(msisdn);
+
+        //window.location.href = "../freequiz/freequiz";
+    }
+
+</script>

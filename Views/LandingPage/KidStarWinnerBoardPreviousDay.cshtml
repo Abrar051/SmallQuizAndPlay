@@ -1,0 +1,161 @@
+﻿@model IEnumerable<QuizMaster.Models.Leaderboard>
+
+<style>
+    .leaderboard-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        margin-left: 2.5%;
+        background-color: white;
+        padding: 10px 15px 0px 15px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    .header {
+        display: none;
+    }
+
+    .fotergrid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 10px;
+        /*padding: 10px;*/
+    }
+
+        .fotergrid-container > div {
+            text-align: center;
+        }
+</style>
+
+<div style="background-color: #de4756; overflow-y:scroll;height: 90vh; margin-top: 20px; margin-left: 10px; margin-right: 10px; border-radius: 20px">
+
+    @*<div class="form-group mt-3">
+    <div class="form-control" style="text-align: center; background-color: #e3126e; color: white; font-size: 22px; border: 2px solid white; border-radius: 20px;">ডেইলি লিডারবোর্ড </div>
+    </div>*@
+    @*
+    <table id="DailyTournamentLeaderBoard" class="table" style=" color: white;margin-bottom: 60px;font-size: 10px;position: relative;height: 0vh;top: 3%; display:none; width: 94%; margin-left: 3%;">
+    <thead class="text-center">
+    <tr>
+    <th>রেঙ্ক</th>
+    <th>নাম</th>
+    <th>মোবাইল</th>
+    <th>পয়েন্ট</th>
+    </tr>
+    </thead>
+    <tbody class="text-center" style="color:white; background: #02767B;">
+    @foreach (var m in Model)
+    {
+    <tr>
+    <td>@m.Rank</td>
+    <td>@m.Name</td>
+    <td>@m.MSISDN</td>
+
+    <td>@m.Point</td>
+    </tr>
+    }
+    </tbody>
+    </table>*@
+
+    <div class="leaderboard-row">
+        <p>রেঙ্ক</p>
+        <p>নাম</p>
+        <p>মোবাইল</p>
+        <p>স্কোর</p>
+    </div>
+
+    @foreach (var m in Model)
+    {
+        <div class="leaderboard-row">
+            <p>@m.Rank</p>
+            <p>@m.Name</p>
+            <p>@m.MSISDN</p>
+            <p>@m.Score</p>
+        </div>
+    }
+    @*
+    <table id="TournamentLeaderBoard" class="table table-bordered" style="background-color:rgba(0, 0, 0, 0.5); color: white; margin-bottom: 60px; font-size: 10px; position: relative; top: 13%; display: none;">
+    <thead class="text-center" style="background-color: #02767B;">
+    <tr>
+    <th>রেঙ্ক</th>
+    <th>নাম</th>
+    <th>মোবাইল</th>
+    <th>স্কোর</th>
+    </tr>
+    </thead>
+    <tbody class="text-center">
+    @foreach (var m in Model)
+    {
+    <tr style="background-color: white !important; color: black; border-radius: 20px; margin-top: 10px;">
+    <td>@m.Rank</td>
+    <td>@m.Name</td>
+    <td>@m.MSISDN</td>
+
+    <td>@m.Score</td>
+
+    </tr>
+    }
+    </tbody>
+    </table>*@
+
+</div>
+
+@*@section leaderboard{
+    <footer class="footer" style="background-image: url('../Assets/Footer.png'); background-repeat: no-repeat; background-size: 100% 100%;">
+
+        <div class="container">
+            <div class="fotergrid-container">
+
+                <div onclick="leaderboard()">
+                    <img style="width: 31%;height: auto;/* margin-bottom: 2px; */margin-top: 5px;" src="~/Assets/Winners Icon.png" />
+                </div>
+                <div onclick="HomeFooter()">
+                    <img style="width: 27%;height: auto;/* margin-bottom: 1px; */margin-top: 4px;margin-left: 20%;" src="~/Assets/home 2.png" />
+                </div>
+                <div onclick="WinnerBoard()">
+                    <img style="width: 34%;height: auto;margin-bottom: 5px;margin-top: 3px;margin-left: 11%;" src="~/Assets/Leaderboard 2.png" />
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+
+}*@
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#searchOpener").hide();
+
+            function getParameterByName(name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+
+            var type = getParameterByName('type');
+
+            if (type == "DTL") {
+                //$("#TournamentLeaderBoard").hide();
+                $("#DailyTournamentLeaderBoard").show();
+            } else if (type == "WTL") {
+                //$("#DailyTournamentLeaderBoard").hide();
+                $("#TournamentLeaderBoard").show();
+            }
+
+
+
+        });
+
+    </script>
+
+}
+

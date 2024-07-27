@@ -1,0 +1,1775 @@
+﻿
+
+<!DOCTYPE html>
+<html style=" overflow-x: hidden; ">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta property="og:title" content="KidStar">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="গেম খেলে জিতে নিন পুরস্কার">
+    <meta property="og:image" content="https://kidstar.shabox.mobi/Assets/metabanner.png">
+    <meta property="og:url" content="https://kidstar.shabox.mobi">
+    <title>KidStar</title>
+
+    @*<button id="bkash_btn" type="button" onclick="window.webViewJSBridge.goBackHome('Tickets')" style="z-index:3000;position: fixed;left: 0;bottom: 0;width: 100%;height: 8%;font-size: 18px;border-radius: 0px;margin-top: 2%; color: white!important;width: 100%;height: 50px;text-align: left;background-color: #E2136E;border-color: #E2136E;"> Back to bKash App Home<img src="https://capp-cdn.labs.bka.sh/images/arrow.svg" style="float: right;margin-top: 1%; padding-right: 1%;"></button>*@
+
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+    @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />*@
+
+    <link rel="icon" href="~/Content/themes/img/icon.png" type="image/png" sizes="16x16">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
+
+
+    @*<link href="~/css/slickSlider.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/css/frame.css" rel="stylesheet" />*@
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+
+
+    @*<link src="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">*@
+    @*<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>*@
+
+
+
+    @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>*@
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">*@
+    @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>*@
+
+
+
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    @*<script src="~/js/sweetalert.js"></script>*@
+
+    @*<script src="https://scripts.sandbox.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-sandbox.js"></script>*@
+
+
+
+    <script type="text/javascript" src="https://cdn.capp.bka.sh/scripts/webview_bridge.js"></script>
+
+    <script src="https://scripts.pay.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout.js"></script>
+
+
+
+    @*<script src='https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js' type="text/javascript"></script>
+
+        <script src='https://www.gstatic.com/firebasejs/6.4.2/firebase-messaging.js' type="text/javascript"></script>*@
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1CPCSJWLX4"></script>
+    @*google Analytics*@
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+         
+        gtag('config', 'G-1CPCSJWLX4');
+    </script>
+    <style>
+        body{
+            background-color: #ff172e;
+            background-image: url('../Assets/LiveQuizRelated/BGDesign.png');
+            background-size: 100vw 100vh;
+            padding-bottom: 13vh;
+        }
+    </style>
+</head>
+@*<body style="background-image: url(../Assets/Background.png); background-size: 100vw 100vh;">*@
+<body>
+
+
+
+    <script>
+
+        //var StaticUrl = 'https://wap.shabox.mobi/quizmaster';
+        var StaticUrl = window.location.origin;
+        var PublishedVersion = "1.2"; // For Updating Cache this version is a must
+
+        var scripts = [
+            'Scripts/bootstrap.js',
+            'Scripts/jquery.session.manager.js',
+            'Scripts/umlop/main.js',
+            'Scripts/umlop/FBPNF.js',
+            //'lib/Dev.js',
+        ];
+        var Links = [
+            'Content/bootstrap.css',
+            'css/slickSlider.css',
+            'Content/Site.css',
+            'css/frame.css',   
+            'css/Custom Css/HomeScreenMediaQuery.css',
+        ];
+
+        for (var i = 0; i < scripts.length; i++) {
+            var script = document.createElement('script');
+            //script.onerror = function () {
+            //    alert('Could not load ' + this.src);
+            //};
+
+            script.src = StaticUrl + "/" + scripts[i] + '?v=' + PublishedVersion;
+            document.body.appendChild(script);
+        }
+        for (var i = 0; i < Links.length; i++) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = StaticUrl + "/" + Links[i] + '?v=' + PublishedVersion;
+            document.body.appendChild(link);
+        }
+
+    </script>
+
+
+
+
+    <div>
+        <partial name="_header" />
+
+    </div>
+    <div>
+        <div style="height:0vh" ; ></div>
+        @RenderBody()
+
+
+
+        <!-- Image loader -->
+        <!--<div id='loader' style='display: none;'>
+            <img src='reload.gif' width='32px' height='32px'>
+        </div>-->
+        <!-- Image loader -->
+
+
+
+    </div>
+
+    <div style="display:none;" id="PushNotificationToken"></div>
+
+    <div>
+
+        @RenderSection("leaderboard", required: false)
+
+
+    </div>
+
+
+    @*<script src='https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js' type="text/javascript"></script>*@
+
+
+
+    @*<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>*@
+    @*<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>*@
+
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src='https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js' type="text/javascript"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+
+    <!-- Add Firebase products that you want to use -->
+    @*<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>*@
+
+
+
+
+
+
+    @*<script src="~/Scripts/jquery-3.5.1.js"></script>*@
+
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>*@
+
+
+
+
+    @*<script src="~/Scripts/jquery.session.manager.js"></script>
+    <script src="~/Scripts/umlop/main.min.js"></script>*@
+
+
+
+
+
+
+    @*<script src="~/Scripts/modernizr-2.8.3.js"></script>*@
+    <script>
+
+
+        //window.onload = function () {
+        //    //document.getElementById('mylbtn').click();
+
+        //    $("#exampleModalCenter").modal("show");
+
+        //    var scriptTag = document.createElement("script");
+        //    scriptTag.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
+        //    document.getElementsByTagName("head")[0].appendChild(scriptTag);
+        //}
+    </script>
+
+
+
+
+    <script type=“text/javascript” src=“https://cdn.capp.bka.sh/scripts/webview_bridge.js”></script>
+
+
+    <script type="text/javascript">
+
+        function DefaultLogFunction(theme, srcurl) {
+
+            var msisdn = (sessionStorage.getItem("fbid") != "" && sessionStorage.getItem("fbid") != null) ? sessionStorage.getItem("fbid") : "00000000";
+            var ckey = gettingCkeyFromParramSession();
+
+            $.get(BASE_URL + "/LandingPage/SaveCapmLog?msisdn=" + msisdn + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=" + theme + "&srcurl=" + srcurl, function (rData) { });
+
+        }
+
+         function DefaultLogFunction1(theme, srcurl) {
+            console.log('Theme:', theme);
+            var msisdn = (sessionStorage.getItem("fbid") != "" && sessionStorage.getItem("fbid") != null) ? sessionStorage.getItem("fbid") : "00000000";
+            var ckey = gettingCkeyFromParramSession();
+
+            $.get(BASE_URL + "/LandingPage/SaveCapmLog?msisdn=" + msisdn + "&ckey=" + ckey + "&cname=" + "KidStar" + "&theme=" + theme + "&srcurl=" + srcurl, function (rData) { });
+
+           
+        }
+
+
+        function gettingCkeyFromParramSession() {
+
+            function getParameterByName(name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+
+
+            var ckey = getParameterByName('ckey');
+            //console.log(ckey);
+
+
+
+            if (ckey != null && typeof ckey != "undefined" && ckey != "null") {
+
+            } else {
+                ckey = getParameterByName('cKey');
+            }
+
+            if (ckey == null || typeof ckey == "undefined" || ckey == "null" || ckey == "") {
+                ckey = sessionStorage.getItem("ckey");
+            }
+
+            if (ckey == null || typeof ckey == "undefined" || ckey == "null" || ckey == "") ckey = "000000";
+
+            return ckey;
+
+        }
+
+      function leaderBoardDirect(serviceName) {
+    
+            sessionStorage.setItem("serviceName", serviceName);
+            
+            var servicename1 = serviceName+"winnerlist";
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme="+servicename1+"&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+            window.location.href = "../LandingPage/Tab_layoutForDSBoard";
+        }
+
+        function leaderBoard() {
+
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Leader_Board&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+             window.location.href = "../LandingPage/Tab_layoutForDSBoard";
+           
+        }
+
+        function KidsGame() {
+
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidsStar" + "&theme=GamePage&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+            window.location.href = "../LandingPage/KidsGame";
+
+        }
+
+
+        function leaderBoard_Monthly() {
+          
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Leader_Board_Monthly&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+
+            window.location.href = "../LandingPage/KidsLeaderBoard";
+        }
+
+
+        function winnerBoard() {
+          
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Leader_Board_Monthly&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+
+            window.location.href = "../LandingPage/KidsWinnerBoard";
+        }
+
+        
+        function leaderBoard_MonthlyDirect(serviceName) {
+               sessionStorage.setItem("serviceName", serviceName);
+               var servicename1 = serviceName+"leaderboard";
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme="+servicename1+"&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+
+            window.location.href = "../LandingPage/Tab_layout";
+        }
+      
+        
+        
+
+        function home() {
+            let fbid = sessionStorage.getItem('fbid');
+            //debugger
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=nav_home&srcurl=" + window.location.href, function (rData) { });
+            //debugger
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+            //debugger
+            //sessionStorage.setItem('FTU', 1);
+            //debugger
+            window.location.href = "../LandingPage/Index";
+        }
+
+
+        function paywithbkash() {
+            let fbid = sessionStorage.getItem('fbid');
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Pay_With_Bkash_Button&srcurl=" + window.location.href, function (rData) { });
+
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+        }
+
+        function terms() {
+            let fbid = sessionStorage.getItem('fbid');
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=terms_condition&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+        }
+
+        function NavGameRules() {
+            let fbid = sessionStorage.getItem('fbid');
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Navigation_GamesRules&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+        }
+
+        function help() {
+            let fbid = sessionStorage.getItem('fbid');
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=help_menu&srcurl=" + window.location.href, function (rData) { });
+
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+            //$.ajax({
+
+            //    url: "../LandingPage/SaveThemeInfo?msisdn=" + fbid + "&theme=" + "help_menu", success: function (res) {
+
+
+            //    }
+            //});
+        }
+
+        function Prizes() {
+            let fbid = sessionStorage.getItem('fbid');
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Prizes_menu&srcurl=" + window.location.href, function (rData) { });
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+        }
+
+
+        function Profile()
+        {
+            if (sessionStorage.getItem('fbid') == null)
+            {
+                window.location.href = "../KidsProfileSetup/Login";
+            }
+            else 
+            {
+                $.get('../kidsprofilesetup/GetProfileExistence?MSISDN=' + sessionStorage.getItem('fbid'), function (rdata) {
+
+
+                    if (rdata.result === false) {
+
+                        //document.querySelector("#loadingModal").classList.remove("open");
+                        //paymentwithbkashMultiTournament();
+                        window.location.href = "../KidsProfileSetup/Index";
+                    } else {
+                        window.location.href = "../KidsProfileSetup/Profile";
+                    }
+                })
+            }
+        }
+
+
+        function logout() {
+
+            let fbid = sessionStorage.getItem('fbid');
+            let username = sessionStorage.getItem("username");
+
+            //$.ajax({
+            //    type: 'GET',
+            //    url: '../Home/Logout',
+            //    success: function (data, status, xhr) {
+            //        console.log('data: ', data);
+            //    }
+            //});
+
+            $.post('../Home/Logout?userName=' + username + "&msisdn=" + fbid, function (data) { console.log(data) })
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Log_Out&srcurl=" + atob(sessionStorage.getItem("su")), function (rData) { });
+
+
+            //$.ajax({
+
+            //    url: "../LandingPage/SaveThemeInfo?msisdn=" + fbid + "&theme=" + "Log_Out", success: function (res) {
+
+
+            //    }
+            //});
+            var ckey = sessionStorage.getItem("ckey");
+            ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+
+            var FCT = sessionStorage.getItem("FCT");
+            FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+
+            var su = sessionStorage.getItem("su");
+            su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+
+            var sent = sessionStorage.getItem("sentToServer");
+
+
+            sessionStorage.clear();
+            localStorage.clear();
+            sessionStorage.setItem("ckey", ckey);
+
+            sessionStorage.setItem("su", su);
+
+            window.localStorage.setItem('sentToServer', sent ? sent : 0);
+
+            if (FCT != null ) sessionStorage.setItem("FCT", FCT);
+
+            if (sessionStorage.getItem("islogin") === undefined || sessionStorage.getItem("islogin") === null) {
+
+                $("#logoutMenu").hide();
+            }
+
+            window.location.href = "../Landingpage/Index";
+        }
+
+
+        function SubStatus() {
+
+            var encodeString = btoa("../Home/PaymentStatusModal");
+
+            sessionStorage.setItem("ru", encodeString);
+
+
+            let fbid = sessionStorage.getItem('fbid');
+
+            $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Payment_Status_Button&srcurl=" + window.location.href, function (rData) { });
+
+            window.location.href = "../Home/PaymentStatusModal";
+
+        }
+
+        function HelloCloseModal() {
+
+            //document.querySelector(".modal").classList.remove("open");
+            //document.querySelector(".modal").classList.add("close");
+
+            //document.querySelector("#login").classList.remove("open");
+            //document.querySelector("#login").classList.add("close");
+            document.querySelector("#loadingModal").classList.remove("open");
+            document.querySelector("#loadingModal").classList.add("close");
+
+            document.querySelector("#reg").classList.remove("open");
+            document.querySelector("#reg").classList.add("close");
+            $("#quizImage").show();
+            document.getElementById("closeButtonDiv").style.marginBottom = "-21%";
+        }
+
+        function regmodal() {
+            //document.querySelector("#login").classList.remove("open");
+            //document.querySelector("#login").classList.add("close");
+
+            document.querySelector("#reg").classList.remove("close");
+            document.querySelector("#reg").classList.add("open");
+        }
+        function loginModal() {
+            document.querySelector("#reg").classList.remove("open");
+            document.querySelector("#reg").classList.add("close");
+        }
+
+        /////Firebase Push Notification Feature Start
+
+        //$(function () {
+
+        //    var token = null;
+        //    var config = {
+        //        //apiKey: "AIzaSyAZJIpjG01ItTISGdwW0m-1-nLSOzHNeD0",
+        //        //authDomain: "push-notification-test-b16ee.firebaseapp.com",
+        //        //projectId: "push-notification-test-b16ee",
+        //        //storageBucket: "push-notification-test-b16ee.appspot.com",
+        //        //messagingSenderId: "240808501219",
+        //        //appId: "1:240808501219:web:0b1fe72578b7eeab41cad6",
+        //        //measurementId: "G-GGYJ5NB97N"
+        //        apiKey: "AIzaSyCgxfNVhoQD4IHFiaeKd0qP67goFbBlPUE",
+        //        authDomain: "push-notification-test-77c9d.firebaseapp.com",
+        //        projectId: "push-notification-test-77c9d",
+        //        storageBucket: "push-notification-test-77c9d.appspot.com",
+        //        messagingSenderId: "575417553672",
+        //        appId: "1:575417553672:web:71da03329f96426b8492bd",
+        //        measurementId: "G-1EXXNFN9L5"
+        //    };
+        //    firebase.initializeApp(config);
+
+        //    const messaging = firebase.messaging();
+
+        //    messaging.requestPermission()
+        //        .then((permission) => {
+        //            console.log("granted");
+        //            console.log(permission);
+        //            if (isTokenSentToServer()) {
+        //                console.log("already granted");
+        //            } else {
+        //                getRegtoken();
+        //            }
+        //        }).catch((err) => {
+        //            if (err.message.includes('messaging/permission-blocked')) {
+        //                saveDeniedNotificationRequest(0);
+        //            } else {
+        //                saveDeniedNotificationRequest(3);
+        //            }
+        //            console.log(err);
+        //        });
+        //    function getRegtoken() {
+        //        messaging.getToken().then((currentToken) => {
+        //            if (currentToken) {
+        //                console.log(currentToken);
+        //                setTokenSentToServer(true);
+        //                sessionStorage.setItem("FCT", currentToken);
+        //                saveToken(currentToken);
+        //            } else {
+        //                console.log('No Instance ID token available. Request permission to generate one.');
+        //                setTokenSentToServer(false);
+        //            }
+        //        }).catch((err) => {
+        //            console.log('An error occurred while retrieving token. ', err);
+        //            setTokenSentToServer(false);
+        //        });
+
+        //    }
+        //    function setTokenSentToServer(sent) {
+        //        window.localStorage.setItem('sentToServer', sent ? 1 : 0);
+        //    }
+        //    function saveToken(currentToken) {
+        //        $.get("../LandingPage/SavePushNotificationAllowedLogs?Token=" + currentToken + "&AllowedType=" + 1 + "&SourceUrl=" + window.location.href, function (rData) { });
+
+        //        $.get("../LandingPage/SaveToken?Token=" + currentToken, function (rData) { });
+        //    }
+        //    function isTokenSentToServer() {
+        //        return window.localStorage.getItem('sentToServer') === '1';
+        //    }
+        //    function saveDeniedNotificationRequestLog(status) {
+        //        $.get("../LandingPage/SavePushNotificationAllowedLogs?Token=" + "" + "&AllowedType=" + status + "&SourceUrl=" + window.location.href, function (rData) { });
+        //    }
+        //    function saveDeniedNotificationRequest(status) {
+        //        saveDeniedNotificationRequestLog(status);
+        //    }
+        //});
+
+        ///////////  Firebase Push Notification Feature End
+
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        function reloadUI() {
+            window.location.reload();
+            return true;
+        }
+
+        function save() {
+            var number = $('#mobile').val();
+            var username = $('#username').val();
+
+
+            document.querySelector(".modal").classList.remove("open");
+            document.querySelector(".modal").classList.add("close");
+
+            if (!number.startsWith('880')) {
+                if (number.startsWith('0')) {
+                    number = '88' + number;
+
+                }
+                else {
+                    number = '880' + number;
+
+                }
+            }
+            if (number.length == 13) {
+
+                sessionStorage.setItem("fbid", number);
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("isLogin", "Yes");
+                sessionStorage.setItem("serviceName", "QuizMaster");
+
+                localStorage.setItem("fbid", number);
+                localStorage.setItem("username", username);
+
+                $("#logoutMenu").show();
+
+
+                /* document.getElementById('mylbtn').click();*/
+                var url = sessionStorage.getItem('su');
+
+                // Decode the String
+                var decodedString = atob(url);
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=submit_msisdn&srcurl=" + decodedString, function (rData) { });
+
+
+                //$.ajax({
+
+                //    url: "../LandingPage/SaveThemeInfo?msisdn=" + number + "&theme=" + "submit_msisdn", success: function (res) {
+
+
+                //    }
+                //});
+
+                var data = { "MSISDN": number, "Name": username, "SourceUrl": window.location.href, 'CKey': '' };
+
+                //console.log(data);
+
+                $.ajax({
+                    type: "POST",
+                    url: '../Home/SaveUserInfo',
+                    data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (res) {
+                        if (res.response == "false") {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'দুঃখিত',
+                                text: 'প্রথমে আপনার প্রোফাইল সেট আপ করুন।',
+                                confirmButtonText: 'ওকে',
+                                confirmButtonColor: '#e3126e',
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    var ckey = sessionStorage.getItem("ckey");
+                                    var FTU = sessionStorage.getItem("FTU");
+                                    ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                                    var FCT = sessionStorage.getItem("FCT");
+                                    FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                                    var sent = sessionStorage.getItem("sentToServer");
+
+                                    sessionStorage.clear();
+                                    localStorage.clear();
+                                    //window.location.href = "../LandingPage/Index"
+
+                                    window.localStorage.setItem('sentToServer', sent ? sent : 0);
+
+                                    if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                                    sessionStorage.setItem("ckey", ckey);
+                                    sessionStorage.setItem("FTU", FTU);
+
+                                    document.querySelector("#login").classList.remove("open");
+                                    document.querySelector("#login").classList.add("close");
+
+                                    document.querySelector("#reg").classList.remove("close");
+                                    document.querySelector("#reg").classList.add("open");
+
+                                    $("#logoutMenu").hide();
+
+                                }
+                            });
+                        } else {
+                            loginFunc(username, number);
+                        }
+                    },
+                    error: function (errMsg) {
+                    }
+                });
+            }
+
+            else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'দুঃখিত',
+                    text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                    confirmButtonText: 'ওকে',
+                    confirmButtonColor: '#e3126e',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var ckey = sessionStorage.getItem("ckey");
+                        var FTU = sessionStorage.getItem("FTU");
+                        var su = sessionStorage.getItem("su");
+                        su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                        var FCT = sessionStorage.getItem("FCT");
+                        FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                        var sent = sessionStorage.getItem("sentToServer");
+
+                        sessionStorage.clear();
+                        localStorage.clear();
+                        //window.location.href = "../LandingPage/Index"
+
+                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+
+                        sessionStorage.setItem("ckey", ckey);
+                        sessionStorage.setItem("FTU", FTU);
+                        sessionStorage.setItem("su", su);
+                        if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                        document.querySelector("#reg").classList.remove("open");
+                        document.querySelector("#reg").classList.add("close");
+
+                        document.querySelector("#login").classList.remove("close");
+                        document.querySelector("#login").classList.add("open");
+
+
+                        $("#logoutMenu").hide();
+
+
+                    }
+                });
+            }
+
+
+
+
+        }
+
+
+        function loginFunc(username, number) {
+            $.post('../Home/Login?userName=' + username + "&msisdn=" + number, function (data1) {
+
+                var data = {
+                    "fbid": number
+                }
+
+                $.ajax({
+                    type: "GET",
+                    url: '../Landingpage/IsSubscribed?fbid=' + number,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (rdata) {
+                        if (rdata.result === false) {
+
+                            //window.location.href = "../Home/BkashPayment";
+                            sessionStorage.setItem("islogin", "Yes");
+
+                            $("#logoutMenu").show();
+
+                            paymentwithbkash();
+
+                            //window.location.href = "../Landingpage/Index";
+                        }
+                        else if (rdata.result === true) {
+                            sessionStorage.setItem("islogin", "Yes");
+                            $("#logoutMenu").show();
+
+                            /* $('#myModal').modal('hide');*/
+
+                            if (sessionStorage.getItem("ru") === undefined || sessionStorage.getItem("ru") == null) {
+                                window.location.href = "../Landingpage/Index";
+                            } else {
+                                var ru = sessionStorage.getItem("ru");
+                                sessionStorage.removeItem("ru");
+                                window.location.href = atob(ru);
+                            }
+                            $(".modal").hide();
+                        }
+
+                    }
+                });
+
+
+            })
+
+
+        }
+
+        function paymentwithbkash() {
+
+            var ckey = sessionStorage.getItem("ckey");
+            ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+            if (sessionStorage.getItem("isLogin") == null || sessionStorage.getItem("isLogin") == undefined) {
+                var su = sessionStorage.getItem("su");
+                su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                var FCT = sessionStorage.getItem("FCT");
+                FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+
+                var sent = sessionStorage.getItem("sentToServer");
+
+                sessionStorage.clear();
+                localStorage.clear();
+
+                window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                sessionStorage.setItem("ckey", ckey);
+                if (FCT != null) sessionStorage.setItem("FCT", FCT);
+                sessionStorage.setItem("su", su);
+                window.location.href = "../LandingPage/Index";
+            }
+
+
+            $.post("../Home/CreateCheckoutUrl?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey"), function (data) {
+
+                window.location.href = data;
+            });
+
+
+
+        }
+        /////////////////
+
+        function paymentwithbkashUnsufficient() {
+
+            var ckey = sessionStorage.getItem("ckey");
+            ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+            if (sessionStorage.getItem("isLogin") == null || sessionStorage.getItem("isLogin") == undefined) {
+                var su = sessionStorage.getItem("su");
+                su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                var FCT = sessionStorage.getItem("FCT");
+                FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+
+                var sent = sessionStorage.getItem("sentToServer");
+
+                sessionStorage.clear();
+                localStorage.clear();
+
+                window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                sessionStorage.setItem("ckey", ckey);
+                if (FCT != null) sessionStorage.setItem("FCT", FCT);
+                sessionStorage.setItem("su", su);
+                window.location.href = "../LandingPage/Index";
+            }
+
+
+            $.post("../Home/UnsufficientCheckOut?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey"), function (data) {
+
+                window.location.href = data;
+            });
+
+
+
+        }
+
+
+
+
+
+        ///////////////
+           
+        function paymentwithbkashMultiTournament() {
+           
+            
+            var ckey = sessionStorage.getItem("ckey");
+            ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+            if (sessionStorage.getItem("isLogin") == null || sessionStorage.getItem("isLogin") == undefined) {
+                var su = sessionStorage.getItem("su");
+                su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                var FCT = sessionStorage.getItem("FCT");
+                FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+
+                var sent = sessionStorage.getItem("sentToServer");
+
+                //sessionStorage.clear();
+                //localStorage.clear();
+
+                window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                sessionStorage.setItem("ckey", ckey);
+                if (FCT != null) sessionStorage.setItem("FCT", FCT);
+                sessionStorage.setItem("su", su);
+                window.location.href = "../LandingPage/Index";
+            }
+
+
+            localStorage.setItem("UserNumber", sessionStorage.getItem("fbid"));
+
+            $.ajax({
+                url: "../HOME/GenerateUniQueSubscriptionRequestId",
+                type: "GET",
+                async: false,
+                data: {
+                    serviceName: sessionStorage.getItem('serviceName'),
+                    ckey: sessionStorage.getItem("ckey"),
+                    msisdn: sessionStorage.getItem("fbid")
+                },
+                success: function (rData) {
+                    localStorage.setItem("UserPacket", rData);
+                    $.post("../Home/MultiTournamentInBuildCheckoutUrl?packetData=" + localStorage.getItem("UserPacket"), function (data) {
+
+                        window.parent.location.href = data;
+                    });
+                }
+            });
+         
+            //$.post("../Home/CreateCheckoutUrlMultiTournamentHardCode?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&serviceName=" + sessionStorage.getItem('serviceName'), function (data) {
+
+            //    window.location.href = data;
+            //});
+
+
+
+
+        }
+      function increaseZIndex() {
+            var modal = document.getElementById("loadingModal");
+            if (modal) {
+                var currentZIndex = parseInt(modal.style.zIndex) || 1031;
+                modal.style.zIndex = currentZIndex + 100;
+
+                // Show the modal for 10 seconds
+                setTimeout(function () {
+
+                    modal.style.display = "none";
+                }, 10000);
+            }
+        }
+
+
+        ////////////
+        function SignUpMultiTournament (page) {
+             
+            console.log('came here');
+            $('#reg2').modal('hide');
+            var number = $('#fbid').val();
+            var username = $('#name').val();
+            console.log(number);
+            console.log(username);
+            //var Token = $("#PushNotificationToken").text();
+            var Token = sessionStorage.getItem('FCT');
+            console.log(Token);
+
+            document.querySelector(".modal").classList.remove("open");
+            document.querySelector(".modal").classList.add("close");
+
+            if (!number.startsWith('880')) {
+                if (number.startsWith('0')) {
+                    number = '88' + number;
+
+                }
+                else {
+                    number = '880' + number;
+
+                }
+            }
+
+            //if (number.length == 13 && username.length > 1) {
+            if (number.length == 13) {
+                 increaseZIndex();
+                sessionStorage.setItem("fbid", number);
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("isLogin", "Yes");
+                //sessionStorage.setItem("serviceName", "QuizMaster");
+
+                localStorage.setItem("fbid", number);
+                localStorage.setItem("username", username);
+
+                $("#logoutMenu").show();
+
+                var url = sessionStorage.getItem('su');
+
+                // Decode the String
+                var decodedString = atob(url);
+
+                //$.ajax({
+                //    type: 'POST',
+                //    url: '../Home/Login?userName=' + username + "&msisdn=" + number,
+                //    success: function (data, status, xhr) {
+                //        console.log('data: ', data);
+                //    }
+                //});
+
+                //$.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Signup_submit&srcurl=" + decodedString, function (rData) { });                //$.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Signup_submit&srcurl=" + decodedString, function (rData) { });
+
+                $.post('../Home/Login?userName=' + username + "&msisdn=" + number, function (data) {
+
+
+                    //var data = { "MSISDN": number, "Name": username, "SourceUrl": window.location.href, 'CKey': '', "IsSignup": 1 };
+                    var data = { "MSISDN": number, "Name": username, "SourceUrl": window.location.href, 'CKey': '', "FPToken": Token };
+
+                    //console.log("hfhhf");
+
+                    $.ajax({
+                        type: "POST",
+                        url: '../Home/SaveUserInfo',
+                        data: JSON.stringify(data),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (res) {
+                            //if (res.response == "true") {
+
+                            //}
+                            //if (res === false) {
+                            //    alert("প্রথমে প্রোফাইল সেট আপ করুন ");
+                            //}
+                        },
+                        error: function (errMsg) {
+                        }
+                    });
+
+                    var data = {
+                        "fbid": number
+                    }
+                   
+                    $.ajax({
+                        
+                        type: "GET",
+                        url: '../kidsprofilesetup/GetProfileExistence?MSISDN=' + number,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (rdata) {
+                            if (rdata.result === false) {
+
+                                
+                                sessionStorage.setItem("islogin", "Yes");
+                                //window.location.href = "../Landingpage/Index";
+                                $("#logoutMenu").show();
+                                //window.location.href = "../Home/BkashPayment";
+                                //paymentwithbkashMultiTournament();
+                                window.location.href = "../KidsProfileSetup/Index";
+                            }
+                            else if (rdata.result === true) {
+                                sessionStorage.setItem("islogin", "Yes");
+                                $("#logoutMenu").show();
+                                /* $('#myModal').modal('hide');*/
+
+                                if (page == 'livequiz' || page == 'WordMixupGame') {
+                                    window.location.reload();
+                                } else {
+                                    if (sessionStorage.getItem("ru") === undefined || sessionStorage.getItem("ru") == null) {
+                                    
+                                        if(page==='QuizMaster-MultiService3'){
+                                                          var serviceName = sessionStorage.getItem('serviceName');
+                               window.location.href = "../LandingPage/JhotpotRoundAudio?serviceName=" + encodeURIComponent(serviceName);
+                                         }
+                                         else if (sessionStorage.getItem('serviceName')   == 'KidStar-Math')
+                                        {
+                                            $.get("../KidsProfileSetup/GetUserAge?MSISDN=" + number, function (rdata) {
+                                                console.log(rdata);
+                                                if (rdata >= 12) {
+                                                    window.location.href = 'https://games.shabox.mobi/Assets/Games/MathGameWithScoreCard/index.html';
+                                                }
+                                                else if (rdata <= 11) {
+                                                    window.location.href = "../LandingPage/Jhotpotround";
+                                                }
+                                            })
+                                                //window.location.href = 'https://games.shabox.mobi/Assets/Games/MathGameWithScoreCard/index.html';
+                                        }
+                                        else if (sessionStorage.getItem('serviceName') == 'KidStar-GuessWord')
+                                        {
+                                            $.get("../KidsProfileSetup/GetUserAge?MSISDN=" + number, function (rdata) {
+                                                console.log(rdata);
+                                                if (rdata >= 12 ) {
+                                                    window.location.href = "../Home/WordMixupGame";
+                                                }
+                                                else if (rdata <= 11) {
+                                                    window.location.href = "../LandingPage/Jhotpotround";
+                                                }
+                                            })
+                                        }
+                                        else if (sessionStorage.getItem('serviceName') == 'KidStar-Trivia')
+                                        {
+                                            window.location.href = "../KidsProfileSetup/trivia";
+                                        }
+                                        else if (sessionStorage.getItem('serviceName') == 'KidStar-Poem') {
+                                            window.location.href = "../KidsProfileSetup/Poem";
+                                        }
+                                         else{
+                                                        var serviceName = sessionStorage.getItem('serviceName');
+                               window.location.href = "../LandingPage/JhotpotRoundAudio?serviceName=" + encodeURIComponent(serviceName);
+                                         }
+                                    
+
+
+                                    } else {
+                                        var ru = sessionStorage.getItem("ru");
+                                        sessionStorage.removeItem("ru");
+                                        window.location.href = atob(ru);
+                                    }
+                                }
+
+
+
+                            }
+
+                        }
+                    });
+
+
+                });
+
+            }
+        }
+
+
+
+        ////////////
+
+
+
+
+
+        function SignUp(page) {
+            
+            var number = $('#fbid').val();
+            var username = $('#name').val();
+            console.log (number);
+            console.log (username);
+            //var Token = $("#PushNotificationToken").text();
+            var Token = sessionStorage.getItem('FCT');
+            console.log(Token);
+
+            document.querySelector(".modal").classList.remove("open");
+            document.querySelector(".modal").classList.add("close");
+
+            if (!number.startsWith('880')) {
+                if (number.startsWith('0')) {
+                    number = '88' + number;
+
+                }
+                else {
+                    number = '880' + number;
+
+                }
+            }
+
+            //if (number.length == 13 && username.length > 1) {
+            if (number.length == 13) {
+
+                sessionStorage.setItem("fbid", number);
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("isLogin", "Yes");
+                sessionStorage.setItem("serviceName", "QuizMaster");
+
+                localStorage.setItem("fbid", number);
+                localStorage.setItem("username", username);
+
+                $("#logoutMenu").show();
+
+                var url = sessionStorage.getItem('su');
+
+                // Decode the String
+                var decodedString = atob(url);
+
+                //$.ajax({
+                //    type: 'POST',
+                //    url: '../Home/Login?userName=' + username + "&msisdn=" + number,
+                //    success: function (data, status, xhr) {
+                //        console.log('data: ', data);
+                //    }
+                //});
+
+                //$.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Signup_submit&srcurl=" + decodedString, function (rData) { });
+
+                $.post('../Home/Login?userName=' + username + "&msisdn=" + number, function (data) {
+
+
+                    //var data = { "MSISDN": number, "Name": username, "SourceUrl": window.location.href, 'CKey': '', "IsSignup": 1 };
+                    var data = { "MSISDN": number, "Name": username, "SourceUrl": window.location.href, 'CKey': '', "FPToken": Token };
+
+                    //console.log("hfhhf");
+
+                    $.ajax({
+                        type: "POST",
+                        url: '../Home/SaveUserInfo',
+                        data: JSON.stringify(data),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (res) {
+                            //if (res.response == "true") {
+
+                            //}
+                            //if (res === false) {
+                            //    alert("প্রথমে প্রোফাইল সেট আপ করুন ");
+                            //}
+                        },
+                        error: function (errMsg) {
+                        }
+                    });
+
+                    var data = {
+                        "fbid": number
+                    }
+
+                    $.ajax({
+                        type: "GET",
+                        url: '../Landingpage/IsSubscribed?fbid=' + number,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (rdata) {
+                            if (rdata.result === false) {
+
+
+                                sessionStorage.setItem("islogin", "Yes");
+                                //window.location.href = "../Landingpage/Index";
+                                $("#logoutMenu").show();
+                                //window.location.href = "../Home/BkashPayment";
+                                paymentwithbkash();
+                            }
+                            else if (rdata.result === true) {
+                                sessionStorage.setItem("islogin", "Yes");
+                                $("#logoutMenu").show();
+                                /* $('#myModal').modal('hide');*/
+
+                                if (page == 'livequiz' || page == 'WordMixupGame') {
+                                    window.location.reload();
+                                } else {
+                                    if (sessionStorage.getItem("ru") === undefined || sessionStorage.getItem("ru") == null) {
+                                   
+                                        var name1 = sessionStorage.getItem("Page");
+                                    
+                                         if (name1 === "Page1") {
+                                             if(page==='QuizMaster-MultiService3'){
+                                                         var serviceName = sessionStorage.getItem('serviceName');
+                               window.location.href = "../LandingPage/JhotpotRoundAudio?serviceName=" + encodeURIComponent(serviceName);
+                                             }else{
+                                                var serviceName = sessionStorage.getItem('serviceName');
+                                                window.location.href = "../LandingPage/JhotpotRoundAudio?serviceName=" + encodeURIComponent(serviceName);
+                                             }
+                                           
+                                        } else if (name1 === "Page2") {
+                                            window.location.href = "../Landingpage/JhotpotroundWC";
+                                        
+                                        } 
+                                        else if (name1 === "Page3") {
+                                            checkHappyHoursAndRedirect();
+                                        }
+
+
+                                    } else {
+                                        var ru = sessionStorage.getItem("ru");
+                                        sessionStorage.removeItem("ru");
+                                        window.location.href = atob(ru);
+                                    }
+                                }
+                                
+
+
+                            }
+
+                        }
+                    });
+
+
+                });
+
+                /* document.getElementById('mylbtn').click();*/
+
+
+
+
+                //$.ajax({
+
+                //    url: "../LandingPage/SaveThemeInfo?msisdn=" + number + "&theme=" + "Signup_submit", success: function (res) {
+
+
+                //    }
+                //});
+
+
+
+            }
+            //else if (username.length < 1) {
+
+            //    Swal.fire({
+            //        icon: 'warning',
+            //        title: 'দুঃখিত',
+            //        text: 'আপনার নাম সেট করুন।',
+            //        confirmButtonText: 'ওকে',
+            //        confirmButtonColor: '#FF4081',
+            //        allowOutsideClick: false
+            //    }).then((result) => {
+            //        /* Read more about isConfirmed, isDenied below */
+            //        if (result.isConfirmed) {
+            //            var ckey = sessionStorage.getItem("ckey");
+            //            var FTU = sessionStorage.getItem("FTU");
+            //            var su = sessionStorage.getItem("su");
+            //            su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+            //            ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+
+            //            sessionStorage.clear();
+            //            localStorage.clear();
+            //            //window.location.href = "../LandingPage/Index"
+
+            //            sessionStorage.setItem("ckey", ckey);
+            //            sessionStorage.setItem("FTU", FTU);
+            //            sessionStorage.setItem("su", su);
+
+            //            document.querySelector("#reg").classList.remove("open");
+            //            document.querySelector("#reg").classList.add("close");
+
+            //            document.querySelector("#login").classList.remove("close");
+            //            document.querySelector("#login").classList.add("open");
+
+            //            $("#logoutMenu").hide();
+
+            //        }
+            //    });
+
+            //}
+            else {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'দুঃখিত',
+                    text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                    confirmButtonText: 'ওকে',
+                    confirmButtonColor: '#e3126e',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var ckey = sessionStorage.getItem("ckey");
+                        var FTU = sessionStorage.getItem("FTU");
+                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                        var su = sessionStorage.getItem("su");
+                        su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                        var FCT = sessionStorage.getItem("FCT");
+                        FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                        var sent = sessionStorage.getItem("sentToServer");
+
+                        sessionStorage.clear();
+                        localStorage.clear();
+                        //window.location.href = "../LandingPage/Index"
+
+                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                        sessionStorage.setItem("ckey", ckey);
+                        sessionStorage.setItem("FTU", FTU);
+                        sessionStorage.setItem("su", su);
+                        if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                        document.querySelector("#login").classList.remove("open");
+                        document.querySelector("#login").classList.add("close");
+
+                        document.querySelector("#reg").classList.remove("close");
+                        document.querySelector("#reg").classList.add("open");
+
+                        $("#logoutMenu").hide();
+                    }
+                });
+
+            }
+
+        }
+
+
+        function SignUpWordMixup(page) {
+            var number = $('#fbidWordMixup').val();
+            var username = $('#nameWordMixup').val();
+            console.log (number);
+            console.log (username);
+            //var Token = $("#PushNotificationToken").text();
+            var Token = sessionStorage.getItem('FCT');
+            console.log(Token);
+
+            document.querySelector(".modal").classList.remove("open");
+            document.querySelector(".modal").classList.add("close");
+
+            if (!number.startsWith('880')) {
+                if (number.startsWith('0')) {
+                    number = '88' + number;
+
+                }
+                else {
+                    number = '880' + number;
+
+                }
+            }
+
+            //if (number.length == 13 && username.length > 1) {
+            if (number.length == 13) {
+
+                sessionStorage.setItem("fbid", number);
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("isLogin", "Yes");
+                sessionStorage.setItem("serviceName", "QuizMaster");
+
+                localStorage.setItem("fbid", number);
+                localStorage.setItem("username", username);
+
+                $("#logoutMenu").show();
+
+                var url = sessionStorage.getItem('su');
+
+                // Decode the String
+                var decodedString = atob(url);
+
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Signup_submit&srcurl=" + decodedString, function (rData) { });
+
+                $.post('../Home/Login?userName=' + username + "&msisdn=" + number, function (data) {
+
+
+                    //var data = { "MSISDN": number, "Name": username, "SourceUrl": window.location.href, 'CKey': '', "IsSignup": 1 };
+                    var data = { "MSISDN": number, "Name": username, "SourceUrl": window.location.href, 'CKey': '', "FPToken": Token };
+
+                    //console.log("hfhhf");
+
+                    $.ajax({
+                        type: "POST",
+                        url: '../Home/SaveUserInfo',
+                        data: JSON.stringify(data),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (res) {
+                            //if (res.response == "true") {
+
+                            //}
+                            //if (res === false) {
+                            //    alert("প্রথমে প্রোফাইল সেট আপ করুন ");
+                            //}
+                        },
+                        error: function (errMsg) {
+                        }
+                    });
+
+                    var data = {
+                        "fbid": number
+                    }
+
+                    $.ajax({
+                        type: "GET",
+                        url: '../Landingpage/IsSubscribed?fbid=' + number,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (rdata) {
+                            if (rdata.result === false) {
+
+
+                                sessionStorage.setItem("islogin", "Yes");
+                                //window.location.href = "../Landingpage/Index";
+                                $("#logoutMenu").show();
+                                //window.location.href = "../Home/BkashPayment";
+                                paymentwithbkash();
+                            }
+                            else if (rdata.result === true) {
+                                sessionStorage.setItem("islogin", "Yes");
+                                $("#logoutMenu").show();
+                                /* $('#myModal').modal('hide');*/
+
+                                if (page == 'livequiz' || page == 'WordMixupGame') {
+                                    window.location.reload();
+                                } else {
+                                    if (sessionStorage.getItem("ru") === undefined || sessionStorage.getItem("ru") == null) {
+                                        window.location.href = "../Landingpage/Index";
+                                    } else {
+                                        var ru = sessionStorage.getItem("ru");
+                                        sessionStorage.removeItem("ru");
+                                        window.location.href = atob(ru);
+                                    }
+                                }
+                                
+
+
+                            }
+
+                        }
+                    });
+
+
+                });
+
+
+
+            }
+ 
+            else {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'দুঃখিত',
+                    text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                    confirmButtonText: 'ওকে',
+                    confirmButtonColor: '#e3126e',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var ckey = sessionStorage.getItem("ckey");
+                        var FTU = sessionStorage.getItem("FTU");
+                        ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                        var su = sessionStorage.getItem("su");
+                        su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                        var FCT = sessionStorage.getItem("FCT");
+                        FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                        var sent = sessionStorage.getItem("sentToServer");
+
+                        sessionStorage.clear();
+                        localStorage.clear();
+                        //window.location.href = "../LandingPage/Index"
+
+                        window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                        sessionStorage.setItem("ckey", ckey);
+                        sessionStorage.setItem("FTU", FTU);
+                        sessionStorage.setItem("su", su);
+                        if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                        document.querySelector("#login").classList.remove("open");
+                        document.querySelector("#login").classList.add("close");
+
+                        document.querySelector("#reg").classList.remove("close");
+                        document.querySelector("#reg").classList.add("open");
+
+                        $("#logoutMenu").hide();
+                    }
+                });
+
+            }
+
+        }
+
+
+
+
+        function UnSubModal() {
+
+            let fbid = sessionStorage.getItem("fbid");
+
+
+
+
+
+            if (sessionStorage.getItem("isLogin") == null || sessionStorage.getItem("isLogin") == undefined) {
+                var ckey = sessionStorage.getItem("ckey");
+                var FTU = sessionStorage.getItem("FTU");
+                ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                var su = sessionStorage.getItem("su");
+                su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                var FCT = sessionStorage.getItem("FCT");
+                FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+
+                var sent = sessionStorage.getItem("sentToServer");
+
+                sessionStorage.clear();
+                localStorage.clear();
+
+                window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                sessionStorage.setItem("ckey", ckey);
+                sessionStorage.setItem("FTU", FTU);
+                sessionStorage.setItem("su", su);
+                if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                $("#logoutMenu").hide();
+
+                //window.location.href = "../Landingpage/Index";
+            }
+            else {
+
+
+
+                $.get("../LandingPage/IsSubscribed?fbid=" + fbid, function (rdata) {
+
+
+                    if (rdata.result === false) {
+                        window.location.href = "../Home/BkashPayment";
+                    }
+                })
+
+
+                $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Unsubscription_Clicked&srcurl=" + window.location.href, function (rData) { });
+
+
+                //$.ajax({
+
+                //    url: "../LandingPage/SaveThemeInfo?msisdn=" + fbid + "&theme=" + "Unsubscription_Clicked", success: function (res) {
+
+
+                //    }
+                //});
+
+                Swal.fire({
+                    title: '<p style="font-size:14px;">আপনি কি আনসাবস্ক্রাইব করতে চান?</p>',
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: 'হ্যাঁ',
+                    denyButtonText: `Yesss`,
+                    cancelButtonText: 'না'
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+
+                        $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Unsubscription_Done&srcurl=" + window.location.href, function (rData) { });
+
+
+                        //$.ajax({
+
+                        //    url: "../LandingPage/SaveThemeInfo?msisdn=" + fbid + "&theme=" + "Unsubscription_Done", success: function (res) {
+
+
+                        //    }
+                        //});
+                        var msisdn = sessionStorage.getItem("fbid");
+
+                        $.ajax({
+                            type: "POST",
+                            url: "../Home/UnSubscription?msisdn=" + msisdn,
+                            success: function (res) {
+                                var ckey = sessionStorage.getItem("ckey");
+                                var FTU = sessionStorage.getItem("FTU");
+                                ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                                var su = sessionStorage.getItem("su");
+                                su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                                var FCT = sessionStorage.getItem("FCT");
+                                FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                                var sent = sessionStorage.getItem("sentToServer");
+
+                                sessionStorage.clear();
+                                localStorage.clear();
+
+                                window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                                sessionStorage.setItem("ckey", ckey);
+                                sessionStorage.setItem("FTU", FTU);
+                                sessionStorage.setItem("su", su);
+                                if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                                $("#logoutMenu").hide();
+
+                                window.location.href = "../Home/UnSubscriptionView";
+
+
+                            },
+                            error: function (errMsg) {
+                                var ckey = sessionStorage.getItem("ckey");
+                                var FTU = sessionStorage.getItem("FTU");
+                                ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                                var su = sessionStorage.getItem("su");
+                                su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                                var FCT = sessionStorage.getItem("FCT");
+                                FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                                var sent = sessionStorage.getItem("sentToServer");
+
+                                localStorage.clear();
+                                sessionStorage.clear();
+
+                                window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                                sessionStorage.setItem("ckey", ckey);
+                                sessionStorage.setItem("FTU", FTU);
+                                sessionStorage.setItem("su", su);
+                                if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                                $("#logoutMenu").hide();
+                                window.location.href = "../";
+                                //console.log("Error");
+                            }
+                        });
+                    } else if (result.isDenied) {
+
+
+
+
+                    }
+                })
+            }
+
+
+
+        }
+
+
+
+
+    </script>
+
+    @*google Analytics*@
+    <!--<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-1CPCSJWLX4');
+    </script>-->
+
+
+
+
+</body>
+</html>

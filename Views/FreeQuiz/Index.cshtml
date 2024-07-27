@@ -1,0 +1,199 @@
+﻿
+<div style="margin-bottom: 20px; text-align: center;">
+    <img src="~/Assets/LoginModalPopUp3.png" style="height: 230px;width: 230px;margin: 0 auto;" class="center" />
+    <br />
+    <span style="width: 100%; text-align: center; color: #357d93;">ফ্রি কুইজ খেলতে প্রোফাইল সেটআপ করুন </span><br>
+    @*<span style="width: 100%; text-align: center; color: #357d93;">কুইজমাস্টার সার্ভিসটির জন্য ব্যবহৃত হচ্ছে</span>*@
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <div class="form-group" style="text-align: center;">
+        <input type="text" class="form-control modal-bg-dark" placeholder="আপনার নাম লিখুন" id="usernameFree" required style="width: 325px; text-align: center;" onblur="validateName()">
+    </div>
+    <div class="form-group" style="text-align: center;">
+        <input type="number" class="form-control modal-bg-dark" placeholder="মোবাইল নাম্বার লিখুন" id="mobileFree" required style="width: 325px; text-align: center;">
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div class="center1" style="text-align: center; margin-bottom: -3%;">
+        <button type="submit" class="btn btn-default" style="color: white;background: #357d93;/* padding: 16px; */border-radius: 26px;border-radius: -6px;height: 14vw;width: 36vw;" onclick="SubmitForm()">ফ্রি কুইজ খেলুন</button>
+
+    </div>
+</div>
+
+   
+
+
+<script>
+    function SubmitForm() {
+        var msisdn = $('#mobileFree').val();
+        var name = $('#usernameFree').val();
+        var Token = sessionStorage.getItem('FCT');
+        console.log (msisdn);
+        console.log (name);
+        sessionStorage.setItem("username", name);
+        //console.log(sessionStorage.getItem("fbid"));
+        // Perform any additional validation if needed
+
+        // Make the GET request to insert the data
+        //$.post("../landingpage/InsertFreeQuizData", { name: name, msisdn: msisdn, ckey: "000000" })
+        //    .done(function (data) {
+        //        console.log(data);
+        //    });
+        if (!msisdn.startsWith('880')) {
+            if (msisdn.startsWith('0')) {
+                msisdn = '88' + msisdn;
+                sessionStorage.setItem("fbid", msisdn);
+                }
+                else {
+                msisdn = '880' + msisdn;
+                sessionStorage.setItem("fbid", msisdn);
+                }
+            }
+
+        $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=click_freeQuizSubmit&srcurl=" + window.location.href, function (rData) { });
+
+        if (msisdn.length == 13) {
+            $.ajax({
+                url: "../landingpage/InsertFreeQuizData",
+                type: "POST",
+                async: false,
+                data: { name: name, msisdn: msisdn, ckey: "000000" },
+                success: function (data) {
+                    console.log(data);
+                    console.log(sessionStorage.getItem("fbid"));
+                    console.log(sessionStorage.getItem("username"));
+                    $.ajax({
+                        url: "../landingpage/checkIsSubscribedWithMsisdn?msisdn=" + msisdn,
+                        type: "GET",
+                        success: function (response) {
+                            console.log(response);
+                            if (response === true) {
+                                // User is subscribed, redirect to the home page
+                                console.log("User is subscribed");
+                                sessionStorage.setItem("isLogin", "Yes");
+                                sessionStorage.setItem("islogin", "Yes");
+                                $.get("../LandingPage/SaveCapmLog?msisdn=" + msisdn + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=SubscribedUserInFreePortal&srcurl=" + window.location.href, function (rData) { });
+                                window.location.href = "../landingpage?msisdn=" + msisdn;
+                            } else {
+                                console.log("User is not subscribed");
+                                // User is not subscribed, redirect to the freequiz page
+                                window.location.href = "../freequiz/freequiz";
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Error:", error);
+                            // Redirect to the freequiz page in case of an error
+                            window.location.href = "../landingpage";
+                        }
+                    });
+                    //window.location.href = "../freequiz/freequiz";
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error:", error);
+                }
+            });
+        }
+        else
+        {
+            Swal.fire({
+                icon: 'warning',
+                title: 'দুঃখিত',
+                text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                confirmButtonText: 'ওকে',
+                confirmButtonColor: '#e3126e',
+                allowOutsideClick: false
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var ckey = sessionStorage.getItem("ckey");
+                    var FTU = sessionStorage.getItem("FTU");
+                    ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                    var su = sessionStorage.getItem("su");
+                    su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                    var FCT = sessionStorage.getItem("FCT");
+                    FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                    var sent = sessionStorage.getItem("sentToServer");
+
+                    //sessionStorage.clear();
+                    //localStorage.clear();
+                    //window.location.href = "../LandingPage/Index"
+
+                    window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                    sessionStorage.setItem("ckey", ckey);
+                    sessionStorage.setItem("FTU", FTU);
+                    sessionStorage.setItem("su", su);
+                    if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                    document.querySelector("#login").classList.remove("open");
+                    document.querySelector("#login").classList.add("close");
+
+                    document.querySelector("#reg").classList.remove("close");
+                    document.querySelector("#reg").classList.add("open");
+
+                    $("#logoutMenu").hide();
+                }
+            });
+        }
+        
+
+
+        //var url = "https://localhost:5001/landingpage/InsertFreeQuizData?msisdn=" + msisdn + "&name=" + name + "&ckey=" + "000000";
+        //var url = '/FreeQuiz/InsertData?name=' + encodeURIComponent(name) + '&msisdn=' + encodeURIComponent(msisdn);
+        
+    }
+
+
+    function validateName() {
+        var nameInput = document.getElementById("name");
+        var name = nameInput.value;
+        var regex = /^[\u0980-\u09FFa-zA-Z\s.]+$/;
+          // Regular expression to allow only alphabets and spaces
+
+        if (!regex.test(name) && name.length > 0) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'দুঃখিত',
+                text: 'দুঃখিত বিশেষ অক্ষর গ্রহণযোগ্য নয়',
+                confirmButtonText: 'ওকে',
+                confirmButtonColor: '#e3126e',
+                allowOutsideClick: false
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var ckey = sessionStorage.getItem("ckey");
+                    var FTU = sessionStorage.getItem("FTU");
+                    ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+                    var su = sessionStorage.getItem("su");
+                    su = (su != null && su != "" && su != "null") ? su : btoa(window.location.href);
+                    var FCT = sessionStorage.getItem("FCT");
+                    FCT = (FCT != null && FCT != "" && FCT != "null") ? FCT : null;
+                    var sent = sessionStorage.getItem("sentToServer");
+
+                    //sessionStorage.clear();
+                    //localStorage.clear();
+                    //window.location.href = "../LandingPage/Index"
+
+                    window.localStorage.setItem('sentToServer', sent ? sent : 0);
+                    sessionStorage.setItem("ckey", ckey);
+                    sessionStorage.setItem("FTU", FTU);
+                    sessionStorage.setItem("su", su);
+                    if (FCT != null) sessionStorage.setItem("FCT", FCT);
+
+                    document.querySelector("#login").classList.remove("open");
+                    document.querySelector("#login").classList.add("close");
+
+                    document.querySelector("#reg").classList.remove("close");
+                    document.querySelector("#reg").classList.add("open");
+
+                    $("#logoutMenu").hide();
+                }
+            });
+            nameInput.value = ""; // Clear the input field
+            return false;
+        }
+        return true;
+    }
+
+</script>

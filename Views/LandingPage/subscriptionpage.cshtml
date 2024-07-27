@@ -1,0 +1,106 @@
+﻿
+
+<div style="z-index:300000" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-bg-dark">
+            <div class="modal-header" style=" background-color: #ff1493;">
+                <span class="modal-title col-11" id="" style="width:100%; text-align:center; color:white">সাবস্ক্রাইব করতে সিলেক্ট করুন </span>
+                <div class="col-1" style="float:right">
+                    <button type="button" class="m-0 p-0" style="width:25px; background-color: transparent; color: white; margin-top: 5px; height:25px; border-radius: 50%; border:none; float:right" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color: white; font-size: 15px;">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body mb-3">
+
+
+
+                @*<button type="submit" id="bKash_button" class="btn btn-default" color: white; background: #28a745" onclick="weekly()">উইকলি সাবস্ক্রাইব</button>
+
+                <button type="submit" id="bKash_button" class="btn btn-default" color: white; background: #28a745" onclick="monthly()">মান্থলি সাবস্ক্রাইব</button>*@
+
+                @*<p style="color: wheat; font-size: 10px">সাবস্ক্রিপশনের আগে থাকছে একবার ফ্রি খেলার সুযোগ</p>*@
+                @*<button type="submit" id="myBtn" class="btn btn-default" style="float: right; color: white; background: #28a745 " onclick="save()">সাবমিট</button>
+        <button id="bKash_button" class="btn btn-danger">Pay With bKash</button>*@
+                <div class="col-md-12 text-center">
+
+                    <button type="submit" id="" class="btn btn-default" style=" color: white; background: #28a745" onclick="weekly()">Weekly</button>
+                    <br />
+                    <br />
+                    
+                    <button type="submit" id="" class="btn btn-default" style=" color: white; background: #28a745" onclick="monthly()">Monthly</button>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="col-12" style="margin-top: 15vh">
+
+    <button style="color:black;" class="btn btn-center text-white bg-deeporange box-shadow mt-2" onclick="weekly()">weekly</button>
+    <button style="color:black;" class="btn btn-center text-white bg-deeporange box-shadow mt-2" onclick="monthly()">Monthly</button>
+    <button style="color:black;" class="btn btn-center text-white bg-deeporange box-shadow mt-2" onclick="unsub()">UnSubscription</button>
+    <button type="submit" id="weekly_button" class="btn btn-default" style="float: right; color: white; background: #28a745" onclick="weekly()">উইকলি সাবস্ক্রাইব</button>
+    <button type="submit" id="monthly_button" class="btn btn-default" style="float: right; color: white; background: #28a745" onclick="monthly()">মান্থলি সাবস্ক্রাইব</button>
+
+
+</div>*@
+
+<script>
+
+
+
+    function weekly() {
+
+        $.get('/LandingPage/Sub', function (response) {
+
+            window.location.href = response.result;
+
+        })
+    };
+
+    function monthly() {
+
+        $.get('/LandingPage/Sub30', function (response) {
+
+            window.location.href = response.result;
+
+        })
+    };
+
+    function unsub() {
+        // alert("You Are Not Registered");
+        $.get('/LandingPage/Unsub', function (response) {
+
+            if (response.result == "200") {
+                alert("You Are SUccesfully Unsubscribed");
+            } else {
+                alert("You Are Not Registered");
+            }
+
+        })
+    };
+
+
+
+
+</script>

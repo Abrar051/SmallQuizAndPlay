@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<style>
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        height: 11vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+        .bottom-navbar img {
+            width: 4rem;
+        }
+
+    </style>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body" style="background:#0fddad;">
+                        <h5 class="card-title">Student Profile</h5>
+                        <div id="profileData"></div>
+                        <button type="button" class="btn btn-primary" onclick="profileSetup()">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="reg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 24vh;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#4eddd0">
+                    <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 35%;">Login</h5>
+                    <button onclick="hideModal()" type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 75vw;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="msisdn">MSISDN</label>
+                            <input type="text" class="form-control" id="msisdn" placeholder="Enter MSISDN">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="ReloadPage()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-navbar">
+        <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="width: 12%" />
+        <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+        <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" style="width: 17%" />
+        <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+        <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+    </div>
+
+
+    <!-- jQuery -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function hideModal(){
+            $('#reg').modal('hide');
+        }
+
+        function KidsHome() {
+            window.location.href = '/KidsProfileSetup/KidsHome';
+        }
+
+        $(document).ready(function () {
+            // Fetch user profile data from API
+            if (sessionStorage.getItem('fbid') == null || sessionStorage.getItem('fbid') == '') {
+                $('#reg').modal('show');
+            }
+            else
+            {
+                $.ajax({
+                    url: '/KidsProfileSetup/GetUserProfile?MSISDN=' + sessionStorage.getItem('fbid'), // Replace with your API endpoint
+                    method: 'GET',
+                    success: function (data) {
+                        // Parse JSON response
+                        var profileData = data[0];
+                        //debugger
+                        // Generate HTML content for profile card
+                        var profileHtml = '';
+                        profileHtml += '<p><img class="d-flex justify-content-center w-25 flex-wrap gap-3" src="' + profileData.ImageLocation + '" alt="Profile Image" class="img-fluid"></p>';
+                        profileHtml += '<p><strong>Full Name:</strong> ' + profileData.FullName + '</p>';
+                        profileHtml += '<p><strong>Parent Name:</strong> ' + profileData.ParentName + '</p>';
+                        profileHtml += '<p><strong>City:</strong> ' + profileData.City + '</p>';
+                        profileHtml += '<p><strong>MSISDN:</strong> ' + profileData.MSISDN + '</p>';
+                        profileHtml += '<p><strong>Age:</strong> ' + profileData.Age + '</p>';
+
+                        // Append profile HTML to profileData div
+                        $('#profileData').html(profileHtml);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr.responseText); // Log any errors
+                    }
+                });
+            }
+           
+        });
+
+        function ReloadPage ()
+        {
+            var number = document.getElementById("msisdn").value;
+            var username = document.getElementById("name").value;
+            if (!number.startsWith('880') && number.length == 11) {
+                if (number.startsWith('0')) {
+                    number = '88' + number;
+                    sessionStorage.setItem("fbid", number);
+                    sessionStorage.setItem("name", username);
+                    sessionStorage.setItem("isLogin", "Yes");
+                    localStorage.setItem("fbid", number);
+                    localStorage.setItem("username", username);
+                    $('#reg').modal('hide');
+                    if (number.length == 13)
+                    {
+                        console.log(number);
+                        window.location.reload();
+                    }
+                }
+                else 
+                {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'দুঃখিত',
+                        text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#e3126e',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            var ckey = sessionStorage.getItem("ckey");
+
+                            sessionStorage.clear();
+                            localStorage.clear();
+                            $('#reg').modal('show');
+                            //window.location.href = "../LandingPage/Index"
+                        }
+                    });
+                }
+            }
+            else if (number.startsWith('880') && number.length == 13) {
+                if (number.startsWith('880')) {
+                    //number = '88' + number;
+                    sessionStorage.setItem("fbid", number);
+                    sessionStorage.setItem("name", username);
+                    sessionStorage.setItem("isLogin", "Yes");
+                    localStorage.setItem("fbid", number);
+                    localStorage.setItem("username", username);
+                    $('#reg').modal('hide');
+                    if (number.length == 13) {
+                        console.log(number);
+                        window.location.reload();
+                    }
+                }
+                else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'দুঃখিত',
+                        text: 'মোবাইল নাম্বার ১১ ডিজিটের হতে হবে।',
+                        confirmButtonText: 'ওকে',
+                        confirmButtonColor: '#e3126e',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            var ckey = sessionStorage.getItem("ckey");
+
+                            sessionStorage.clear();
+                            localStorage.clear();
+                            $('#reg').modal('show');
+                            //window.location.href = "../LandingPage/Index"
+                        }
+                    });
+                }
+            }
+            {
+
+            }
+        }
+
+
+    </script>
+    <script>
+        function profileSetup() {
+            window.location.href = "../KidsProfileSetup/EditProfile";
+        }
+    </script>
+</body>
+</html>

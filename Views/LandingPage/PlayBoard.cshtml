@@ -1,0 +1,343 @@
+﻿
+<div class="row bg-white status-nav">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-1"><a href="@Url.Action("Index","LandingPage")"><i class="fas fa-chevron-circle-left" style="color:#1B7885; font-size:20px;"></i></a></div>
+            <div class="col-9" style="color:#1B7885">নিউ ইয়ার কুইজ</div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="question-card">
+    <div class="before-play">
+        <h3>খেলা শুরু হতে বাকি</h3>
+        <div id="clockdiv">
+            <div>
+                <span class="days"></span>
+                <div class="smalltext">Days</div>
+            </div>
+            <div>
+                <span class="hours"></span>
+                <div class="smalltext">Hours</div>
+            </div>
+            <div>
+                <span class="minutes"></span>
+                <div class="smalltext">Minutes</div>
+            </div>
+            <div>
+                <span class="seconds"></span>
+                <div class="smalltext">Seconds</div>
+            </div>
+            <br />
+            <hr />
+            <strong style="color:black">লাইফ নিয়ে রেডি থাকুন !!! </strong>  <br />
+            <strong style="color:black">মোট পুরষ্কার থাকছে ৫০০ টাকা &#128077;</strong> <br />
+            <strong style="color:black">অনুগ্রহ করে অপেক্ষা করুন !!! </strong>
+        </div>
+    </div>
+    <div class="instruction">
+        <strong id="inst"></strong>
+    </div>
+    <div class="play-board">
+        <div class="timer"></div>
+        <div style="width: 100%">
+            <div class="life"></div>
+            <small style="text-align:end; float:right; width: 60px; font-size: 15px; font-weight: bold; margin-right: 5px; color:darkorange" id="life">10</small>
+        </div>
+
+        <div class="board">
+            <div class="question-count"></div><br />
+            <div class="question"> </div>
+        </div>
+        <input type="hidden" id="qid" />
+
+        <div class="option-btn">
+            <div class="row" onclick="submitResponse('Option1', responseTime)">
+                <div class="col-2" style="margin-left:10px; color:white">ক.</div>
+                <div class="col-8" style="font-size: 11px;" id="option1"></div>
+            </div>
+        </div>
+        <div class="option-btn">
+            <div class="row" onclick="submitResponse('Option2', responseTime)">
+                <div class="col-2" style="margin-left:10px; color:white">খ.</div>
+                <div class="col-8" style="font-size: 11px;" id="option2"></div>
+            </div>
+        </div>
+        <div class="option-btn" id="opti">
+            <div class="row" onclick="submitResponse('Option3', responseTime)">
+                <div class="col-2" style="margin-left:10px; color:white">গ.</div>
+                <div class="col-8" style="font-size: 11px;" id="option3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row result-board" id="res_board" style="">
+    <div class="col-10">
+        <div class="row">
+            <div class="col-6 result"><i class="far fa-check-square right-ans box-shadow"></i> <span id="rt"> 0 </span> </div>
+            <div class="col-6 result"><i class="far fa-times-circle box-shadow wrong-ans"></i> <span id="ng"> 0 </span></div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal subscriptions Type -->
+<div class="modal" id="submodal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title col-11" id="mod" style="width:100%; text-align:center; color:white">সাবস্ক্রিপশন টাইপ</span>
+                <div class="col-1" style="float:right">
+                    <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color: purple ">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body text-center">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<audio id="aa" controls loop autoplay hidden>
+    <source src="~/Assets/background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+@section leaderboard{
+    @*<div style="position:fixed; bottom:0px; width:100%;">
+            <div style="padding-top: 10px; margin-top: 10px; text-align: center; background-color: #ff2192; padding-bottom: 3px; ">
+                <a style="font-size:12px; color:white;" onclick="leaderBoard()"><h4><i class="fa fa-trophy" aria-hidden="true"></i>&nbsp; ডেইলি উইনার লিস্ট </h4></a>
+            </div>
+        </div>*@
+
+
+    <div class="fixed-bottom">
+        <div class=" row" style="color:white; margin-top: 5.5%; position: absolute; z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <i class="fas fa-crown"></i>
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <i class="fas fa-trophy"></i>
+            </div>
+        </div>
+
+        <img style="width:100vw; height:auto" src="~/Assets/leaderboard/1.png" />
+    </div>
+
+
+}
+
+
+
+@section scripts{
+    <script>
+
+        (function () {
+            var type = "dailyquiz";
+
+            //$.get(CHECK_PLAY_STATUS + "?fbid=" + $.session.get('fbid') + "&type=" + type, function (res) {
+            //    if (res.statusCode === 1002 || res.statusCode === 1007) {
+            //        $.session.set('isRegistered', 0);
+            //        //window.location.href = BASE_URL + 'LandingPage/index';
+            //        return false;
+            //    }
+            //});
+            $("#life").text($.session.get('life'));
+        })();
+
+        $(".before-play").hide();
+        $(".instruction").hide();
+        $(".play-board").hide();
+        $("#res_board").hide();
+
+        var timeinterval, countCownTimer;
+
+        var database = firebase.database().ref();
+        var contactsRef = database.child("DailyQuiz").child("QuestionSet").on("value", function (snapshot) {
+
+    switch (snapshot.val().Others) {
+        case "":
+            flag = true;
+            //clearInterval(countCownTimer);
+            countCownTimer = setInterval(countDown, 1000);
+            $.session.set('option', snapshot.val().Answer);
+            $(".before-play").hide();
+            $(".instruction").hide();
+            $(".play-board").show();
+            $("#res_board").show();
+            $("#qid").val(snapshot.val().QuestionId);
+            var qlen = snapshot.val().Question.length;
+            if (qlen > 50) {
+                $(".question").css({
+                    fontSize: 14
+                });
+            } else {
+                $(".question").css({
+                    fontSize: 14
+                });
+            }
+            $(".question").text(snapshot.val().Question);
+            $("#option1").text(snapshot.val().Option1);
+            $("#option2").text(snapshot.val().Option2);
+            console.log(snapshot.val().Option3);
+            if (snapshot.val().Option3 === "") {
+                $("#opti").hide();
+            } else {
+                $("#opti").show();
+                $("#option3").text(snapshot.val().Option3)
+            }
+            $(".question-count").text("Q.No: " + snapshot.val().QuestionNo)
+
+            break;
+        case "BeforeLive":
+            $.get('@Url.Action("Status", "LandingPage")', function (rdata) {
+                $(".before-play").show();
+                $(".instruction").hide();
+                $(".play-board").hide();
+                $("#res_board").hide();
+                const deadline = new Date(rdata.result);
+                if (timeinterval != null) {
+                    clearInterval(timeinterval);
+                }
+                initializeClock('clockdiv', deadline);
+            });
+
+            if (gameStart) {
+                gameStart = false;
+                window.location.href = BASE_URL + 'LandingPage/LeaderBoard';
+                return false;
+            } else {
+                gameStart = true;
+            }
+
+            break;
+        case "LevelHome":
+            $.get('@Url.Action("Instrunction", "LandingPage", new { inst = "LevelHome" })', function (rdata) {
+                clearInterval(timeinterval);
+                $(".before-play").hide();
+                $(".instruction").show();
+                $(".play-board").hide();
+                $("#res_board").hide();
+                $("#inst").text(rdata.result.Message);
+            });
+            break;
+    }
+        });
+
+        var right = 0;
+        var wrong = 0;
+        var flag = false;
+        var gameStart = false;
+
+        function submitResponse(opt, tt) {
+
+            if (flag) {
+                flag = false;
+                var quesId = $("#qid").val();
+                if ($.session.get('option') === opt) {
+                    right += 1;
+                    $("#rt").text(right);
+                } else {
+                    if ($.session.get('life') > 0) {
+                        wrong += 1;
+                        $("#ng").text(wrong);
+                        if (wrong > 3) {
+                            $.get(API_BASE_URL + "/api/life/removelife?fbid=" + $.session.get('fbid') + "&level=1", function (res) {
+                                if (res.result === "Success") {
+                                    $.post(API_BASE_URL + "/api/life/GetLifeInfo?fbid=" + $.session.get('fbid'), function (res) {
+                                        $.session.set('life', res.result.Life);
+                                        $("#life").text($.session.get('life'));
+                                    });
+                                }
+                            });
+                        }
+                    } else {
+                        if (wrong > 3) {
+                            $("#mod").empty();
+                            $("#mod").text("নোটিফিকেশান");
+                            $(".modal-body").empty();
+                            $(".modal-body").append("<small style=\"text-align: center; color: #5E4C52 \">দুঃখিত আপনার পর্যাপ্ত পরিমাণ লাইফ নেই।</small></br></br><hr><button class=\"btn btn-primary\" onclick=\"closes()\" style=\"float: right\">ওকে</button> </br>");
+
+                            $("#submodal").modal('show');
+                        }
+                    }
+                }
+
+                    $.get('@Url.Action("SubmitAnswer", "LandingPage")' + '?fbid=' + $.session.get('fbid') + '&msisdn=' + $.session.get('msisdn') + '&qId=' + quesId + '&response=' + opt + '&timeTaken=' + tt, function (rData) {
+                        if (rData.result === "success") {
+
+                        }
+                    });
+            }
+        }
+
+        function closes() {
+            $("#submodal").modal('hide');
+            window.location.href = '@Url.Action("Index", "LandingPage")';
+             return;
+        }
+
+
+function exit() {
+    window.location.href = '@Url.Action("Index", "LandingPage")';
+    return;
+}
+function getTimeRemaining(endtime) {
+    const total = Date.parse(endtime) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+    return {
+        total,
+        days,
+        hours,
+        minutes,
+        seconds
+    };
+}
+function initializeClock(id, endtime) {
+    const clock = document.getElementById(id);
+    const daysSpan = clock.querySelector('.days');
+    const hoursSpan = clock.querySelector('.hours');
+    const minutesSpan = clock.querySelector('.minutes');
+    const secondsSpan = clock.querySelector('.seconds');
+
+    function updateClock() {
+        const t = getTimeRemaining(endtime);
+
+        daysSpan.innerHTML = t.days;
+        hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+        if (t.total <= 0) {
+            clearInterval(timeinterval);
+            $(".before-play").hide();
+        }
+    }
+
+    updateClock();
+    timeinterval = setInterval(updateClock, 1000);
+}
+var time = 5;
+var responseTime = 0;
+function countDown() {
+    $(".timer").text(time);
+    time -= 1;
+    responseTime += 1;
+    if (time < 0) {
+        time = 5;
+        responseTime = 5;
+        clearInterval(countCownTimer);
+    }
+}
+    </script>
+} 

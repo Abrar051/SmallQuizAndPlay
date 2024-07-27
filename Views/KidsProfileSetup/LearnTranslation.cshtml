@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<style>
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        height: 11vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+        .bottom-navbar img {
+            width: 4rem;
+        }
+
+</style>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body" style="background:#0fddad;">
+                        <div id="profileData"></div>
+                        <button type="button" class="btn btn-primary" onclick="GetTranslation()">Refresh</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <div class="bottom-navbar">
+        <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="width: 12%" />
+        <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+        <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" style="width: 17%" />
+        <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+        <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+    </div>
+
+
+    <!-- jQuery -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function hideModal() {
+            $('#reg').modal('hide');
+        }
+
+        function KidsHome() {
+            window.location.href = '/KidsProfileSetup/KidsHome';
+        }
+
+
+
+        function GetTranslation ()
+        {
+            $.ajax({
+                url: '/KidsProfileSetup/GetTranslationPair' , 
+                method: 'GET',
+                success: function (data) {
+                    // Parse JSON response
+                    var profileData = data[0];
+                    //debugger
+                    // Generate HTML content for profile card
+                    console.log(profileData);
+                    var profileHtml = '';
+                    profileHtml += '<p><strong>English : </strong> ' + profileData.English + '</p>';
+                    profileHtml += '<p><strong>Bangla : </strong> ' + profileData.Bangla + '</p>';
+
+
+                    // Append profile HTML to profileData div
+                    $('#profileData').html(profileHtml);
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText); // Log any errors
+                }
+            });
+        }
+
+   
+
+
+    </script>
+    <script>
+        function profileSetup() {
+            window.location.href = "../KidsProfileSetup/EditProfile";
+        }
+    </script>
+</body>
+</html>

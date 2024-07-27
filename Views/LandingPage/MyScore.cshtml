@@ -1,0 +1,165 @@
+﻿@*<div style="position:relative; height: 100vh">
+        <div class="row bg-white status-nav">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-1"><a href="@Url.Action("Index","LandingPage")"><i class="fas fa-chevron-circle-left" style="color:#1B7885; font-size:20px;"></i></a></div>
+                    <div class="col-9" style="color:#1B7885">মাই স্কোর</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row  bg-white mt-2 my-score-coin">
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12" id="coin">0</div>
+                    <div class="col-12">কয়েন</div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12" id="winlose">0</div>
+                    <div class="col-12">জয়/হার</div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12" id="life">0</div>
+                    <div class="col-12">লাইফ</div>
+                </div>
+            </div>
+        </div>
+        <div id="parrent_layout" class="row my-score">
+            <div id="layout" class="col-12" style="overflow:auto; height:74vh;">
+
+            </div>
+        </div>
+
+        <div class="row" style="background-color: #E55F02; padding:10px; position:absolute; bottom:0; width:100vw; text-align:center">
+            <div style="text-align:center; width:100%; color:white; font-weight:bold" onclick="claimCoin()">ক্লেইম করুন</div>
+        </div>
+    </div>
+
+    <div class="modal" id="m_cl" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title col-11" style="width:100%; text-align:center; color:white">অভিনন্দন</span>
+                    <div class="col-1" style="float:right">
+                        <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <div style="text-align:center;" class="deeporange">আপনার ক্লেইম রিকোয়েস্ট সম্পন্ন হয়েছে।</div>
+                    <br />
+                    <div style="text-align:center; color:#088C88">কুইজস্টার প্রতিনিধি আপনার সাথে যোগাযোগ করবেন।</div>
+                </div>
+                <div class="modal-footer element-center">
+                    <button type="button" class="btn bg-deeporange text-white" data-bs-dismiss="modal">ওকে</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @section scripts{
+        <script src="~/Scripts/umlop/myscore.js" type="text/javascript"></script>
+    }*@
+
+
+
+<!--<div class="modal" id="m_jh_result" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!--<div class="modal-header">-->-->
+            <!--@*<span class="modal-title col-11" id="result_title" style="width:100%; text-align:center; color:white"></span>*@
+            @*<div class="col-11"></div>
+        <div class="col-1" style="float:right">
+            <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+                <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+            </button>
+        </div>*@-->
+            <!--<!--</div>-->
+            <!--<div class="row">
+                <div class="col-11"></div>
+                <div class="col-1" style="margin-left: -1%;">
+                    <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="GetBackToHome()">
+                        <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="modal-body text-center">-->
+
+                @*<div class="mb-2">*@
+                <!--<div class="">
+                    <img id="result_pic" src="" style="width:100%;" />
+                </div>-->
+                @*<span class="modal-title col-11" id="result_title" style="width:100%; text-align:center;color: #ff1493;font-size: 25px;font-weight: bold;"></span>
+                <br />
+                <br />*@
+                <small id="result_content" style="text-align:center;color:black;font-size: 16px;" class="deeporange"></small>
+                <br />
+                <small id="result_content2" style="text-align:center;color:black;font-size: 16px;" class="deeporange"></small>
+            </div>
+            <div class="modal-footer element-center">
+                <button type="button" class="btn  text-white" style="background-color: #ff1493;" id="modal_buttonPlay" onclick="reloadUI()">আবার খেলুন</button>
+                <button type="button" class="btn  text-white" style="background-color: #ff1493;" id="modal_button" onclick="RedirectOnOkay()">ওকে</button>
+               @* <a id="messengerid" onclick="openMessengerChat()" style="color: white;">
+                    <img src="~/Assets/facebook.png" alt="Facebook" style="width: 92px;height: 66px;height: 68px;ertical-align: middle;"/>    
+                </a>*@
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+
+@*@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            var src1 = BASE_URL + 'Assets/WinnerCeleb.png';
+            $("#result_pic").attr("src", src1);
+            //$("#result_title").text("আপনি বিজয়ি হয়েছেন");
+            $("#result_content").text("সুপার আওয়ার খেলুন ");
+            $("#result_content2").text("৪০০ টাকা পর্যন্ত ক্যাশ প্রাইজ জিতুন");
+            $("#modal_buttonPlay").text("আবার খেলুন");
+            $("#modal_button").text("ওকে");
+            $("#modal_buttonPlay").attr("onclick", "reloadUI()");
+            $("#modal_button").attr("onclick", "RedirectOnOkay()");
+
+            //var src1 = BASE_URL + 'Assets/LoserCeleb.png';
+            //$("#result_pic").attr("src", src1);
+            ///*$("#result_title").text("আপনি হেরে গিয়েছেন?");*/
+            //$("#result_content").text("সুপার আওয়ার খেলুন ");
+            //$("#result_content2").text("৪০০ টাকা পর্যন্ত ক্যাশ প্রাইজ জিতুন");
+            //$("#modal_buttonPlay").text("আবার খেলুন");
+            //$("#modal_button").text("ওকে");
+            //$("#modal_buttonPlay").attr("onclick", "reloadUI()");
+            //$("#modal_button").attr("onclick", "RedirectOnOkay()");
+            
+            $("#m_jh_result").modal('show');
+
+        });
+
+        function RedirectOnOkay() {
+            window.location.href = window.location.origin;
+        }
+
+    </script>
+}*@
+
+
+
+
+
+
+
+
+
+
+

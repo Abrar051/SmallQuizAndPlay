@@ -1,0 +1,583 @@
+﻿<!--<div class="status-bar">
+    <div class="title" style="color: #e3126e;">নির্দেশনা</div>-->
+@*<div class="close" onclick="exit()">x</div>*@
+<!--</div>-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous" />
+
+<style>
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0px;
+    }
+
+        .bottom-navbar img {
+            width: 14%;
+        }
+
+    .modal-header{
+        background-color: #ff172e !important;
+    }
+
+    .accordion-item {
+        box-shadow: 0px 0px 3px 0px black;
+        margin-top: 10px !important;
+    }
+    a{
+        color: white;
+    }
+</style>
+
+
+<body style="background:#00556f;">
+<div>
+    <div style=" text-align: center; font-size: 30px; font-weight: bolder; color: white; ">নির্দেশনা</div>
+</div>
+<br />
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseOne">
+                    ১| কিডস্টার কি?
+                </button>
+            </h2>
+            <div id="flush-collapseOne"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    উঃ কিডস্টার ৭ থেকে ১৫ বছর বয়সী শিশুদের জন্য একটি শিক্ষামুলক গেমিং
+                    প্ল্যাটফর্ম। কিডস্টারে তারা অনেক ফ্রি লেসন শিখতে পারবে যার মাধ্যমে
+                    তাদের জ্ঞান ও দক্ষতা বৃদ্ধি পাবে। পাশাপাশি কিডস্টারে থাকছে মজার মজার
+                    সব গেম যেগুলো শিশুরা তাদের অবসর সময়ে খেলতে পারবে এবং প্রাইজ জিততে
+                    পারবে।
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseTwo">
+                    ২। কিডস্টার এর লিংকটি কি?
+                </button>
+            </h2>
+            <div id="flush-collapseTwo"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body" style="color:blue;">
+                    উঃ
+                    <a href="https://kidstar.shabox.mobi">https://kidstar.shabox.mobi</a>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseThree">
+                    ৩। কিডস্টার ক্যাম্পেইন এর সময় সীমা কতদিন?
+                </button>
+            </h2>
+            <div id="flush-collapseThree"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">উঃ ১ই মে থেকে ৩১ই মে পর্যন্ত।</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFour">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFour"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseFour">
+                    ৪। কিডস্টার পোর্টাল এর মড্যালিটি কী?
+                </button>
+            </h2>
+            <div id="flush-collapseFour"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="flush-heading"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    উঃ কিডস্টারে রয়েছে দুটি সেকশন। লেসন ও গেম। লেসন সেকশন টি ফ্রি। গেম
+                    সেকশনে ফ্রি গেমস এর পাশাপাশি টুর্নামেন্ট রয়েছে। সেটি সাপ্তাহিক
+                    সাবস্ক্রিপশন-ভিত্তিক সার্ভিস।
+                    <ul>
+                        <li>টুর্নামেন্ট গেমের সাপ্তাহিক সাবস্ক্রিপশন চার্জ ১৯ টাকা।</li>
+                        <li>সার্ভিসটি নবায়নযোগ্য।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFive">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFive"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseFive">
+                    ৫। কিডস্টারে কীভাবে যোগদান করতে হবে?
+                </button>
+            </h2>
+            <div id="flush-collapseFive"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="flush-headingFive"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    উঃ অভিভাবকরা এই পোর্টালে সাবস্ক্রাইব করে তাদের শিশুদের এই
+                    সার্ভিসটিতে যোগদান করাতে পারেন এবং বিকাশ পেমেন্ট এর মাধ্যমে
+                    রেজিস্ট্রেশন করতে হবে।
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingSix">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseSix"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseSix">
+                    ৬। কিডস্টার থেকে আন্সাবস্ক্রাইব করবেন কিভাবে?
+                </button>
+            </h2>
+            <div id="flush-collapseSix"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="flush-headingSix"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    উঃ ব্যবহারকারীরা পোর্টাল এর হেল্প অপশন থেকে আনসাবস্ক্রাইব বাটনে
+                    ক্লিক করে সার্ভিসটি আনসাবস্ক্রাইব করতে পারবেন।
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingSeven">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseSeven"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseSeven">
+                    ৭। লেসন সেকশনে কি কি থাকছে?
+                </button>
+            </h2>
+            <div id="flush-collapseSeven"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="flush-headingSeven"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <strong>কিডস্টারের লেসনে থাকছেঃ</strong>
+                    <br />
+                    <ul>
+                        <li>
+                            <strong>Guess The Word: </strong>
+                            এখানে ছবি দেখে বা ইঙ্গিতজনক বাক্য থেকে সঠিক শব্দটি অনুমান করতে
+                            হবে।
+                        </li>
+                        <li>
+                            <strong>Make Sentence: </strong>
+                            এখানে বিভিন্ন ইংরেজি বাক্য ও তার বাংলা অর্থ শিখা যাবে।
+                        </li>
+                        <li>
+                            <strong>Math ‘O’ Logic: </strong>
+                            এখানে বিভিন্ন গাণিতিক সমাধান করতে হবে।
+                        </li>
+                        <li>
+                            <strong>Pronounciation: </strong>
+                            এখানে বিভিন্ন ইংরেজি শব্দ ও তাদের সঠিক উচ্চারন শিখা যাবে।
+                        </li>
+                    </ul>
+                    <strong>
+                        বি দ্রঃ সকল লেসন একদম ফ্রি। এগুলো থেকে শিক্ষা গ্রহনের জন্য কোন
+                        সাবস্ক্রিপশন চার্জ দেওয়া আবশ্যক নয়।
+                    </strong>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingEight">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseEight"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseEight">
+                    ৮। গেম সেকশনে কি কি থাকছে?
+                </button>
+            </h2>
+            <div id="flush-collapseEight"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="flush-headingEight"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <strong>গেম সেকশনে ২ ধরনের গেম থাকছে।</strong>
+                    <ul>
+                        <li>
+                            <strong>টুর্নামেন্ট গেমসঃ </strong>
+                            টুর্নামেন্ট গেমে অংশগ্রহণ করার জন্য সাবস্ক্রিপশন চার্জ আবশ্যক।
+                            টুর্নামেন্ট গেম খেলে সাপ্তাহিক প্রাইজ জেতার সুযোগ রয়েছে।
+                        </li>
+                        <li>
+                            <strong>ফ্রি গেমসঃ </strong>
+                            ফ্রি গেমস সেকশনে অনেক গুলো মজার মজার ফ্রি গেমস রয়েছে। এগুলো
+                            খেলার জন্য কোন সাবস্ক্রিপশন চার্জ আবশ্যক নয়।
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingNine">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseNine"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseNine">
+                    ৯। কিডস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?
+                </button>
+            </h2>
+            <div id="flush-collapseNine"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="flush-headingNine"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    দৈনিক পুরস্কার: টপ ৩৫ জন ১০ টাকা করে বিকাশ ক্যাশ ইন পুস্কর পাবে।
+                    সাপ্তাহিক পুরস্কার:
+                    <ul>
+                        <li>প্রথম পুরস্কার: ইলেকট্রিক  মিউজিক গান ( খেলনা )। </li>
+                        <li>দ্বিতীয় পুরস্কার: হ্যালো  কিটটি  কিচেন সেট ( খেলনা )।</li>
+                        <li>তৃতীয় পুরস্কার: সুপার কার ( খেলনা ) ।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-white mx-3">
+        <br />
+        <h3>হেল্প:</h3>
+        <div>
+            <strong>১। হেল্প লাইন নাম্বার কি?</strong>
+            <p><a href="tel:+8801936236705">+8801936236705</a></p>
+        </div>
+        <div>
+            <strong>২। সাপোর্ট ইমেইল ঠিকানা কি?</strong>
+            <p>
+                <a href="mailto:kidstar.help2024@gmail.com">kidstar.help2024@gmail.com</a>
+            </p>
+        </div>
+        <div>
+            <strong>৩। সাপোর্ট হোয়াটসঅ্যাপ লাইন নাম্বার কি?</strong>
+            <p><a href="https://wa.me/+8801936236705">+8801936236705</a></p>
+        </div>
+    </div>
+
+
+<div class="modal" id="m_term" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title col-11" style="width:100%; text-align:center; color:white" id="title"></span>
+                <div class="col-1" style="float:right">
+                    <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="hideModal()">
+                        <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" id="body">
+
+            </div>
+            <div class="modal-footer element-center">
+                <button style="background-color: #ff172e" type="button" class="btn bg-deeporange text-white" data-bs-dismiss="modal" onclick="hideModal()">ওকে</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="m_term_v" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title col-11" style="width:100%; text-align:center; color:white" id="title"></span>
+                <div class="col-1" style="float:right">
+                    <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="hideModal()">
+                        <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" id="body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="vid" class="embed-responsive-item" src="" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer element-center">
+                <button type="button" class="btn bg-deeporange text-white" data-bs-dismiss="modal" onclick="hideModal()">ওকে</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+@section leaderboard{
+@*    <div class="fixed-bottom" style="bottom: 0vw;">
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+        <img style="width: 100%;height: 18vw;margin-bottom: 1vh;" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>*@
+
+
+    <div class="bottom-navbar">
+        <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="width: 12%" />
+        <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" />
+        <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" style="width: 17%" />
+        <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+        <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+    </div>
+
+}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+@section scripts{
+    <script>
+        function KidsHome() {
+            window.location.href = '/KidsProfileSetup/KidsHome';
+        }
+
+        $(document).ready(function () {
+
+            var number = $.session.get('fbid');
+            $("#lastModal").modal("hide");
+
+            //if (number != null) {
+            //    $.get("../LandingPage/IsSubscribed?fbid=" + number, function (rdata) {
+
+
+            //        if (rdata.result === false) {
+            //            document.querySelector(".modal").classList.remove("close");
+            //            document.querySelector(".modal").classList.add("open");
+            //        }
+            //    })
+            //}
+
+            ///Allowning for not login
+
+            //if (sessionStorage.getItem("isLogin") == null || sessionStorage.getItem("isLogin") == undefined) {
+            //    sessionStorage.clear();
+            //    localStorage.clear();
+            //    window.location.href = "../LandingPage/Index";
+            //}
+
+
+
+
+        });
+
+        function hideModal() {
+            $('#m_term').modal('hide');
+        }
+
+    </script>
+
+
+    <script>
+        function exit() {
+    window.location.href = '@Url.Action("Index", "LandingPage")';
+    return;
+    }
+    </script>
+
+    <script>
+
+
+        $("#dailyquiz").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=Quizmaster", function (res) {
+                $("#title").text("১। কুইজমাস্টার কি?");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>
+        <script>
+
+
+        $("#TimeQuiz").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=QuizTime", function (res) {
+                $("#title").text("কুইজমাস্টার ক্যাম্পেইন এর সময় সীমা কতদিন?");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>
+    <script>
+        $("#challengequiz").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=Link", function (res) {
+                $("#title").text("২। কুইজমাস্টার লিংকটি কি?");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = "<a href='https://quizmasterappinapp.shabox.mobi'>" + dd + "</a>";
+            });
+            $('#m_term').modal('show');
+        })
+    </script>
+
+    <script>
+        $("#jhotpot").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=Portal", function (res) {
+                $("#title").text("৩। কুইজমাস্টার এর পোর্টাল মড্যালিটি কী?");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>
+    <script>
+        $("#common").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=User", function (res) {
+                $("#title").text("৪। কুইজমাস্টার এ কীভাবে ব্যবহারকারীরা যোগদান করতে পারেন?");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>
+
+    <script>
+        $("#Unsubcription").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=Unsubcription", function (res) {
+                $("#title").text("৫। কুইজমাস্টার থেকে আন্সাবস্ক্রাইব করবেন কিভাবে?");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>
+    <script>
+        $("#GameRuls").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=GameRuls", function (res) {
+                $("#title").text("৬। কুইজমাস্টার খেলার নিয়ম কি?");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>
+
+
+
+    @*<script>
+        $("#PuzzleGameRuls").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=PuzzleGameRuls", function (res) {
+                $("#title").text("৮। ওয়ার্ড স্টার গেম খেলার নিয়ম কি?  ");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>*@
+    <script>
+        $("#Winner").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=Winner", function (res) {
+                $("#title").text("৭। কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?");
+                //$("#title").text("৯। কুইজমাস্টারে বিজয়ীরা কি কি পুরস্কার পাবেন?");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>
+    @*<script>
+        $("#Bijoyera").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=Bijoyera", function (res) {
+                $("#title").text("৯। বিজয়ীরা কখন এবং কিভাবে পুরস্কার পাবে?  ");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>*@
+    @*<script>
+        $("#iphoneUsersRule").click(function () {
+            $.get(window.location.origin + "/LandingPage/GettingTermRules?type=iphoneUsersRule", function (res) {
+                $("#title").text("৯। আইফোন ইউজারদের লাইভ কুইজ খেলার নিয়ম? ");
+                var dd = res.term.replace(/\n/g, "<br/>");
+                document.getElementById("body").innerHTML = dd;
+            });
+            $('#m_term').modal('show');
+        })
+    </script>*@
+    @*<script>
+            $("#Support").click(function () {
+                $.get(INS + "?type=Support", function (res) {
+                    $("#title").text("১০। এই সাইটটির কোনও ইমেইল সাপোর্ট আছে?");
+                    var dd = res.term.replace(/\n/g, "<br/>");
+                    document.getElementById("body").innerHTML = dd;
+                });
+                $('#m_term').modal('show');
+            })
+        </script>*@
+    @*<script>
+            $("#SupportMail").click(function () {
+                $.get(INS + "?type=SupportMail", function (res) {
+                    $("#title").text("১১। সাপোর্ট ইমেইল ঠিকানা কি?");
+                    var dd = res.term.replace(/\n/g, "<br/>");
+                    document.getElementById("body").innerHTML = dd;
+                });
+                $('#m_term').modal('show');
+            })
+        </script>*@
+    @*<script>
+            $("#HelpLine").click(function () {
+                $.get(INS + "?type=HelpLine", function (res) {
+                    $("#title").text("১২। হেল্পলাইন নম্বরটি কী?");
+                    var dd = res.term.replace(/\n/g, "<br/>");
+                    document.getElementById("body").innerHTML = dd;
+                });
+                $('#m_term').modal('show');
+            })
+        </script>*@
+
+
+}
+
+
+

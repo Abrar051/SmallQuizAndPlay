@@ -1,0 +1,299 @@
+﻿<!--Fixed bottom-->
+<style>
+    .text-center {
+        text-align: center;
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        background: white;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0px;
+    }
+
+    .bottom-navbar img {
+        width: 14%;
+    }
+
+    .free-games-section{
+        display: flex;
+        gap: 20px;
+        width: 100vw;
+        overflow-x: scroll;
+    }
+
+    .free-games-section img{
+        width: 7rem;
+    }
+    body{
+        background-color: #FA29FF;
+    }
+</style>
+
+<div class="text-center">
+    <img src="~/Assets/LiveQuizRelated/kidstar.png" class="w-75 mt-3" alt="Tournament Game Banner" onclick="playTournamentGame()">
+</div>
+
+@*<div class="text-center">
+    <img src="~/Assets/LiveQuizRelated/tournamentGameBanner.png" class="img-fluid" alt="Tournament Game Banner" onclick="playTournamentGame()">
+</div>*@
+
+
+<div class="modal fade" id="reg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 24vh;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#4eddd0">
+                <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 35%;">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 75vw;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="msisdn">MSISDN</label>
+                        <input type="text" class="form-control" id="msisdn" placeholder="Enter MSISDN">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="SignUpMultiTournamentKids()">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*    <div class="text-center">
+        <img src="~/Assets/LiveQuizRelated/freegames.png" class="img-fluid d-block mx-auto" alt="image" style="width:60%;">
+    </div>
+    <div class="free-games-section">
+        <img src="~/Assets/LiveQuizRelated/farming.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-farming10x10/gamefiles/index.html'" />
+        <img src="~/Assets/LiveQuizRelated/fishing.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-surfercat/gamefiles/index.html'" />
+        <img src="~/Assets/LiveQuizRelated/football.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-football.io/gamefiles/index.html'" />
+
+        <img src="~/Assets/LiveQuizRelated/cookingmania.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-cookingmania/gamefiles/index.html'" />
+        <img src="~/Assets/LiveQuizRelated/cutepairs.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-kidscutepairs/gamefiles/index.html'" />
+        <img src="~/Assets/LiveQuizRelated/jellyquest.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-jellyquestmania/gamefiles/index.html'" />
+        <img src="~/Assets/LiveQuizRelated/jewelpop.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-jewelpop/gamefiles/index.html'" />
+
+        <img src="~/Assets/LiveQuizRelated/kidsanimalfun.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-kidsanimalfun/gamefiles/index.html'" />
+        <img src="~/Assets/LiveQuizRelated/zoofarm.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-kidszoofarm/gamefiles/index.html'" />
+        <img src="~/Assets/LiveQuizRelated/zootrivia.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-zootrivia/gamefiles/index.html'" />
+
+
+    </div>*@
+    @*<img src="~/Assets/LiveQuizRelated/whitebackModal.png" class="img-fluid" />*@
+
+<div class="d-flex flex-wrap gap-4 mx-3">
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/farming.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-farming10x10/gamefiles/index.html'" />
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/fishing.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-surfercat/gamefiles/index.html'" />
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/football.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-football.io/gamefiles/index.html'" />
+
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/cookingmania.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-cookingmania/gamefiles/index.html'" />
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/cutepairs.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-kidscutepairs/gamefiles/index.html'" />
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/jellyquest.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-jellyquestmania/gamefiles/index.html'" />
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/jewelpop.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-jewelpop/gamefiles/index.html'" />
+
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/kidsanimalfun.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-kidsanimalfun/gamefiles/index.html'" />
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/zoofarm.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-kidszoofarm/gamefiles/index.html'" />
+    <img class="w-50"  src="~/Assets/LiveQuizRelated/zootrivia.png" onclick="window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-zootrivia/gamefiles/index.html'" />
+
+</div>
+
+
+<div class="bottom-navbar">
+    <img src="~/Assets/LiveQuizRelated/lesson.png" onclick="home()" style="width: 12%" />
+    <img src="~/Assets/LiveQuizRelated/games.png" onclick="KidsGame()" style="margin-top: -10%; width: 17%" />
+    <img src="~/Assets/LiveQuizRelated/Home.png" onclick="KidsHome()" />
+    <img src="~/Assets/LiveQuizRelated/leader.png" onclick="leaderBoard_Monthly()" />
+    <img src="~/Assets/LiveQuizRelated/winner.png" onclick="winnerBoard()" />
+</div>
+
+
+<script>
+    function KidsHome() {
+        window.location.href = '/KidsProfileSetup/KidsHome';
+    }
+
+    function playTournamentGame ()
+    {
+        if (sessionStorage.getItem("fbid")==null)
+        {
+            console.log("Tournament game button clicked");
+            $('#reg').modal('show');
+        }
+        else 
+        {
+            Checksubscription();
+        }
+        //document.getElementById("reg")
+    }
+
+    function Login()
+    {
+        console.log(document.getElementById("msisdn").value);
+        sessionStorage.setItem("fbid", document.getElementById("msisdn").value);
+    }
+
+    /// Bkash Checkout
+
+    function bkashBtnClickMultiTournament() {
+
+        if (sessionStorage.getItem("isLogin") == null || sessionStorage.getItem("isLogin") == undefined) {
+            var ckey = sessionStorage.getItem("ckey");
+            var FTU = sessionStorage.getItem("FTU");
+            var su = sessionStorage.getItem("su");
+            ckey = (ckey != null && ckey != "" && ckey != "null") ? ckey : "000000";
+
+            sessionStorage.clear();
+            localStorage.clear();
+            $("#logoutId").hide();
+            $("#unSubscriptionId").hide();
+
+            sessionStorage.setItem("ckey", ckey);
+            sessionStorage.setItem("FTU", FTU);
+            sessionStorage.setItem("su", su);
+
+            window.location.href = window.location.origin + "/Home/Index";
+            debugger;
+        }
+
+
+        localStorage.setItem("UserNumber", sessionStorage.getItem("fbid"));
+
+        $.ajax({
+            url: window.location.origin + "/HOME/GenerateUniQueSubscriptionRequestId",
+            type: "GET",
+            async: false,
+            data: {
+                serviceName: "KidStar",
+                ckey: sessionStorage.getItem("ckey"),
+                msisdn: sessionStorage.getItem("fbid")
+            },
+            success: function (rData) {
+                localStorage.setItem("UserPacket", rData);
+                $.post(window.location.origin + "/Home/MultiTournamentInBuildCheckoutUrl?packetData=" + localStorage.getItem("UserPacket"), function (data) {
+
+                    window.parent.location.href = data;
+                });
+            }
+        });
+
+
+    }
+
+
+    function Checksubscription()
+    {
+        $.ajax({
+            type: "GET",
+            url: '../Landingpage/IsSubscribedForMultiTournament?fbid=' + sessionStorage.getItem("fbid") + "&serviceName=" + sessionStorage.getItem('serviceName'),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (rdata) {
+                if (rdata.result === false) {
+                    sessionStorage.setItem("islogin", "Yes");
+                    $("#logoutMenu").show();
+                    bkashBtnClickMultiTournament();
+                }
+                else if (rdata.result === true) {
+                    sessionStorage.setItem("islogin", "Yes");
+                    window.location.href = window.location.origin + '/Assets/games/inlogic-raftingadventure/gamefiles/index.html' + '?msisdn=' + sessionStorage.getItem("fbid");
+                }
+            }
+        })
+    }
+
+    //Login
+
+    function SignUpMultiTournamentKids() {
+
+        console.log('came here');
+
+        var number = document.getElementById("msisdn").value;
+        var username = document.getElementById("name").value;
+        console.log(number);
+        console.log(username);
+        //var Token = $("#PushNotificationToken").text();
+
+
+        if (!number.startsWith('880')) {
+            if (number.startsWith('0')) {
+                number = '88' + number;
+
+            }
+            else {
+                number = '880' + number;
+
+            }
+        }
+        if (number.length == 13) {
+            increaseZIndex();
+            sessionStorage.setItem("fbid", number);
+            sessionStorage.setItem("username", username);
+            sessionStorage.setItem("isLogin", "Yes");
+
+            localStorage.setItem("fbid", number);
+            localStorage.setItem("username", username);
+
+            $("#logoutMenu").show();
+
+            var url = sessionStorage.getItem('su');
+
+            // Decode the String
+            var decodedString = atob(url);
+
+            $.post('../Home/Login?userName=' + username + "&msisdn=" + number, function (data) {
+
+                $.ajax({
+                    type: "POST",
+                    url: '../Home/SaveUserInfo',
+                    data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (res) {
+
+                    },
+                    error: function (errMsg) {
+                    }
+                });
+
+                var data = {
+                    "fbid": number
+                }
+                $.ajax({
+                    type: "GET",
+                    url: '../Landingpage/IsSubscribedForMultiTournament?fbid=' + number + "&serviceName=" + sessionStorage.getItem('serviceName'),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (rdata) {
+                        if (rdata.result === false) {
+                            sessionStorage.setItem("islogin", "Yes");
+                            $("#logoutMenu").show();
+                            bkashBtnClickMultiTournament();
+                        }
+                        else if (rdata.result === true) {
+                            sessionStorage.setItem("islogin", "Yes");
+                            window.location.href = 'https://games.shabox.mobi' + '/Assets/Games/inlogic-raftingadventure/gamefiles/index.html' + '?msisdn=' + sessionStorage.getItem("fbid"); // Get this location using api
+                            //window.location.href = 'https://wap.shabox.mobi/cms/Assets/Htmlgame/inlogic-raftingadventure/gamefiles/index.html' + '?msisdn=' + sessionStorage.getItem("fbid");
+                        }
+                    }
+                })
+            })
+        }
+    }
+
+</script>

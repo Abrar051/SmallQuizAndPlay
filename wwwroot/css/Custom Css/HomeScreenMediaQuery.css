@@ -1,0 +1,73 @@
+﻿
+
+@media only screen and (max-height: 667px) {
+
+    #homeLQKDivGap {
+        height: 36vh;
+    }
+
+    #homeDQGap {
+        height: 5vh;
+    }
+
+    #footerDQGap {
+        height: 4vh;
+    }
+
+    #gameFotterDivHeight {
+        height: 1vh;
+    }
+
+    .playBtn {
+        top: -38vh;
+        left: 293px;
+    }
+
+    .appp {
+        top: 21%;
+        left: 0;
+    }
+
+    #gameUpperPortion {
+        margin-top: 29%;
+    }
+    
+}
+
+@media only screen and (min-height: 668px) {
+
+    #homeLQKDivGap {
+        height: 39vh;
+    }
+
+    #homeDQGap {
+        /*height: 12vh;*/
+        height: 5vh;
+    }
+
+    #footerDQGap {
+        height: 7vh;
+    }
+
+    #gameFotterDivHeight {
+        height: 6vh;
+    }
+
+    .playBtn {
+        top: -38vh;
+        left: 302px;
+    }
+
+    .appp {
+        top: 31%;
+        left: 9px;
+    }
+
+    #gameUpperPortion{
+        margin-top:42%;
+    }
+
+
+
+}
+

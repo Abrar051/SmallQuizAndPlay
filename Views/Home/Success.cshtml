@@ -1,0 +1,223 @@
+﻿﻿<style>
+
+     .loader {
+         top: 0;
+         margin: 0;
+         padding: 0;
+         width: 100%;
+         height: 100%;
+         position: fixed;
+         overflow: hidden;
+         text-align: center;
+     }
+
+     .loader-icon {
+         position: absolute;
+         top: calc(50% - 50px);
+         left: calc(50% - 50px);
+     }
+</style>
+
+<div class="loader"><svg class="loader-icon" width='100px' height='100px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(0 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(30 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.041666666666666664s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(60 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.08333333333333333s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(90 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.125s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(120 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.16666666666666666s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(150 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.20833333333333334s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(180 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.25s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(210 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.2916666666666667s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(240 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.3333333333333333s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(270 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.375s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(300 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.4166666666666667s' repeatCount='indefinite' /></rect><rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#e2136e' transform='rotate(330 50 50) translate(0 -30)'>  <animate attributeName='opacity' from='1' to='0' dur='0.5s' begin='0.4583333333333333s' repeatCount='indefinite' /></rect></svg></div>
+
+@section Scripts{
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+    <script type="text/javascript">
+
+
+
+        $(window).load(function () {
+            $(".loader").delay(3000).fadeOut("fast");
+            sessionStorage.setItem('initialCharge',13);
+        });
+
+
+        setTimeout(function () {
+
+
+            localStorage.setItem("username", sessionStorage.getItem("username"));
+            //localStorage.setItem("msisdn", sessionStorage.getItem("msisdn"));
+            localStorage.setItem("msisdn", sessionStorage.getItem("fbid"));
+
+            function getParameterByName(name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+
+
+            var reference = getParameterByName('reference');
+            var status = getParameterByName('status');
+            var subReqId = getParameterByName('subReqId');
+
+
+          
+
+
+            if (status == "SUCCEEDED") {
+                let UserName = sessionStorage.getItem("username");
+                let MSISDN = sessionStorage.getItem("fbid");
+                let ServiceName = "QuizMaster";
+                console.log(status);
+
+
+                $.get("../Home/GetRecentPaymentStatus?subscriptionRequestId=" + subReqId, function (rData) {
+
+                    console.log(rData.message);
+                    console.log(rData.msisdn);
+
+                    if (rData.message == "SUCCEEDED_PAYMENT") {
+
+                        $.ajax({
+                            type: "GET",
+                            url: "../Home/UpdateSubscriptionData?msisdn=" + sessionStorage.getItem("fbid") + "&subReqId=" + subReqId + "&CKEY=" + sessionStorage.getItem('ckey'),
+                            success: function (rdata) {
+                                //console.log(success);
+                            }
+                        });
+
+                        $.ajax({
+                            type: "POST",
+                            url:  '../home/SubscriptionV3Insert',
+                            contentType: "application/json; charset=utf-8",
+                            
+                            data: localStorage.getItem("UserPacket"),
+                            success: function (secondRequestResult) {
+                                console.log(secondRequestResult);
+                            }
+                        });
+
+                     
+
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: 'আপনি সফলভাবে বিকাশের মাধ্যমে সাবস্ক্রাইব করেছেন।',
+                            confirmButtonText: 'Go To Home',
+                            confirmButtonColor: '#e3126e'
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+
+
+                                window.location.href = "../KidsProfileSetup/editprofile";
+                            }
+                        })
+
+                        //////
+
+                    }
+
+
+                    ////////
+                    else if (rData.message == "FAILED_PAYMENT" ) {
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Sorry!',
+                            text: 'দুঃখিত আপনার পেমেন্ট ব্যার্থ হয়েছে ।',
+                            confirmButtonText: 'হোম',
+                            confirmButtonColor: '#e3126e'
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+
+
+                                window.location.href = "../LandingPage/Index"
+                            }
+                        })
+
+                    }
+
+
+
+                    ////////
+                    else if (rData.message == "FAILED For Unsuccess") {  /// Unnecessary 
+
+                        //debugger;
+
+                        $.get("../Home/CheckSubscriptionWithSubReqId?msisdn=" + MSISDN + "&subReqId=" + subReqId, function (response) {
+                            if (response && response.status == "SUCCEEDED") {
+                                $.ajax({
+                                    type: "GET",
+                                    url: '../Home/UpdateSubscriptionData?msisdn=' + MSISDN + "&subReqId=" + subReqId,
+                                    success: function (rdata) {
+                                        console.log(success);
+                                    }
+                                });
+
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    text: 'আপনি সফলভাবে বিকাশের মাধ্যমে সাবস্ক্রাইব করেছেন।',
+                                    confirmButtonText: 'Go To Home',
+                                    confirmButtonColor: '#e3126e'
+                                }).then((result) => {
+                                    /* Read more about isConfirmed, isDenied below */
+                                    if (result.isConfirmed) {
+                                        window.location.href = "../LandingPage/Index"
+                                    }
+                                })
+                            } else {
+                                window.location.href = "../Home/ErrorPage?reference=" + reference + "&status=" + "Payment Failed";
+                            }
+
+                        });
+                    }
+
+                    ///
+
+                    else {
+                        window.location.href = "../Home/ErrorPage?reference=" + reference + "&status=" + "Payment Failed";
+                    }
+
+
+                    ////
+
+
+
+                });
+
+
+            }
+
+
+
+
+            //// Seperate part
+
+            else if (status == "CANCELLED") {
+                var chargeint = sessionStorage.getItem('initialCharge');
+
+                sessionStorage.setItem('initialCharge1',chargeint );
+
+                //$.post("../Home/UnsufficientCheckOut?msisdn=" + sessionStorage.getItem("fbid") + "&amount=" + sessionStorage.getItem('initialCharge1') +"&ckey=" + sessionStorage.getItem("ckey"), function (data) {
+
+                //    window.location.href = data;
+                //});
+                window.location.href = "../Home/ErrorPage?reference=" + reference + "&status=" + "Payment Failed";
+
+
+            }
+            else {
+                window.location.href = "../Home/ErrorPage?reference=" + reference + "&status=" + "Payment Failed";
+            }
+
+
+
+        }, 3000);
+
+
+
+
+
+    </script>
+}

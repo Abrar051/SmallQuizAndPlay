@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Questions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <style>
+
+
+        .card-background {
+            background-color: #f0f0f0;
+            padding: 5vw;
+            border-radius: 28px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .audio-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .audio-button {
+            width:198px;
+            height: 60px;
+            background-color: #7e51d0;
+            color: #ffffff;
+            border-radius: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 61px;
+            margin-left: 35px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .audio-button1 {
+            width: 218px;
+            height: 56px;
+            background-color: #7e51d0;
+            color: white;
+            border-radius: 16%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 56px;
+            margin-left: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .audio-button:hover {
+                transform: scale(1.1);
+            }
+
+        .audio-button1:hover {
+            transform: scale(1.1);
+        }
+
+        .play-icon {
+            font-size: 25px;
+        }
+
+        .label {
+            margin-top: 5px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: -1vw;
+        }
+
+        .option-button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 17px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            background-color: #357d93;
+            color: white;
+            border: none;
+            border-radius: 50vh;
+            text-align: center;
+            width: 82vw;
+        }
+
+            .option-button:hover {
+                transform: scale(1.1);
+            }
+    </style>
+
+    <style>
+
+
+        .card-background {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-background1 {
+     
+            padding: 15px;
+     
+        }
+        .score-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .score-container p {
+                margin: 0;
+            }
+
+        #timerContainer {
+           
+            align-items: center;
+            margin-bottom: 5px;
+            margin-left: 41vw;
+        }
+
+        #timerIcon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        #timerText {
+            font-size: 18px;
+        }
+
+        .question-image {
+            width: 30vw; /* Adjust the size as needed */
+            height: 30vw; /* Adjust the size as needed */
+            border-radius: 15%; /* Make it round */
+            margin-left: -7vw;
+            margin-right: auto;
+            display: block;
+            margin-top: 10px; /* Adjust the margin as needed */
+        }
+    </style>
+    <script>
+        var audio = new Audio();
+         var image = new Image();
+        var questionIndex = 0;
+        var questions = @Json.Serialize(Model);
+        var score = 0;
+        var wrong = 0;
+        var timer;
+        var timeRemaining = 300;
+        var round = 1; // Initial round value
+        const fbid = sessionStorage.getItem('fbid');
+        const serviceName = sessionStorage.getItem('serviceName');
+        console.log('FbId:', fbid);
+        console.log('Service Name :', serviceName);
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            checkRoundAndLoadGame();
+            startTimer();
+        });
+
+        function checkRoundAndLoadGame() {
+            
+            $.ajax({
+                type: 'GET',
+                url: '/LandingPage/CheckRound',
+                data: { FbId: fbid },
+                success: function (response) {
+                    var roundFromServer = response.round;
+
+                    if (roundFromServer >= 2) {
+                        window.location.href = "../Home/SorryPage";
+                        console.log("You have already played two rounds.");
+                    } else {
+                        round = roundFromServer;
+                        increaseRound(); 
+                        showQuestion(questionIndex);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function increaseRound() {
+          
+            round++;
+   
+        }
+
+        function startTimer() {
+            timer = setInterval(function () {
+                updateTimerDisplay();
+                if (timeRemaining <= 0) {
+                    clearInterval(timer);
+                    endQuiz();
+                }
+                timeRemaining--;
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            var minutes = Math.floor(timeRemaining / 60);
+            var seconds = timeRemaining % 60;
+
+            var timerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            document.getElementById('timerText').innerText = timerText;
+        }
+
+        function optionClicked(selectedOption) {
+            //startTime = new Date();
+            var correctAnswer = questions[questionIndex].answer;
+
+            clearInterval(timer); 
+
+            if (selectedOption === correctAnswer) {
+                score++;
+                document.getElementById('rightAnswers').innerText = score;
+                document.getElementById('rightIcon').style.visibility = 'visible';
+                document.getElementById('wrongIcon').style.visibility = 'hidden';
+            } else {
+                wrong++;
+                document.getElementById('wrongAnswers').innerText = wrong;
+                document.getElementById('rightIcon').style.visibility = 'hidden';
+                document.getElementById('wrongIcon').style.visibility = 'visible';
+            }
+
+            // Send the selected option to the controller
+            saveAnswer(selectedOption);
+
+            questionIndex++;
+
+            if (questionIndex < questions.length && questionIndex < 15) {
+                showQuestion(questionIndex);
+                startTimer(); // Restart the timer for the next question
+            } else {
+                endQuiz();
+            }
+        }
+
+        function saveAnswer(selectedOption) {
+            var answer = encodeURIComponent(selectedOption);
+            var fbId = encodeURIComponent(fbid);
+            var isRight = selectedOption === questions[questionIndex].answer;
+            var timeTaken = 300 - timeRemaining;
+
+            if (timeTaken > 30) {
+                timeTaken = 23;
+            }
+
+
+        
+
+
+            var url = `/LandingPage/SaveAnswer?answer=${answer}&fbId=${fbId}&isRight=${isRight}&timeTaken=${timeTaken}&round=${round}&serviceName=${serviceName}`;
+
+            //console.log('URL:', url);
+
+            // Make a GET request
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function (response) {
+                    console.log('Success:', response);
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function endQuiz() {
+            var src1 = BASE_URL + '/Assets/TimeUp.png';
+            $("#result_pic").attr("src", src1);
+
+            $("#result_content").text("অডিও কুইজ খেলুন ");
+            $("#result_content2").text("ক্যাশ প্রাইজ জিতুন");
+            $("#modal_buttonPlay").text("আবার খেলুন");
+            $("#modal_button").text("ওকে");
+            $("#modal_buttonPlay").attr("onclick", "reloadUI()");
+            $("#modal_button").attr("onclick", "home()");
+
+            $("#m_jh_result").modal('show');
+        }
+
+        function showQuestion(index) {
+            var optionsContainer = document.querySelector('.options-container');
+            optionsContainer.innerHTML = '';
+
+            if (questionIndex < questions.length && questionIndex < 15) {
+                var question = questions[index];
+
+                for (var i = 1; i <= 3; i++) {
+                    var optionButton = document.createElement('div');
+                    optionButton.className = 'option-button';
+                    optionButton.textContent = question['option' + i];
+                    optionButton.onclick = function () {
+                        optionClicked(this.textContent);
+                    };
+
+                    optionsContainer.appendChild(optionButton);
+                }
+
+                var imageContainer = document.createElement('img');
+
+                //document.getElementById('questionImage').src = "https://wap.shabox.mobi/cmsnew/Assets/AudioImages/" + question.imageFile;
+                audio.src = "https://wap.shabox.mobi/cmsnew/Assets/VoiceInstruction/" + question.audioFile;
+
+                document.getElementById('replayAudioButton').disabled = true;
+                document.getElementById('playAudioButton').disabled = false;
+
+                document.getElementById('playAudioButton').addEventListener('click', function playAudio() {
+                    audio.play().then(function () {
+                        document.getElementById('replayAudioButton').disabled = false;
+                        document.getElementById('playAudioButton').disabled = true;
+                        optionsContainer.style.display = 'flex';
+                    }).catch(function (error) {
+                        console.error('Error playing audio:', error);
+                    });
+                }, { once: true });
+
+                document.getElementById('replayAudioButton').addEventListener('click', function replayAudio() {
+                    audio.play().then(function () {
+                        document.getElementById('replayAudioButton').disabled = true;
+                        document.getElementById('playAudioButton').disabled = true;
+                        optionsContainer.style.display = 'flex';
+                    }).catch(function (error) {
+                        console.error('Error replaying audio:', error);
+                    });
+
+                    this.removeEventListener('click', replayAudio);
+
+                    document.getElementById('playAudioButton').disabled = true;
+                });
+            } else {
+                endQuiz();
+            }
+        }
+
+        
+    </script>
+
+    
+</head>
+<body>
+ 
+       <div class="card-background1">
+        <div class="score-container">
+            <p>সঠিক উত্তরঃ<span id="rightAnswers">0</span> <i id="rightIcon" class="fas fa-check-circle" style="color: green;"></i></p>
+            <p>ভুল উত্তরঃ<span id="wrongAnswers">0</span> <i id="wrongIcon" class="fas fa-times-circle" style="color: red;"></i></p>
+        </div>
+    </div>
+ 
+    <div id="timerContainer">
+        <i id="timerIcon" class="fas fa-clock"></i>
+        <span id="timerText"></span>
+        @*<img id="questionImage" class="question-image" src="" alt="Question Image">*@
+    </div>
+
+    <div class="card-background">
+        <center><span>প্রশ্নটি শুনুন এবং উত্তর দিন </span></center>
+        <br />
+        <div class="audio-container">
+            <div class="audio-button" id="playAudioButton">
+                <i class="fas fa-play play-icon"></i>
+                <div class="label">শুনুন</div>
+            </div>
+            <div class="audio-button1" id="replayAudioButton">
+                <i class="fas fa-redo play-icon"></i>
+                <div class="label">পুনঃরাই শুনুন</div>
+            </div>
+        </div>
+
+        <div class="options-container">
+            <!-- Example options, replace with your dynamic content -->
+            <button class="option-button" onclick="optionClicked('Option 1')"></button>
+            <button class="option-button" onclick="optionClicked('Option 2')"></button>
+            <button class="option-button" onclick="optionClicked('Option 3')"></button>
+        </div>
+    </div>
+
+    <div class="modal" id="m_jh_result" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="row">
+                    <div class="col-11"></div>
+                    <div class="col-1" style="margin-left: -1%;">
+                        <button type="button" class="m-0 p-0" style="width:25px; height:25px; border-radius: 50%; border:none; float:right" data-bs-dismiss="modal" aria-label="Close" onclick="home()">
+                            <span aria-hidden="true" style="color: #ff1493 ">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal-body text-center">
+
+
+                    <small id="result_content" style="text-align:center;color:black;font-size: 16px;" class="deeporange"></small>
+                    <br />
+                    <small id="result_content2" style="text-align:center;color:black;font-size: 16px;" class="deeporange"></small>
+                </div>
+                <div class="modal-footer element-center">
+                    <button type="button" class="btn  text-white" style="background-color: #357d93;" id="modal_buttonPlay" onclick="reloadUI()">আবার খেলুন</button>
+                    <button type="button" class="btn  text-white" style="background-color: #357d93;" id="modal_button" onclick="home()">ওকে</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+@section leaderboard{
+    <div class="fixed-bottom" style="bottom: 0vw;">
+
+        <div class="row" style="color:white;margin-top: 7%;position: absolute;z-index: 1030;">
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%; " onclick="leaderBoard()" id="leaderBoardz">
+                <img src="~/Assets/LiveQuizRelated/Daily Winner 3.png" style="width: 15vw;margin-top: -52%;margin-left: -14%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style=" text-align: center; width: 100vw; " onclick="home()">
+                <img src="~/Assets/LiveQuizRelated/Home 2.png" style="text-align: center;width: 8vw;margin-top: -18.5%;margin-left: -3%;" asp-append-version="true" />
+            </div>
+            <div class="col-4" style="text-align: center;width: 100vw;margin-top: 5.5%;" onclick="leaderBoard_Monthly()">
+                <img src="~/Assets/LiveQuizRelated/Leaderboard 3.png" style=" width: 13vw; margin-top: -52%; " asp-append-version="true" />
+            </div>
+        </div>
+
+        <img style="width: 100%;height: 18vw;margin-bottom: 1vh;" src="~/Assets/LiveQuizRelated/Bar-Color.png" asp-append-version="true" />
+    </div>
+
+}

@@ -1,0 +1,106 @@
+﻿
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+
+
+
+
+
+        let UserName = sessionStorage.getItem("username");
+        let MSISDN = sessionStorage.getItem("fbid");
+        let ServiceName = "QuizMaster";
+
+        $.get("../LandingPage/SaveCapmLog?msisdn=" + sessionStorage.getItem("fbid") + "&ckey=" + sessionStorage.getItem("ckey") + "&cname=" + "KidStar" + "&theme=Payment_Cancel&srcurl=" + window.location.href, function (rData) { });
+
+
+
+        Swal.fire({
+            icon: 'warning',
+            title: 'Sorry!',
+            text: "Payment Cancelled",
+            confirmButtonText: 'Try Again',
+            confirmButtonColor: '#e3126e',
+            allowOutsideClick: false
+        }).then((result) => {
+           
+            if (result.isConfirmed) {
+                var chargeint = sessionStorage.getItem('initialCharge') - 2;
+
+
+                sessionStorage.setItem('initialCharge1', chargeint);
+
+                $.post("../Home/UnsufficientCheckOut?msisdn=" + sessionStorage.getItem("fbid") + "&amount=" + sessionStorage.getItem('initialCharge1') + "&ckey=" + sessionStorage.getItem("ckey"), function (data) {
+
+                    window.location.href = data;
+                });
+                //window.location.href = "../Home/BkashPayment"
+            }
+        })
+
+
+
+
+
+
+
+
+        //let UserName = sessionStorage.getItem("username");
+        //let MSISDN = sessionStorage.getItem("fbid");
+        //let ServiceName = "QuizMaster";
+
+
+        //$.ajax({
+
+        //    url: "../LandingPage/SaveThemeInfo?msisdn=" + MSISDN + "&theme=" + "SubStatus", success: function (res) {
+
+
+        //    }
+        //});
+
+
+        //let userData = {
+        //    "UserName": UserName,
+        //    "MSISDN": MSISDN,
+        //    "ServiceName": ServiceName,
+        //    "SourceUrl": window.location.href,
+        //    "TransactionStatus": "Canceled",
+        //}
+
+
+        //var settings = {
+        //    "url": "https://bkashpaymentapi.shabox.mobi/api/BkashCheckout/CheckoutUserData",
+        //    "method": "POST",
+        //    "timeout": 0,
+        //    "headers": {
+        //        "Content-Type": "application/json"
+        //    },
+        //    "data": JSON.stringify(userData),
+        //};
+
+        //$.ajax(settings).done(function (response) {
+
+        //    Swal.fire({
+        //        icon: 'warning',
+        //        title: 'Sorry!',
+        //        text: "Payment Cancelled",
+        //        confirmButtonText: 'Try Again',
+        //        confirmButtonColor: '#FF4081',
+        //        allowOutsideClick: false
+        //    }).then((result) => {
+        //        /* Read more about isConfirmed, isDenied below */
+        //        if (result.isConfirmed) {
+        //            window.location.href = "../Home/BkashPayment"
+        //        }
+        //    })
+
+
+        //});
+
+
+
+    </script>
+
+}
